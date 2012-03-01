@@ -45,10 +45,10 @@ object CamelTestSupport {
 
   trait Respond { this: Actor =>
     def respond: Handler = {
-      case msg: Message => self.reply(response(msg))
+      case msg: CamelMessage => self.reply(response(msg))
     }
 
-    def response(msg: Message): Any = "Hello %s" format msg.body
+    def response(msg: CamelMessage): Any = "Hello %s" format msg.body
   }
 
   trait Retain { this: Actor =>

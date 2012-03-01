@@ -9,7 +9,7 @@ import org.scalatest.{BeforeAndAfterEach, BeforeAndAfterAll, FeatureSpec}
 
 import akka.actor.Actor
 import akka.actor.Actor._
-import akka.camel.{Failure, Message, CamelContextManager}
+import akka.camel.{Failure, CamelMessage, CamelContextManager}
 import akka.camel.CamelTestSupport._
 
 class ActorComponentFeatureTest extends FeatureSpec with BeforeAndAfterAll with BeforeAndAfterEach {
@@ -37,7 +37,7 @@ class ActorComponentFeatureTest extends FeatureSpec with BeforeAndAfterAll with 
       val latch = (actor !! SetExpectedMessageCount(1)).as[CountDownLatch].get
       mandatoryTemplate.sendBody("actor:uuid:%s" format actor.uuid, "Martin")
       assert(latch.await(5000, TimeUnit.MILLISECONDS))
-      val reply = (actor !! GetRetainedMessage).get.asInstanceOf[Message]
+      val reply = (actor !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
       assert(reply.body === "Martin")
     }
 
@@ -74,7 +74,7 @@ class ActorComponentFeatureTest extends FeatureSpec with BeforeAndAfterAll with 
       val latch = (actor !! SetExpectedMessageCount(1)).as[CountDownLatch].get
       mandatoryTemplate.sendBody("actor:%s" format actor.id, "Martin")
       assert(latch.await(5000, TimeUnit.MILLISECONDS))
-      val reply = (actor !! GetRetainedMessage).get.asInstanceOf[Message]
+      val reply = (actor !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
       assert(reply.body === "Martin")
     }
 
@@ -97,19 +97,19 @@ object ActorComponentFeatureTest {
   class CustomIdActor extends Actor {
     self.id = "custom-id"
     protected def receive = {
-      case msg: Message => self.reply("Received %s" format msg.body)
+      case msg: CamelMessage => self.reply("Received %s" format msg.body)
     }
   }
 
   class FailWithMessage extends Actor {
     protected def receive = {
-      case msg: Message => self.reply(Failure(new Exception("test")))
+      case msg: CamelMessage => self.reply(Failure(new Exception("test")))
     }
   }
 
   class FailWithException extends Actor {
     protected def receive = {
-      case msg: Message => throw new Exception("test")
+      case msg: CamelMessage => throw new Exception("test")
     }
   }
 

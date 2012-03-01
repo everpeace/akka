@@ -59,13 +59,13 @@ class MessageScalaTest extends FunSuite with MustMatchers with SharedCamelSystem
   }
 
   test("mustAddHeaderAndPreserveBodyAndHeaders") {
-    Message("test1", Map("A" -> "1")).plusHeader("B" -> "2") must be(
+    Message("test1", Map("A" -> "1")).addHeader("B" -> "2") must be(
       Message("test1", Map("A" -> "1", "B" -> "2")))
 
   }
 
   test("mustAddHeadersAndPreserveBodyAndHeaders") {
-    Message("test1", Map("A" -> "1")).plusHeaders(Map("B" -> "2")) must be(
+    Message("test1", Map("A" -> "1")).addHeaders(Map("B" -> "2")) must be(
       Message("test1", Map("A" -> "1", "B" -> "2")))
 
   }

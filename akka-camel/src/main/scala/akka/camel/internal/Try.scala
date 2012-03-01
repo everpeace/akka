@@ -6,6 +6,9 @@ package akka.camel.internal
 
 import akka.event.LoggingAdapter
 
+/**
+ * For internal use only.
+ */
 private[camel] object Try {
 
   /**

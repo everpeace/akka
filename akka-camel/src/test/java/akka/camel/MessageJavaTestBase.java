@@ -35,9 +35,9 @@ public class MessageJavaTestBase {
         system.shutdown();
     }
 
-    Message message(Object body){ return new Message(body, new HashMap()); }
-    Message message(Object body, Map<String, Object> headers){ return new Message(body, headers); }
-    private RichMessage rich(Message message) { return new RichMessage(message, camel.context()); }
+    CamelMessage message(Object body){ return new CamelMessage(body, new HashMap()); }
+    CamelMessage message(Object body, Map<String, Object> headers){ return new CamelMessage(body, headers); }
+    private RichMessage rich(CamelMessage message) { return new RichMessage(message, camel.context()); }
 
 
     @Test public void shouldConvertDoubleBodyToString() {
@@ -51,34 +51,34 @@ public class MessageJavaTestBase {
 
 
     @Test public void shouldReturnDoubleHeader() {
-        Message message = message("test" , createMap("test", 1.4));
+        CamelMessage message = message("test" , createMap("test", 1.4));
         assertEquals(1.4, message.getHeader("test"));
     }
 
     @Test public void shouldConvertDoubleHeaderToString() {
-        Message message = message("test" , createMap("test", 1.4));
+        CamelMessage message = message("test" , createMap("test", 1.4));
         assertEquals("1.4", rich(message).getHeaderAs("test", String.class));
     }
 
     @Test public void shouldReturnSubsetOfHeaders() {
-        Message message = message("test" , createMap("A", "1", "B", "2"));
+        CamelMessage message = message("test" , createMap("A", "1", "B", "2"));
         assertEquals(createMap("B", "2"), message.getHeaders(createSet("B")));
     }
 
     @Test(expected=UnsupportedOperationException.class)
     public void shouldReturnSubsetOfHeadersUnmodifiable() {
-        Message message = message("test" , createMap("A", "1", "B", "2"));
+        CamelMessage message = message("test" , createMap("A", "1", "B", "2"));
         message.getHeaders(createSet("B")).put("x", "y");
     }
 
     @Test public void shouldReturnAllHeaders() {
-        Message message = message("test" , createMap("A", "1", "B", "2"));
+        CamelMessage message = message("test" , createMap("A", "1", "B", "2"));
         assertEquals(createMap("A", "1", "B", "2"), message.getHeaders());
     }
 
     @Test(expected=UnsupportedOperationException.class)
     public void shouldReturnAllHeadersUnmodifiable() {
-        Message message = message("test" , createMap("A", "1", "B", "2"));
+        CamelMessage message = message("test" , createMap("A", "1", "B", "2"));
         message.getHeaders().put("x", "y");
     }
 
@@ -109,13 +109,13 @@ public class MessageJavaTestBase {
     @Test public void shouldAddHeaderAndPreserveBodyAndHeaders() {
         assertEquals(
             message("test1" , createMap("A", "1", "B", "2")),
-            message("test1" , createMap("A", "1")).plusHeader("B", "2"));
+            message("test1" , createMap("A", "1")).addHeader("B", "2"));
     }
 
     @Test public void shouldAddHeadersAndPreserveBodyAndHeaders() {
         assertEquals(
             message("test1" , createMap("A", "1", "B", "2")),
-            message("test1" , createMap("A", "1")).plusHeaders(createMap("B", "2")));
+            message("test1" , createMap("A", "1")).addHeaders(createMap("B", "2")));
     }
 
     @Test public void shouldRemoveHeadersAndPreserveBodyAndRemainingHeaders() {

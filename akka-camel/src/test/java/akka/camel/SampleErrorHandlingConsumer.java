@@ -34,7 +34,7 @@ public class SampleErrorHandlingConsumer extends UntypedConsumerActor {
 
 
     public void onReceive(Object message) throws Exception {
-        Message msg = (Message) message;
+        CamelMessage msg = (CamelMessage) message;
         String body = rich(msg).getBodyAs(String.class);
         throw new Exception(String.format("error: %s", body));
     }

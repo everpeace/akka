@@ -66,7 +66,7 @@ class ActivationIntegrationTest extends WordSpec with MustMatchers with SharedCa
   class TestConsumer(uri: String) extends Consumer {
     def endpointUri = uri
     override def receive = {
-      case msg: Message ⇒ sender ! "received " + msg.body
+      case msg: CamelMessage ⇒ sender ! "received " + msg.body
     }
   }
 

@@ -16,7 +16,7 @@ public class SampleUntypedConsumer extends UntypedConsumerActor {
     }
 
     public void onReceive(Object message) {
-        RichMessage msg = rich((Message)message);
+        RichMessage msg = rich((CamelMessage)message);
         String body = msg.getBodyAs(String.class);
         String header = msg.getHeaderAs("test", String.class);
         sender().tell(String.format("%s %s", body, header));

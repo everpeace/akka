@@ -11,7 +11,7 @@ import org.scalatest.junit.JUnitSuite
 import org.scalatest.BeforeAndAfterAll
 
 import akka.actor.Actor._
-import akka.camel.{Failure, Message}
+import akka.camel.{Failure, CamelMessage}
 import akka.camel.CamelTestSupport._
 
 class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
@@ -28,9 +28,9 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     exchange.getIn.setHeader("k1", "v1")
     actorProducer(endpoint).process(exchange)
     assert(latch.await(5000, TimeUnit.MILLISECONDS))
-    val reply = (actor !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply = (actor !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply.body === "Martin")
-    assert(reply.headers === Map(Message.MessageExchangeId -> exchange.getExchangeId, "k1" -> "v1"))
+    assert(reply.headers === Map(CamelMessage.MessageExchangeId -> exchange.getExchangeId, "k1" -> "v1"))
   }
 
   @Test def shouldSendMessageToActorWithAsyncProcessor = {
@@ -42,14 +42,14 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     exchange.getIn.setHeader("k1", "v1")
     actorAsyncProducer(endpoint).process(exchange, expectSyncCompletion)
     assert(latch.await(5000, TimeUnit.MILLISECONDS))
-    val reply = (actor !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply = (actor !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply.body === "Martin")
-    assert(reply.headers === Map(Message.MessageExchangeId -> exchange.getExchangeId, "k1" -> "v1"))
+    assert(reply.headers === Map(CamelMessage.MessageExchangeId -> exchange.getExchangeId, "k1" -> "v1"))
   }
 
   @Test def shouldSendMessageToActorAndReceiveResponseWithSyncProcessor = {
     val actor = actorOf(new Tester2 {
-      override def response(msg: Message) = Message(super.response(msg), Map("k2" -> "v2"))
+      override def response(msg: CamelMessage) = CamelMessage(super.response(msg), Map("k2" -> "v2"))
     }).start
     val endpoint = actorEndpoint("actor:uuid:%s" format actor.uuid)
     val exchange = endpoint.createExchange(ExchangePattern.InOut)
@@ -62,7 +62,7 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
 
   @Test def shouldSendMessageToActorAndReceiveResponseWithAsyncProcessor = {
     val actor = actorOf(new Tester2 {
-      override def response(msg: Message) = Message(super.response(msg), Map("k2" -> "v2"))
+      override def response(msg: CamelMessage) = CamelMessage(super.response(msg), Map("k2" -> "v2"))
     }).start
     val completion = expectAsyncCompletion
     val endpoint = actorEndpoint("actor:uuid:%s" format actor.uuid)
@@ -77,7 +77,7 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
 
   @Test def shouldSendMessageToActorAndReceiveFailureWithAsyncProcessor = {
     val actor = actorOf(new Tester2 {
-      override def response(msg: Message) = Failure(new Exception("testmsg"), Map("k3" -> "v3"))
+      override def response(msg: CamelMessage) = Failure(new Exception("testmsg"), Map("k3" -> "v3"))
     }).start
     val completion = expectAsyncCompletion
     val endpoint = actorEndpoint("actor:uuid:%s" format actor.uuid)
@@ -93,7 +93,7 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
 
   @Test def shouldSendMessageToActorAndReceiveAckWithAsyncProcessor = {
     val actor = actorOf(new Tester2 {
-      override def response(msg: Message) = akka.camel.Ack
+      override def response(msg: CamelMessage) = akka.camel.Ack
     }).start
     val completion = expectAsyncCompletion
     val endpoint = actorEndpoint("actor:uuid:%s?autoack=false" format actor.uuid)
@@ -124,8 +124,8 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     actorProducer(endpoint).process(exchange2)
     assert(latch1.await(5, TimeUnit.SECONDS))
     assert(latch2.await(5, TimeUnit.SECONDS))
-    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[Message]
-    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
+    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply1.body === "Test1")
     assert(reply2.body === "Test2")
   }
@@ -150,8 +150,8 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     actorProducer(endpoint).process(exchange2)
     assert(latch1.await(5, TimeUnit.SECONDS))
     assert(latch2.await(5, TimeUnit.SECONDS))
-    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[Message]
-    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
+    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply1.body === "Test1")
     assert(reply2.body === "Test2")
   }
@@ -171,8 +171,8 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     actorProducer(endpoint).process(exchange2)
     assert(latch1.await(5, TimeUnit.SECONDS))
     assert(latch2.await(5, TimeUnit.SECONDS))
-    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[Message]
-    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
+    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply1.body === "Test1")
     assert(reply2.body === "Test2")
   }
@@ -193,8 +193,8 @@ class ActorProducerTest extends JUnitSuite with BeforeAndAfterAll {
     actorProducer(endpoint).process(exchange2)
     assert(latch1.await(5, TimeUnit.SECONDS))
     assert(latch2.await(5, TimeUnit.SECONDS))
-    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[Message]
-    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[Message]
+    val reply1 = (actor1 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
+    val reply2 = (actor2 !! GetRetainedMessage).get.asInstanceOf[CamelMessage]
     assert(reply1.body === "Test1")
     assert(reply2.body === "Test2")
   }

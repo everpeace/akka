@@ -17,6 +17,7 @@ import org.apache.camel.CamelContext
 import akka.util.Duration
 
 /**
+ * For internal use only.
  * Manages consumer registration. Consumers call registerConsumer method to register themselves  when they get created.
  * ActorEndpoint uses it to lookup an actor by its path.
  */
@@ -25,7 +26,13 @@ private[camel] trait ConsumerRegistry { this: Activation ⇒
   def context: CamelContext
 
   private[this] lazy val idempotentRegistry = system.actorOf(Props(new IdempotentCamelConsumerRegistry(context)))
-
+  /**
+   * For internal use only.
+   * @param endpointUri the URI to register the consumer on
+   * @param consumer the consumer
+   * @param activationTimeout the timeout for activation
+   * @return the actorRef to the consumer
+   */
   private[camel] def registerConsumer(endpointUri: String, consumer: Consumer, activationTimeout: Duration) = {
     idempotentRegistry ! RegisterConsumer(endpointUri, consumer.self, consumer)
     awaitActivation(consumer.self, activationTimeout)
@@ -33,6 +40,7 @@ private[camel] trait ConsumerRegistry { this: Activation ⇒
 }
 
 /**
+ * For internal use only.
  * Guarantees idempotent registration of camel consumer endpoints.
  *
  * Once registered the consumer is watched and unregistered upon termination.
@@ -97,9 +105,16 @@ private[camel] class IdempotentCamelConsumerRegistry(camelContext: CamelContext)
   }
 }
 
+/**
+ * For internal use only. A message to register a consumer.
+ * @param endpointUri the endpointUri to register to
+ * @param actorRef the actorRef to register as a consumer
+ * @param config the configuration for the consumer
+ */
 private[camel] case class RegisterConsumer(endpointUri: String, actorRef: ActorRef, config: ConsumerConfig)
 
 /**
+ * For internal use only.
  * Abstract builder of a route to a target which can be either an actor or an typed actor method.
  *
  * @param endpointUri endpoint URI of the consumer actor or typed actor method.
@@ -136,20 +151,42 @@ private[camel] class ConsumerActorRouteBuilder(endpointUri: String, consumer: Ac
 }
 
 /**
+ * For internal use only.
  * Super class of all activation messages.
  */
 private[camel] abstract class ActivationMessage(val actor: ActorRef)
+
+/**
+ * For internal use only. companion object of <code>ActivationMessage</code>
+ *
+ */
 private[camel] object ActivationMessage {
   def unapply(msg: ActivationMessage): Option[ActorRef] = Some(msg.actor)
 }
 
 /**
+ * For internal use only.
  * Event message indicating that a single endpoint has been activated.
  */
 private[camel] case class EndpointActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
 
+/**
+ * For internal use only.
+ * Event message indicating that a single endpoint failed tp activate
+ * @param actorRef the endpoint that failed to activate
+ * @param cause the cause for failure
+ */
 private[camel] case class EndpointFailedToActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)
 
+/**
+ * For internal use only.
+ * @param actorRef the endpoint that was de-activated
+ */
 private[camel] case class EndpointDeActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
 
+/**
+ * For internal use only.
+ * @param actorRef the endpoint that failed to de-activate
+ * @param cause the cause for failure
+ */
 private[camel] case class EndpointFailedToDeActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)

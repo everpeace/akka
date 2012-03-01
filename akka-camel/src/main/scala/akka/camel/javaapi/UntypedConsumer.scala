@@ -23,7 +23,7 @@ trait UntypedConsumer extends Consumer { self: UntypedActor ⇒
    */
   def getEndpointUri(): String
 
-  def rich(message: Message): RichMessage = message
+  def rich(message: CamelMessage): RichMessage = message
 }
 
 /**

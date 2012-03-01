@@ -65,7 +65,7 @@ abstract class UntypedProducerActor extends UntypedActor with ProducerSupport {
    * @param message the message
    * @return the <code>RichMessage</code>
    */
-  def rich(message: Message): RichMessage = message
+  def rich(message: CamelMessage): RichMessage = message
 
   /**
    * Returns the <code>CamelContext</code>.

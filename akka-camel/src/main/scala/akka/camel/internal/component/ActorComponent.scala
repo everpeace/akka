@@ -16,7 +16,7 @@ import scala.reflect.BeanProperty
 import akka.util.{ Duration, Timeout }
 import akka.util.duration._
 import java.util.concurrent.{ TimeoutException, CountDownLatch }
-import akka.camel.{ ConsumerConfig, Camel, Ack, Failure ⇒ CamelFailure, Message }
+import akka.camel.{ ConsumerConfig, Camel, Ack, Failure ⇒ CamelFailure, CamelMessage }
 import akka.camel.internal.CamelExchangeAdapter
 
 /**
@@ -147,7 +147,7 @@ class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
 
   }
 
-  private def sendAsync(message: Message, onComplete: PartialFunction[Either[Throwable, Any], Unit]): Boolean = {
+  private def sendAsync(message: CamelMessage, onComplete: PartialFunction[Either[Throwable, Any], Unit]): Boolean = {
     try {
       val actor = actorFor(config.path)
       val future = actor.ask(message)(new Timeout(config.replyTimeout))
@@ -158,7 +158,7 @@ class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
     false // Done async
   }
 
-  private def fireAndForget(message: Message, exchange: CamelExchangeAdapter) {
+  private def fireAndForget(message: CamelMessage, exchange: CamelExchangeAdapter) {
     try {
       actorFor(config.path) ! message
     } catch {
@@ -168,7 +168,7 @@ class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
 
   private[this] def forwardResponseTo(exchange: CamelExchangeAdapter): PartialFunction[Either[Throwable, Any], Unit] = {
     case Right(failure: CamelFailure) ⇒ exchange.setFailure(failure);
-    case Right(msg)                   ⇒ exchange.setResponse(Message.canonicalize(msg))
+    case Right(msg)                   ⇒ exchange.setResponse(CamelMessage.canonicalize(msg))
     case Left(e: TimeoutException)    ⇒ exchange.setFailure(CamelFailure(new TimeoutException("Failed to get response from the actor [%s] within timeout [%s]. Check replyTimeout and blocking settings [%s]" format (config.path, config.replyTimeout, config))))
     case Left(throwable)              ⇒ exchange.setFailure(CamelFailure(throwable))
   }
@@ -185,7 +185,7 @@ class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
     path.findActorIn(camel.system) getOrElse (throw new ActorNotRegisteredException(path.actorPath))
 
   private[this] def messageFor(exchange: CamelExchangeAdapter) =
-    exchange.toRequestMessage(Map(Message.MessageExchangeId -> exchange.getExchangeId))
+    exchange.toRequestMessage(Map(CamelMessage.MessageExchangeId -> exchange.getExchangeId))
 
 }
 
@@ -199,6 +199,9 @@ class ActorNotRegisteredException(uri: String) extends RuntimeException {
   override def getMessage = "Actor [%s] doesn't exist" format uri
 }
 
+/**
+ * For internal use only.
+ */
 private[camel] object DurationTypeConverter extends CamelTypeConverter {
   def convertTo[T](`type`: Class[T], value: AnyRef) = {
     require(value.toString.endsWith(" nanos"))
@@ -208,12 +211,19 @@ private[camel] object DurationTypeConverter extends CamelTypeConverter {
   def toString(duration: Duration) = duration.toNanos + " nanos"
 }
 
+/**
+ * For internal use only.
+ */
 private[camel] abstract class CamelTypeConverter extends TypeConverter {
   def convertTo[T](`type`: Class[T], exchange: Exchange, value: AnyRef) = convertTo(`type`, value)
   def mandatoryConvertTo[T](`type`: Class[T], value: AnyRef) = convertTo(`type`, value)
   def mandatoryConvertTo[T](`type`: Class[T], exchange: Exchange, value: AnyRef) = convertTo(`type`, value)
 }
 
+/**
+ * For internal use only. An endpoint to an <code>ActorRef</code>
+ * @param actorPath the path to the actor
+ */
 private[camel] case class ActorEndpointPath private (actorPath: String) {
   require(actorPath != null)
   require(actorPath.length() > 0)
@@ -226,6 +236,9 @@ private[camel] case class ActorEndpointPath private (actorPath: String) {
 
 }
 
+/**
+ * For internal use only. Companion of <code>ActorEndpointPath</code>
+ */
 private[camel] object ActorEndpointPath {
   def apply(actorRef: ActorRef) = new ActorEndpointPath(actorRef.path.toString)
 

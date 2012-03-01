@@ -11,7 +11,7 @@ import akka.camel.Camel
  * Removes a <code>Producer</code> from the <code>ProducerRegistry</code> when it is <code>Terminated</code>,
  * which in turn stops the <code>SendProcessor</code>.
  */
-private[camel] class ProducerWatcher(registry: ProducerRegistry) extends Actor {
+private class ProducerWatcher(registry: ProducerRegistry) extends Actor {
   override def receive = {
     case RegisterProducer(actorRef) ⇒ {
       context.watch(actorRef)
@@ -22,9 +22,10 @@ private[camel] class ProducerWatcher(registry: ProducerRegistry) extends Actor {
   }
 }
 
-private[camel] case class RegisterProducer(actorRef: ActorRef)
+private case class RegisterProducer(actorRef: ActorRef)
 
 /**
+ * For internal use only.
  * Manages the Camel objects for <code>Producer</code>s.
  * Every <code>Producer</code> needs an <code>Endpoint</code> and a <code>SendProcessor</code>
  * to produce messages over an <code>Exchange</code>.
@@ -39,6 +40,7 @@ private[camel] trait ProducerRegistry {
   }
 
   /**
+   * For internal use only.
    * Unregisters <code>Endpoint</code> and <code>SendProcessor</code> and stops the SendProcessor
    */
   private[camel] def unregisterProducer(actorRef: ActorRef): Unit = {
@@ -55,6 +57,7 @@ private[camel] trait ProducerRegistry {
   }
 
   /**
+   * For internal use only.
    * Creates <code>Endpoint</code> and <code>SendProcessor</code> and associates the actorRef to these.
    * @param actorRef the actorRef of the <code>Producer</code> actor.
    * @param endpointUri the endpoint Uri of the producer

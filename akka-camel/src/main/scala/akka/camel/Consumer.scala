@@ -19,13 +19,14 @@ import akka.util.duration._
 trait Consumer extends Actor with ConsumerConfig {
 
   def endpointUri: String
+
   protected[this] implicit lazy val camel = CamelExtension(context.system)
 
   camel.registerConsumer(endpointUri, this, activationTimeout)
 }
 
 trait ConsumerConfig {
-  //TODO: Explain the parameters better with some examples!
+  //FIXME: Explain the parameters better wit
 
   /**
    * How long should the actor wait for activation before it fails.
@@ -50,18 +51,12 @@ trait ConsumerConfig {
   /**
    * The route definition handler for creating a custom route to this consumer instance.
    */
-  //TODO: write a test confirming onRouteDefinition gets called
+  //FIXME: write a test confirming onRouteDefinition gets called
   def onRouteDefinition(rd: RouteDefinition): ProcessorDefinition[_] = rd
 
+  /**
+   * For internal use only. Converts this ConsumerConfig to camel URI parameters
+   * @return
+   */
   private[camel] def toCamelParameters: String = "autoack=%s&replyTimeout=%s" format (autoack, DurationTypeConverter.toString(replyTimeout))
-}
-
-trait ManualAckConsumer extends Consumer {
-  override def autoack = false
-}
-
-trait ErrorPassing { self: Actor ⇒
-  final override def preRestart(reason: Throwable, message: Option[Any]) {
-    sender ! Failure(reason)
-  }
 }

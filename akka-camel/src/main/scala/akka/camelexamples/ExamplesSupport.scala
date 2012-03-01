@@ -20,7 +20,7 @@ class SysOutConsumer extends Consumer {
   def endpointUri = "file://data/input/CamelConsumer"
 
   protected def receive = {
-    case msg: Message ⇒ {
+    case msg: CamelMessage ⇒ {
       printf("Received '%s'\n", msg.bodyAs[String])
     }
   }
@@ -35,7 +35,7 @@ class TroubleMaker extends Consumer {
 
 class SysOutActor(implicit camel: Camel) extends Actor {
   protected def receive = {
-    case msg: Message ⇒ {
+    case msg: CamelMessage ⇒ {
       printf("Received '%s'\n", msg.bodyAs[String])
     }
   }

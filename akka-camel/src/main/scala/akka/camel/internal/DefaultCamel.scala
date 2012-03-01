@@ -10,6 +10,7 @@ import akka.event.Logging
 import akka.camel.Camel
 
 /**
+ * For internal use only.
  * Creates an instance of the Camel subsystem.
  *
  * @param system is used to create internal actors needed by camel instance.
@@ -18,6 +19,9 @@ import akka.camel.Camel
  * Also by not creating extra internal actor system we are conserving resources.
  */
 private[camel] class DefaultCamel(val system: ActorSystem) extends Camel {
+  /**
+   * For internal use only.
+   */
   private[camel] implicit val log = Logging(system, "Camel")
 
   lazy val context: CamelContext = {

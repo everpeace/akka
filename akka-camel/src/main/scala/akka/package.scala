@@ -8,5 +8,5 @@ import org.apache.camel.model.ProcessorDefinition
 
 package object camel {
   implicit def toActorRouteDefinition(definition: ProcessorDefinition[_]) = new ActorRouteDefinition(definition)
-  implicit def messageToRichMessage(m: Message)(implicit camel: Camel): RichMessage = new RichMessage(m, camel.context)
+  implicit def messageToRichMessage(m: CamelMessage)(implicit camel: Camel): RichMessage = new RichMessage(m, camel.context)
 }

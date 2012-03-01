@@ -29,7 +29,7 @@ class ConsumerIntegrationTest extends WordSpec with MustMatchers with NonSharedC
     start(new Consumer {
       def endpointUri = "direct:a1"
       protected def receive = {
-        case m: Message ⇒ sender ! "received " + m.bodyAs[String]
+        case m: CamelMessage ⇒ sender ! "received " + m.bodyAs[String]
       }
     })
     camel.sendTo("direct:a1", msg = "some message") must be("received some message")
@@ -58,8 +58,8 @@ class ConsumerIntegrationTest extends WordSpec with MustMatchers with NonSharedC
       def endpointUri = "direct:a2"
 
       protected def receive = {
-        case "throw"    ⇒ throw new Exception
-        case m: Message ⇒ sender ! "received " + m.bodyAs[String]
+        case "throw"         ⇒ throw new Exception
+        case m: CamelMessage ⇒ sender ! "received " + m.bodyAs[String]
       }
 
       override def postRestart(reason: Throwable) {
@@ -138,14 +138,14 @@ class ConsumerIntegrationTest extends WordSpec with MustMatchers with NonSharedC
 
 class ErrorThrowingConsumer(override val endpointUri: String) extends Consumer {
   def receive = {
-    case msg: Message ⇒ throw new Exception("error: %s" format msg.body)
+    case msg: CamelMessage ⇒ throw new Exception("error: %s" format msg.body)
   }
 }
 
 class FailingOnceConsumer(override val endpointUri: String) extends Consumer {
 
   def receive = {
-    case msg: Message ⇒
+    case msg: CamelMessage ⇒
       if (msg.headerAs[Boolean]("CamelRedelivered").getOrElse(false))
         sender ! ("accepted: %s" format msg.body)
       else
@@ -156,4 +156,15 @@ class FailingOnceConsumer(override val endpointUri: String) extends Consumer {
 class TestActor(uri: String = "file://target/abcde") extends Consumer {
   def endpointUri = uri
   protected def receive = { case _ ⇒ /* do nothing */ }
+}
+
+trait ErrorPassing {
+  self: Actor ⇒
+  final override def preRestart(reason: Throwable, message: Option[Any]) {
+    sender ! Failure(reason)
+  }
+}
+
+trait ManualAckConsumer extends Consumer {
+  override def autoack = false
 }
