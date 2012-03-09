@@ -5,6 +5,7 @@ package akka.camel.internal
  */
 
 import akka.event.LoggingAdapter
+import akka.util.NonFatal
 
 /**
  * For internal use only.
@@ -49,7 +50,7 @@ private[camel] object Try {
     try {
       block
     } catch {
-      case e ⇒ log.warning("Safe operation failed. Swallowing exception [{}]", e)
+      case NonFatal(e) ⇒ log.warning("Safe operation failed. Swallowing exception [{}]", e)
     }
   }
 

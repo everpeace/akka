@@ -20,6 +20,7 @@ import akka.camel.{ ConsumerConfig, Camel, Ack, Failure ⇒ CamelFailure, CamelM
 import akka.camel.internal.CamelExchangeAdapter
 
 /**
+ * For internal use only.
  * Camel component for sending messages to and receiving replies from (untyped) actors.
  *
  * @see akka.camel.component.ActorEndpoint
@@ -27,7 +28,7 @@ import akka.camel.internal.CamelExchangeAdapter
  *
  * @author Martin Krasser
  */
-class ActorComponent(camel: Camel) extends DefaultComponent {
+private[camel] class ActorComponent(camel: Camel) extends DefaultComponent {
   def createEndpoint(uri: String, remaining: String, parameters: JMap[String, Object]): ActorEndpoint = {
     val path = ActorEndpointPath.fromCamelPath(remaining)
     new ActorEndpoint(uri, this, path, camel)
@@ -35,6 +36,7 @@ class ActorComponent(camel: Camel) extends DefaultComponent {
 }
 
 /**
+ * For internal use only
  * TODO fix the doc to be consistent with implementation
  * Camel endpoint for sending messages to and receiving replies from (untyped) actors. Actors
  * are referenced using <code>actor</code> endpoint URIs of the following format:
@@ -54,10 +56,10 @@ class ActorComponent(camel: Camel) extends DefaultComponent {
  *
  * @author Martin Krasser
  */
-class ActorEndpoint(uri: String,
-                    comp: ActorComponent,
-                    val path: ActorEndpointPath,
-                    camel: Camel) extends DefaultEndpoint(uri, comp) with ActorEndpointConfig {
+private[camel] class ActorEndpoint(uri: String,
+                                   comp: ActorComponent,
+                                   val path: ActorEndpointPath,
+                                   camel: Camel) extends DefaultEndpoint(uri, comp) with ActorEndpointConfig {
 
   /**
    * @throws UnsupportedOperationException
@@ -76,7 +78,7 @@ class ActorEndpoint(uri: String,
   def isSingleton: Boolean = true
 }
 
-trait ActorEndpointConfig {
+private[camel] trait ActorEndpointConfig {
   def path: ActorEndpointPath
 
   @BeanProperty var replyTimeout: Duration = 1 minute
@@ -112,12 +114,12 @@ trait ActorEndpointConfig {
  *
  * @author Martin Krasser
  */
-class ActorProducer(val ep: ActorEndpoint, camel: Camel) extends DefaultProducer(ep) with AsyncProcessor {
+private[camel] class ActorProducer(val ep: ActorEndpoint, camel: Camel) extends DefaultProducer(ep) with AsyncProcessor {
   def process(exchange: Exchange) { new ConsumerAsyncProcessor(ep, camel).process(new CamelExchangeAdapter(exchange)) }
-  def process(exchange: Exchange, callback: AsyncCallback) = new ConsumerAsyncProcessor(ep, camel).process(new CamelExchangeAdapter(exchange), callback)
+  def process(exchange: Exchange, callback: AsyncCallback): Boolean = { new ConsumerAsyncProcessor(ep, camel).process(new CamelExchangeAdapter(exchange), callback) }
 }
 
-class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
+private[camel] class ConsumerAsyncProcessor(config: ActorEndpointConfig, camel: Camel) {
 
   def process(exchange: CamelExchangeAdapter) {
     val isDone = new CountDownLatch(1)

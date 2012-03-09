@@ -25,6 +25,9 @@ private[camel] trait ConsumerRegistry { this: Activation ⇒
   def system: ActorSystem
   def context: CamelContext
 
+  /**
+   * For internal use only.
+   */
   private[this] lazy val idempotentRegistry = system.actorOf(Props(new IdempotentCamelConsumerRegistry(context)))
   /**
    * For internal use only.
@@ -56,43 +59,36 @@ private[camel] class IdempotentCamelConsumerRegistry(camelContext: CamelContext)
   val registrator = context.actorOf(Props(new CamelConsumerRegistrator))
 
   def receive = {
-    case msg @ RegisterConsumer(_, consumer, _) ⇒ unless(isAlreadyActivated(consumer)) {
-      activated.add(consumer)
+    case msg @ RegisterConsumer(_, consumer, _) ⇒
+      if (!isAlreadyActivated(consumer))
+        activated.add(consumer)
       registrator ! msg
-    }
-    case msg @ EndpointActivated(consumer) ⇒ {
+    case msg @ EndpointActivated(consumer) ⇒
       context.watch(consumer)
       context.system.eventStream.publish(msg)
-    }
-    case msg @ EndpointFailedToActivate(consumer, _) ⇒ {
+    case msg @ EndpointFailedToActivate(consumer, _) ⇒
       activated.remove(consumer)
       context.system.eventStream.publish(msg)
-    }
-    case Terminated(ref) ⇒ {
+    case Terminated(ref) ⇒
       activated.remove(ref)
       registrator ! UnregisterConsumer(ref)
-    }
-    case msg @ EndpointDeActivated(ref)               ⇒ { context.system.eventStream.publish(msg) }
-    case msg @ EndpointFailedToDeActivate(ref, cause) ⇒ { context.system.eventStream.publish(msg) }
+    case msg @ EndpointFailedToDeActivate(ref, cause) ⇒ context.system.eventStream.publish(msg)
+    case msg: EndpointDeActivated                     ⇒ context.system.eventStream.publish(msg)
   }
 
-  def unless[A](condition: Boolean)(block: ⇒ A) = if (!condition) block
   def isAlreadyActivated(ref: ActorRef): Boolean = activated.contains(ref)
 
   class CamelConsumerRegistrator extends Actor with ActorLogging {
 
     def receive = {
-      case RegisterConsumer(endpointUri, consumer, consumerConfig) ⇒ {
+      case RegisterConsumer(endpointUri, consumer, consumerConfig) ⇒
         camelContext.addRoutes(new ConsumerActorRouteBuilder(endpointUri, consumer, consumerConfig))
         context.sender ! EndpointActivated(consumer)
         log.debug("Published actor [{}] at endpoint [{}]", consumerConfig, endpointUri)
-      }
-
-      case UnregisterConsumer(consumer) ⇒ {
+      case UnregisterConsumer(consumer) ⇒
         camelContext.stopRoute(consumer.path.toString)
         context.sender ! EndpointDeActivated(consumer)
         log.debug("Unpublished actor [{}] from endpoint [{}]", consumer, consumer.path)
-      }
     }
 
     override def preRestart(reason: Throwable, message: Option[Any]) {
@@ -151,10 +147,9 @@ private[camel] class ConsumerActorRouteBuilder(endpointUri: String, consumer: Ac
 }
 
 /**
- * For internal use only.
  * Super class of all activation messages.
  */
-private[camel] abstract class ActivationMessage(val actor: ActorRef)
+abstract class ActivationMessage(val actor: ActorRef)
 
 /**
  * For internal use only. companion object of <code>ActivationMessage</code>
@@ -168,7 +163,7 @@ private[camel] object ActivationMessage {
  * For internal use only.
  * Event message indicating that a single endpoint has been activated.
  */
-private[camel] case class EndpointActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
+sealed case class EndpointActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
 
 /**
  * For internal use only.
@@ -176,17 +171,17 @@ private[camel] case class EndpointActivated(actorRef: ActorRef) extends Activati
  * @param actorRef the endpoint that failed to activate
  * @param cause the cause for failure
  */
-private[camel] case class EndpointFailedToActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)
+sealed case class EndpointFailedToActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)
 
 /**
  * For internal use only.
  * @param actorRef the endpoint that was de-activated
  */
-private[camel] case class EndpointDeActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
+sealed case class EndpointDeActivated(actorRef: ActorRef) extends ActivationMessage(actorRef)
 
 /**
  * For internal use only.
  * @param actorRef the endpoint that failed to de-activate
  * @param cause the cause for failure
  */
-private[camel] case class EndpointFailedToDeActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)
+sealed case class EndpointFailedToDeActivate(actorRef: ActorRef, cause: Throwable) extends ActivationMessage(actorRef)

@@ -5,6 +5,7 @@ import org.apache.camel.processor.SendProcessor
 import akka.actor.{ Props, ActorRef, Terminated, Actor }
 import org.apache.camel.Endpoint
 import akka.camel.Camel
+import akka.util.NonFatal
 
 /**
  * Watches the end of life of <code>Producer</code>s.
@@ -13,12 +14,8 @@ import akka.camel.Camel
  */
 private class ProducerWatcher(registry: ProducerRegistry) extends Actor {
   override def receive = {
-    case RegisterProducer(actorRef) ⇒ {
-      context.watch(actorRef)
-    }
-    case Terminated(actorRef) ⇒ {
-      registry.unregisterProducer(actorRef)
-    }
+    case RegisterProducer(actorRef) ⇒ context.watch(actorRef)
+    case Terminated(actorRef)       ⇒ registry.unregisterProducer(actorRef)
   }
 }
 
@@ -51,7 +48,7 @@ private[camel] trait ProducerRegistry {
           processor.stop()
           system.eventStream.publish(EndpointDeActivated(actorRef))
         } catch {
-          case e ⇒ system.eventStream.publish(EndpointFailedToDeActivate(actorRef, e))
+          case NonFatal(e) ⇒ system.eventStream.publish(EndpointFailedToDeActivate(actorRef, e))
         }
     }
   }
@@ -68,17 +65,16 @@ private[camel] trait ProducerRegistry {
       val endpoint = context.getEndpoint(endpointUri)
       val processor = new SendProcessor(endpoint)
 
-      val prev = camelObjects.putIfAbsent(actorRef, (endpoint, processor))
-      if (prev != null) {
-        prev
-      } else {
-        processor.start()
-        system.eventStream.publish(EndpointActivated(actorRef))
-        registerWatch(actorRef)
-        (endpoint, processor)
+      camelObjects.putIfAbsent(actorRef, (endpoint, processor)) match {
+        case null ⇒
+          processor.start()
+          registerWatch(actorRef)
+          system.eventStream.publish(EndpointActivated(actorRef))
+          (endpoint, processor)
+        case prev ⇒ prev
       }
     } catch {
-      case e ⇒ {
+      case NonFatal(e) ⇒ {
         system.eventStream.publish(EndpointFailedToActivate(actorRef, e))
         // can't return null to the producer actor, so blow up actor in initialization.
         throw e
