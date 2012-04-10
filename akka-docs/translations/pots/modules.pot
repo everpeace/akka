@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../modules/camel.rst:6
+# e832346198054fcd89ce9e83a6ae3ddc
+msgid "Camel"
+msgstr ""
+
+#: ../../modules/camel.rst:9
+# b494fa8165d34e64bed4ce0de546f53e
+msgid "The Akka Camel module has not been migrated to Akka 2.0-SNAPSHOT yet."
+msgstr ""
+
+#: ../../modules/camel.rst:11
+#: ../../modules/spring.rst:11
+# 54f8e4dabe9a4606acd6ebb635a8891f
+# bb08bd7bc45146718fb272c051a9269d
+msgid "It might not make it into Akka 2.0 final but will then hopefully be re-introduce in an upcoming release. It might also be backported to 2.0 final."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:6
+# 579ef3267ff244be8d31d775f9547755
+msgid "Durable Mailboxes"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:10
+# 42b41dfd1a0440a7beb4b23cd83fee88
+msgid "Overview"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:12
+# 9f885f7c9bb1405fa0ad37fa5b8ea208
+msgid "Akka supports a set of durable mailboxes. A durable mailbox is a replacement for the standard actor mailbox that is durable. What this means in practice is that if there are pending messages in the actor's mailbox when the node of the actor resides on crashes, then when you restart the node, the actor will be able to continue processing as if nothing had happened; with all pending messages still in its mailbox."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:19
+# 5d3f15e813bd45ababc6552d3c0d1154
+msgid "None of these mailboxes implements transactions for current message. It's possible if the actor crashes after receiving a message, but before completing processing of it, that the message could be lost."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:23
+# 51cc4486c628401d9dc092b68cb120cf
+msgid "**IMPORTANT**"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:25
+# d720f81097744de68786c21fb71436ad
+msgid "None of these mailboxes work with blocking message send, i.e. the message send operations that are relying on futures; ``?`` or ``ask``. If the node has crashed and then restarted, the thread that was blocked waiting for the reply is gone and there is no way we can deliver the message."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:30
+# 91bf66f2bab54e808c7354c9c3e41509
+msgid "The durable mailboxes currently supported are:"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:32
+# ee85c4e7c60040248e140ff21e257221
+msgid "``FileBasedMailbox`` -- backed by a journaling transaction log on the local file system"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:33
+# 47f902c2f90e46beabe712e6d86bb504
+msgid "``RedisBasedMailbox`` -- backed by Redis"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:34
+# defc37153bdc4d44b975df9712679335
+msgid "``ZooKeeperBasedMailbox`` -- backed by ZooKeeper"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:35
+# ce557434da7446d3860ccc4a6c7c5b70
+msgid "``BeanstalkBasedMailbox`` -- backed by Beanstalkd"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:36
+# f827bce62934487697cb06a26577faeb
+msgid "``MongoBasedMailbox`` -- backed by MongoDB"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:38
+# 53686afa7584496d95101455fa467d3b
+msgid "We'll walk through each one of these in detail in the sections below."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:40
+# 842f55ba2a9d436a96459b457caeddd0
+msgid "You can easily implement your own mailbox. Look at the existing implementations for inspiration."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:42
+# 8db997c642d24ec38f875aec3499b836
+msgid "We are also discussing adding some of these durable mailboxes:"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:44
+# 83b38e61c32743338d3fcbe0680253b4
+msgid "``AmqpBasedMailbox`` -- AMQP based mailbox (default RabbitMQ)"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:45
+# 3021c6a0ba8d4f8f99cbafb9547da21d
+msgid "``JmsBasedMailbox`` -- JMS based mailbox (default ActiveMQ)"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:46
+# cc942efb825a46fcbb78f6b895ee7259
+msgid "``CassandraBasedMailbox`` -- Cassandra based mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:47
+# 5bb4aed1db784d589156b4ca57ddfc3f
+msgid "``CamelBasedMailbox`` -- Camel based mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:48
+# eae804015e32450cb2db74ab6d068250
+msgid "``SqlBasedMailbox`` -- SQL based mailbox for general RDBMS (Postgres, MySQL, Oracle etc.)"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:50
+# 23669906f47a4f81aed367c5db9bd1f3
+msgid "Let us know if you have a wish for a certain priority order."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:55
+# ae38561d9c4f45a7a532f9860dc23443
+msgid "General Usage"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:57
+# 43da24c006eb49d98fc9fa3559edfbb6
+msgid "The durable mailboxes and their configuration options reside in the ``akka.actor.mailbox`` package."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:60
+# 0ade6fedfce14c52a027f94cb8a435bf
+msgid "You configure durable mailboxes through the dispatcher. The actor is oblivious to which type of mailbox it is using."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:63
+# a61f970337574d63919c6828feb04c1b
+msgid "In the configuration of the dispatcher you specify the fully qualified class name of the mailbox:"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:69
+# 91d279b1efbd4c4e935b4058a63e0c48
+msgid "Here is an example of how to create an actor with a durable dispatcher, in Scala:"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:74
+# d1ad2784370d4094b52e44e66ae79f7b
+msgid "Corresponding example in Java:"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:79
+# 44e0c0e3cbb7434b9a655ae921fa75cc
+msgid "The actor is oblivious to which type of mailbox it is using."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:81
+# 145876dc8aeb4a7cabc7a4a097054c9d
+msgid "This gives you an excellent way of creating bulkheads in your application, where groups of actors sharing the same dispatcher also share the same backing storage. Read more about that in the :ref:`dispatchers-scala` documentation."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:86
+# 5717e5e8527c47f69b2cbac6dac21e4d
+msgid "File-based durable mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:88
+# 0348e21c71d843a2b09620a9f5f73b5a
+msgid "This mailbox is backed by a journaling transaction log on the local file system. It is the simplest to use since it does not require an extra infrastructure piece to administer, but it is usually sufficient and just what you need."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:93
+#: ../../modules/durable-mailbox.rst:118
+#: ../../modules/durable-mailbox.rst:144
+#: ../../modules/durable-mailbox.rst:167
+#: ../../modules/durable-mailbox.rst:196
+# e654cc4a4aef4d0e9674b0313640c642
+# 71e6fdf575054a90948c583398986a4f
+# d1312e19e9d144d7a00d2a8279a0bc6a
+# d87abaa5344243a880f53832905f3d1f
+# 14163e27f4384a11b1e3c1be33d5f8fd
+msgid "You configure durable mailboxes through the dispatcher, as described in :ref:`DurableMailbox.General` with the following mailbox type."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:96
+#: ../../modules/durable-mailbox.rst:121
+#: ../../modules/durable-mailbox.rst:147
+#: ../../modules/durable-mailbox.rst:170
+#: ../../modules/durable-mailbox.rst:199
+# 15638bcdf8444b3aaaec7de62b61e652
+# 9d1ce0b46afc428097cbfc82a64f6f5b
+# 99e28c9936b64633abe9d6a0acc804da
+# fdc7898636154995b0cc11b2b4f8eab1
+# 47cd466efb19418ea51603371c1e51bb
+msgid "Config::"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:102
+# 36417dea7f19427591f69f2e004b56e8
+msgid "You can also configure and tune the file-based durable mailbox. This is done in the ``akka.actor.mailbox.file-based`` section in the :ref:`configuration`."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:110
+# ebfe808d8f8b4597bfe65ceb6c2b4a41
+msgid "Redis-based durable mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:112
+# 1c5e845bc5354c9f98529d902d543b93
+msgid "This mailbox is backed by a Redis queue. `Redis <http://redis.io>`_ Is a very fast NOSQL database that has a wide range of data structure abstractions, one of them is a queue which is what we are using in this implementation. This means that you have to start up a Redis server that can host these durable mailboxes. Read more in the Redis documentation on how to do that."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:127
+# 07571c9b943947049c4d463684da377a
+msgid "You also need to configure the IP and port for the Redis server. This is done in the ``akka.actor.mailbox.redis`` section in the :ref:`configuration`."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:135
+# 0e54ab37f3db462b8e605a70c3762c1c
+msgid "ZooKeeper-based durable mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:137
+# 03e6eac339ca496b94bded1bea181471
+msgid "This mailbox is backed by `ZooKeeper <http://zookeeper.apache.org/>`_. ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services This means that you have to start up a ZooKeeper server (for production a ZooKeeper server ensemble) that can host these durable mailboxes. Read more in the ZooKeeper documentation on how to do that."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:153
+# 7c047d649039448fbcf493ce6a932d05
+msgid "You also need to configure ZooKeeper server addresses, timeouts, etc. This is done in the ``akka.actor.mailbox.zookeeper`` section in the :ref:`configuration`."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:160
+# 72c7a029e2c34feb8f29bd32982b5037
+msgid "Beanstalk-based durable mailbox"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:162
+# 3967186738344c99ae9a311b13170f86
+msgid "This mailbox is backed by `Beanstalkd <http://kr.github.com/beanstalkd/>`_. Beanstalk is a simple, fast work queue. This means that you have to start up a Beanstalk server that can host these durable mailboxes. Read more in the Beanstalk documentation on how to do that."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:176
+# e81298c21e26491b8c1afabd07e5ea26
+msgid "You also need to configure the IP, and port, and so on, for the Beanstalk server. This is done in the ``akka.actor.mailbox.beanstalk`` section in the :ref:`configuration`."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:184
+# 958ab7395bea4081bc754d77fbfd0e6b
+msgid "MongoDB-based Durable Mailboxes"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:186
+# a7d0dd29c2b449658dd22118b9a9d729
+msgid "This mailbox is backed by `MongoDB <http://mongodb.org>`_. MongoDB is a fast, lightweight and scalable document-oriented database.  It contains a number of features cohesive to a fast, reliable & durable queueing mechanism which the Akka Mailbox takes advantage of."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:190
+# ab10bf6f1287440ba8e2f11ad5dab3bb
+msgid "Akka's implementations of MongoDB mailboxes are built on top of the purely asynchronous MongoDB driver (often known as `Hammersmith <http://github.com/bwmcadams/hammersmith>`_ and ``com.mongodb.async``) and as such are purely callback based with a Netty network layer.  This makes them extremely fast & lightweight versus building on other MongoDB implementations such as `mongo-java-driver <http://github.com/mongodb/mongo-java-driver>`_ and `Casbah <http://github.com/mongodb/casbah>`_."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:205
+# 0904b8d9ffe44a028509423741e214ee
+msgid "You will need to configure the URI for the MongoDB server, using the URI Format specified in the `MongoDB Documentation <http://www.mongodb.org/display/DOCS/Connections>`_. This is done in the ``akka.actor.mailbox.mongodb`` section in the :ref:`configuration`."
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:212
+# f847f4ad08ce4cceb7afb44b0e18e9f3
+msgid "You must specify a hostname (and optionally port) and at *least* a Database name.  If you specify a collection name, it will be used as a 'prefix' for the collections Akka creates to store mailbox messages. Otherwise, collections will be prefixed with ``mailbox.``"
+msgstr ""
+
+#: ../../modules/durable-mailbox.rst:216
+# 66828e3c7b0c407dac6ba404560c48bd
+msgid "It is also possible to configure the timeout thresholds for Read and Write operations in the ``timeout`` block."
+msgstr ""
+
+#: ../../modules/http.rst:4
+# ed749c7390134337b7483b1ccf8dffcc
+msgid "HTTP"
+msgstr ""
+
+#: ../../modules/http.rst:7
+# 698c557455d54b36b0620f366428e742
+msgid "Play2-mini"
+msgstr ""
+
+#: ../../modules/http.rst:9
+# abe8a5bd702e468a9593b08d4159d4aa
+msgid "The Akka team recommends the `Play2-mini <https://github.com/typesafehub/play2-mini>`_ framework when building RESTful service applications that integrates with Akka. It provides a REST API on top of `Play2 <https://github.com/playframework/Play20/>`_."
+msgstr ""
+
+#: ../../modules/http.rst:13
+# f51a57a535a341908bd18ef8b70ffcb7
+msgid "Getting started"
+msgstr ""
+
+#: ../../modules/http.rst:15
+# bcc57276e18643029f311f3b2d9eea49
+msgid "First you must make your application aware of play-mini. In SBT you just have to add the following to your _libraryDependencies_::"
+msgstr ""
+
+#: ../../modules/index.rst:2
+# 9ff8de17c2a0438d9d0cd14c27b88edc
+msgid "Modules"
+msgstr ""
+
+#: ../../modules/microkernel.rst:6
+# 155ff8c8441d483fa5f39cbfeca97efc
+msgid "Microkernel"
+msgstr ""
+
+#: ../../modules/microkernel.rst:8
+# 8b760d76650f4cc3ac02d72384d5a21b
+msgid "The Akka Microkernel is included in the Akka download found at `downloads`_."
+msgstr ""
+
+#: ../../modules/microkernel.rst:12
+# bca5bdfba5af4d96990e89dfa1962a42
+msgid "To run an application with the microkernel you need to create a Bootable class that handles the startup and shutdown the application. An example is included below."
+msgstr ""
+
+#: ../../modules/microkernel.rst:15
+# 6b264b985621476b93d4fc5516dc4c95
+msgid "Put your application jar in the ``deploy`` directory to have it automatically loaded."
+msgstr ""
+
+#: ../../modules/microkernel.rst:18
+# 83a5bbe7577248be9ac3847a6cdb647f
+msgid "To start the kernel use the scripts in the ``bin`` directory, passing the boot classes for your application."
+msgstr ""
+
+#: ../../modules/microkernel.rst:21
+# 8bc6ca3b0eb34e8e8b3c95692965c4cf
+msgid "There is a simple example of an application setup for running with the microkernel included in the akka download. This can be run with the following command (on a unix-based system):"
+msgstr ""
+
+#: ../../modules/microkernel.rst:29
+# 2cdd06c1bd5a40b7ad8f7098b18bb18a
+msgid "Use ``Ctrl-C`` to interrupt and exit the microkernel."
+msgstr ""
+
+#: ../../modules/microkernel.rst:31
+# 843883c2875f4743a723a82e1595a5e7
+msgid "On a Windows machine you can also use the bin/akka.bat script."
+msgstr ""
+
+#: ../../modules/microkernel.rst:33
+# 86ff083ccaa048708cc9389050c308d4
+msgid "The code for the Hello Kernel example (see the ``HelloKernel`` class for an example of creating a Bootable):"
+msgstr ""
+
+#: ../../modules/microkernel.rst:40
+# 0609f01e9b834baaae42c89142f0a024
+msgid "Distribution of microkernel application"
+msgstr ""
+
+#: ../../modules/microkernel.rst:42
+# 4c5487f6cfc04767b317e9073541f3ff
+msgid "To make a distribution package of the microkernel and your application the ``akka-sbt-plugin`` provides ``AkkaKernelPlugin``. It creates the directory structure, with jar files, configuration files and start scripts."
+msgstr ""
+
+#: ../../modules/microkernel.rst:46
+# b1fe40f8e4574fa3bf7aa42703c63e72
+msgid "To use the sbt plugin you define it in your ``project/plugins.sbt``:"
+msgstr ""
+
+#: ../../modules/microkernel.rst:50
+# a6ca0a171c064ec2b1243539b97bff9a
+msgid "Then you add it to the settings of your ``project/Build.scala``. It is also important that you add the ``akka-kernel`` dependency. This is an example of a complete sbt build file:"
+msgstr ""
+
+#: ../../modules/microkernel.rst:55
+# c4b9877995d64e4295dc46edce7e5802
+msgid "Run the plugin with sbt::"
+msgstr ""
+
+#: ../../modules/microkernel.rst:60
+# 75a3480f733f4a0fb91ff7c2f468c66e
+msgid "There are several settings that can be defined:"
+msgstr ""
+
+#: ../../modules/microkernel.rst:62
+# de2de7db1a6d472a838d6e29bf309e7e
+msgid "``outputDirectory`` - destination directory of the package, default ``target/dist``"
+msgstr ""
+
+#: ../../modules/microkernel.rst:63
+# e292d057b2bd49d9afd063bcf78e4ec2
+msgid "``distJvmOptions`` - JVM parameters to be used in the start script"
+msgstr ""
+
+#: ../../modules/microkernel.rst:64
+# 78d7dd29e80c43d38f56455c2ffd1450
+msgid "``configSourceDirs`` - Configuration files are copied from these directories, default ``src/config``, ``src/main/config``, ``src/main/resources``"
+msgstr ""
+
+#: ../../modules/microkernel.rst:65
+# 3419d057cc554a62aea5118c12624004
+msgid "``distMainClass`` - Kernel main class to use in start script"
+msgstr ""
+
+#: ../../modules/microkernel.rst:66
+# c0b9912958d94deeaa6ae4d870a7896a
+msgid "``libFilter`` - Filter of dependency jar files"
+msgstr ""
+
+#: ../../modules/microkernel.rst:67
+# 3131f82da8524266bf1d3288c291e07f
+msgid "``additionalLibs`` - Additional dependency jar files"
+msgstr ""
+
+#: ../../modules/spring.rst:6
+# 54483e657985455a996acbd971c8e0f7
+msgid "Spring Integration"
+msgstr ""
+
+#: ../../modules/spring.rst:9
+# 5005c23c9c8548c6bcbc9a8d15357c31
+msgid "The Akka Spring module has not been migrated to Akka 2.0-SNAPSHOT yet."
+msgstr ""
+

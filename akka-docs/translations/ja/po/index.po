@@ -1,0 +1,63 @@
+# Japanese translations for Akka package.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# 大村 伸吾 <>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: 2012-04-10 21:43+0900\n"
+"Last-Translator: 大村 伸吾 <>\n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# d66a462499af499dab39a023b30b3782
+#: ../../index.rst:2
+msgid "Contents"
+msgstr "コンテンツ"
+
+# 6a622554101542079df4ae87510c6d69
+#: ../../index.rst:19
+msgid "Links"
+msgstr "リンク"
+
+# 29bbf35200c04d7dbb2988b625afc449
+#: ../../index.rst:21
+msgid ":ref:`migration`"
+msgstr ":ref:`migration`"
+
+# d44854fb81fc41e6a664c052f666e82b
+#: ../../index.rst:23
+msgid "`Downloads <http://akka.io/downloads/>`_"
+msgstr "`ダウンロード <http://akka.io/downloads/>`_"
+
+# a4780aee91e44b5f883aaef8fb078cad
+#: ../../index.rst:25
+msgid "`Source Code <http://github.com/akka/akka>`_"
+msgstr "`ソースコード <http://github.com/akka/akka>`_"
+
+# 4959ae22bca8449792e2759d0f7734a8
+#: ../../index.rst:27
+msgid ":ref:`scaladoc`"
+msgstr ":ref:`scaladoc`"
+
+# 6059ef76143347aca48d27c45d40b3d6
+#: ../../index.rst:29
+msgid ":ref:`other-doc`"
+msgstr ":ref:`other-doc`"
+
+# fac0491a6b5a44ada239bbf4d88ae379
+#: ../../index.rst:31
+msgid ":ref:`issue_tracking`"
+msgstr ":ref:`issue_tracking`"
+
+# 3caa3708e4674d9285005958547b590a
+#: ../../index.rst:33
+msgid ":ref:`support`"
+msgstr ":ref:`support`"
