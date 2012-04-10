@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:2
+# d66a462499af499dab39a023b30b3782
+msgid "Contents"
+msgstr ""
+
+#: ../../index.rst:19
+# 6a622554101542079df4ae87510c6d69
+msgid "Links"
+msgstr ""
+
+#: ../../index.rst:21
+# 29bbf35200c04d7dbb2988b625afc449
+msgid ":ref:`migration`"
+msgstr ""
+
+#: ../../index.rst:23
+# d44854fb81fc41e6a664c052f666e82b
+msgid "`Downloads <http://akka.io/downloads/>`_"
+msgstr ""
+
+#: ../../index.rst:25
+# a4780aee91e44b5f883aaef8fb078cad
+msgid "`Source Code <http://github.com/akka/akka>`_"
+msgstr ""
+
+#: ../../index.rst:27
+# 4959ae22bca8449792e2759d0f7734a8
+msgid ":ref:`scaladoc`"
+msgstr ""
+
+#: ../../index.rst:29
+# 6059ef76143347aca48d27c45d40b3d6
+msgid ":ref:`other-doc`"
+msgstr ""
+
+#: ../../index.rst:31
+# fac0491a6b5a44ada239bbf4d88ae379
+msgid ":ref:`issue_tracking`"
+msgstr ""
+
+#: ../../index.rst:33
+# 3caa3708e4674d9285005958547b590a
+msgid ":ref:`support`"
+msgstr ""
+

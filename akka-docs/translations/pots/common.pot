@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../common/duration.rst:5
+# 1bef42740c7842cc9ff1fd5735ad9754
+msgid "Duration"
+msgstr ""
+
+#: ../../common/duration.rst:7
+# 9a5f4f136aea4c78a78634d63126c970
+msgid "Durations are used throughout the Akka library, wherefore this concept is represented by a special data type, :class:`Duration`. Values of this type may represent infinite (:obj:`Duration.Inf`, :obj:`Duration.MinusInf`) or finite durations."
+msgstr ""
+
+#: ../../common/duration.rst:13
+# 94b1d27f08064daaab4dcb9fac90e416
+msgid "Scala"
+msgstr ""
+
+#: ../../common/duration.rst:15
+# f9897adf0eff43e9806a2134ba90ad7b
+msgid "In Scala durations are constructable using a mini-DSL and support all expected operations:"
+msgstr ""
+
+#: ../../common/duration.rst:30
+# d976b7f16ad4491db87278c8bbaa2a27
+msgid "You may leave out the dot if the expression is clearly delimited (e.g. within parentheses or in an argument list), but it is recommended to use it if the time unit is the last token on a line, otherwise semi-colon inference might go wrong, depending on what starts the next line."
+msgstr ""
+
+#: ../../common/duration.rst:36
+# 368523e204e54cde8d1c88806a686c15
+msgid "Java"
+msgstr ""
+
+#: ../../common/duration.rst:38
+# 42e17469afc746529ec174e5b83d607a
+msgid "Java provides less syntactic sugar, so you have to spell out the operations as method calls instead:"
+msgstr ""
+
+#: ../../common/duration.rst:50
+# 7488954efe4c471684780b016fb84268
+msgid "Deadline"
+msgstr ""
+
+#: ../../common/duration.rst:52
+# 7a5a696182df4c079b008c506a9981f7
+msgid "Durations have a brother name :class:`Deadline`, which is a class holding a representation of an absolute point in time, and support deriving a duration from this by calculating the difference between now and the deadline. This is useful when you want to keep one overall deadline without having to take care of the book-keeping wrt. the passing of time yourself::"
+msgstr ""
+
+#: ../../common/duration.rst:61
+# 5f5c02f2fb3a45309bdf4f0beea62742
+msgid "In Java you create these from durations::"
+msgstr ""
+
+#: ../../common/index.rst:2
+# 662c68b06f7e4a09bfe48f0b1674212d
+msgid "Common utilities"
+msgstr ""
+

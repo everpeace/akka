@@ -1,0 +1,930 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../dev/building-akka.rst:8
+#: ../../dev/building-akka.rst:54
+# 0d30e36e33184508a6ea9bfc44f1f449
+# 15366e95c9f54e09be30233c7be33cf0
+msgid "Building Akka"
+msgstr ""
+
+#: ../../dev/building-akka.rst:10
+# fcaa3aaa6c49454c9315fc38ab9a6cb2
+msgid "This page describes how to build and run Akka from the latest source code."
+msgstr ""
+
+#: ../../dev/building-akka.rst:14
+# 5ddca8dc4f0d4096a8f9f39f48a69d94
+msgid "Get the source code"
+msgstr ""
+
+#: ../../dev/building-akka.rst:16
+# a152f63a323042f49a9beefe3fc4070f
+msgid "Akka uses `Git`_ and is hosted at `Github`_."
+msgstr ""
+
+#: ../../dev/building-akka.rst:21
+# 28674c9380a0474ca267b0455c020d62
+msgid "You first need Git installed on your machine. You can then clone the source repository from http://github.com/akka/akka."
+msgstr ""
+
+#: ../../dev/building-akka.rst:24
+#: ../../dev/documentation.rst:49
+# 60e1d1cc471e4b8aa317af0c97306c6d
+# 304355f365ae431b8b0ed3f3d8852051
+msgid "For example::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:28
+# 524bce604e414a95b22cc2a9e0bae8f6
+msgid "If you have already cloned the repository previously then you can update the code with ``git pull``::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:35
+# c65a8bb0613942888d20cccb98dd6311
+msgid "sbt - Simple Build Tool"
+msgstr ""
+
+#: ../../dev/building-akka.rst:37
+# 3c06950b700646189fa10aab721d4e04
+msgid "Akka is using the excellent `sbt`_ build system. So the first thing you have to do is to download and install sbt. You can read more about how to do that in the `sbt setup`_ documentation."
+msgstr ""
+
+#: ../../dev/building-akka.rst:44
+# 86c51d6258d2420db40a9c99f8bdb93e
+msgid "The sbt commands that you'll need to build Akka are all included below. If you want to find out more about sbt and using it for your own projects do read the `sbt documentation`_."
+msgstr ""
+
+#: ../../dev/building-akka.rst:50
+# cae8cde2763443489448008a35bd2f33
+msgid "The Akka sbt build file is ``project/AkkaBuild.scala``."
+msgstr ""
+
+#: ../../dev/building-akka.rst:56
+# 652c1d7b66b04cbbbf1b314282124d78
+msgid "First make sure that you are in the akka code directory::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:62
+#: ../../dev/documentation.rst:76
+# 9e9b6954696342c19cab4b872de18a82
+# 11aeabf8f7704970a7ce2e43386874ec
+msgid "Building"
+msgstr ""
+
+#: ../../dev/building-akka.rst:64
+# e787353725d0422ea1f984640b4e00ce
+msgid "To compile all the Akka core modules use the ``compile`` command::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:68
+# fb92bcb608d542adb5a5498fa8a76475
+msgid "You can run all tests with the ``test`` command::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:72
+# ab500f9a7433482da5d0902cdde1168a
+msgid "If compiling and testing are successful then you have everything working for the latest Akka development version."
+msgstr ""
+
+#: ../../dev/building-akka.rst:77
+# fa093bd208ab4b43b8ed864ae0f63159
+msgid "Parallel Execution"
+msgstr ""
+
+#: ../../dev/building-akka.rst:79
+# 49b71a27254f4367a47bb0f4a30686f5
+msgid "By default the tests are executed sequentially. They can be executed in parallel to reduce build times, if hardware can handle the increased memory and cpu usage. Add the following system property to sbt launch script to activate parallel execution::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:86
+# 25a5153121a8436a9356fc072d24ec65
+msgid "Publish to local Ivy repository"
+msgstr ""
+
+#: ../../dev/building-akka.rst:88
+# dd38cbdb4d1345e1ac3982eb1b6c5b7b
+msgid "If you want to deploy the artifacts to your local Ivy repository (for example, to use from an sbt project) use the ``publish-local`` command::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:95
+# 894bf36500604028970fcf65aa62b870
+msgid "sbt interactive mode"
+msgstr ""
+
+#: ../../dev/building-akka.rst:97
+# 1f39b8eb40054deda20409010bffee8e
+msgid "Note that in the examples above we are calling ``sbt compile`` and ``sbt test`` and so on, but sbt also has an interactive mode. If you just run ``sbt`` you enter the interactive sbt prompt and can enter the commands directly. This saves starting up a new JVM instance for each command and can be much faster and more convenient."
+msgstr ""
+
+#: ../../dev/building-akka.rst:103
+# 1bf1827bf14b4628a72755f1faa7de3c
+msgid "For example, building Akka as above is more commonly done like this::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:115
+# f0e75a66ca56403cbdc9e26aad440efc
+msgid "sbt batch mode"
+msgstr ""
+
+#: ../../dev/building-akka.rst:117
+# e3845b67d4eb48fbbb66fb319d85efbf
+msgid "It's also possible to combine commands in a single call. For example, testing, and publishing Akka to the local Ivy repository can be done with::"
+msgstr ""
+
+#: ../../dev/building-akka.rst:126
+# e3c716a90ffd45c089ed70b51f6e2332
+msgid "Dependencies"
+msgstr ""
+
+#: ../../dev/building-akka.rst:128
+# 810e7ba2901f41ddb8c18bea436c051f
+msgid "You can look at the Ivy dependency resolution information that is created on ``sbt update`` and found in ``~/.ivy2/cache``. For example, the ``~/.ivy2/cache/com.typesafe.akka-akka-remote-compile.xml`` file contains the resolution information for the akka-remote module compile dependencies. If you open this file in a web browser you will get an easy to navigate view of dependencies."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:4
+# 0e70202912464f7698586848a9eb884a
+msgid "Developer Guidelines"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:7
+# bd49058b458f433bb238c6eb8b5b6adb
+msgid "Code Style"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:9
+# f5243e3436844c6d8d27c6be8bc700ea
+msgid "The Akka code style follows `this document <http://davetron5000.github.com/scala-style/ScalaStyleGuide.pdf>`_ ."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:11
+# e70a7392a60b4a2d9f6b9ef5c35bc1ee
+msgid "Akka is using ``Scalariform`` to format the source code as part of the build. So just hack away and then run ``sbt compile`` and it will reformat the code according to Akka standards."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:14
+# 043fe6fb8f574eb1a255023739dc4dd8
+msgid "Process"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:16
+# 41ff5ebf8de04259bc4e86d80ac8f95d
+msgid "Pick a ticket, if there is no ticket for your work then create one first."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:17
+# a2c4f208adec4961a17566be8a3f15ea
+msgid "Start working in a feature branch. Name it something like ``wip-<descriptive name or ticket number>-<your username>``."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:18
+# 0268c3bee40f46e7913d86e77b01dc6e
+msgid "When you are done send a request for review to the Akka developer mailing list. If successfully review, merge into master."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:21
+# 3e0c4eca88704b39889a40aea3d9df1e
+msgid "Commit messages"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:23
+# 131651c323e7414daca3e9b29600f21b
+msgid "Please follow these guidelines when creating public commits and writing commit messages."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:25
+# 888144b0dedd4284a98bab822b24da43
+msgid "If your work spans multiple local commits (for example; if you do safe point commits while working in a topic branch or work in a branch for long time doing merges/rebases etc.) then please do **not** commit it all but rewrite the history by squashing the commits into a single big commit which you write a good commit message for (like discussed below). Here is a great article for how to do that: `http://sandofsky.com/blog/git-workflow.html <http://sandofsky.com/blog/git-workflow.html>`_. Every commit should be able to be used in isolation, cherry picked etc."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:27
+# ad82e000cf01471cad3b063208bce252
+msgid "First line should be a descriptive sentence what the commit is doing. It should be possible to fully understand what the commit does by just reading this single line. It is **not** ok to only list the ticket number, type \"minor fix\" or similar. Include reference to ticket number, prefixed with #, at the end of the first line. If the commit is a **small** fix, then you are done. If not, go to 3."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:29
+# 895ac5ec75ff4b749a28f22794c39224
+msgid "Following the single line description should be a blank line followed by an enumerated list with the details of the commit."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:31
+#: ../../dev/multi-jvm-testing.rst:336
+# 0e9cfe739af3403b8f225b96193f24a8
+# 6f96b95a9b364ee58c24c9f3db62307c
+msgid "Example::"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:40
+# 15e5eb50bfde4041b9d1dd03ef1e40f6
+msgid "Testing"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:42
+# 222f4f6ebe3d4cd193effcd1ac7b811d
+msgid "All code that is checked in **should** have tests. All testing is done with ``ScalaTest`` and ``ScalaCheck``."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:44
+# 16aa9c22ac5d4a66ac7b046448bbcfbb
+msgid "Name tests as **Test.scala** if they do not depend on any external stuff. That keeps surefire happy."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:45
+# 837d5ae604ab49d6acd150c81c4e69e9
+msgid "Name tests as **Spec.scala** if they have external dependencies."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:47
+# 04c18750fdc147a0a063a047cbd5376e
+msgid "There is a testing standard that should be followed: `Ticket001Spec <https://github.com/akka/akka/blob/master/akka-actor-tests/src/test/scala/akka/ticket/Ticket001Spec.scala>`_"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:50
+# 55437084402145329da26b8aeb02b4bf
+msgid "Actor TestKit"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:52
+# 81ba710caebe4b4597787449a26e6555
+msgid "There is a useful test kit for testing actors: `akka.util.TestKit <https://github.com/akka/akka/tree/master/akka-testkit/src/main/scala/akka/testkit/TestKit.scala>`_. It enables assertions concerning replies received and their timing, there is more documentation in the :ref:`akka-testkit` module."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:55
+#: ../../dev/multi-jvm-testing.rst:6
+# cf20cf038ef3494592d9bf83cc0693a1
+# f5fbaf522f304e9ebec583512edf5d28
+msgid "Multi-JVM Testing"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:57
+# 6d2a865746674e599e48223ce7dbb4be
+msgid "Included in the example is an sbt trait for multi-JVM testing which will fork JVMs for multi-node testing. There is support for running applications (objects with main methods) and running ScalaTest tests."
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:62
+#: ../../dev/multi-jvm-testing.rst:329
+# 62137e08c3104fa8872f1cf96b21a24c
+# e65d0b3e558d43d7aa9ba07b83c55185
+msgid "NetworkFailureTest"
+msgstr ""
+
+#: ../../dev/developer-guidelines.rst:64
+# 4c6c290b710442e3ad361c6423e08ac2
+msgid "You can use the 'NetworkFailureTest' trait to test network failure."
+msgstr ""
+
+#: ../../dev/documentation.rst:8
+# 00b6dc61bce64512b8bd023e43a84d4f
+msgid "Documentation Guidelines"
+msgstr ""
+
+#: ../../dev/documentation.rst:10
+# eee2c6a9d81c4ade967583bc6261d006
+msgid "The Akka documentation uses `reStructuredText`_ as its markup language and is built using `Sphinx`_."
+msgstr ""
+
+#: ../../dev/documentation.rst:18
+# c97cfd4d7926470c87c42bcfdb82b42c
+msgid "Sphinx"
+msgstr ""
+
+#: ../../dev/documentation.rst:20
+#: ../../dev/documentation.rst:26
+# a4262b88a7fa4c669111f7539f182f3c
+# e5ad1b2997a74a879a430a9152e26f5b
+msgid "More to come..."
+msgstr ""
+
+#: ../../dev/documentation.rst:24
+# 35e14c61550b4f8795831c2fea230d91
+msgid "reStructuredText"
+msgstr ""
+
+#: ../../dev/documentation.rst:29
+# 2739a938fd454bbbbb331b0d7340c0db
+msgid "Sections"
+msgstr ""
+
+#: ../../dev/documentation.rst:31
+# a55681c8ee3140b2963d8e359c6caab0
+msgid "Section headings are very flexible in reST. We use the following convention in the Akka documentation:"
+msgstr ""
+
+#: ../../dev/documentation.rst:34
+# 7091a032a18846cca6c2ae4afb1671e3
+msgid "``#`` (over and under) for module headings"
+msgstr ""
+
+#: ../../dev/documentation.rst:35
+# be1dc3683e1546ca9b49ca004aa8857e
+msgid "``=`` for sections"
+msgstr ""
+
+#: ../../dev/documentation.rst:36
+# 5e2f4c59a9194fdd876344b8f8912098
+msgid "``-`` for subsections"
+msgstr ""
+
+#: ../../dev/documentation.rst:37
+# cbaf827820804cdeb41704fa78fc8134
+msgid "``^`` for subsubsections"
+msgstr ""
+
+#: ../../dev/documentation.rst:38
+# 04becc2211c045c39587044367f74240
+msgid "``~`` for subsubsubsections"
+msgstr ""
+
+#: ../../dev/documentation.rst:42
+# c5f97c0f1a1c4b11be1f4b9cf1a12a55
+msgid "Cross-referencing"
+msgstr ""
+
+#: ../../dev/documentation.rst:44
+# 0891ca3cb7d941a1a1ebdff05ebb3af2
+msgid "Sections that may be cross-referenced across the documentation should be marked with a reference. To mark a section use ``.. _ref-name:`` before the section heading. The section can then be linked with ``:ref:`ref-name```. These are unique references across the entire documentation."
+msgstr ""
+
+#: ../../dev/documentation.rst:71
+# fb3e60a1b43c409fa27070ea70cc9bef
+msgid "Build the documentation"
+msgstr ""
+
+#: ../../dev/documentation.rst:73
+# d7dca42133bd4201be88e23e4742ea02
+msgid "First install `Sphinx`_. See below."
+msgstr ""
+
+#: ../../dev/documentation.rst:90
+# bd55cdf506c0402ea063e691ecbbf337
+msgid "Installing Sphinx on OS X"
+msgstr ""
+
+#: ../../dev/documentation.rst:92
+# 026520baaf7e46acb96eaf7a13ad27f0
+msgid "Install `Homebrew <https://github.com/mxcl/homebrew>`_"
+msgstr ""
+
+#: ../../dev/documentation.rst:94
+# f7345b63abdd4cc4b33cf2678d51b59b
+msgid "Install Python and pip:"
+msgstr ""
+
+#: ../../dev/documentation.rst:101
+# e09f0d2810f343669396f3bb73ca755e
+msgid "Add the Homebrew Python path to your $PATH:"
+msgstr ""
+
+#: ../../dev/documentation.rst:108
+# 7aa36feb29b74c4caec200de79edc12e
+msgid "More information in case of trouble: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python"
+msgstr ""
+
+#: ../../dev/documentation.rst:111
+# bd52ef4541f746cb8b53f5119b1edfa5
+msgid "Install sphinx:"
+msgstr ""
+
+#: ../../dev/documentation.rst:117
+# aeba22c659804b0ea68f74a8a7041663
+msgid "Add sphinx_build to your $PATH:"
+msgstr ""
+
+#: ../../dev/documentation.rst:123
+# 438b5dddc64943289d2310782ae46916
+msgid "Install BasicTeX package from: http://www.tug.org/mactex/morepackages.html"
+msgstr ""
+
+#: ../../dev/documentation.rst:126
+# 23eed4cad3e34718817a1f2ea1a564cc
+msgid "Add texlive bin to $PATH:"
+msgstr ""
+
+#: ../../dev/documentation.rst:132
+# a77b5c99dba9490382cc5d379f8a74b9
+msgid "Add missing tex packages:"
+msgstr ""
+
+#: ../../dev/documentation.rst:144
+# c9eb73f1e9e14a57a0de5ddf54ad927a
+msgid "Link the akka pygments style:"
+msgstr ""
+
+#: ../../dev/index.rst:2
+# d52e307c17fd400bbe2fda3c0ecb80aa
+msgid "Information for Developers"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:8
+# 4ec422cbabb14448a3fc62e10c45fae2
+msgid "Support for running applications (objects with main methods) and ScalaTest tests in multiple JVMs."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:13
+# 9cc510e4a96e4efe9720ed90ce8281e8
+msgid "Setup"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:15
+# f77f5120d5de45839a7a899aa188f182
+msgid "The multi-JVM testing is an sbt plugin that you can find here:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:17
+# 4b3fa8ba0dcc4b9d85c9eb68291a06f0
+msgid "http://github.com/typesafehub/sbt-multi-jvm"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:19
+# fd4e904fa2094a7cac5dbba181d2ffc6
+msgid "You can add it as a plugin by adding the following to your project/plugins.sbt::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:25
+# 8988bd032773475393686bdf52fbb38c
+msgid "You can then add multi-JVM testing to ``project/Build.scala`` by including the ``MultiJvm`` settings and config. For example, here is how the akka-remote project adds multi-JVM testing::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:60
+# 83aad54d75d34b2fb71f471cb848bda3
+msgid "You can specify JVM options for the forked JVMs::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:66
+# f2a8ea22b36649b2985796596948c58d
+msgid "Running tests"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:68
+# 7ba0fb0c8d1b453485ebd4530310aad6
+msgid "The multi-jvm tasks are similar to the normal tasks: ``test``, ``test-only``, and ``run``, but are under the ``multi-jvm`` configuration."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:71
+# dbe76446d23643dfb25057c250fff586
+msgid "So in Akka, to run all the multi-JVM tests in the akka-remote project use (at the sbt prompt):"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:78
+# e7e9ee58c4ce4c7bb29b3d8a4dab002b
+msgid "Or one can change to the ``akka-remote`` project first, and then run the tests:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:86
+# 3dee389873bc48b9a0bc2b74184c522d
+msgid "To run individual tests use ``test-only``:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:92
+# beb5bf60d59d4737943d0eb77994350c
+msgid "More than one test name can be listed to run multiple specific tests. Tab-completion in sbt makes it easy to complete the test names."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:95
+# 28f34a74764e43fb9f35c1afa7996dbf
+msgid "It's also possible to specify JVM options with ``test-only`` by including those options after the test names and ``--``. For example:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:104
+# 1b8352133e514ef88c2773b50a641c98
+msgid "Creating application tests"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:106
+# d0f0078f6f8b4e3da01e238c09371aaa
+msgid "The tests are discovered, and combined, through a naming convention. MultiJvm tests are located in ``src/multi-jvm/scala`` directory. A test is named with the following pattern:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:113
+# 982bf5383cf74d08996696add9ec8f51
+msgid "That is, each test has ``MultiJvm`` in the middle of its name. The part before it groups together tests/applications under a single ``TestName`` that will run together. The part after, the ``NodeName``, is a distinguishing name for each forked JVM."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:118
+# 5e4234c2db944e8789c74a0b5a21d3c8
+msgid "So to create a 3-node test called ``Sample``, you can create three applications like the following::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:141
+# eb6a7f4a03e64e8c998d267d8c458970
+msgid "When you call ``multi-jvm:run sample.Sample`` at the sbt prompt, three JVMs will be spawned, one for each node. It will look like this:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:158
+# 5059424b965c45e9806345cf84d210dc
+msgid "Naming"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:160
+# 3bded7ffebf140b594f4f2c0c67dc1a9
+msgid "You can change what the ``MultiJvm`` identifier is. For example, to change it to ``ClusterTest`` use the ``multiJvmMarker`` setting::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:165
+# ab40166821b84dc59fcb0905dd3fa6ea
+msgid "Your tests should now be named ``{TestName}ClusterTest{NodeName}``."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:169
+# d515b307330948208789e8bf41e9037a
+msgid "Configuration of the JVM instances"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:172
+# 61cfa2b21f2e479684418913cd3a3a9d
+msgid "Setting JVM options"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:174
+# 57361febabe74b20aa14779f25ebfa13
+msgid "You can define specific JVM options for each of the spawned JVMs. You do that by creating a file named after the node in the test with suffix ``.opts`` and put them in the same directory as the test."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:178
+# 893dfd7694f844b7a59c1345abf3de35
+msgid "For example, to feed the JVM options ``-Dakka.remote.port=9991`` to the ``SampleMultiJvmNode1`` let's create three ``*.opts`` files and add the options to them."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:181
+# 3475ac4dd3e94dab9db070641ce84f17
+msgid "``SampleMultiJvmNode1.opts``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:185
+# e7b005d49b4a43ee9331ae1628564a55
+msgid "``SampleMultiJvmNode2.opts``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:189
+# 1adf0c939893436284385937ff59962e
+msgid "``SampleMultiJvmNode3.opts``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:195
+# 59af17536499416d926a7cc1a6673fc4
+msgid "Overriding configuration options"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:197
+# 6c773854b7a74e13b7336b2874e06b18
+msgid "You can also override the options in the :ref:`configuration` file with different options for each spawned JVM. You do that by creating a file named after the node in the test with suffix ``.conf`` and put them in the same  directory as the test ."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:201
+# af5883cf999b4d058a8813fdfcb4da0f
+msgid "For example, to override the configuration option ``akka.cluster.name`` let's create three ``*.conf`` files and add the option to them."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:204
+# 8e48c048a1a743db813ffbb614437e34
+msgid "``SampleMultiJvmNode1.conf``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:208
+# e68ef45ee7a348849bf4b2bffcbe68a8
+msgid "``SampleMultiJvmNode2.conf``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:212
+# 9b1e05b677a541659b6d2ecf285a0904
+msgid "``SampleMultiJvmNode3.conf``::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:218
+# e80945d99d7940169a4aedb6fc53d673
+msgid "ScalaTest"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:220
+# d549eda7696846d88cfdee4a9a2d03c6
+msgid "There is also support for creating ScalaTest tests rather than applications. To do this use the same naming convention as above, but create ScalaTest suites rather than objects with main methods. You need to have ScalaTest on the classpath. Here is a similar example to the one above but using ScalaTest::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:248
+# 3cc60f9f4bac434c832d2dd68dc6470c
+msgid "To run just these tests you would call ``multi-jvm:test-only sample.Spec`` at the sbt prompt."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:253
+# 7f6a5df19259488e847625d51f77dcfc
+msgid "Barriers"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:255
+# 3d06e598aa0e4872b079f0e5eba73fb2
+msgid "When running multi-JVM tests it's common to need to coordinate timing across nodes. To do this, multi-JVM test framework has the notion of a double-barrier (there is both an entry barrier and an exit barrier). To wait at the entry use the ``enter`` method. To wait at the exit use the ``leave`` method. It's also possible to pass a block of code which will be run between the barriers."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:262
+# 52a300a9a05347379d3e802c9c4a81b6
+msgid "There are 2 implementations of the barrier: one is used for coordinating JVMs running on a single machine and is based on local files, another used in a distributed scenario (see below) and is based on apache ZooKeeper. These two cases are differentiated with ``test.hosts`` property defined. The choice for a proper barrier implementation is made in ``AkkaRemoteSpec`` which is a base class for all multi-JVM tests."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:268
+# f6bcbd590fbc4d44972960937c56051c
+msgid "When creating a barrier you pass it a name. You can also pass a timeout. The default timeout is 60 seconds."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:271
+# bc4a06fd595a43edb0fc6986b953d6ee
+msgid "Here is an example of coordinating the starting of two nodes and then running something in coordination::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:331
+# ebd1f60f695347dd95a5df9730343e7f
+msgid "You can use the ``NetworkFailureTest`` trait to test network failure. See the ``RemoteErrorHandlingNetworkTest`` test. Your tests needs to end with ``NetworkTest``. They are disabled by default. To run them you need to enable a flag."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:342
+# 4466bf45f7e34295822be1d8482b0b88
+msgid "It uses ``ipfw`` for network management. Mac OSX comes with it installed but if you are on another platform you might need to install it yourself. Here is a port:"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:346
+# 046a68b703484b39ae6132d97c372002
+msgid "http://info.iet.unipi.it/~luigi/dummynet"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:350
+# 2145c6eedc674880b2abceeda5d1ea6c
+msgid "Running tests on many machines"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:352
+# f1e653b61ec54ec09cf6cfdc67c55039
+msgid "The same tests that are run on a single machine using sbt-multi-jvm can be run on multiple machines using schoir (read the same as ``esquire``) plugin. The plugin is included just like sbt-multi-jvm::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:359
+# 0067741b00b04d08960531359d6e4cd9
+msgid "The interaction with the plugin is through ``schoir:master`` input task. This input task optionally accepts the path to the file with the following properties::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:366
+# 3531a54428b042fcb998031b0e344063
+msgid "Alternative to specifying the property file, one can set respective settings in the build file::"
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:372
+# 9bb87a28d6a34ca69d8697ce0c89c282
+msgid "The reason the first property is called ``git.url`` is that the plugin sets up a temporary remote branch on git to test against the local working copy. After the tests are finished the changes are regained and the branch is deleted."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:376
+# 10ffa28c7bad41a1a9bb6100ede7cba8
+msgid "Each test machine starts a node in zookeeper server ensemble that can be used for synchronization. Since the server is started on a fixed port, it's not currently possible to run more than one test session on the same machine at the same time."
+msgstr ""
+
+#: ../../dev/multi-jvm-testing.rst:380
+# c575b1e0f4df4775ae6676cd88bfb1d8
+msgid "The machines that are used for testing (slaves) should have ssh access to the outside world and be able to talk to each other with the internal addresses given. On the master machine ssh client is required. Obviosly git and sbt should be installed on both master and slave machines."
+msgstr ""
+
+#: ../../dev/team.rst:6
+# edeb8b58d926473c81483a660cf17a19
+msgid "Team"
+msgstr ""
+
+#: ../../dev/team.rst:9
+# 376d78be353340babcbd741199bc8c43
+msgid "Name"
+msgstr ""
+
+#: ../../dev/team.rst:9
+# c36ffead2e6e4f2fbcbae64af166e35c
+msgid "Role"
+msgstr ""
+
+#: ../../dev/team.rst:9
+# a6afaae68a954eabacc9e321552a9be1
+msgid "Email"
+msgstr ""
+
+#: ../../dev/team.rst:11
+# 8af2f712afa34fde8e5998738363d5e4
+msgid "Jonas Bonér"
+msgstr ""
+
+#: ../../dev/team.rst:11
+# 917594c6cb844e9fafc3c8316c59c1c8
+msgid "Founder, Despot, Committer"
+msgstr ""
+
+#: ../../dev/team.rst:11
+# 805e352c226f4e528bc582c68fe360ca
+msgid "jonas AT jonasboner DOT com"
+msgstr ""
+
+#: ../../dev/team.rst:12
+# 909fcff1c2c04c0490d7928f39258510
+msgid "Viktor Klang"
+msgstr ""
+
+#: ../../dev/team.rst:12
+# 36c233afd6254f7da5bd32de25c8d5ec
+msgid "Project Owner"
+msgstr ""
+
+#: ../../dev/team.rst:12
+# 96e6c4b3a24a431b821a8bd161746319
+msgid "viktor DOT klang AT gmail DOT com"
+msgstr ""
+
+#: ../../dev/team.rst:13
+# 2432135b117c48de8b2cafde337317c3
+msgid "Roland Kuhn"
+msgstr ""
+
+#: ../../dev/team.rst:13
+#: ../../dev/team.rst:14
+#: ../../dev/team.rst:15
+#: ../../dev/team.rst:16
+#: ../../dev/team.rst:17
+#: ../../dev/team.rst:18
+#: ../../dev/team.rst:19
+#: ../../dev/team.rst:20
+# bf1fe39762c24db9bad46496abcb675e
+# 1bf815e184a6410ab774fe0522f87d72
+# 35fdf9c2c21a4903bc96d455c8260043
+# 80a1d48c6a7e4cab8d737848cc2abaa3
+# d9af3342b80f41c29bcfd798234925cb
+# bfaa37ac59774b0881c6c45b2b76d3a2
+# 5157d4ce80df4b188b582ed1409110f1
+# 401f0c48061b4fb798c017760384fa71
+msgid "Committer"
+msgstr ""
+
+#: ../../dev/team.rst:14
+# 096f0164172348cf812898177b65a2fc
+msgid "Patrik Nordwall"
+msgstr ""
+
+#: ../../dev/team.rst:14
+# e79ff92b7ab5407c959031f4d5927723
+msgid "patrik DOT nordwall AT gmail DOT com"
+msgstr ""
+
+#: ../../dev/team.rst:15
+# fd0f004c415b48b38f223fd36b04e0b2
+msgid "Derek Williams"
+msgstr ""
+
+#: ../../dev/team.rst:15
+# dfc2e92ffedc48efa0621d707dd5600b
+msgid "derek AT nebvin DOT ca"
+msgstr ""
+
+#: ../../dev/team.rst:16
+# b4cbf9a1b0b340128524c61418ba959d
+msgid "Henrik Engström"
+msgstr ""
+
+#: ../../dev/team.rst:17
+# 96443ef0a328487b8539dd144394dda5
+msgid "Peter Vlugter"
+msgstr ""
+
+#: ../../dev/team.rst:18
+# 34afeb89be7c4dd58a6afffde3c87665
+msgid "Martin Krasser"
+msgstr ""
+
+#: ../../dev/team.rst:18
+# 2f902aacacd24830ac78c71607a750ef
+msgid "krasserm AT googlemail DOT com"
+msgstr ""
+
+#: ../../dev/team.rst:19
+# 73a79e5a78374f6490c17736ed027e19
+msgid "Raymond Roestenburg"
+msgstr ""
+
+#: ../../dev/team.rst:20
+# 06bc2bdc5606487b9d40d696536ee47c
+msgid "Piotr Gabryanczyk"
+msgstr ""
+
+#: ../../dev/team.rst:21
+# 3128be10a6604dfdb96c34eb7b5c3688
+msgid "Debasish Ghosh"
+msgstr ""
+
+#: ../../dev/team.rst:21
+#: ../../dev/team.rst:22
+#: ../../dev/team.rst:23
+#: ../../dev/team.rst:24
+#: ../../dev/team.rst:25
+#: ../../dev/team.rst:26
+#: ../../dev/team.rst:27
+#: ../../dev/team.rst:28
+#: ../../dev/team.rst:29
+#: ../../dev/team.rst:30
+#: ../../dev/team.rst:31
+#: ../../dev/team.rst:32
+#: ../../dev/team.rst:33
+# bff91ee6a8fd484798cae731654aae70
+# 657f057c73b24334a73e3ba6feebecd0
+# 9b7a117bdc6e427c9f2677dca23278bd
+# ad90c1d467674faebe7893c05e0e21c8
+# 7e76b8d2d5934ef9b9d3cf93554d81df
+# 19c689f7333e497b8e3fa62175ae0385
+# 0e64cf586b0a4b7a9b615546749cdef9
+# d0a801c5e93847cf8e14f8e5c17c3842
+# 1df13584830b47c28301cfdff63b37a0
+# b1d6bd512cfa49918bec0a53e4355980
+# ac9bb594c309489ebc60c46d3c45adcf
+# ac41030867624fce800b5d1823b6e84f
+# 11140904e0944f5d9e23ed0b2c9a2891
+msgid "Alumni"
+msgstr ""
+
+#: ../../dev/team.rst:21
+# ad69dfded0e845ed9f6107317bfc5f04
+msgid "dghosh AT acm DOT org"
+msgstr ""
+
+#: ../../dev/team.rst:22
+# fd65873591d541c1b830b8b5ab10cfb7
+msgid "Ross McDonald"
+msgstr ""
+
+#: ../../dev/team.rst:22
+# 979611b64605471ea8d9cff64209ef90
+msgid "rossajmcd AT gmail DOT com"
+msgstr ""
+
+#: ../../dev/team.rst:23
+# 2422d24c8da14786ae4acbb690fb7d91
+msgid "Eckhart Hertzler"
+msgstr ""
+
+#: ../../dev/team.rst:24
+# 75ccaa5d5fff48e0995c1eaa954335ce
+msgid "Mikael Högqvist"
+msgstr ""
+
+#: ../../dev/team.rst:25
+# 65e29978cb4e4aca89c021caf92aab49
+msgid "Tim Perrett"
+msgstr ""
+
+#: ../../dev/team.rst:26
+# 8873832b90ca439e835cf8bbe9581833
+msgid "Jeanfrancois Arcand"
+msgstr ""
+
+#: ../../dev/team.rst:26
+# 87f5055e4d4c40008c7343f3e6d7ceba
+msgid "jfarcand AT apache DOT org"
+msgstr ""
+
+#: ../../dev/team.rst:27
+# 4e3c3103f7204f5a83e03418dbe38691
+msgid "Jan Van Besien"
+msgstr ""
+
+#: ../../dev/team.rst:28
+# 3b32d04239a24534b166af000d8bf305
+msgid "Michael Kober"
+msgstr ""
+
+#: ../../dev/team.rst:29
+# 00166c1f09084032827db2f97bc92416
+msgid "Peter Veentjer"
+msgstr ""
+
+#: ../../dev/team.rst:30
+# 90355efdab3f4b1e9c880a4a45514325
+msgid "Irmo Manie"
+msgstr ""
+
+#: ../../dev/team.rst:31
+# f60262c95bd4463f8f1b49abc9286a03
+msgid "Heiko Seeberger"
+msgstr ""
+
+#: ../../dev/team.rst:32
+# caa2b683c8174fe6b8c63ba51a2a4394
+msgid "Hiram Chirino"
+msgstr ""
+
+#: ../../dev/team.rst:33
+# ce45d23710f241c28c5dee57f20739f7
+msgid "Scott Clasen"
+msgstr ""
+

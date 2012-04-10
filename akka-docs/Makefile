@@ -14,6 +14,7 @@ PYGMENTSDIR   = _sphinx/pygments
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+POTFILESDIR	= translations/pots
 
 # Set python path to include local packages for pygments styles.
 ifneq (,$(PYTHONPATH))
@@ -38,6 +39,7 @@ help:
 	@echo "  singlehtml to make a single large HTML file"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 	@echo "  pdf        to make LaTeX files and run them through pdflatex"
+	@echo "  gettext    to make pot files for translations"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -75,3 +77,7 @@ pdf: pygments
 	@echo "Running LaTeX files through pdflatex..."
 	make -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
+gettext:
+	$(SPHINXBUILD) -b gettext $(ALLSPHINXOPTS) $(POTFILESDIR)
+	@echo "Building pot files in $(POTFILESDIR)"

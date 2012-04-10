@@ -1,0 +1,766 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../cluster/cluster.rst:6
+# b19fc88a031948538383d3f25871a34e
+msgid "Cluster Specification"
+msgstr ""
+
+#: ../../cluster/cluster.rst:8
+# 031da4fd20824d8fa0048ab8ae1cdc8f
+msgid "*This document describes the new clustering coming in Akka 2.1 (not 2.0)*"
+msgstr ""
+
+#: ../../cluster/cluster.rst:11
+# 0daebea4f5f24340a4fca60cb30681d0
+msgid "Intro"
+msgstr ""
+
+#: ../../cluster/cluster.rst:13
+# f7f94856cb6b449fb031bb2528ba0564
+msgid "Akka Cluster provides a fault-tolerant, elastic, decentralized peer-to-peer cluster with no single point of failure (SPOF) or single point of bottleneck (SPOB). It implements a Dynamo-style system using gossip protocols, automatic failure detection, automatic partitioning, handoff, and cluster rebalancing. But with some differences due to the fact that it is not just managing passive data, but actors - active, sometimes stateful, components that also have requirements on message ordering, the number of active instances in the cluster, etc."
+msgstr ""
+
+#: ../../cluster/cluster.rst:23
+# e37c4188aa984c419f2fef0e4e30922f
+msgid "Terms"
+msgstr ""
+
+#: ../../cluster/cluster.rst:25
+# 271cca38fe034e6aa18c59154322c89e
+msgid "These terms are used throughout the documentation."
+msgstr ""
+
+#: ../../cluster/cluster.rst:28
+# 86daa893b1c44ecb803303e570b30dbe
+msgid "A logical member of a cluster. There could be multiple nodes on a physical machine. Defined by a `hostname:port` tuple."
+msgstr ""
+
+#: ../../cluster/cluster.rst:32
+# ed443cb2f40743ae9a3855cf00e2c70c
+msgid "A set of nodes. Contains distributed Akka applications."
+msgstr ""
+
+#: ../../cluster/cluster.rst:35
+# b347c3befb51480db214cdfedbf5b1fe
+msgid "An actor or subtree of actors in the Akka application that is distributed within the cluster."
+msgstr ""
+
+#: ../../cluster/cluster.rst:39
+# 579a5d0d4f884eb6a0bdd5bc2c8b62f5
+msgid "The actor at the head of a partition. The point around which a partition is formed."
+msgstr ""
+
+#: ../../cluster/cluster.rst:43
+# 0414954e54a145938e7b323ca5385f49
+msgid "Also referred to as the actor address. Has the format `actor1/actor2/actor3`"
+msgstr ""
+
+#: ../../cluster/cluster.rst:46
+# d43ba6fae63949578d14e03fe67da584
+msgid "The number of instances of a partition in the cluster. Also referred to as the ``N-value`` of the partition."
+msgstr ""
+
+#: ../../cluster/cluster.rst:50
+# 7af508088df84b7d9e7faece344addfd
+msgid "A node that an actor instance is assigned to."
+msgstr ""
+
+#: ../../cluster/cluster.rst:53
+# 4962ef29b3244740af87c26c349b2255
+msgid "A mapping from partition path to a set of instance nodes (where the nodes are referred to by the ordinal position given the nodes in sorted order)."
+msgstr ""
+
+#: ../../cluster/cluster.rst:58
+# dee1e4ca49424f1bb1099e259bc1893d
+msgid "Membership"
+msgstr ""
+
+#: ../../cluster/cluster.rst:60
+# ec5d9a97414d42c89340a7bc92084639
+msgid "A cluster is made up of a set of member nodes. The identifier for each node is a `hostname:port` pair. An Akka application is distributed over a cluster with each node hosting some part of the application. Cluster membership and partitioning of the application are decoupled. A node could be a member of a cluster without hosting any actors."
+msgstr ""
+
+#: ../../cluster/cluster.rst:68
+# a938c9e330fc4adea7a5561bd7a629c8
+msgid "Gossip"
+msgstr ""
+
+#: ../../cluster/cluster.rst:70
+# 3dfa25b89240498ba3dc69c29177974c
+msgid "The cluster membership used in Akka is based on Amazon's `Dynamo`_ system and particularly the approach taken in Basho's' `Riak`_ distributed database. Cluster membership is communicated using a `Gossip Protocol`_, where the current state of the cluster is gossiped randomly through the cluster. Joining a cluster is initiated by specifying a set of ``seed`` nodes with which to begin gossiping."
+msgstr ""
+
+#: ../../cluster/cluster.rst:83
+# 3a2a40d3f2b64d749b7da623097709d2
+msgid "Vector Clocks"
+msgstr ""
+
+#: ../../cluster/cluster.rst:85
+# 3aa20dfc59f341cfb4447bd4b3ccd2ca
+msgid "`Vector clocks`_ are an algorithm for generating a partial ordering of events in a distributed system and detecting causality violations."
+msgstr ""
+
+#: ../../cluster/cluster.rst:88
+# ed629f57e91d4574b46391ddf07348c4
+msgid "We use vector clocks to to reconcile and merge differences in cluster state during gossiping. A vector clock is a set of (node, counter) pairs. Each update to the cluster state has an accompanying update to the vector clock."
+msgstr ""
+
+#: ../../cluster/cluster.rst:92
+# f400cf092d894a3db2d0c28c726d9711
+msgid "One problem with vector clocks is that their history can over time be very long, which will both make comparisons take longer time as well as take up unnecessary memory. To solve that problem we do pruning of the vector clocks according to the `pruning algorithm`_ in Riak."
+msgstr ""
+
+#: ../../cluster/cluster.rst:102
+# 0c6409b78f9b49309b30e1fccf943237
+msgid "Gossip convergence"
+msgstr ""
+
+#: ../../cluster/cluster.rst:104
+# ba469d3bb8ff44e492c48ab4d1462fb9
+msgid "Information about the cluster converges at certain points of time. This is when all nodes have seen the same cluster state. Convergence is recognised by passing a map from node to current state version during gossip. This information is referred to as the gossip overview. When all versions in the overview are equal there is convergence. Gossip convergence cannot occur while any nodes are unreachable, either the nodes become reachable again, or the nodes need to be moved into the ``down`` or ``removed`` states (see section on `Member states`_ below)."
+msgstr ""
+
+#: ../../cluster/cluster.rst:115
+# f92976b253124f64bb254730c715fd13
+msgid "Failure Detector"
+msgstr ""
+
+#: ../../cluster/cluster.rst:117
+# a2138c4400fc4b99abb1b916dc54991f
+msgid "The failure detector is responsible for trying to detect if a node is unreachable from the rest of the cluster. For this we are using an implementation of `The Phi Accrual Failure Detector`_ by Hayashibara et al."
+msgstr ""
+
+#: ../../cluster/cluster.rst:121
+# 5050258dfb204269b8ce568e7df8db4a
+msgid "An accrual failure detector decouple monitoring and interpretation. That makes them applicable to a wider area of scenarios and more adequate to build generic failure detection services. The idea is that it is keeping a history of failure statistics, calculated from heartbeats received from the gossip protocol, and is trying to do educated guesses by taking multiple factors, and how they accumulate over time, into account in order to come up with a better guess if a specific node is up or down. Rather than just answering \"yes\" or \"no\" to the question \"is the node down?\" it returns a ``phi`` value representing the likelihood that the node is down."
+msgstr ""
+
+#: ../../cluster/cluster.rst:131
+# ed234d871951483883b99ecf98bb5b5d
+msgid "The ``threshold`` that is the basis for the calculation is configurable by the user. A low ``threshold`` is prone to generate many wrong suspicions but ensures a quick detection in the event of a real crash. Conversely, a high ``threshold`` generates fewer mistakes but needs more time to detect actual crashes. The default ``threshold`` is 8 and is appropriate for most situations. However in cloud environments, such as Amazon EC2, the value could be increased to 12 in order to account for network issues that sometimes occur on such platforms."
+msgstr ""
+
+#: ../../cluster/cluster.rst:143
+# c5ebedcfea6d404895817fc5cc62a562
+msgid "Leader"
+msgstr ""
+
+#: ../../cluster/cluster.rst:145
+# a658f4ed5702420a94ce1a45f68bf185
+msgid "After gossip convergence a leader for the cluster can be determined. There is no leader election process, the leader can always be recognised deterministically by any node whenever there is gossip convergence. The leader is simply the first node in sorted order that is able to take the leadership role, where the only allowed member states for a leader are ``up`` or ``leaving`` (see below for more information about member states)."
+msgstr ""
+
+#: ../../cluster/cluster.rst:152
+# 3a8322cf6bc74517b9780e3dcbd039b0
+msgid "The role of the leader is to shift members in and out of the cluster, changing ``joining`` members to the ``up`` state or ``exiting`` members to the ``removed`` state, and to schedule rebalancing across the cluster. Currently leader actions are only triggered by receiving a new cluster state with gossip convergence but it may also be possible for the user to explicitly rebalance the cluster by specifying migrations, or to rebalance the cluster automatically based on metrics from member nodes. Metrics may be spread using the gossip protocol or possibly more efficiently using a *random chord* method, where the leader contacts several random nodes around the cluster ring and each contacted node gathers information from their immediate neighbours, giving a random sampling of load information."
+msgstr ""
+
+#: ../../cluster/cluster.rst:164
+# fca5f509d6e2475b8a7fce788a87eab2
+msgid "The leader also has the power, if configured so, to \"auto-down\" a node that according to the Failure Detector is considered unreachable. This means setting the unreachable node status to ``down`` automatically."
+msgstr ""
+
+#: ../../cluster/cluster.rst:170
+# a47852c0ac56467aa5b1d68558c31ff7
+msgid "Gossip protocol"
+msgstr ""
+
+#: ../../cluster/cluster.rst:172
+# 61832dd0eeb04ea295552f960f62946c
+msgid "A variation of *push-pull gossip* is used to reduce the amount of gossip information sent around the cluster. In push-pull gossip a digest is sent representing current versions but not actual values; the recipient of the gossip can then send back any values for which it has newer versions and also request values for which it has outdated versions. Akka uses a single shared state with a vector clock for versioning, so the variant of push-pull gossip used in Akka makes use of the gossip overview (containing the current state versions for all nodes) to only push the actual state as needed. This also allows any node to easily determine which other nodes have newer or older information, not just the nodes involved in a gossip exchange."
+msgstr ""
+
+#: ../../cluster/cluster.rst:183
+# 4d831c9bf53d4f4da9b1e4adcda5520b
+msgid "Periodically, the default is every 1 second, each node chooses another random node to initiate a round of gossip with. The choice of node is random but can also include extra gossiping for unreachable nodes, seed nodes, and nodes with either newer or older state versions."
+msgstr ""
+
+#: ../../cluster/cluster.rst:188
+# c444219bc6d442269975d6b0500b84ea
+msgid "The gossip overview contains the current state version for all nodes and also a list of unreachable nodes. Whenever a node receives a gossip overview it updates the `Failure Detector`_ with the liveness information."
+msgstr ""
+
+#: ../../cluster/cluster.rst:192
+# 6a5a1797f12c4dbb8cf9cd38954f7e97
+msgid "The nodes defined as ``seed`` nodes are just regular member nodes whose only \"special role\" is to function as contact points in the cluster and to help breaking logical partitions as seen in the gossip algorithm defined below."
+msgstr ""
+
+#: ../../cluster/cluster.rst:196
+# 19584dc5965a417dbb0185042a66d596
+msgid "During each round of gossip exchange the following process is used:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:198
+# 489bfdf542464d069aaa22cda05765f8
+msgid "Gossip to random live node (if any)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:200
+# ad43f95fd31c467da411ca86d665586d
+msgid "Gossip to random unreachable node with certain probability depending on the number of unreachable and live nodes"
+msgstr ""
+
+#: ../../cluster/cluster.rst:203
+# a630630462ca45ea83856868bbbbb383
+msgid "If the node gossiped to at (1) was not a ``seed`` node, or the number of live nodes is less than number of seeds, gossip to random ``seed`` node with certain probability depending on number of unreachable, seed, and live nodes."
+msgstr ""
+
+#: ../../cluster/cluster.rst:207
+# 92092514985b4b27a56ceef740ca01eb
+msgid "Gossip to random node with newer or older state information, based on the current gossip overview, with some probability (?)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:210
+# 94b35bcae13f4a75a45eaaf82cf5b417
+msgid "The gossiper only sends the gossip overview to the chosen node. The recipient of the gossip can use the gossip overview to determine whether:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:213
+# 038bd8385843453c99e02e42658fee23
+msgid "it has a newer version of the gossip state, in which case it sends that back to the gossiper, or"
+msgstr ""
+
+#: ../../cluster/cluster.rst:216
+# a9e7981f31114869b755442f238ab934
+msgid "it has an outdated version of the state, in which case the recipient requests the current state from the gossiper"
+msgstr ""
+
+#: ../../cluster/cluster.rst:219
+# efe28ff37525495a98a8de5aeefd57b1
+msgid "If the recipient and the gossip have the same version then the gossip state is not sent or requested."
+msgstr ""
+
+#: ../../cluster/cluster.rst:222
+# f45ade497f96419c8bc15647d98dea36
+msgid "The main structures used in gossiping are the gossip overview and the gossip state::"
+msgstr ""
+
+#: ../../cluster/cluster.rst:238
+# 414a8e31137840ec81948601a68dd9f2
+msgid "Some of the other structures used are::"
+msgstr ""
+
+#: ../../cluster/cluster.rst:260
+# d1f0efb94cad4eb0abb95ae03334ca98
+msgid "Membership lifecycle"
+msgstr ""
+
+#: ../../cluster/cluster.rst:262
+# a04f41732345448081ff3b75b9f81249
+msgid "A node begins in the ``joining`` state. Once all nodes have seen that the new node is joining (through gossip convergence) the leader will set the member state to ``up`` and can start assigning partitions to the new node."
+msgstr ""
+
+#: ../../cluster/cluster.rst:266
+# 2d22c0ce0fd5451dbd8146540b4d1f4d
+msgid "If a node is leaving the cluster in a safe, expected manner then it switches to the ``leaving`` state. The leader will reassign partitions across the cluster (it is possible for a leaving node to itself be the leader). When all partition handoff has completed then the node will change to the ``exiting`` state. Once all nodes have seen the exiting state (convergence) the leader will remove the node from the cluster, marking it as ``removed``."
+msgstr ""
+
+#: ../../cluster/cluster.rst:273
+# a87b67edf77947ff8411e3fae749b94c
+msgid "A node can also be removed forcefully by moving it directly to the ``removed`` state using the ``remove`` action. The cluster will rebalance based on the new cluster membership."
+msgstr ""
+
+#: ../../cluster/cluster.rst:277
+# 03ba83b6a7f94d67b1cfc8fc56c7f95d
+msgid "If a node is unreachable then gossip convergence is not possible and therefore any leader actions are also not possible (for instance, allowing a node to become a part of the cluster, or changing actor distribution). To be able to move forward the state of the unreachable nodes must be changed. If the unreachable node is experiencing only transient difficulties then it can be explicitly marked as ``down`` using the ``down`` user action. When this node comes back up and begins gossiping it will automatically go through the joining process again. If the unreachable node will be permanently down then it can be removed from the cluster directly with the ``remove`` user action. The cluster can also *auto-down* a node using the accrual failure detector."
+msgstr ""
+
+#: ../../cluster/cluster.rst:288
+# 948f055cc4644bb9809c0e1b3ca0e1f5
+msgid "This means that nodes can join and leave the cluster at any point in time, e.g. provide cluster elasticity."
+msgstr ""
+
+#: ../../cluster/cluster.rst:293
+# 264cfeffc78947c49987bc5b867fb98f
+msgid "State diagram for the member states"
+msgstr ""
+
+#: ../../cluster/cluster.rst:299
+# b4565510f0824f71b7ad38e503ba94af
+msgid "Member states"
+msgstr ""
+
+#: ../../cluster/cluster.rst:302
+# 0a1121e736f545cdab39b3a2c355de5e
+msgid "transient state when joining a cluster"
+msgstr ""
+
+#: ../../cluster/cluster.rst:305
+# 1be17edf41684f5b99309a8136c5fd7c
+msgid "normal operating state"
+msgstr ""
+
+#: ../../cluster/cluster.rst:308
+# 8cfb617be0cd4833816caee7e06cca55
+msgid "states during graceful removal"
+msgstr ""
+
+#: ../../cluster/cluster.rst:311
+# 0265dc3397ad438aa594244c19ca005d
+msgid "tombstone state (no longer a member)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:314
+# 9fe6cd93c68c4513a9f06d1f37c85e45
+msgid "marked as down/offline/unreachable"
+msgstr ""
+
+#: ../../cluster/cluster.rst:318
+# bd6f63354ee5427b913a8f43d16924ef
+msgid "User actions"
+msgstr ""
+
+#: ../../cluster/cluster.rst:321
+# d7b4281d0af84331b97e8ffdbe5722fe
+msgid "join a single node to a cluster - can be explicit or automatic on startup if a list of seed nodes have been specified in the configuration"
+msgstr ""
+
+#: ../../cluster/cluster.rst:325
+# 7a361717ae434dfeb2dffea26c1cb233
+msgid "tell a node to leave the cluster gracefully"
+msgstr ""
+
+#: ../../cluster/cluster.rst:328
+# 23f10d73c7c64f8c9a0a5c2f68e18f74
+msgid "mark a node as temporarily down"
+msgstr ""
+
+#: ../../cluster/cluster.rst:331
+# 0643c4f6e16a402a9ef63a9061b39596
+msgid "remove a node from the cluster immediately"
+msgstr ""
+
+#: ../../cluster/cluster.rst:335
+# 763e98bc8c344311b98e6fcfc91e0a46
+msgid "Leader actions"
+msgstr ""
+
+#: ../../cluster/cluster.rst:337
+# 4da9fd4a092c4ae491d67f17cba82e31
+msgid "The leader has the following duties:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:339
+# 3935ced52aff47ef9f5b0c412ae36924
+msgid "shifting members in and out of the cluster"
+msgstr ""
+
+#: ../../cluster/cluster.rst:341
+# 350651b96bf240f9a0d341c6229e92d3
+msgid "joining -> up"
+msgstr ""
+
+#: ../../cluster/cluster.rst:343
+# 3c36e3cfad0c40ebbdd9848d38c29786
+msgid "exiting -> removed"
+msgstr ""
+
+#: ../../cluster/cluster.rst:345
+# 176d94fb4120467aa80382e8a458e324
+msgid "partition distribution"
+msgstr ""
+
+#: ../../cluster/cluster.rst:347
+# a3b5ca32887441459cf7f848c232a20a
+msgid "scheduling handoffs (pending changes)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:349
+# 4c98de2926d8413894bb9928ba5bb311
+msgid "setting the partition table (partition path -> base node)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:351
+# 33b5b84166bf4c7eb2868fd3a18f3879
+msgid "Automatic rebalancing based on runtime metrics in the system (such as CPU, RAM, Garbage Collection, mailbox depth etc.)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:356
+# d0a72bc519664c13a1c8c1c1ad631af1
+msgid "Partitioning"
+msgstr ""
+
+#: ../../cluster/cluster.rst:358
+# c8bdc51ebfb14d7c9f87b5fbf084fd99
+msgid "Each partition (an actor or actor subtree) in the actor system is assigned to a set of nodes in the cluster. The actor at the head of the partition is referred to as the partition point. The mapping from partition path (actor address of the format \"a/b/c\") to instance nodes is stored in the partition table and is maintained as part of the cluster state through the gossip protocol. The partition table is only updated by the leader node. Currently the only possible partition points are *routed* actors."
+msgstr ""
+
+#: ../../cluster/cluster.rst:366
+# 539db671ef194f63b3f74e052e0b8dab
+msgid "Routed actors can have an instance count greater than one. The instance count is also referred to as the ``N-value``. If the ``N-value`` is greater than one then a set of instance nodes will be given in the partition table."
+msgstr ""
+
+#: ../../cluster/cluster.rst:370
+# 0213a3c6152b4a199162d1c53c1fdbb6
+msgid "Note that in the first implementation there may be a restriction such that only top-level partitions are possible (the highest possible partition points are used and sub-partitioning is not allowed). Still to be explored in more detail."
+msgstr ""
+
+#: ../../cluster/cluster.rst:374
+# 9940e692546e494aa970403652f9e8fc
+msgid "The cluster leader determines the current instance count for a partition based on two axes: fault-tolerance and scaling."
+msgstr ""
+
+#: ../../cluster/cluster.rst:377
+# f919cf97ac5a41e3bff2b1c2d3ddbd74
+msgid "Fault-tolerance determines a minimum number of instances for a routed actor (allowing N-1 nodes to crash while still maintaining at least one running actor instance). The user can specify a function from current number of nodes to the number of acceptable node failures: n: Int => f: Int where f < n."
+msgstr ""
+
+#: ../../cluster/cluster.rst:382
+# c6d1fa9a14e84d639b68baafaea567f3
+msgid "Scaling reflects the number of instances needed to maintain good throughput and is influenced by metrics from the system, particularly a history of mailbox size, CPU load, and GC percentages. It may also be possible to accept scaling hints from the user that indicate expected load."
+msgstr ""
+
+#: ../../cluster/cluster.rst:387
+# cde6814386e34760a8c9ebc928f87488
+msgid "The balancing of partitions can be determined in a very simple way in the first implementation, where the overlap of partitions is minimized. Partitions are spread over the cluster ring in a circular fashion, with each instance node in the first available space. For example, given a cluster with ten nodes and three partitions, A, B, and C, having N-values of 4, 3, and 5; partition A would have instances on nodes 1-4; partition B would have instances on nodes 5-7; partition C would have instances on nodes 8-10 and 1-2. The only overlap is on nodes 1 and 2."
+msgstr ""
+
+#: ../../cluster/cluster.rst:396
+# 79fb827c6a6f4b388e7f6ef243360ca9
+msgid "The distribution of partitions is not limited, however, to having instances on adjacent nodes in the sorted ring order. Each instance can be assigned to any node and the more advanced load balancing algorithms will make use of this. The partition table contains a mapping from path to instance nodes. The partitioning for the above example would be::"
+msgstr ""
+
+#: ../../cluster/cluster.rst:406
+# 27073855830d41369108671c9eafbdba
+msgid "If 5 new nodes join the cluster and in sorted order these nodes appear after the current nodes 2, 4, 5, 7, and 8, then the partition table could be updated to the following, with all instances on the same physical nodes as before::"
+msgstr ""
+
+#: ../../cluster/cluster.rst:414
+# d26d7e9ef7df463eb3deceed13eb3219
+msgid "When rebalancing is required the leader will schedule handoffs, gossiping a set of pending changes, and when each change is complete the leader will update the partition table."
+msgstr ""
+
+#: ../../cluster/cluster.rst:420
+# 3e8dae7e22bf4248a8bc31109cac1706
+msgid "Handoff"
+msgstr ""
+
+#: ../../cluster/cluster.rst:422
+# 56defe5eb64746a4b7c59372446ad5f8
+msgid "Handoff for an actor-based system is different than for a data-based system. The most important point is that message ordering (from a given node to a given actor instance) may need to be maintained. If an actor is a singleton actor (only one instance possible throughout the cluster) then the cluster may also need to assure that there is only one such actor active at any one time. Both of these situations can be handled by forwarding and buffering messages during transitions."
+msgstr ""
+
+#: ../../cluster/cluster.rst:430
+# 68c2b405bbc0469284688637644f4a43
+msgid "A *graceful handoff* (one where the previous host node is up and running during the handoff), given a previous host node ``N1``, a new host node ``N2``, and an actor partition ``A`` to be migrated from ``N1`` to ``N2``, has this general structure:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:435
+#: ../../cluster/cluster.rst:518
+# b4cdfde460c845b3bfc7d8ca6753be55
+# 42a8f14a48f64b8ca4cb0e2e7c21e4ee
+msgid "the leader sets a pending change for ``N1`` to handoff ``A`` to ``N2``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:437
+# 321124703f26454ea2994f583d214192
+msgid "``N1`` notices the pending change and sends an initialization message to ``N2``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:439
+# a03584a7dafb4c8899a9a0838b0c3440
+msgid "in response ``N2`` creates ``A`` and sends back a ready message"
+msgstr ""
+
+#: ../../cluster/cluster.rst:441
+# 1370b42b35524a65895e8137f1d507a5
+msgid "after receiving the ready message ``N1`` marks the change as complete and shuts down ``A``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:444
+#: ../../cluster/cluster.rst:549
+# c1769d24d3994edb9a1ee91a01544b56
+# fd6b5d1b75dd4a6e9141d76311250366
+msgid "the leader sees the migration is complete and updates the partition table"
+msgstr ""
+
+#: ../../cluster/cluster.rst:446
+#: ../../cluster/cluster.rst:552
+# abc923cfbfce44d38c32d48565c420d3
+# da705050f2bb4c3ea886b67d2b571ec8
+msgid "all nodes eventually see the new partitioning and use ``N2``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:450
+# 9ca7ebf18d1a4ba6892b09d2631a8d2f
+msgid "Transitions"
+msgstr ""
+
+#: ../../cluster/cluster.rst:452
+# 5781de4786374eeb96f6120143c44980
+msgid "There are transition times in the handoff process where different approaches can be used to give different guarantees."
+msgstr ""
+
+#: ../../cluster/cluster.rst:457
+# 790ba36f4de44f15924663967a9e9d2d
+msgid "Migration transition"
+msgstr ""
+
+#: ../../cluster/cluster.rst:459
+# b3d5199eff8f44dd80187c1387825050
+msgid "The first transition starts when ``N1`` initiates the moving of ``A`` and ends when ``N1`` receives the ready message, and is referred to as the *migration transition*."
+msgstr ""
+
+#: ../../cluster/cluster.rst:463
+# 3d10729f49434ea4961a391e8e13b94f
+msgid "The first question is; during the migration transition, should:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:465
+# ce94131f0c0c4efe93c52e899c310919
+msgid "``N1`` continue to process messages for ``A``?"
+msgstr ""
+
+#: ../../cluster/cluster.rst:467
+# 659c540f4b6b4eb08bdcc83700ca4ee0
+msgid "Or is it important that no messages for ``A`` are processed on ``N1`` once migration begins?"
+msgstr ""
+
+#: ../../cluster/cluster.rst:470
+# 666fbc4b90b1437186000788ac93195d
+msgid "If it is okay for the previous host node ``N1`` to process messages during migration then there is nothing that needs to be done at this point."
+msgstr ""
+
+#: ../../cluster/cluster.rst:473
+# cb3c905ccc7142d999a056c2202cb544
+msgid "If no messages are to be processed on the previous host node during migration then there are two possibilities: the messages are forwarded to the new host and buffered until the actor is ready, or the messages are simply dropped by terminating the actor and allowing the normal dead letter process to be used."
+msgstr ""
+
+#: ../../cluster/cluster.rst:480
+# efd1d1ede44640b199bfcf1a5e9559d4
+msgid "Update transition"
+msgstr ""
+
+#: ../../cluster/cluster.rst:482
+# bcf9023dce7644c58171bc7192c9c2a4
+msgid "The second transition begins when the migration is marked as complete and ends when all nodes have the updated partition table (when all nodes will use ``N2`` as the host for ``A``, i.e. we have convergence) and is referred to as the *update transition*."
+msgstr ""
+
+#: ../../cluster/cluster.rst:487
+# d0e90d2d950047ad9cfed4216c03bfc1
+msgid "Once the update transition begins ``N1`` can forward any messages it receives for ``A`` to the new host ``N2``. The question is whether or not message ordering needs to be preserved. If messages sent to the previous host node ``N1`` are being forwarded, then it is possible that a message sent to ``N1`` could be forwarded after a direct message to the new host ``N2``, breaking message ordering from a client to actor ``A``."
+msgstr ""
+
+#: ../../cluster/cluster.rst:494
+# 6848043f56f649aca771a68342958f7a
+msgid "In this situation ``N2`` can keep a buffer for messages per sending node. Each buffer is flushed and removed when an acknowledgement (``ack``) message has been received. When each node in the cluster sees the partition update it first sends an ``ack`` message to the previous host node ``N1`` before beginning to use ``N2`` as the new host for ``A``. Any messages sent from the client node directly to ``N2`` will be buffered. ``N1`` can count down the number of acks to determine when no more forwarding is needed. The ``ack`` message from any node will always follow any other messages sent to ``N1``. When ``N1`` receives the ``ack`` message it also forwards it to ``N2`` and again this ``ack`` message will follow any other messages already forwarded for ``A``. When ``N2`` receives an ``ack`` message, the buffer for the sending node can be flushed and removed. Any subsequent messages from this sending node can be queued normally. Once all nodes in the cluster have acknowledged the partition change and ``N2`` has cleared all buffers, the handoff is complete and message ordering has been preserved. In practice the buffers should remain small as it is only those messages sent directly to ``N2`` before the acknowledgement has been forwarded that will be buffered."
+msgstr ""
+
+#: ../../cluster/cluster.rst:514
+# 21c20cf21ef84a7b87015a89d437c15c
+msgid "Graceful handoff"
+msgstr ""
+
+#: ../../cluster/cluster.rst:516
+# 3f651b3018b54047ae93206fe0b56be9
+msgid "A more complete process for graceful handoff would be:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:521
+# 0a6b962fad3c42408d407f28c868c747
+msgid "``N1`` notices the pending change and sends an initialization message to ``N2``. Options:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:524
+# dbfb4b38aa964faca3c251906f35b720
+msgid "keep ``A`` on ``N1`` active and continuing processing messages as normal"
+msgstr ""
+
+#: ../../cluster/cluster.rst:526
+# b8a86f5b50394fda8bdf6a33a44d6be6
+msgid "``N1`` forwards all messages for ``A`` to ``N2``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:528
+#: ../../cluster/cluster.rst:545
+# 1cc38e0e90274fd3bc9114985019077b
+# 12b2154cac13495ba581d5ee2f5630f1
+msgid "``N1`` drops all messages for ``A`` (terminate ``A`` with messages becoming dead letters)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:532
+# a72fc86511e849b7b5f487f63c517aed
+msgid "in response ``N2`` creates ``A`` and sends back a ready message. Options:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:534
+# cdedbc66996f4017a1d93d1894ba6779
+msgid "``N2`` simply processes messages for ``A`` as normal"
+msgstr ""
+
+#: ../../cluster/cluster.rst:536
+# 2ddafbe39b50498d9bc79dc3ec904999
+msgid "``N2`` creates a buffer per sending node for ``A``. Each buffer is opened (flushed and removed) when an acknowledgement for the sending node has been received (via ``N1``)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:541
+# c42dc7a735be4adc90cd4f0de8ad0fcc
+msgid "after receiving the ready message ``N1`` marks the change as complete. Options:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:543
+# 63a43c2c5d5043ea990013b751a77d58
+msgid "``N1`` forwards all messages for ``A`` to ``N2`` during the update transition"
+msgstr ""
+
+#: ../../cluster/cluster.rst:554
+# 7ceea5979471422aa425b6b832c6a677
+msgid "each node sends an acknowledgement message to ``N1``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:556
+# 5fadd571adb446f9a007ec8d8dc146a7
+msgid "when ``N1`` receives the acknowledgement it can count down the pending acknowledgements and remove forwarding when complete"
+msgstr ""
+
+#: ../../cluster/cluster.rst:559
+# f770c40a75f04d8db990653952026bc0
+msgid "when ``N2`` receives the acknowledgement it can open the buffer for the sending node (if buffers are used)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:563
+# 07c88800864840d48e02cd9e04480ecf
+msgid "The default approach is to take options 2a, 3a, and 4a - allowing ``A`` on ``N1`` to continue processing messages during migration and then forwarding any messages during the update transition. This assumes stateless actors that do not have a dependency on message ordering from any given source."
+msgstr ""
+
+#: ../../cluster/cluster.rst:568
+# 6602ed1496a44c0fa66bd19dab5dc585
+msgid "If an actor has a distributed durable mailbox then nothing needs to be done, other than migrating the actor."
+msgstr ""
+
+#: ../../cluster/cluster.rst:571
+# c6ffdd1ab11e4c47801a25783d8a530f
+msgid "If message ordering needs to be maintained during the update transition then option 3b can be used, creating buffers per sending node."
+msgstr ""
+
+#: ../../cluster/cluster.rst:574
+# adb5741af0ab48eba15f1918ad4dc208
+msgid "If the actors are robust to message send failures then the dropping messages approach can be used (with no forwarding or buffering needed)."
+msgstr ""
+
+#: ../../cluster/cluster.rst:577
+# bf665a2726684cb696b1f5026327c8fa
+msgid "If an actor is a singleton (only one instance possible throughout the cluster) and state is transferred during the migration initialization, then options 2b and 3b would be required."
+msgstr ""
+
+#: ../../cluster/cluster.rst:583
+# a63a309e1a294b5285ea15139d956422
+msgid "Stateful Actor Replication"
+msgstr ""
+
+#: ../../cluster/cluster.rst:585
+# d44232305c2f40f69ec016c1257db432
+msgid "Support for stateful singleton actors will come in future releases of Akka, and is scheduled for Akka 2.2. Having a Dynamo base for the clustering already we should use the same infrastructure to provide stateful actor clustering and datastore as well. The stateful actor clustering should be layered on top of the distributed datastore. See the next section for a rough outline on how the distributed datastore could be implemented."
+msgstr ""
+
+#: ../../cluster/cluster.rst:594
+# 5bd1d1d221e84e7d99f92a28213f2498
+msgid "Implementing a Dynamo-style distributed database on top of Akka Cluster"
+msgstr ""
+
+#: ../../cluster/cluster.rst:596
+# 8098e5f881044b95a06ecd9a09d5ddd7
+msgid "The missing pieces to implement a full Dynamo-style eventually consistent data storage on top of the Akka Cluster as described in this document are:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:599
+# 21b12b6f06804a329c0a178b1cc5b555
+msgid "Configuration of ``READ`` and ``WRITE`` consistency levels according to the ``N/R/W`` numbers defined in the Dynamo paper."
+msgstr ""
+
+#: ../../cluster/cluster.rst:602
+# 9faa0d2e09f0407c96bdfaffe8a596bb
+msgid "R = read replica count"
+msgstr ""
+
+#: ../../cluster/cluster.rst:604
+# 09be5c8136cf476dbc678abd26c5187e
+msgid "W = write replica count"
+msgstr ""
+
+#: ../../cluster/cluster.rst:606
+# 40056b88be214d6d8919fe76ccaabb5a
+msgid "N = replication factor"
+msgstr ""
+
+#: ../../cluster/cluster.rst:608
+# 6a31a60b6de74af696b83416643420dd
+msgid "Q = QUORUM = N / 2 + 1"
+msgstr ""
+
+#: ../../cluster/cluster.rst:610
+# 88d8fcf9887841c9a1171aceafd37367
+msgid "W + R > N = full consistency"
+msgstr ""
+
+#: ../../cluster/cluster.rst:612
+# 95bc1b345d964deca58f40b520843535
+msgid "Define a versioned data message wrapper::"
+msgstr ""
+
+#: ../../cluster/cluster.rst:616
+# 0a31c828227146288ee637eea5ee1b19
+msgid "Define a single system data broker actor on each node that uses a ``Consistent Hashing Router`` and that have instances on all other nodes in the node ring."
+msgstr ""
+
+#: ../../cluster/cluster.rst:619
+# b764b7b0ea304d6ab346275d42cf19bb
+msgid "For ``WRITE``:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:621
+# db05603aa1cc45619a9a0876299232fb
+msgid "Wrap data in a ``Versioned Message``"
+msgstr ""
+
+#: ../../cluster/cluster.rst:623
+# 4480bc9f72b946d2b461c15882f1b1cf
+msgid "Send a ``Versioned Message`` with the data is sent to a number of nodes matching the ``W-value``."
+msgstr ""
+
+#: ../../cluster/cluster.rst:626
+# 2bd59ca564e84d2b8d66a39f1493f901
+msgid "For ``READ``:"
+msgstr ""
+
+#: ../../cluster/cluster.rst:628
+# 31055cceab204700bffa3d215bcdc703
+msgid "Read in the ``Versioned Message`` with the data from as many replicas as you need for the consistency level required by the ``R-value``."
+msgstr ""
+
+#: ../../cluster/cluster.rst:631
+# a84221c782b04e6483aeaa5d338342a7
+msgid "Do comparison on the versions (using `Vector Clocks`_)"
+msgstr ""
+
+#: ../../cluster/cluster.rst:633
+# c9ade9ff7c98433a80a8d9c517871e98
+msgid "If the versions differ then do `Read Repair`_ to update the inconsistent nodes."
+msgstr ""
+
+#: ../../cluster/cluster.rst:636
+# 8d5098a6ac3d492fbc129ddc97698a45
+msgid "Return the latest versioned data."
+msgstr ""
+
+#: ../../cluster/index.rst:2
+# 9a07b19424004f09bfd162ad1aed1bfb
+msgid "Cluster"
+msgstr ""
+

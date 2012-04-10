@@ -14,6 +14,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build', 'pending', 'disabled']
+locale_dirs = ["translations/"]
 
 project = u'Akka'
 copyright = u'2011, Typesafe Inc'

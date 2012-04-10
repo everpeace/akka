@@ -1,0 +1,1631 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../project/index.rst:2
+# 4879d87746c44861b4b78ecdd3e99617
+msgid "Project Information"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:4
+# 7a673dab886f44d99d7085cac0beaf71
+msgid "Issue Tracking"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:6
+# c271066f0fd04701be21a02d756beb88
+msgid "Akka is using ``Assembla`` as its issue tracking system."
+msgstr ""
+
+#: ../../project/issue-tracking.rst:9
+# 4aa5a7e234864f7f85b79e67ac05a718
+msgid "Browsing"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:12
+# c87e55685e53488cbc0d2bb85da815b2
+msgid "Tickets"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:14
+# 7c246c8bfa52438a8f5e99388f9a53e2
+msgid "`You can find the Akka tickets here <http://www.assembla.com/spaces/akka/tickets>`_"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:17
+# 0e6a4cc527f54b8cb76592b3050753ed
+msgid "Roadmaps"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:19
+# 83f2d30a22d24c058aa7451995ed4b59
+msgid "`The roadmap for each Akka milestone is here <https://www.assembla.com/spaces/akka/milestones>`_"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:23
+# 4c64e17197984dd688160e4668cd6e33
+msgid "Creating tickets"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:25
+# 009152f94d4848d8bc57d21aa39358dd
+msgid "In order to create tickets you need to do the following:"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:27
+# a28c6970f1774b969d240153a2d58e4a
+msgid "`Register here <https://www.assembla.com/user/signup>`_ then log in"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:29
+# 8d86a85a532846a297b5385f85555690
+msgid "Then you also need to become a \"Watcher\" of the Akka space."
+msgstr ""
+
+#: ../../project/issue-tracking.rst:31
+# 99c4aa1680b943e09a1a08e44bd280f2
+msgid "`Link to create a new ticket <https://www.assembla.com/spaces/akka/tickets/new>`__"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:33
+# f5757d63e1f349c1a1281ff2c66ca41a
+msgid "Thanks a lot for reporting bugs and suggesting features."
+msgstr ""
+
+#: ../../project/issue-tracking.rst:37
+# 360f10cbe0294192ac2eae5c276c6d15
+msgid "Failing test"
+msgstr ""
+
+#: ../../project/issue-tracking.rst:39
+# 6825a179e76b4ce4b9c9fc7b4b10b3eb
+msgid "Please submit a failing test on the following format:"
+msgstr ""
+
+#: ../../project/licenses.rst:4
+# 02113b500947466eb8c99cfa2e4b3369
+msgid "Licenses"
+msgstr ""
+
+#: ../../project/licenses.rst:9
+# 0f35184dc98644c2b4e9f17c29ca1b4e
+msgid "Akka License"
+msgstr ""
+
+#: ../../project/licenses.rst:30
+# 4dd7e2aefbb04865922aad2639fb51aa
+msgid "Akka Committer License Agreement"
+msgstr ""
+
+#: ../../project/licenses.rst:32
+# 589dbeab3f7142028caf715d70e353b6
+msgid "All committers have signed this CLA"
+msgstr ""
+
+#: ../../project/licenses.rst:196
+# fba9630bb78e4793ad1ba19f9403eeac
+msgid "Licenses for Dependency Libraries"
+msgstr ""
+
+#: ../../project/licenses.rst:198
+# 84eb60ff9a024d3d8f330b40d728edc3
+msgid "Each dependency and its license can be seen in the project build file (the comment on the side of each dependency): `<https://github.com/akka/akka/blob/master/project/build/AkkaProject.scala#L127>`_"
+msgstr ""
+
+#: ../../project/links.rst:4
+# 241d200412d848e4a241a6c4d6be7a68
+msgid "`Commercial Support <http://typesafe.com>`__"
+msgstr ""
+
+#: ../../project/links.rst:6
+# cbe5e753f88b490b8a4dd6f5b26bb10b
+msgid "Commercial support is provided by `Typesafe <http://typesafe.com>`_. Akka is now part of the `Typesafe Stack <http://typesafe.com/stack>`_."
+msgstr ""
+
+#: ../../project/links.rst:10
+# cdbe05ce7792408cb90d01f058c82604
+msgid "`Mailing List <http://groups.google.com/group/akka-user>`_"
+msgstr ""
+
+#: ../../project/links.rst:12
+# 9ca86231b76f4fba9debc82c2fdb9640
+msgid "`Akka User Google Group <http://groups.google.com/group/akka-user>`_"
+msgstr ""
+
+#: ../../project/links.rst:14
+# a377056e53954180b9a1dece21261b60
+msgid "`Akka Developer Google Group <http://groups.google.com/group/akka-dev>`_"
+msgstr ""
+
+#: ../../project/links.rst:18
+# bd52caab84c3495493a2e9225b611d66
+msgid "`Downloads <http://akka.io/downloads/>`_"
+msgstr ""
+
+#: ../../project/links.rst:20
+# 328e0069a82f469189eecbb79d475767
+msgid "`<http://akka.io/downloads/>`_"
+msgstr ""
+
+#: ../../project/links.rst:24
+# 663ea5cc2ee446e2a73a5b0e7cc78490
+msgid "`Source Code <http://github.com/akka/akka>`_"
+msgstr ""
+
+#: ../../project/links.rst:26
+# 96671700ebf64dce8adee335ef1746b2
+msgid "Akka uses Git and is hosted at `Github <http://github.com>`_."
+msgstr ""
+
+#: ../../project/links.rst:28
+# 4c51bbe0234042c9aac6c014ce874875
+msgid "Akka: clone the Akka repository from `<http://github.com/akka/akka>`_"
+msgstr ""
+
+#: ../../project/links.rst:32
+# 35d5483fb5644819a8f4b2bab4bad5a9
+msgid "`Releases Repository <http://akka.io/releases/>`_"
+msgstr ""
+
+#: ../../project/links.rst:34
+# a718194eb5a04e37856b380b760b5071
+msgid "The Akka Maven repository can be found at http://akka.io/releases/."
+msgstr ""
+
+#: ../../project/links.rst:36
+# 61b45bba61384b0cb17a768b46868938
+msgid "Typesafe provides http://repo.typesafe.com/typesafe/releases/ that proxies several other repositories, including akka.io.  It is convenient to use the Typesafe repository, since it includes all external dependencies of Akka.  It is a \"best-effort\" service, and if it is unavailable you may need to use the underlying repositories directly."
+msgstr ""
+
+#: ../../project/links.rst:42
+# 8fcc8a524c944ccda834f165ca866298
+msgid "http://akka.io/releases/"
+msgstr ""
+
+#: ../../project/links.rst:43
+# 7fee4dd956a84dbf98f3145b52a5b1da
+msgid "http://repository.codehaus.org/"
+msgstr ""
+
+#: ../../project/links.rst:44
+# 047ace6ac9b24434a445018621a13feb
+msgid "http://guiceyfruit.googlecode.com/svn/repo/releases/"
+msgstr ""
+
+#: ../../project/links.rst:45
+# a767367fdb1f44e4802637dcd9a478cf
+msgid "http://repository.jboss.org/nexus/content/groups/public/"
+msgstr ""
+
+#: ../../project/links.rst:46
+# 3ba0d80963404ae4aca531e7282e9f7a
+msgid "http://download.java.net/maven/2/"
+msgstr ""
+
+#: ../../project/links.rst:47
+# d40ef7c00e664afaae11049e7885c1a3
+msgid "http://oss.sonatype.org/content/repositories/releases/"
+msgstr ""
+
+#: ../../project/links.rst:48
+# c0d1e2a942e74e598df305155b11604f
+msgid "http://download.java.net/maven/glassfish/"
+msgstr ""
+
+#: ../../project/links.rst:49
+# eaa4204fc3f84180b4dd802f652ce605
+msgid "http://databinder.net/repo/"
+msgstr ""
+
+#: ../../project/links.rst:53
+# 51a1e9a57f604bae980a82f4a492cd93
+msgid "`Snapshots Repository <http://akka.io/snapshots/>`_"
+msgstr ""
+
+#: ../../project/links.rst:55
+# 1fb838c1cbc54da8a432f2c88680b0e8
+msgid "Nightly builds are available in http://akka.io/snapshots/ and proxied through http://repo.typesafe.com/typesafe/snapshots/ as both ``SNAPSHOT`` and timestamped versions."
+msgstr ""
+
+#: ../../project/links.rst:59
+# a8cdbf0316b4437cb61a478a16570745
+msgid "For timestamped versions, pick a timestamp from http://repo.typesafe.com/typesafe/snapshots/com/typesafe/akka/akka-actor/. All Akka modules that belong to the same build have the same timestamp."
+msgstr ""
+
+#: ../../project/links.rst:63
+# 9fa72e1f6f6843bd8e9de64790480b99
+msgid "Make sure that you add the repository to the sbt resolvers or maven repositories::"
+msgstr ""
+
+#: ../../project/links.rst:67
+# f672bc6bf52a4a2fb932d26b78fcfee0
+msgid "Define the library dependencies with the timestamp as version. For example::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:5
+# ee8e04b71d07455180ebd1a715627372
+msgid "Migration Guide 1.3.x to 2.0.x"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:7
+# 7dc84f75e4364c5db6d4537b4ad7eaee
+msgid "The 2.0 release contains several new features which require source-level changes in client code. This API cleanup is planned to be the last one for a significant amount of time."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:12
+# 25aea81fd6ed4aa4bb43787b61a26d8d
+msgid "New Concepts"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:14
+# 1024958ed45e427fadec3879b3d43083
+msgid "First you should take some time to understand the new concepts of :ref:`actor-systems`, :ref:`supervision`, and :ref:`addressing`."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:18
+# 8212e8446f284bc08d3b1d85bc17d0a0
+msgid "Migration Kit"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:20
+# 2ce513befde2431284f3df533429d29e
+msgid "Nobody likes a big refactoring that takes several days to complete until anything is able to run again. Therefore we provide a migration kit that makes it possible to do the migration changes in smaller steps."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:24
+# 07fce9076fb84f579dffedc8e7897e0a
+msgid "The migration kit only covers the most common usage of Akka. It is not intended as a final solution. The whole migration kit is marked as deprecated and will be removed in Akka 2.1."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:28
+# edb6d7e4194348ae85ef946607b11c07
+msgid "The migration kit is provided in separate jar files. Add the following dependency::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:32
+# dd27cf304d924345a21b5429263ec9cc
+msgid "The first step of the migration is to do some trivial replacements. Search and replace the following (be careful with the non qualified names):"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:36
+# 1c4dc9a35e924a8e9d0735c2823b7ae0
+msgid "Search"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:36
+# 1dccbfd60a58463480ed8fa6fa08dc89
+msgid "Replace with"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:38
+# e486bf12359d4e2da2d4cb003e676f14
+msgid "``akka.actor.Actor``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:38
+# 335e45da38a0442286a43f131b8b9360
+msgid "``akka.actor.OldActor``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:39
+# 852830e4bea84d52bafccccc8c68a6a7
+msgid "``extends Actor``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:39
+# 90195407a11a4254887f059d376aa95b
+msgid "``extends OldActor``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:40
+# 92c34c592f88479eaf1efc34cb8b3f33
+msgid "``akka.actor.Scheduler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:40
+# 836eb0df3c8b4e8ab33c7e5e81b5910e
+msgid "``akka.actor.OldScheduler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:41
+# 67c23b66f95a4b30907df7eabc776f37
+msgid "``Scheduler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:41
+# fe1f1fb8956c400e8bd27fe599527ea9
+msgid "``OldScheduler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:42
+# e7424d59b51a415bbd55d97de83f191f
+msgid "``akka.event.EventHandler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:42
+# d256e032db734dfd9e9526b8c8a05f4d
+msgid "``akka.event.OldEventHandler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:43
+# d511f6be5b754b15b61efb69095bb350
+msgid "``EventHandler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:43
+# e43df9afaf4a4b01899ad5d8fb05d85d
+msgid "``OldEventHandler``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:44
+# c114c827154d4b12a11aa692b8f5cdd7
+msgid "``akka.config.Config``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:44
+# d94a84ab80854c61bef990a49b4e6757
+msgid "``akka.config.OldConfig``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:45
+# 0650d485a94d45e4842046a8f4989ba8
+msgid "``Config``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:45
+# 228ea8b7f0d74129934725925fcfd58e
+msgid "``OldConfig``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:48
+# efdbe9f3034e4ebdbd35b53037b704c7
+msgid "For Scala users the migration kit also contains some implicit conversions to be able to use some old methods. These conversions are useful from tests or other code used outside actors."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:56
+# 48d1208d29f849bcb417f67ffb1516b9
+msgid "Thereafter you need to fix compilation errors that are not handled by the migration kit, such as:"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:59
+# 1d05b958b67445229f47441ebfea0496
+msgid "Definition of supervisors"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:60
+# 9bbccce79bcd4cbc9a7f8901816f6da6
+msgid "Definition of dispatchers"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:61
+# 07c1d445e3aa46ed8c355ff493e37b35
+msgid "ActorRegistry"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:63
+# 8a5c050fcccc4d5c84827cdee27977a9
+msgid "When everything compiles you continue by replacing/removing the ``OldXxx`` classes one-by-one from the migration kit with appropriate migration."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:66
+# 710291d33c5545fbb66e994f8faf25bf
+msgid "When using the migration kit there will be one global actor system, which loads the configuration ``akka.conf`` from the same locations as in Akka 1.x. This means that while you are using the migration kit you should not create your own ``ActorSystem``, but instead use the ``akka.actor.GlobalActorSystem``. In order to voluntarily exit the JVM you must ``shutdown`` the ``GlobalActorSystem`` Last task of the migration would be to create your own ``ActorSystem``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:75
+# 07f60c098f7843ae957dff924516b958
+msgid "Unordered Collection of Migration Items"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:78
+#: ../../project/release-notes.rst:35
+# aa9d037ca3e9445a8f20de58485b2697
+# cd12700b69f640af8b860054f4eae5a3
+msgid "Actors"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:81
+# 25d375ea3ca34f45877f9637d00249e5
+msgid "Creating and starting actors"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:83
+# a9a7753a476346e2b8ee956a1b0f4cc7
+msgid "Actors are created by passing in a ``Props`` instance into the actorOf factory method in a ``ActorRefProvider``, which is the ``ActorSystem`` or ``ActorContext``. Use the system to create top level actors. Use the context to create actors from other actors. The difference is how the supervisor hierarchy is arranged. When using the context the current actor will be supervisor of the created child actor. When using the system it will be a top level actor, that is supervised by the system (internal guardian actor)."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:91
+# 40f25f40b8084f1793aa065ce4201303
+msgid "``ActorRef.start()`` has been removed. Actors are now started automatically when created. Remove all invocations of ``ActorRef.start()``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:94
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:118
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:133
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:159
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:182
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:218
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:271
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:291
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:311
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:343
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:376
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:420
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:446
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:456
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:497
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:519
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:577
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:603
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:690
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:715
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:758
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:768
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:821
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:831
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:856
+# 8690911495db4bbaac399c17c30e7a95
+# 9df4f23557884d609d1fcfc4e48b0e83
+# 29314d6b19204a36a211816f4495635f
+# 1f9418fe17cf4018ba296abfb6025387
+# af66404419624161821d1d35ea23122b
+# e72c4a8d543e410ab6c257fa1fe1b555
+# 9e9829777f4b4431bcb18330ec23ada1
+# 156bd58b15b44f62b5f9def2ba95b784
+# 4448bf5709354fe9a0a34e435994f3df
+# 8325b1ea25cc4c079d7467bb5f0b9c55
+# 5a3d8378500041c8a108f618d47cdd6a
+# 03c35dd4936746c5b46c7117f872623c
+# 60ea56a35923489ba5ed94c30c704a46
+# bfcbbd2de14b47d994d4b1d5d6816f49
+# 3d6f5e55db954fbea141113f02624704
+# a7684ddd12634b6197694fc9c2f36257
+# a5a950bb1fd541469f28bccf339f71ae
+# f427bf107b654e5aaf4a48a8b645dc03
+# cd76625f84ca4411b6cab34523195d70
+# f26565970ec342de821ba65814db9ea6
+# b769c732cf964e80b0abb258d67d3056
+# e4aa9d5fdc264856b2ccf9265b9e5463
+# 23c59e2172724bdfb564ae5562e08108
+# b230d917aeb045c487311c571bc5907f
+# 30d23c5431e0410980f19d542bece350
+msgid "v1.3::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:99
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:124
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:137
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:164
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:189
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:275
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:299
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:316
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:351
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:388
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:425
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:450
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:469
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:507
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:524
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:587
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:620
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:696
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:731
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:762
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:779
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:825
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:836
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:867
+# 14f67fbd9ecd4fd391cc433081c30f3a
+# 70e9e73721f246df9579b9025c567bd1
+# 14ec222d2d884bec8281a77f14a50dcf
+# d025b58f358d477ba9577fef087b138b
+# 67d2be335c774dada139ce7370ee80f4
+# f6bcefb4ad0c454a8ca2b6398bb8603d
+# c3ff4c1f7aea4ab99769a569c26d7011
+# 5e2f1af120ba4c04a7c39b8846473e49
+# 4fffa34a8b4e4a3b87e8ea9c7d5f2611
+# 21615c958e5c41a4abba9e9d70b9042b
+# e0772a3c12034abfb048eca3b3c72f1e
+# 4bba63c95542429799526797dd155f67
+# c48d619de4a84ce9ad5fe592b94c5b01
+# 519a84dba9fb4eacac757e8094b3d767
+# d447059da25a49198deed6e838c4f855
+# 6196631728fc4c0ba7ca0823e8f82c5a
+# 17332721e27a4205a62667e08f57d973
+# ee283405e773491a96a684bbaf8ab7c7
+# 17b0faaebdab4917aa5484570aa655a2
+# 0156a86987da4215b89a8997147a7894
+# 600644eba4ae4627a460152d0bac11bb
+# bb850c77e6374c05bcf54a2a2835f6b6
+# 9e3ce47a8506404b844f13f2b9b4ad58
+# dc827c8686834f4cb8d244019086553e
+msgid "v2.0::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:108
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:142
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:168
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:193
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:240
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:279
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:332
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:363
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:407
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:484
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:528
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:551
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:593
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:636
+# a99bd828ef4445249ab364c4e3cbb00e
+# 619c527185814f95839e1f5c6d73de2d
+# ae5f4d84f9064b0c9d7da29418b5a542
+# dc11f857371d4189a9d1e928169a0039
+# 4e71dfb9ab6648f39c9314b4090f987b
+# dd540cdd6cfa4905b32e50d3c6a7a56a
+# 781c1ca58f8647819793d367802d4c37
+# 37fc24b5a3d24625b218be23f22773c7
+# eb755f99ca02491a89f224de0065219d
+# 80b998f6337749e6be8a4006f6b1f0b9
+# 63927c37195943e4ab797e25da922945
+# 2e7e2f92fb234dd5a7a03bac858485c5
+# d141c711e5d4459d862618e9fb02dddf
+# 49e140a9375c4c299d5470aed9804352
+msgid "Documentation:"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:110
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:144
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:171
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:195
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:242
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:489
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:569
+# 5d2b4cdf8ff44a2fb80a8a66a9c25547
+# ccf1fca0fb954b81a0099a9132110ca2
+# 4c7bab54c4d24b0b840a3e1a180b92e3
+# b2e731389eec497b8f46c805599b1a75
+# cbf705a4d06e441a8560d9ea56b8c982
+# 6dc20acab2754fdb86c47ea77aa37b8b
+# 2d071e337ae84393834beb12ebf68295
+msgid ":ref:`actors-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:111
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:145
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:172
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:196
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:243
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:281
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:490
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:570
+# 084a08cecb2c410f88a079c2a739da05
+# 4072452ca70b4c1fb8a23f1181ed05fa
+# 928d546e2d4c44e282c826e29da9ebea
+# d1fc9c9c52654905a2e7031af613d05a
+# 5e110ac4a4d84af790f8f155102a069f
+# 98725e98c1ca4d98908939d5a070e269
+# 39022de8ad944aac817d8cfb8c9fb7c3
+# f08914697a654cb688f8abe22de48482
+msgid ":ref:`untyped-actors-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:114
+# b779da1a3aef435a8f2ab4a7e388d94d
+msgid "Stopping actors"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:116
+# e08ae91fba4e4a099524e1201934787f
+msgid "``ActorRef.stop()`` has been moved. Use ``ActorSystem`` or ``ActorContext`` to stop actors."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:131
+# 34a1b224266e433aae3bc5f289c49361
+msgid "*Stop all actors*"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:148
+# 59dc0bf5660e4f9ca8fcdf16a106110a
+msgid "Identifying Actors"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:150
+# 462e3648442f43b4bce80a850d6d59a8
+msgid "In v1.3 actors have ``uuid`` and ``id`` field. In v2.0 each actor has a unique logical ``path``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:152
+# 99d8453a036145108e8977e7384432c5
+msgid "The ``ActorRegistry`` has been replaced by actor paths and lookup with ``actorFor`` in ``ActorRefProvider`` (``ActorSystem`` or ``ActorContext``). It is no longer possible to obtain references to all actors being implemented by a certain class (the reason being that this property is not known yet when an :class:`ActorRef` is created because instantiation of the actor itself is asynchronous)."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:170
+# 5a9da31d95bb45f09298d1ff4486afe3
+msgid ":ref:`addressing`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:175
+# 8c72c0821c8145dd9e820e15eec20f24
+msgid "Reply to messages"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:177
+# 3d0a9feb36b044a2a4714ecf210a0cfe
+msgid "``self.channel`` has been replaced with unified reply mechanism using ``sender`` (Scala) or ``getSender()`` (Java). This works for both tell (!) and ask (?). Sending to an actor reference never throws an exception, hence :meth:`tryTell` and :meth:`tryReply` are removed."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:199
+# 34e4b2d8669b41649a440ed958fa2d39
+msgid "``ActorRef.ask()``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:201
+# 3fc705ab46d941b1bbd3d09631d9b156
+msgid "The mechanism for collecting an actor’s reply in a :class:`Future` has been reworked for better location transparency: it uses an actor under the hood. This actor needs to be disposable by the garbage collector in case no reply is ever received, and the decision is based upon a timeout. This timeout determines when the actor will stop itself and hence closes the window for a reply to be received; it is independent of the timeout applied when awaiting completion of the :class:`Future`, however, the actor will complete the :class:`Future` with an :class:`AskTimeoutException` when it stops itself."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:210
+# d53a39034d1642b582263b35439b3566
+msgid "Since there is no good library default value for the ask-timeout, specification of a timeout is required for all usages as shown below."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:213
+# 10c8aaa260664363af77795f4eac0a2d
+msgid "Also, since the ``ask`` feature is coupling futures and actors, it is no longer offered on the :class:`ActorRef` itself, but instead as a use pattern to be imported. While Scala’s implicit conversions enable transparent replacement, Java code will have to be changed by more than just adding an import statement."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:223
+# ba13556fbbd74d3f981fc545640136a7
+msgid "v2.0 (Scala)::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:234
+# ede1c7682516459ba1fc754dc8465c01
+msgid "v2.0 (Java)::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:246
+# a28f740d072d485ba578e541b93b32bc
+msgid "``ActorRef.?(msg, timeout)``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:248
+# 901db2b191764d2d9b0ef4901e75e4ce
+msgid "This method has a dangerous overlap with ``ActorRef.?(msg)(implicit timeout)`` due to the fact that Scala allows to pass a :class:`Tuple` in place of the message without requiring extra parentheses::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:255
+# df14fdb94c034824a10b90012590faa5
+msgid "To remove this ambiguity, the latter variant is removed in version 2.0. If you were using it before, it will now send tuples where that is not desired. In order to correct all places in the code where this happens, simply import ``akka.migration.ask`` instead of ``akka.pattern.ask`` to obtain a variant which will give deprecation warnings where the old method signature is used::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:266
+# ed07578b95ca4aac8578bd8b5caece9a
+msgid "``UntypedActor.getContext()`` (Java API only)"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:268
+# 0fa57a2f87d94e5a997eb6dc0433834b
+msgid "``getContext()`` in the Java API for UntypedActor is renamed to ``getSelf()``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:284
+# d27d157b72574371af945650ecf27c51
+msgid "Configuration"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:286
+# d8643b5c3575453d8f79d030e9320bc1
+msgid "A new, more powerful, configuration utility has been implemented. The format of the configuration file is very similar to the format in v1.3. In addition it also supports configuration files in json and properties format. The syntax is described in the `HOCON <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ specification."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:307
+# d683b2a927ce4ed39145e2dc1b88abab
+msgid "In v1.3 the default name of the configuration file was ``akka.conf``. In v2.0 the default name is ``application.conf``. It is still loaded from classpath or can be specified with java System properties (``-D`` command line arguments)."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:322
+# 48afee5f1f774a61b607b81a66fbda23
+msgid "Several configuration properties have been changed, such as:"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:324
+# da8c0a018bef4eafb894c91d9ddac3d4
+msgid "``akka.event-handler-level`` => ``akka.loglevel``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:325
+# 15360fbdb1b54d07a2762afe816f0b80
+msgid "dispatcher ``type`` values are changed"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:326
+# c32e7dee9aa84672b0d3c12b1d6c54fa
+msgid "``akka.actor.throughput`` => ``akka.actor.default-dispatcher.throughput``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:327
+# b8bf415fc7d943399ac9ef6d2ad9ce4b
+msgid "``akka.remote.layer`` => ``akka.remote.transport``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:328
+# dbca5b7f339448ac918c4fdcc24a3fbb
+msgid "the global ``time-unit`` property is removed, all durations are specified with duration unit in the property value, ``timeout = 5s``"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:330
+# 8414a84f222c44a0bd0e008abbabfa2b
+msgid "Verify used configuration properties against the reference :ref:`configuration`."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:334
+# 4392a9b6d2b24514afb646b1104bea58
+msgid ":ref:`configuration`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:337
+# f8135c8552e0417ebb56b593a909adaf
+msgid "Logging"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:339
+# f81e34e30a97484ea52acbaf14b3994e
+msgid "EventHandler API has been replaced by LoggingAdapter, which publish log messages to the event bus. You can still plugin your own actor as event listener with the ``akka.event-handlers`` configuration property."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:365
+# 22be28143a8b4eee96036ed84d041907
+msgid ":ref:`logging-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:366
+# 131223a4cfca499db6e2affb9cbbf4b5
+msgid ":ref:`logging-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:367
+# f8937ed417ba4eec92c861fd074cb0fa
+msgid ":ref:`event-bus-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:368
+# 3a1ed3f2b75e4146897fe2e92f09655c
+msgid ":ref:`event-bus-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:372
+# d50b69881bef4151aa437ee3b7d6208e
+msgid "Scheduler"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:374
+# 228a993028e14b368db735db8e85c833
+msgid "The functionality of the scheduler is identical, but the API is slightly adjusted."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:403
+# 1a634b5ef17b48498c846be76f9e0315
+msgid "The internal implementation of the scheduler is changed from ``java.util.concurrent.ScheduledExecutorService`` to a variant of ``org.jboss.netty.util.HashedWheelTimer``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:409
+# 480529abf8bd4e7a9c5d3c29e79836e2
+msgid ":ref:`scheduler-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:410
+# cdddbc80ed3a4aab9ea7ec52719e592b
+msgid ":ref:`scheduler-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:413
+# 676e35785c4b4eb6addca8347c55a861
+msgid "Supervision"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:415
+# 584fcd7e10da46ceb16ce75418dfcf47
+msgid "Akka v2.0 implements parental supervision. Actors can only be created by other actors — where the top-level actor is provided by the library — and each created actor is supervised by its parent. In contrast to the special supervision relationship between parent and child, each actor may monitor any other actor for termination."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:440
+# 92f8e41aec494f5bb17492a74e540d2a
+msgid "Note that ``link`` in v1.3 established a supervision relation, which ``watch`` doesn't. ``watch`` is only a way to get notification, ``Terminated`` message, when the monitored actor has been stopped."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:444
+# ec8ade28702348dd9cd99345d665bf4f
+msgid "*Refererence to the supervisor*"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:454
+# 37c7ea14b7c94488b4c8487816e530f3
+msgid "*Supervisor Strategy*"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:486
+# 965c537229ce435b9a1c7a0ef2d48fa8
+msgid ":ref:`supervision`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:487
+# 8b3cdb81012a457b95ed309a337fc97a
+msgid ":ref:`fault-tolerance-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:488
+# 2e771fd7868b43b187cb51114c86cc2e
+msgid ":ref:`fault-tolerance-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:493
+#: ../../project/release-notes.rst:52
+# 90a202f0a7204c95a2ed0f8cefe93e52
+# 46ff5e1ca0c5492d86218e6f60536338
+msgid "Dispatchers"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:495
+# 9258dd33c36c463eaa17772b2e27c25f
+msgid "Dispatchers are defined in configuration instead of in code."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:517
+# 78db8c7173074da79a6f10f1d5fc634c
+msgid "The dispatcher is assigned to the actor in a different way."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:530
+# 8df743557039421d9cd87a4e15c91d48
+msgid ":ref:`dispatchers-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:531
+# 097b35da199f498baa77cdb35917a04b
+msgid ":ref:`dispatchers-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:534
+# fd588acb575b4ebca5b7b001c74123cf
+msgid "Spawn"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:536
+# c4ffdc8c95e4412587330ae6feb0c9bd
+msgid "``spawn`` has been removed and should be replaced by creating a :class:`Future`. Be careful to not access any shared mutable state closed over by the body."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:539
+# e0d5eb11decd4bdf9dae88917a55fbd7
+msgid "Scala::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:543
+# 76657502a29446d492d4aac4ec1d2cf4
+msgid "Java::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:553
+# d44ac3255e094677bf16f595927060dd
+msgid ":ref:`futures-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:554
+# ae777284f9124c438e4152adaa6a7d19
+msgid ":ref:`futures-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:555
+# d57c00567e9647bd823df11d06b07290
+msgid ":ref:`jmm`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:558
+# 3b44bfe95d2641fa848b93892f373ed3
+msgid "HotSwap"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:560
+# f07e848d2d234ffc9dc25aad749be83e
+msgid "In v2.0 ``become`` and ``unbecome`` metods are located in ``ActorContext``, i.e. ``context.become`` and ``context.unbecome``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:562
+# cbdbf5d414d84f4cae6fd8ec9d569d07
+msgid "The special ``HotSwap`` and ``RevertHotswap`` messages in v1.3 has been removed. Similar can be implemented with your own message and using ``context.become`` and ``context.unbecome`` in the actor receiving the message. The rationale is that being able to replace any actor’s behavior generically is not a good idea because actor implementors would have no way to defend against that; hence the change to lay it into the hands of the actor itself."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:573
+# f7561e99246349ee9e20827125a38384
+msgid "Routing"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:575
+# e412da06f0144e50838f54da8706bad8
+msgid "Routing has been redesign with improved performance and additional features as a result."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:595
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:638
+# b9a49cfe923d4986bfcf31fee2f4e4af
+# 13f6fd4b4f7343eb82d09aa4a2443fea
+msgid ":ref:`routing-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:596
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:639
+# 11adb0bda12649bfbe58361231974af2
+# d961373bfc1d4a0b813057c28619a32e
+msgid ":ref:`routing-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:599
+# 0638f10cbc09447cb9dbb3cb1acd3f25
+msgid "ActorPool"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:601
+# 493645381f564d888018a62c4da51d91
+msgid "The ActorPool has been replaced by dynamically resizable routers."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:642
+# 009270f2d1004459bb23f155924efe22
+msgid "STM"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:644
+# d6c5da67367b4f3e9f23336a3241cd89
+msgid "In Akka v2.0 `ScalaSTM`_ is used rather than Multiverse."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:648
+# 05403a6b2d674123b71fc94901e83380
+msgid "Agent and Transactor have been ported to ScalaSTM. The API's for Agent and Transactor are basically the same, other than integration with ScalaSTM. See:"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:651
+# 338f43339dd941669c6bba74d00b5655
+msgid ":ref:`agents-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:652
+# ba36068034de4f568dd11f984cabf8d7
+msgid ":ref:`agents-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:653
+# bf78514ae18149d4aebeee320dcec546
+msgid ":ref:`transactors-scala`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:654
+# 2a9ee87b3c574893874482d8ba85a685
+msgid ":ref:`transactors-java`"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:657
+# feacccec4f134e63be4f00ccc6e8e1cf
+msgid "Imports"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:660
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:685
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:753
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:801
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:851
+# 75b6811948b04c1da5711aae66eb8d04
+# 265a953238ce47219d6d33681ec13b5b
+# 23e9c45305cf4fd88155a51ea0958c9c
+# f09fe40900994f2cbd8f1535e670f9a0
+# f28499aa364847809a35e77378f96aad
+msgid "Scala"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:662
+# 359a90666c61452eb49ff27d9794d118
+msgid "To use ScalaSTM the import from Scala is::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:667
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:710
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:814
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:879
+# c46cd64e28f04c6cbab75f125f182aa3
+# cc314b44108e4aa5b55052ad526b6baa
+# ad658106495146fba8eb5e5aa26f3ab9
+# 1d90b83e263e47659bb3b4b5188ece99
+msgid "Java"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:669
+# dd5f1009de9f43a2b870f6b5a98592e7
+msgid "For Java there is a special helper object with Java-friendly methods::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:673
+# d1f81a74f00c4b5e8e290095edb73ca7
+msgid "These methods can also be statically imported::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:677
+# 20c2115d8c5849c9a12d2f35a308d610
+msgid "Other imports that are needed are in the stm package, particularly ``Ref``::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:682
+# 4b46f266488a466095fec50abc9cf458
+msgid "Transactions"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:687
+# 9c95db6f67c64992886b4ee3d8a4e6bb
+msgid "Both v1.3 and v2.0 provide an ``atomic`` block, however, the ScalaSTM ``atomic`` is a function from ``InTxn`` to return type."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:702
+# a2d1eafcf0ef410ab1ab8d6d20099fd0
+msgid "Note that in ScalaSTM the ``InTxn`` in the atomic function is usually marked as implicit as transactional references require an implicit ``InTxn`` on all methods. That is, the transaction is statically required and it is a compile-time warning to use a reference without a transaction. There is also a ``Ref.View`` for operations without requiring an ``InTxn`` statically. See below for more information."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:712
+# 32402b0944c04e11a6c01984337f92a5
+msgid "In the ScalaSTM Java API helpers there are atomic methods which accept ``java.lang.Runnable`` and ``java.util.concurrent.Callable``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:750
+# a3667d4ad1c04a59a104c80e242b60a0
+msgid "Ref"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:755
+# ca75da904e974dd89c8a90bfbca9d4d5
+msgid "Other than the import, creating a Ref is basically identical between Akka STM in v1.3 and ScalaSTM used in v2.0."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:766
+# 37dfb30689644b40be9ff0ddc1b6c960
+msgid "The API for Ref is similar. For example:"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:793
+# 9673b901e2654be6823ca3febb7e65b0
+msgid "Ref.View"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:795
+# 7dc5bc3ad711486aa9c8ae1cf835858d
+msgid "In v1.3 using a ``Ref`` method outside of a transaction would automatically create a single-operation transaction. In v2.0 (in ScalaSTM) there is a ``Ref.View`` which provides methods without requiring a current transaction."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:803
+# e6271b3fcae34ffb8a0e3a940671446b
+msgid "The ``Ref.View`` can be accessed with the ``single`` method::"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:816
+# 9aae4c745d104667b873c5723a00c01a
+msgid "As ``Ref.View`` in ScalaSTM does not require implicit transactions, this is more easily used from Java. ``Ref`` could be used, but requires explicit threading of transactions. There are helper methods in ``japi.STM`` for creating ``Ref.View`` references."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:829
+# e6f48f9e130842769ccc7deb08e982d0
+msgid "The ``set`` and ``get`` methods work the same way for both versions."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:841
+# b10e3e1c3cd048e0922a92b2d6ee1eeb
+msgid "There are also ``transform``, ``getAndTransform``, and ``transformAndGet`` methods in ``japi.STM`` which accept ``japi.STM.Transformer`` objects."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:844
+# 1b458c2cb31743309988f8cb9fad8de4
+msgid "There are ``increment`` helper methods for ``Ref.View<Integer>`` and ``Ref.View<Long>`` references."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:848
+# 738e14e3b5344a7dbe2d22446e49ef23
+msgid "Transaction lifecycle callbacks"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:853
+# ae173b4c9fbf43b1a63f9e112f9713e7
+msgid "It is also possible to hook into the transaction lifecycle in ScalaSTM. See the ScalaSTM documentation for the full range of possibilities."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:881
+# 52cbca361c9847558afbb493b240e345
+msgid "Rather than using the ``deferred`` and ``compensating`` methods in ``akka.stm.StmUtils``, use the ``afterCommit`` and ``afterRollback`` methods in ``scala.concurrent.stm.japi.STM``, which behave in the same way and accept ``Runnable``."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:887
+# 46ab4d3e8e604b16a9a3af8cfd7714a4
+msgid "Transactional Datastructures"
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:889
+# 47de7ad859094f47ab7c01041d81d638
+msgid "In ScalaSTM see ``TMap``, ``TSet``, and ``TArray`` for transactional datastructures."
+msgstr ""
+
+#: ../../project/migration-guide-1.3.x-2.0.x.rst:892
+# 33eb081a86504c629d84a1559413032c
+msgid "There are helper methods for creating these from Java in ``japi.STM``: ``newTMap``, ``newTSet``, and ``newTArray``. These datastructures implement the ``scala.collection`` interfaces and can also be used from Java with Scala's ``JavaConversions``. There are helper methods that apply the conversions, returning ``java.util`` ``Map``, ``Set``, and ``List``: ``newMap``, ``newSet``, and ``newArrayAsList``."
+msgstr ""
+
+#: ../../project/migration-guides.rst:4
+# 4be8340df27c485fbd676cd1dc08fce8
+msgid "Migration Guides"
+msgstr ""
+
+#: ../../project/other-doc.rst:6
+# 3ef7267ff74b433aa5563a42ac4c3e52
+msgid "Documentation for Other Versions"
+msgstr ""
+
+#: ../../project/other-doc.rst:10
+#: ../../project/scaladoc.rst:10
+# f2ebf5b1bfdc48e8b57a4eefb962f68b
+# 14a2f8ae376d49d58be6173a1429be98
+msgid "Release Versions"
+msgstr ""
+
+#: ../../project/other-doc.rst:13
+#: ../../project/scaladoc.rst:13
+# c33e30d7ca1e4c22a927ddbbcbd0524d
+# 86dd4adf3b14485b8aaf74163514357d
+msgid "1.3.1"
+msgstr ""
+
+#: ../../project/other-doc.rst:15
+# 3c288023468849f6a2518cb67a909dcb
+msgid "Akka 1.3.1 - http://akka.io/docs/akka/1.3.1/ (or in `PDF format <http://akka.io/docs/akka/1.3.1/Akka.pdf>`__)"
+msgstr ""
+
+#: ../../project/other-doc.rst:16
+# 5e21b792a8514f9cb0d05b2b32a2c33c
+msgid "Akka Modules 1.3.1 - http://akka.io/docs/akka-modules/1.3.1/ (or in `PDF format <http://akka.io/docs/akka-modules/1.3.1/AkkaModules.pdf>`__)"
+msgstr ""
+
+#: ../../project/other-doc.rst:20
+#: ../../project/scaladoc.rst:20
+# 1b2461bab7ca4c4f85d78ed5d82b210f
+# b795841fb820411fb6a3cd78b5c7777f
+msgid "Akka Snapshot"
+msgstr ""
+
+#: ../../project/other-doc.rst:22
+# 56fdf1d656b9481d86be1ec3627beeaa
+msgid "Automatically published documentation for the latest SNAPSHOT version of Akka can be found here:"
+msgstr ""
+
+#: ../../project/other-doc.rst:25
+# 26bdb620776b49cdbfa0d407ab4bf18d
+msgid "Akka - http://akka.io/docs/akka/snapshot/ (or in `PDF format <http://akka.io/docs/akka/snapshot/Akka.pdf>`__)"
+msgstr ""
+
+#: ../../project/release-notes.rst:3
+# d4ff0750a9f348fab1eb30d4a98724a6
+msgid "Release Notes"
+msgstr ""
+
+#: ../../project/release-notes.rst:6
+# 66f7da43093f4cd5815a718a54328400
+msgid "Release 2.0"
+msgstr ""
+
+#: ../../project/release-notes.rst:8
+# 54c69e5773794cf686790f9fdc8c92f6
+msgid "We've just released Akka 2.0 – a revolutionary step in programming for concurrency, fault-tolerance and scalability."
+msgstr ""
+
+#: ../../project/release-notes.rst:10
+# 5be0bd2879a74f148611708b606418bc
+msgid "Building on the experiences from the Akka 1 series, we take Akka to the next level— resilience by default, scale up and out by configuration, extensibility by design and with a smaller footprint."
+msgstr ""
+
+#: ../../project/release-notes.rst:12
+# 6e1e411add08467eb893c850b800f4dc
+msgid "A lot of effort has gone into this release, and it's not just a version bump, it's truly worthy of the name \"Akka 2.0\". We'd like to take the opportunity to thank all of the excellent people that have made this release possible, to Jonas, to all committers, to all users and to the excellent Scala and Java ecosystems!"
+msgstr ""
+
+#: ../../project/release-notes.rst:17
+# c151d64198f240b39e4bd268ab459292
+msgid "Highlights of Akka 2.0"
+msgstr ""
+
+#: ../../project/release-notes.rst:20
+# ff25c133a7064c86a88ba016c25fd226
+msgid "Stats"
+msgstr ""
+
+#: ../../project/release-notes.rst:22
+# b86b21d2a71e4b00a7e31ff56cf58a91
+msgid "700 tickets closed!"
+msgstr ""
+
+#: ../../project/release-notes.rst:24
+# ecd7bde4d50b4b0680bf09b6b35b3c3d
+msgid "**Code changes compared to Akka 1.3.1:**"
+msgstr ""
+
+#: ../../project/release-notes.rst:26
+# 03e249c6b8fd4d03ab75b3526e21d5c3
+msgid "1020 files changed"
+msgstr ""
+
+#: ../../project/release-notes.rst:27
+# 7a6f1a1d837846a4b6280bb0ae94b0d6
+msgid "98683 insertions(+)"
+msgstr ""
+
+#: ../../project/release-notes.rst:28
+# 409b49116036494bb22e45a68c477565
+msgid "57415 deletions(-)"
+msgstr ""
+
+#: ../../project/release-notes.rst:30
+# d331007b74e04a17be2c475435327d2e
+msgid "Also including 331 pages of reference documentation, and tons of ScalaDoc."
+msgstr ""
+
+#: ../../project/release-notes.rst:32
+# 909998a35c24462aa197ec0e05d4fe93
+msgid "Use the Akka Migration package to aid in migrating 1.3 code to 2.0."
+msgstr ""
+
+#: ../../project/release-notes.rst:37
+# be3c7307f067469d8fe8db5adeadb4d5
+msgid "Distributable by design and asynchronous at the core"
+msgstr ""
+
+#: ../../project/release-notes.rst:38
+# aa3f692f873d49bd973f518a87d14e6c
+msgid "``ActorSystems`` lets you run multiple applications in isolation"
+msgstr ""
+
+#: ../../project/release-notes.rst:39
+# 6ab8cfc044bf40399e7e728bce0f02ab
+msgid "``Props`` are immutable configuration for Actor instances"
+msgstr ""
+
+#: ../../project/release-notes.rst:40
+# 29add585e77a4b25a92ae674c42bb2fe
+msgid "``ActorPaths`` makes it dead easy to address Actors"
+msgstr ""
+
+#: ../../project/release-notes.rst:41
+# a0804dbe96274b9c86e9372be9e21b0a
+msgid "Enforced parental supervision gives you Error Kernel design for free"
+msgstr ""
+
+#: ../../project/release-notes.rst:42
+# dffda649bd744b4d9744450e7d320e8e
+msgid "``DeathWatch`` makes it possible to observe termination of Actors"
+msgstr ""
+
+#: ../../project/release-notes.rst:43
+# e82b1d3056464a1aa9483c82dd3eb446
+msgid "``Router``\\s unify what was ``ActorPool``\\s with ``LoadBalancer``\\s to form a flexible, extensible and transparent entity which quacks like an ``ActorRef``"
+msgstr ""
+
+#: ../../project/release-notes.rst:44
+# 49ca5da24f7043699eae99cc259517fa
+msgid "``Stash``, an API made by Phillip Haller to do conditional receives"
+msgstr ""
+
+#: ../../project/release-notes.rst:45
+# 67bf82c91fb8453ca3141b0fb6c7bdcf
+msgid "Extensions enable you to augment ``ActorSystem``\\s"
+msgstr ""
+
+#: ../../project/release-notes.rst:46
+# 7895fe8222e04dfbb6305da01816a1eb
+msgid "Scale up and out through configuration"
+msgstr ""
+
+#: ../../project/release-notes.rst:47
+# c74e934443fd4706a076422a0229fcda
+msgid "API unification and simplification"
+msgstr ""
+
+#: ../../project/release-notes.rst:48
+# 3b770885968046f7bb9fc56ec52f8085
+msgid "Excellent performance, up to 20 million msg/second on a single machine, see the `blog article <http://letitcrash.com/post/17607272336/scalability-of-fork-join-pool>`_"
+msgstr ""
+
+#: ../../project/release-notes.rst:49
+# e3f76a96a26543eebd13f56e75610ea1
+msgid "Slimmer footprint gives you around 2.7 million Actors per GB of memory"
+msgstr ""
+
+#: ../../project/release-notes.rst:54
+# 70ab7afa67e94c9ca6ef11b7a35f0d36
+msgid "``Dispatcher``\\s are now configured in the configuration file and not the code, for easy tuning of deployed applications"
+msgstr ""
+
+#: ../../project/release-notes.rst:55
+# fc8128c8739e4ab3926ef4663844e44f
+msgid "``Dispatcher`` was previously known as ExecutorBasedEventDrivenDispatcher"
+msgstr ""
+
+#: ../../project/release-notes.rst:56
+# c7db703271eb407e9b7eb37190a5cc17
+msgid "``BalancingDispatcher`` was previously known as ``ExecutorBasedEventDrivenWorkStealingDispatcher``, is now work-sharing and you can configure which mailbox type should be used"
+msgstr ""
+
+#: ../../project/release-notes.rst:57
+# e3c27a2de3bd42378f44774727652196
+msgid "``PinnedDispatcher`` was previously known as ``ThreadBasedDispatcher``"
+msgstr ""
+
+#: ../../project/release-notes.rst:58
+# 5aa66d812be5491a8da5b246f479a06f
+msgid "Create your own ``Dispatcher``\\s or ``MessageQueues`` (mailbox backing storage) and hook in through config"
+msgstr ""
+
+#: ../../project/release-notes.rst:59
+# 6793836eb11947c580df4947d4384fd5
+msgid "Many different ``MessageQueue``\\s: ``Priority``, ``Bounded``, ``Durable`` (ZooKeeper, Beanstalk, File, Redis, Mongo)"
+msgstr ""
+
+#: ../../project/release-notes.rst:62
+# b50e0332ae614aada4d713c8780d1b1c
+msgid "Remoting"
+msgstr ""
+
+#: ../../project/release-notes.rst:64
+# 2d508262b353435180a13c02941b1d72
+msgid "Completely transparent in user code"
+msgstr ""
+
+#: ../../project/release-notes.rst:65
+# 916a7c1371b743b3b15e4486222cef65
+msgid "Pluggable transports, ships with a scalable Netty implementation"
+msgstr ""
+
+#: ../../project/release-notes.rst:66
+# babc1428724c411f93006b9e0dae770b
+msgid "Create actors remotely using configuration or in code"
+msgstr ""
+
+#: ../../project/release-notes.rst:69
+# 9c3f12e7a8f3486bbdede5f9cc8fb1b6
+msgid "TypedActors"
+msgstr ""
+
+#: ../../project/release-notes.rst:71
+# a2c3e7037b2944d1a142890fd833eaf0
+msgid "Completely new implementation built on top of JDK Proxies"
+msgstr ""
+
+#: ../../project/release-notes.rst:72
+# 8eea9366ce6e475aaf80a2c44ea3870a
+msgid "0 external dependencies, so now in akka-actor"
+msgstr ""
+
+#: ../../project/release-notes.rst:73
+#: ../../project/release-notes.rst:105
+#: ../../project/release-notes.rst:124
+# e87d9147c55c45148918d294e3962869
+# 0b87c8ce06ba4780904808cd92451336
+# 0d9ba03cf84f495882d93e67106db17e
+msgid "Built as an Akka Extension"
+msgstr ""
+
+#: ../../project/release-notes.rst:76
+# 4273f40fc4fd411695358900ac174a70
+msgid "Futures & Promises"
+msgstr ""
+
+#: ../../project/release-notes.rst:78
+# 94b5519a129d4e3bb762bf7a295d3099
+msgid "Harmonized API with `SIP-14 <http://docs.scala-lang.org/sips/pending/futures-promises.html>`_ (big props to the EPFL team: Philipp Haller, Aleksandar Prokopec, Heather Miller and Vojin Jovanovic)"
+msgstr ""
+
+#: ../../project/release-notes.rst:79
+# 3b17ffe8c2ab492e93b780231d9a9e01
+msgid "Smaller footprint"
+msgstr ""
+
+#: ../../project/release-notes.rst:80
+# 5d5301d78fc44bb7895e46bce7fb64af
+msgid "Completely non-blocking implementation"
+msgstr ""
+
+#: ../../project/release-notes.rst:83
+# 07b88e4937d8453c817a1920f99c979d
+msgid "Akka STM"
+msgstr ""
+
+#: ../../project/release-notes.rst:85
+# 1dd2648e3c304e5aa8b9684425ac4699
+msgid "Now uses ScalaSTM"
+msgstr ""
+
+#: ../../project/release-notes.rst:86
+# f752974c362d44629830e1b87fe34a31
+msgid "``Transactor``\\s"
+msgstr ""
+
+#: ../../project/release-notes.rst:87
+# c702c1d09411480bb8460306c053d3e9
+msgid "``Agent``\\s"
+msgstr ""
+
+#: ../../project/release-notes.rst:90
+# ac326d06a6f442c187b7530a91cd6fc6
+msgid "EventBus"
+msgstr ""
+
+#: ../../project/release-notes.rst:92
+# 20145ea3a79d4c7e9daf1b5c0cecbdc4
+msgid "A simple and easy to use API for Publish/Subscribe"
+msgstr ""
+
+#: ../../project/release-notes.rst:95
+# debe3d7a9c404d21881ce85f8c59b94c
+msgid "Config"
+msgstr ""
+
+#: ../../project/release-notes.rst:97
+# 07e671cc52d9412587626b74c51ef6e6
+msgid "Now using `HOCON <https://github.com/typesafehub/config>`_, extremely powerful and easy to use"
+msgstr ""
+
+#: ../../project/release-notes.rst:98
+# 79e57089b286477bbc2a025e5304a0c9
+msgid "Big props to Havoc Pennington"
+msgstr ""
+
+#: ../../project/release-notes.rst:101
+# 80b55c54f05e49c5b3d57b2772646e4f
+msgid "Serialization"
+msgstr ""
+
+#: ../../project/release-notes.rst:103
+# 82ae4a876f2542c79b36edf8231ae969
+msgid "Highly pluggable system for serializing objects"
+msgstr ""
+
+#: ../../project/release-notes.rst:104
+# 83d473a1766b4842a78f7233a2692469
+msgid "Mappings go into configuration, no need to mix business logic and marshalling"
+msgstr ""
+
+#: ../../project/release-notes.rst:108
+# 32794f2a9c2e4f338f2379c4f9737487
+msgid "Patterns"
+msgstr ""
+
+#: ../../project/release-notes.rst:110
+# 413c080f183b495283c55710d7717b51
+msgid "\"Ask/?\" is now a ``Pattern`` — for Scala add ``import akka.pattern.ask``, for Java use ``akka.pattern.Patterns.ask()``."
+msgstr ""
+
+#: ../../project/release-notes.rst:111
+# 973a2751eb3a493380f1bd5950a41880
+msgid "``gracefulStop``"
+msgstr ""
+
+#: ../../project/release-notes.rst:112
+# 5ddd2760ef7b476ca3a4b6cc17da677b
+msgid "``pipeTo``"
+msgstr ""
+
+#: ../../project/release-notes.rst:115
+# 7cf45932015a4f699cacdc4e0fd72cd4
+msgid "ExecutionContext"
+msgstr ""
+
+#: ../../project/release-notes.rst:117
+# 24722e2ae8ec48da9c72f0ca3b81810a
+msgid "One abstraction for asynchronous execution of logic"
+msgstr ""
+
+#: ../../project/release-notes.rst:120
+# 8077eee6446245afb7ccec86b836a0a3
+msgid "ømq"
+msgstr ""
+
+#: ../../project/release-notes.rst:122
+# 503ba20d2ed846a7991f00821cd20716
+msgid "An API for using Akka with `ømq <http://www.zeromq.org/>`_"
+msgstr ""
+
+#: ../../project/release-notes.rst:123
+# 344ad1f62527469299ed108fe9d7544e
+msgid "Huge thanks to Karim Osman and Ivan Porto Carrero"
+msgstr ""
+
+#: ../../project/release-notes.rst:126
+# 51cc93add6b4473b8f2b4fc5062701be
+msgid "Brand new website, still at http://akka.io, huge thanks to Heather Miller for her outstanding work"
+msgstr ""
+
+#: ../../project/release-notes.rst:129
+# 072fbd43a4e04220b3837fd6825e7aff
+msgid "Upcoming Releases"
+msgstr ""
+
+#: ../../project/release-notes.rst:131
+# 4fc1fda8cfc7493fb6a8f18c008538cc
+msgid "Things that will be released within the coming months:"
+msgstr ""
+
+#: ../../project/release-notes.rst:133
+# 7c2073af2be842ed8b190d008d2dd677
+msgid "Akka Camel 2.0, codename \"Alpakka\", with the excellent work of Raymond Roestenburg and Piotr Gabryanczyk"
+msgstr ""
+
+#: ../../project/release-notes.rst:134
+# bca6025e83f640439b07f1b19ff33c6f
+msgid "Akka AMQP 2.0, with the excellent work of John Stanford"
+msgstr ""
+
+#: ../../project/release-notes.rst:135
+# 712bb9afcc2c4817908384b9240e1846
+msgid "Akka Spring 2.0, with the excellent help of Josh Long"
+msgstr ""
+
+#: ../../project/release-notes.rst:137
+# 558a3d195b794fb8b129380c3a5239f0
+msgid "Akka is released under the Apache V2 license."
+msgstr ""
+
+#: ../../project/release-notes.rst:139
+# aa3099e9f21a4038afe2b7fff5827635
+msgid "**Happy hAkking!**"
+msgstr ""
+
+#: ../../project/scaladoc.rst:6
+# cd34f82dcbbd40d88bce1a0677bf5105
+msgid "Scaladoc API"
+msgstr ""
+
+#: ../../project/scaladoc.rst:15
+# cff414079c31435399180e7ba371a654
+msgid "Akka 1.3.1 - http://akka.io/api/akka/1.3.1/"
+msgstr ""
+
+#: ../../project/scaladoc.rst:16
+# 5ba3def4f88d4e8281b83056d2b4ceb1
+msgid "Akka Modules 1.3.1 - http://akka.io/api/akka-modules/1.3.1/"
+msgstr ""
+
+#: ../../project/scaladoc.rst:22
+# 209ba8ba7af146d6963cf647c1cd8b93
+msgid "Automatically published Scaladoc API for the latest SNAPSHOT version of Akka can be found here: http://akka.io/api/akka/snapshot"
+msgstr ""
+
+#: ../../project/sponsors.rst:4
+# fbed177f659341ce9a6036322327c236
+msgid "Sponsors"
+msgstr ""
+
+#: ../../project/sponsors.rst:7
+# e5b7ea66f8a44edaaffcce94d4c6f661
+msgid "YourKit"
+msgstr ""
+
+#: ../../project/sponsors.rst:9
+# 9e7e441957444444b85acc79f14889ac
+msgid "YourKit is kindly supporting open source projects with its full-featured Java Profiler. YourKit, LLC is the creator of innovative and intelligent tools for profiling Java and .NET applications. Take a look at YourKit’s leading software products: `YourKit Java Profiler <http://www.yourkit.com/java/profiler/index.jsp>`_ and `YourKit .NET Profiler <http://www.yourkit.com/.net/profiler/index.jsp>`_"
+msgstr ""
+

@@ -1,0 +1,3698 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011, Typesafe Inc
+# This file is distributed under the same license as the Akka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Akka 2.0-SNAPSHOT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 21:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../java/agents.rst:5
+# 9ad0dad7bf624ac0bad9be97fb0c006e
+msgid "Agents (Java)"
+msgstr ""
+
+#: ../../java/agents.rst:7
+# b25ceda7f2f648998b4c96c5c7ccc0ad
+msgid "Agents in Akka are inspired by `agents in Clojure`_."
+msgstr ""
+
+#: ../../java/agents.rst:11
+# 30037953cd1c48848a0eda639c77b0e1
+msgid "Agents provide asynchronous change of individual locations. Agents are bound to a single storage location for their lifetime, and only allow mutation of that location (to a new state) to occur as a result of an action. Update actions are functions that are asynchronously applied to the Agent's state and whose return value becomes the Agent's new state. The state of an Agent should be immutable."
+msgstr ""
+
+#: ../../java/agents.rst:17
+# 67106436984d460cb3710331da8d2d6f
+msgid "While updates to Agents are asynchronous, the state of an Agent is always immediately available for reading by any thread (using ``get``) without any messages."
+msgstr ""
+
+#: ../../java/agents.rst:21
+# ad767149e4af461c97d1bd4c058ae99d
+msgid "Agents are reactive. The update actions of all Agents get interleaved amongst threads in a thread pool. At any point in time, at most one ``send`` action for each Agent is being executed. Actions dispatched to an agent from another thread will occur in the order they were sent, potentially interleaved with actions dispatched to the same agent from other sources."
+msgstr ""
+
+#: ../../java/agents.rst:27
+# 0014d5950bf74589b8b0a57ff482b8f3
+msgid "If an Agent is used within an enclosing transaction, then it will participate in that transaction. Agents are integrated with the STM - any dispatches made in a transaction are held until that transaction commits, and are discarded if it is retried or aborted."
+msgstr ""
+
+#: ../../java/agents.rst:34
+# 6277218a04d34ecd836c44b75963070d
+msgid "Creating and stopping Agents"
+msgstr ""
+
+#: ../../java/agents.rst:36
+# 19fe48197e904c0596d498dfa135dd58
+msgid "Agents are created by invoking ``new Agent(value, system)`` passing in the Agent's initial value and a reference to the ``ActorSystem`` for your application. An ``ActorSystem`` is required to create the underlying Actors. See :ref:`actor-systems` for more information about actor systems."
+msgstr ""
+
+#: ../../java/agents.rst:41
+# 056a5617049e408888bffb89cb026c9b
+msgid "Here is an example of creating an Agent:"
+msgstr ""
+
+#: ../../java/agents.rst:50
+# dc8a89772588436ba24800d59ab6af5d
+msgid "An Agent will be running until you invoke ``close`` on it. Then it will be eligible for garbage collection (unless you hold on to it in some way)."
+msgstr ""
+
+#: ../../java/agents.rst:58
+# d1ff03763c5d4abf89d287f73ffbe573
+msgid "Updating Agents"
+msgstr ""
+
+#: ../../java/agents.rst:60
+# f000cdbcb41b4bb2bcf953399aee69c1
+msgid "You update an Agent by sending a function that transforms the current value or by sending just a new value. The Agent will apply the new value or function atomically and asynchronously. The update is done in a fire-forget manner and you are only guaranteed that it will be applied. There is no guarantee of when the update will be applied but dispatches to an Agent from a single thread will occur in order. You apply a value or a function by invoking the ``send`` function."
+msgstr ""
+
+#: ../../java/agents.rst:74
+# bc83bbbe1b0748d785c50d4f5cfba620
+msgid "You can also dispatch a function to update the internal state but on its own thread. This does not use the reactive thread pool and can be used for long-running or blocking operations. You do this with the ``sendOff`` method. Dispatches using either ``sendOff`` or ``send`` will still be executed in order."
+msgstr ""
+
+#: ../../java/agents.rst:85
+# 0b3b6b968a304efa9f1e30cd20ddf748
+msgid "Reading an Agent's value"
+msgstr ""
+
+#: ../../java/agents.rst:87
+# c9bbdd35b4bd4c60a2f6273afe641a70
+msgid "Agents can be dereferenced (you can get an Agent's value) by calling the get method:"
+msgstr ""
+
+#: ../../java/agents.rst:93
+# b7a2fdd6edc54c7f9f04185e2d64e2fc
+msgid "Reading an Agent's current value does not involve any message passing and happens immediately. So while updates to an Agent are asynchronous, reading the state of an Agent is synchronous."
+msgstr ""
+
+#: ../../java/agents.rst:99
+# c956302992984d97b3b17b8d738c301d
+msgid "Awaiting an Agent's value"
+msgstr ""
+
+#: ../../java/agents.rst:101
+# b93c2d5332704e589b56986db06e01c3
+msgid "It is also possible to read the value after all currently queued sends have completed. You can do this with ``await``:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:4
+# eca3705e093c4b1084b468541528a2c8
+msgid "Dispatchers (Java)"
+msgstr ""
+
+#: ../../java/dispatchers.rst:6
+# d109369dea904ce8a1e68020a4333528
+msgid "An Akka ``MessageDispatcher`` is what makes Akka Actors \"tick\", it is the engine of the machine so to speak. All ``MessageDispatcher`` implementations are also an ``ExecutionContext``, which means that they can be used to execute arbitrary code, for instance :ref:`futures-java`."
+msgstr ""
+
+#: ../../java/dispatchers.rst:11
+# 66b47032b5154b7cbf3d82dc8c5e8289
+msgid "Default dispatcher"
+msgstr ""
+
+#: ../../java/dispatchers.rst:13
+# 2a3b4a6203ce4fd8a7cba7466965e016
+msgid "Every ``ActorSystem`` will have a default dispatcher that will be used in case nothing else is configured for an ``Actor``. The default dispatcher can be configured, and is by default a ``Dispatcher`` with a \"fork-join-executor\", which gives excellent performance in most cases."
+msgstr ""
+
+#: ../../java/dispatchers.rst:17
+# a18ee1e2161b48fb8dbe30e781f8dd09
+msgid "Setting the dispatcher for an Actor"
+msgstr ""
+
+#: ../../java/dispatchers.rst:19
+# cc9a9a1b78fc470bbaf7b9575a5a2092
+msgid "So in case you want to give your ``Actor`` a different dispatcher than the default, you need to do two things, of which the first is:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:24
+# de3a63876c9a4b758fa321398bf244c9
+msgid "The \"dispatcherId\" you specify in withDispatcher is in fact a path into your configuration. So in this example it's a top-level section, but you could for instance put it as a sub-section, where you'd use periods to denote sub-sections, like this: ``\"foo.bar.my-dispatcher\"``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:28
+# e13d9ba5e4644374be924afdc4feda25
+msgid "And then you just need to configure that dispatcher in your configuration:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:32
+# e77c870667c94ad6a1a96d2ffd2f0aba
+msgid "And here's another example that uses the \"thread-pool-executor\":"
+msgstr ""
+
+#: ../../java/dispatchers.rst:36
+# 175465d50bb245e3bb313f9eab001599
+msgid "For more options, see the default-dispatcher section of the :ref:`configuration`."
+msgstr ""
+
+#: ../../java/dispatchers.rst:39
+# 5be84094b410489b98aeea1ba3d5fa17
+msgid "Types of dispatchers"
+msgstr ""
+
+#: ../../java/dispatchers.rst:41
+# bb44595b450c40979edeee7308cf7938
+msgid "There are 4 different types of message dispatchers:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:43
+# 052a98b40f9d4c73a743b7de5b4ed959
+msgid "Dispatcher"
+msgstr ""
+
+#: ../../java/dispatchers.rst:45
+#: ../../java/dispatchers.rst:82
+# 80e2ade863ad4a2f90c294bb17062fdc
+# 9f9cc658ab2a4c498fcb0ba027dbbbec
+msgid "Sharability: Unlimited"
+msgstr ""
+
+#: ../../java/dispatchers.rst:47
+#: ../../java/dispatchers.rst:60
+# a0344131990d4fb3b6cd5021e90a47ef
+# aa432c87dbab4de8b3638f18e7330159
+msgid "Mailboxes: Any, creates one per Actor"
+msgstr ""
+
+#: ../../java/dispatchers.rst:49
+# 3ecb2687f0634bbb95624aeb34988a0f
+msgid "Use cases: Default dispatcher, Bulkheading"
+msgstr ""
+
+#: ../../java/dispatchers.rst:52
+#: ../../java/dispatchers.rst:76
+# 371e3449063a4b9bb1c90de71a88bd8c
+# f73c683330614be09fc37e1abe0d952c
+msgid "specify using \"executor\" using \"fork-join-executor\", \"thread-pool-executor\" or the FQCN of an ``akka.dispatcher.ExecutorServiceConfigurator``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:56
+# 96dc7795f9874b62bfffa0de6c72ddde
+msgid "PinnedDispatcher"
+msgstr ""
+
+#: ../../java/dispatchers.rst:58
+# d4de1ff6d892463c9b6fa68a31563566
+msgid "Sharability: None"
+msgstr ""
+
+#: ../../java/dispatchers.rst:62
+# 461efb5ba4ec4395a900172fdea594d2
+msgid "Use cases: Bulkheading"
+msgstr ""
+
+#: ../../java/dispatchers.rst:65
+# b7f3d7a5f4f4483689c9fe1fc6aee1a1
+msgid "by default a \"thread-pool-executor\""
+msgstr ""
+
+#: ../../java/dispatchers.rst:67
+# 77ff0482780244378c893a1e6224a6f1
+msgid "BalancingDispatcher"
+msgstr ""
+
+#: ../../java/dispatchers.rst:69
+# 48aba45bd02d4ca8a9aee733a8c2ef21
+msgid "Sharability: Actors of the same type only"
+msgstr ""
+
+#: ../../java/dispatchers.rst:71
+# 735e05c6f1314ebd99abd85f783503e1
+msgid "Mailboxes: Any, creates one for all Actors"
+msgstr ""
+
+#: ../../java/dispatchers.rst:73
+# 5b968f5996fe4387bc5d9b1819e579c1
+msgid "Use cases: Work-sharing"
+msgstr ""
+
+#: ../../java/dispatchers.rst:80
+# 3d0f3d81f1924c6ba202b685f1868aea
+msgid "CallingThreadDispatcher"
+msgstr ""
+
+#: ../../java/dispatchers.rst:84
+# f6db3d443f1b425fbacb5d077473629f
+msgid "Mailboxes: Any, creates one per Actor per Thread (on demand)"
+msgstr ""
+
+#: ../../java/dispatchers.rst:86
+# 4238a3cc4acd4f399b487d6a6a285097
+msgid "Use cases: Testing"
+msgstr ""
+
+#: ../../java/dispatchers.rst:88
+# 89f28914314d449ebc6c1d1a54cd61e3
+msgid "Driven by: The calling thread (duh)"
+msgstr ""
+
+#: ../../java/dispatchers.rst:91
+# 99e6511fd8ed45dca009c31beb300057
+msgid "More dispatcher configuration examples"
+msgstr ""
+
+#: ../../java/dispatchers.rst:93
+# 03502c5645404d319c8fea7cd4d0675c
+msgid "Configuring a ``PinnedDispatcher``:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:97
+# 006d2c92ea3a47f3a7d73ea6715eeb72
+msgid "And then using it:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:102
+# 81ec4746540e469ca0b001e84d6822fe
+msgid "Mailboxes"
+msgstr ""
+
+#: ../../java/dispatchers.rst:104
+# 30ffeaf3e2d34a03a34307593767ebc2
+msgid "An Akka ``Mailbox`` holds the messages that are destined for an ``Actor``. Normally each ``Actor`` has its own mailbox, but with example a ``BalancingDispatcher`` all actors with the same ``BalancingDispatcher`` will share a single instance."
+msgstr ""
+
+#: ../../java/dispatchers.rst:108
+# 9a33b67884d241ef8b8f1137ed8d42d0
+msgid "Builtin implementations"
+msgstr ""
+
+#: ../../java/dispatchers.rst:110
+# 13f85ba3f24f40cb923a5bd684181c48
+msgid "Akka comes shipped with a number of default mailbox implementations:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:112
+# 3641c4a9b2d348d1a4612e932a943803
+msgid "UnboundedMailbox"
+msgstr ""
+
+#: ../../java/dispatchers.rst:114
+# 29ce3a9993054d46b8282f18861207c7
+msgid "Backed by a ``java.util.concurrent.ConcurrentLinkedQueue``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:116
+# e54e7d7e0d894da1ad6f8869b04e0e74
+msgid "Blocking: No"
+msgstr ""
+
+#: ../../java/dispatchers.rst:118
+#: ../../java/dispatchers.rst:134
+# 5b0551d0b6aa47d5b1685c8fa7e3f55a
+# 94effd68ccab468e9a2318c1eb9f2ed8
+msgid "Bounded: No"
+msgstr ""
+
+#: ../../java/dispatchers.rst:120
+# 0aea6be9e99f4012a05a418fea76d2d9
+msgid "BoundedMailbox"
+msgstr ""
+
+#: ../../java/dispatchers.rst:122
+# ac80a8f9414c4f119157385df0a17f5d
+msgid "Backed by a ``java.util.concurrent.LinkedBlockingQueue``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:124
+#: ../../java/dispatchers.rst:132
+#: ../../java/dispatchers.rst:140
+# c8d7a7ab479b4ff4937de6a113e5517f
+# 6be54fe02c904f6ebe930f3e44a08e80
+# 703e211f2fbf4eaf86d707031f7ab8a6
+msgid "Blocking: Yes"
+msgstr ""
+
+#: ../../java/dispatchers.rst:126
+#: ../../java/dispatchers.rst:142
+# d42a467f42fd44aab26d616ece479c18
+# bab871dea68a4f169e68f14a34f40aca
+msgid "Bounded: Yes"
+msgstr ""
+
+#: ../../java/dispatchers.rst:128
+# cc6c742839ec49abaa8f93e65cf70584
+msgid "UnboundedPriorityMailbox"
+msgstr ""
+
+#: ../../java/dispatchers.rst:130
+# de06d58cc1cb4b1987ed7f75c3e33c90
+msgid "Backed by a ``java.util.concurrent.PriorityBlockingQueue``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:136
+# 7d91fa971fc044ed90f8c80a4c08d582
+msgid "BoundedPriorityMailbox"
+msgstr ""
+
+#: ../../java/dispatchers.rst:138
+# a5dec66d72e840a1abe84a3042e8c054
+msgid "Backed by a ``java.util.PriorityBlockingQueue`` wrapped in an ``akka.util.BoundedBlockingQueue``"
+msgstr ""
+
+#: ../../java/dispatchers.rst:144
+# 73a15511a21446068b4ee95f8ef5d342
+msgid "Durable mailboxes, see :ref:`durable-mailboxes`."
+msgstr ""
+
+#: ../../java/dispatchers.rst:147
+# c804a94dd0fe425d80b21cf306f5654f
+msgid "Mailbox configuration examples"
+msgstr ""
+
+#: ../../java/dispatchers.rst:149
+# 29f58672ba62409986f9229514a55824
+msgid "How to create a PriorityMailbox:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:153
+# dda265fec444434e85397ac4dd0d7f08
+msgid "And then add it to the configuration:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:157
+# 0ccd7a235a754625a984c2bdac18f66e
+msgid "And then an example on how you would use it:"
+msgstr ""
+
+#: ../../java/dispatchers.rst:163
+# 9a11ba9b86c6417086e513a3b4861440
+msgid "Make sure to include a constructor which takes ``akka.actor.ActorSystem.Settings`` and ``com.typesafe.config.Config`` arguments, as this constructor is invoked reflectively to construct your mailbox type. The config passed in as second argument is that section from the configuration which describes the dispatcher using this mailbox type; the mailbox type will be instantiated once for each dispatcher using it."
+msgstr ""
+
+#: ../../java/event-bus.rst:5
+# 9560feb2121644538a9e7a843857c603
+msgid "Event Bus (Java)"
+msgstr ""
+
+#: ../../java/event-bus.rst:7
+# 30a27f015d754c5b9769c1ac1bb8adc5
+msgid "Originally conceived as a way to send messages to groups of actors, the :class:`EventBus` has been generalized into a set of composable traits implementing a simple interface:"
+msgstr ""
+
+#: ../../java/event-bus.rst:11
+# af338118ca9f4937a6bb01a5eb15bc8f
+msgid ":meth:`public boolean subscribe(S subscriber, C classifier)` subscribes the given subscriber to events with the given classifier"
+msgstr ""
+
+#: ../../java/event-bus.rst:14
+# 1ae60de3c8be4d5e9f0e2f84071ec9b9
+msgid ":meth:`public boolean unsubscribe(S subscriber, C classifier)` undoes a specific subscription"
+msgstr ""
+
+#: ../../java/event-bus.rst:17
+# 273d2ec3812943b694c10c9380f3f14e
+msgid ":meth:`public void unsubscribe(S subscriber)` undoes all subscriptions for the given subscriber"
+msgstr ""
+
+#: ../../java/event-bus.rst:20
+# 62afa6d196f84a748db9c9bc2cb085fb
+msgid ":meth:`public void publish(E event)` publishes an event, which first is classified according to the specific bus (see `Classifiers`_) and then published to all subscribers for the obtained classifier"
+msgstr ""
+
+#: ../../java/event-bus.rst:24
+# bcdc627ad18447129abefb8cdbda12bf
+msgid "This mechanism is used in different places within Akka, e.g. the :ref:`DeathWatch <deathwatch-java>` and the `Event Stream`_. Implementations can make use of the specific building blocks presented below."
+msgstr ""
+
+#: ../../java/event-bus.rst:28
+# 093f047d2924477f93dd5c9fa7b6007b
+msgid "An event bus must define the following three abstract types:"
+msgstr ""
+
+#: ../../java/event-bus.rst:30
+# 31c1157da53749b58c1fe33d32c82bf3
+msgid ":class:`E` is the type of all events published on that bus"
+msgstr ""
+
+#: ../../java/event-bus.rst:32
+# 5ef9d60e6edf41c2b7ed0c7d372463ed
+msgid ":class:`S` is the type of subscribers allowed to register on that event bus"
+msgstr ""
+
+#: ../../java/event-bus.rst:34
+# e7d59cfda0b34b23aa3034629d564749
+msgid ":class:`C` defines the classifier to be used in selecting subscribers for dispatching events"
+msgstr ""
+
+#: ../../java/event-bus.rst:37
+# 8d715a51b17044ce8fc11968ca33e628
+msgid "The traits below are still generic in these types, but they need to be defined for any concrete implementation."
+msgstr ""
+
+#: ../../java/event-bus.rst:41
+# ada3fffdfffa415fad31df6d015c0262
+msgid "Classifiers"
+msgstr ""
+
+#: ../../java/event-bus.rst:43
+# 7dcb34a681c14ee1a9168761697a4fe1
+msgid "The classifiers presented here are part of the Akka distribution, but rolling your own in case you do not find a perfect match is not difficult, check the implementation of the existing ones on `github`_."
+msgstr ""
+
+#: ../../java/event-bus.rst:50
+# 5f55644f1e2c4faa99c5948d9a14e219
+msgid "Lookup Classification"
+msgstr ""
+
+#: ../../java/event-bus.rst:52
+# 235d1bfb46d6407888b1755ac4b7eb91
+msgid "The simplest classification is just to extract an arbitrary classifier from each event and maintaining a set of subscribers for each possible classifier. This can be compared to tuning in on a radio station. The abstract class :class:`LookupEventBus` is still generic in that it abstracts over how to compare subscribers and how exactly to classify. The necessary methods to be implemented are the following:"
+msgstr ""
+
+#: ../../java/event-bus.rst:59
+#: ../../java/event-bus.rst:93
+# e2fafcbcfa5c426d8d90c4256baa24e4
+# 3e8765abdbc24ed6afe2a776fffffe60
+msgid ":meth:`public C classify(E event)` is used for extracting the classifier from the incoming events."
+msgstr ""
+
+#: ../../java/event-bus.rst:62
+# 23d6b729183c4ee9a7aa7a5160e752ef
+msgid ":meth:`public int compareSubscribers(S a, S b)` must define a partial order over the subscribers, expressed as expected from :meth:`java.lang.Comparable.compare`."
+msgstr ""
+
+#: ../../java/event-bus.rst:66
+#: ../../java/event-bus.rst:96
+# 50c38808b4cc485c93a0dd2cd5a48ef0
+# e2cebf4727ab45e7881ec99266d3e404
+msgid ":meth:`public void publish(E event, S subscriber)` will be invoked for each event for all subscribers which registered themselves for the event’s classifier."
+msgstr ""
+
+#: ../../java/event-bus.rst:70
+#: ../../java/event-bus.rst:143
+# 618851db09a1478db2ddd1d15d60467c
+# 63177646edb94c8288fe951369a63590
+msgid ":meth:`public int mapSize()` determines the initial size of the index data structure used internally (i.e. the expected number of different classifiers)."
+msgstr ""
+
+#: ../../java/event-bus.rst:73
+# 24cac13b363e494181be48545f77d336
+msgid "This classifier is efficient in case no subscribers exist for a particular event."
+msgstr ""
+
+#: ../../java/event-bus.rst:76
+# 3156a0c52ad0469c8665b0c7d720ef45
+msgid "Subchannel Classification"
+msgstr ""
+
+#: ../../java/event-bus.rst:78
+# 974f608859454e7abddabb41e04f52b5
+msgid "If classifiers form a hierarchy and it is desired that subscription be possible not only at the leaf nodes, this classification may be just the right one. It can be compared to tuning in on (possibly multiple) radio channels by genre. This classification has been developed for the case where the classifier is just the JVM class of the event and subscribers may be interested in subscribing to all subclasses of a certain class, but it may be used with any classifier hierarchy. The abstract members needed by this classifier are"
+msgstr ""
+
+#: ../../java/event-bus.rst:86
+# 8c1d2a56f78549639fc8ab999b7621d2
+msgid ":meth:`public Subclassification[C] subclassification()` provides an object providing :meth:`isEqual(a: Classifier, b: Classifier)` and :meth:`isSubclass(a: Classifier, b: Classifier)` to be consumed by the other methods of this classifier; this method is called on various occasions, it should be implemented so that it always returns the same object for performance reasons."
+msgstr ""
+
+#: ../../java/event-bus.rst:100
+# 42a58bb1f9074839a80eeb70df6d651d
+msgid "This classifier is also efficient in case no subscribers are found for an event, but it uses conventional locking to synchronize an internal classifier cache, hence it is not well-suited to use cases in which subscriptions change with very high frequency (keep in mind that “opening” a classifier by sending the first message will also have to re-check all previous subscriptions)."
+msgstr ""
+
+#: ../../java/event-bus.rst:107
+# a7605e483885484c90014f5600fa06c5
+msgid "Scanning Classification"
+msgstr ""
+
+#: ../../java/event-bus.rst:109
+# 6a6dcd29cba8445fb58623fb307dd0ba
+msgid "The previous classifier was built for multi-classifier subscriptions which are strictly hierarchical, this classifier is useful if there are overlapping classifiers which cover various parts of the event space without forming a hierarchy. It can be compared to tuning in on (possibly multiple) radio stations by geographical reachability (for old-school radio-wave transmission). The abstract members for this classifier are:"
+msgstr ""
+
+#: ../../java/event-bus.rst:116
+# 3eacf389f0a347d2988c2e628b2a4a75
+msgid ":meth:`public int compareClassifiers(C a, C b)` is needed for determining matching classifiers and storing them in an ordered collection."
+msgstr ""
+
+#: ../../java/event-bus.rst:119
+# 0e85bf7be6f642d08070b344f3ab58c6
+msgid ":meth:`public int compareSubscribers(S a, S b)` is needed for storing subscribers in an ordered collection."
+msgstr ""
+
+#: ../../java/event-bus.rst:122
+# 7bf26b39c2ca433d906746fdfc3c687d
+msgid ":meth:`public boolean matches(C classifier, E event)` determines whether a given classifier shall match a given event; it is invoked for each subscription for all received events, hence the name of the classifier."
+msgstr ""
+
+#: ../../java/event-bus.rst:126
+# b63786d0c3e54eb4af3ce0e3a7012c4a
+msgid ":meth:`public void publish(E event, S subscriber)` will be invoked for each event for all subscribers which registered themselves for a classifier matching this event."
+msgstr ""
+
+#: ../../java/event-bus.rst:130
+# 15a5ebcff55f49b39ff73d298b79b11c
+msgid "This classifier takes always a time which is proportional to the number of subscriptions, independent of how many actually match."
+msgstr ""
+
+#: ../../java/event-bus.rst:134
+# c9fdfbc7e2cd4931bf190afcf4dd010d
+msgid "Actor Classification"
+msgstr ""
+
+#: ../../java/event-bus.rst:136
+# 639a6bd9fa5e498bb50817b2be9ca158
+msgid "This classification has been developed specifically for implementing :ref:`DeathWatch <deathwatch-java>`: subscribers as well as classifiers are of type :class:`ActorRef`. The abstract members are"
+msgstr ""
+
+#: ../../java/event-bus.rst:140
+# e7b7ce707bd241fbb06893bad89f4c0f
+msgid ":meth:`public ActorRef classify(E event)` is used for extracting the classifier from the incoming events."
+msgstr ""
+
+#: ../../java/event-bus.rst:146
+# f0585e417404411a89defb3515a84f48
+msgid "This classifier is still is generic in the event type, and it is efficient for all use cases."
+msgstr ""
+
+#: ../../java/event-bus.rst:152
+# c0af6e1ef91a4a2ea8b92f8f280b532b
+msgid "Event Stream"
+msgstr ""
+
+#: ../../java/event-bus.rst:154
+# e214ca0585a3417d94c5854f48a9eccc
+msgid "The event stream is the main event bus of each actor system: it is used for carrying :ref:`log messages <logging-java>` and `Dead Letters`_ and may be used by the user code for other purposes as well. It uses `Subchannel Classification`_ which enables registering to related sets of channels (as is used for :class:`RemoteLifeCycleMessage`). The following example demonstrates how a simple subscription works. Given a simple actor:"
+msgstr ""
+
+#: ../../java/event-bus.rst:164
+# 4591edd748e34882b7bce1410767aaa1
+msgid "it can be subscribed like this:"
+msgstr ""
+
+#: ../../java/event-bus.rst:169
+# a40a24b0998246ecb09cbe89a6bee731
+msgid "Default Handlers"
+msgstr ""
+
+#: ../../java/event-bus.rst:171
+# 14ef89ba844e4e32a4c70a3493512188
+msgid "Upon start-up the actor system creates and subscribes actors to the event stream for logging: these are the handlers which are configured for example in ``application.conf``:"
+msgstr ""
+
+#: ../../java/event-bus.rst:181
+# 3fb0688ba55b4f30847a6edbfae05544
+msgid "The handlers listed here by fully-qualified class name will be subscribed to all log event classes with priority higher than or equal to the configured log-level and their subscriptions are kept in sync when changing the log-level at runtime::"
+msgstr ""
+
+#: ../../java/event-bus.rst:188
+# e02fc464b8c74d19b461d2ae80486b49
+msgid "This means that log events for a level which will not be logged are not typically not dispatched at all (unless manual subscriptions to the respective event class have been done)"
+msgstr ""
+
+#: ../../java/event-bus.rst:193
+# 8c03d6673e7b4ccc89b0049c2e2870be
+msgid "Dead Letters"
+msgstr ""
+
+#: ../../java/event-bus.rst:195
+# ae8c80650adc4c25bf8c3e8750cf622b
+msgid "As described at :ref:`stopping-actors-java`, messages queued when an actor terminates or sent after its death are re-routed to the dead letter mailbox, which by default will publish the messages wrapped in :class:`DeadLetter`. This wrapper holds the original sender, receiver and message of the envelope which was redirected."
+msgstr ""
+
+#: ../../java/event-bus.rst:202
+# 1686e1b914d04f73874722985a021129
+msgid "Other Uses"
+msgstr ""
+
+#: ../../java/event-bus.rst:204
+# 619623907e44444a8b64d13ff6c47281
+msgid "The event stream is always there and ready to be used, just publish your own events (it accepts ``Object``) and subscribe listeners to the corresponding JVM classes."
+msgstr ""
+
+#: ../../java/extending-akka.rst:5
+# 3e5db9e861714b9d8ad8b4aed23923fe
+msgid "Akka Extensions (Java)"
+msgstr ""
+
+#: ../../java/extending-akka.rst:8
+# 6140366831b14e64a5aee8d23f13a157
+msgid "If you want to add features to Akka, there is a very elegant, but powerful mechanism for doing so. It's called Akka Extensions and is comprised of 2 basic components: an ``Extension`` and an ``ExtensionId``."
+msgstr ""
+
+#: ../../java/extending-akka.rst:11
+# 6947b9c7164c4a3cbe86095c904305cc
+msgid "Extensions will only be loaded once per ``ActorSystem``, which will be managed by Akka. You can choose to have your Extension loaded on-demand or at ``ActorSystem`` creation time through the Akka configuration. Details on how to make that happens are below, in the \"Loading from Configuration\" section."
+msgstr ""
+
+#: ../../java/extending-akka.rst:17
+# 1919b447a1804f80812df80b6ae65ec5
+msgid "Since an extension is a way to hook into Akka itself, the implementor of the extension needs to ensure the thread safety of his/her extension."
+msgstr ""
+
+#: ../../java/extending-akka.rst:22
+# 7d5eb86aaf3842c8a1be94fa471808d5
+msgid "Building an Extension"
+msgstr ""
+
+#: ../../java/extending-akka.rst:24
+# aa41e65444f649dc8ab831c7e8008f36
+msgid "So let's create a sample extension that just lets us count the number of times something has happened."
+msgstr ""
+
+#: ../../java/extending-akka.rst:26
+# 27e6e407aed440a4ba344e51d1588b64
+msgid "First, we define what our ``Extension`` should do:"
+msgstr ""
+
+#: ../../java/extending-akka.rst:31
+# ea0f016d88b843ef959a23f34532e481
+msgid "Then we need to create an ``ExtensionId`` for our extension so we can grab ahold of it."
+msgstr ""
+
+#: ../../java/extending-akka.rst:36
+# ff03f09dba0e4a5bbe422f9b0b0e2b1e
+msgid "Wicked! Now all we need to do is to actually use it:"
+msgstr ""
+
+#: ../../java/extending-akka.rst:41
+# 52c694048d4f45048416fd61d98f71c6
+msgid "Or from inside of an Akka Actor:"
+msgstr ""
+
+#: ../../java/extending-akka.rst:46
+# 1decae6e03444d74883329ed65b8249d
+msgid "That's all there is to it!"
+msgstr ""
+
+#: ../../java/extending-akka.rst:49
+# cdfd068fe68d4608b073a39c821a2ade
+msgid "Loading from Configuration"
+msgstr ""
+
+#: ../../java/extending-akka.rst:51
+# a848b1cfb9494780a5402cb7098d2165
+msgid "To be able to load extensions from your Akka configuration you must add FQCNs of implementations of either ``ExtensionId`` or ``ExtensionIdProvider`` in the \"akka.extensions\" section of the config you provide to your ``ActorSystem``."
+msgstr ""
+
+#: ../../java/extending-akka.rst:61
+# 3cec11b508ce4f828e558ddc413d4555
+msgid "Applicability"
+msgstr ""
+
+#: ../../java/extending-akka.rst:63
+# bb20a59007794161aa8ff6d6c2338cbf
+msgid "The sky is the limit! By the way, did you know that Akka's ``Typed Actors``, ``Serialization`` and other features are implemented as Akka Extensions?"
+msgstr ""
+
+#: ../../java/extending-akka.rst:69
+# 693449da8b18457ead222b8376877848
+msgid "Application specific settings"
+msgstr ""
+
+#: ../../java/extending-akka.rst:71
+# c46c8a7f65a6452c93fdb8712df79b7b
+msgid "The :ref:`configuration` can be used for application specific settings. A good practice is to place those settings in an Extension."
+msgstr ""
+
+#: ../../java/extending-akka.rst:73
+# a8d19dd0e21343ecb13d7ac9bb91f831
+msgid "Sample configuration:"
+msgstr ""
+
+#: ../../java/extending-akka.rst:78
+# 5f25b2ed9d1c4887957e0d606cc1190a
+msgid "The ``Extension``:"
+msgstr ""
+
+#: ../../java/extending-akka.rst:84
+# e7cd3b888c27436b8fdffc94d2230f78
+msgid "Use it:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:4
+# 7c1db184719745f9accbebdd5b74f36d
+msgid "Fault Tolerance (Java)"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:6
+# 8082b0a5715b4061ba632fe23716efb5
+msgid "As explained in :ref:`actor-systems` each actor is the supervisor of its children, and as such each actor defines fault handling supervisor strategy. This strategy cannot be changed afterwards as it is an integral part of the actor system’s structure."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:12
+# 130c5945f52f4e69bda769a941360042
+msgid "Fault Handling in Practice"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:14
+# 4c6dce2a831f407da32e95d473cb4505
+msgid "First, let us look at a sample that illustrates one way to handle data store errors, which is a typical source of failure in real world applications. Of course it depends on the actual application what is possible to do when the data store is unavailable, but in this sample we use a best effort re-connect approach."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:19
+# 45f8084bfa6e4dd2a9b16f01d019097e
+msgid "Read the following source code. The inlined comments explain the different pieces of the fault handling and why they are added. It is also highly recommended to run this sample as it is easy to follow the log output to understand what is happening in runtime."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:31
+# af93f17f82ed4679a49d5afe470dae68
+msgid "Creating a Supervisor Strategy"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:33
+# da04b35208154a2bae4b0b6612ce1961
+msgid "The following sections explain the fault handling mechanism and alternatives in more depth."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:36
+# a77f7380261e44a9884d7eb0b4c2b89f
+msgid "For the sake of demonstration let us consider the following strategy:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:41
+# b6439fae7da94d3091626e9b46cd1ae3
+msgid "I have chosen a few well-known exception types in order to demonstrate the application of the fault handling directives described in :ref:`supervision`. First off, it is a one-for-one strategy, meaning that each child is treated separately (an all-for-one strategy works very similarly, the only difference is that any decision is applied to all children of the supervisor, not only the failing one). There are limits set on the restart frequency, namely maximum 10 restarts per minute. ``-1`` and ``Duration.Inf()`` means that the respective limit does not apply, leaving the possibility to specify an absolute upper limit on the restarts or to make the restarts work infinitely."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:52
+# 783efb211266484e8336838ec536343e
+msgid "Default Supervisor Strategy"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:54
+# 206375620d1147d5b47505e14855047a
+msgid "``Escalate`` is used if the defined strategy doesn't cover the exception that was thrown."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:56
+# 86f6257dbf4642f4ac0e089477262970
+msgid "When the supervisor strategy is not defined for an actor the following exceptions are handled by default:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:59
+# 7e54aa37bf3e42ebb000c6933e4a4907
+msgid "``ActorInitializationException`` will stop the failing child actor"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:60
+# 68b46415a2124084bfa560ebd213bded
+msgid "``ActorKilledException`` will stop the failing child actor"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:61
+# b3bf57894b4443269b63a39db16282e8
+msgid "``Exception`` will restart the failing child actor"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:62
+# b28b4df13d824500a006d3391c60cc0c
+msgid "Other types of ``Throwable`` will be escalated to parent actor"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:64
+# e82969fc1ca049cca98db397865c5974
+msgid "If the exception escalate all the way up to the root guardian it will handle it in the same way as the default strategy defined above."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:68
+# 4cfa4f513274468cb74bdb8f2b452fec
+msgid "Test Application"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:70
+# 94096e62dfd3491d8636b2776c43476b
+msgid "The following section shows the effects of the different directives in practice, wherefor a test setup is needed. First off, we need a suitable supervisor:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:76
+# e1c8f7ca8c27430f9275e291eb3389b4
+msgid "This supervisor will be used to create a child, with which we can experiment:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:81
+# 8a37d64540e842a8bffc3f7bbb2dbfe4
+msgid "The test is easier by using the utilities described in :ref:`akka-testkit`, where ``TestProbe`` provides an actor ref useful for receiving and inspecting replies."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:87
+# f96b60b3012840909b02a1a6aad4fe4f
+msgid "Let us create actors:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:92
+# a8de14c468764792a79e36ccd31b776b
+msgid "The first test shall demonstrate the ``Resume`` directive, so we try it out by setting some non-initial state in the actor and have it fail:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:98
+# 298eabe7d56a401cb31ac67a0a4a599e
+msgid "As you can see the value 42 survives the fault handling directive. Now, if we change the failure to a more serious ``NullPointerException``, that will no longer be the case:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:105
+# 224035ac4be04413afc3e8285c039321
+msgid "And finally in case of the fatal ``IllegalArgumentException`` the child will be terminated by the supervisor:"
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:111
+# c35bcf9f296a4f8b941d8f1dc6b9439f
+msgid "Up to now the supervisor was completely unaffected by the child’s failure, because the directives set did handle it. In case of an ``Exception``, this is not true anymore and the supervisor escalates the failure."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:118
+# fdd004bcf1d349ae901b2fbe96dd1db7
+msgid "The supervisor itself is supervised by the top-level actor provided by the :class:`ActorSystem`, which has the default policy to restart in case of all ``Exception`` cases (with the notable exceptions of ``ActorInitializationException`` and ``ActorKilledException``). Since the default directive in case of a restart is to kill all children, we expected our poor child not to survive this failure."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:125
+# 463e0e23f2434e4093e578c9ac88c6e2
+msgid "In case this is not desired (which depends on the use case), we need to use a different supervisor which overrides this behavior."
+msgstr ""
+
+#: ../../java/fault-tolerance.rst:131
+# 875aa50535374de497e57f01ffa93bb2
+msgid "With this parent, the child survives the escalated restart, as demonstrated in the last test:"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:4
+# e0ad8daa679442bf893bd821dee88f23
+msgid "Diagrams of the Fault Tolerance Sample (Java)"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:8
+# 2c69392d6b724f80b450eacd1e67865c
+msgid "*The above diagram illustrates the normal message flow.*"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:10
+# 022be3557e6e48a69941bfd16a424f1a
+msgid "**Normal flow:**"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:13
+#: ../../java/fault-tolerance-sample.rst:33
+# 65747205134345f2998f46a074222945
+# 02e55bc163254a2382844eb8547a8d79
+msgid "Step"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:13
+#: ../../java/fault-tolerance-sample.rst:33
+# 313216b524e24c4d84e871d7df58a32f
+# e04605c8613d42f095ba70c12d83fcce
+msgid "Description"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:15
+#: ../../java/fault-tolerance-sample.rst:35
+# 72b3924544e84636b65d5b071493462f
+# bb5b70c3518046999831049ebc57d289
+msgid "1"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:15
+# 1cdf28434e9b43dc819e7da0c3adb16c
+msgid "The progress ``Listener`` starts the work."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:16
+#: ../../java/fault-tolerance-sample.rst:36
+# 4570c4b2a64242e2819bdb0844f38958
+# 7ee8b61ce30a409db1b8f976de25606a
+msgid "2"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:16
+# d295c5d64c034487a853781e82fb5442
+msgid "The ``Worker`` schedules work by sending ``Do`` messages periodically to itself"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:17
+# 442fcf32f6174583a62b39b92afb2cbf
+msgid "3, 4, 5"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:17
+# d1ee38cbc08d421b8130ac1cee8ae4d8
+msgid "When receiving ``Do`` the ``Worker`` tells the ``CounterService`` to increment the counter, three times. The ``Increment`` message is forwarded to the ``Counter``, which updates its counter variable and sends current value to the ``Storage``."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:21
+# e65c9bb6f91d4a70bec1f0cfc00314f6
+msgid "6, 7"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:21
+# a2de78bf02eb40fe9ac17434731b504a
+msgid "The ``Worker`` asks the ``CounterService`` of current value of the counter and pipes the result back to the ``Listener``."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:28
+# 5483a55d6dbd4aab8cee27498546882b
+msgid "*The above diagram illustrates what happens in case of storage failure.*"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:30
+# 5147001ecd93434db5c370dde1173f96
+msgid "**Failure flow:**"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:35
+# d4fff84444f14f47a6e9fdce71971a09
+msgid "The ``Storage`` throws ``StorageException``."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:36
+# fe9eadbac7ee4cee84b17ae8f141de4c
+msgid "The ``CounterService`` is supervisor of the ``Storage`` and restarts the ``Storage`` when ``StorageException`` is thrown."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:38
+# ff9edf3ce0514dacb717a387e6f3039f
+msgid "3, 4, 5, 6"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:38
+# 527f32cd65ff449cbedd44aa165cf7fd
+msgid "The ``Storage`` continues to fail and is restarted."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:39
+# 48971e46724245c2a5717a65528cffa3
+msgid "7"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:39
+# 3b71a221abd44bd2ba2f40fe01704b97
+msgid "After 3 failures and restarts within 5 seconds the ``Storage`` is stopped by its supervisor, i.e. the ``CounterService``."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:41
+# 44f78b4ee6584805bb6d6ffa81f59e02
+msgid "8"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:41
+# f8313f0804cf414b920bbc542afe8dd6
+msgid "The ``CounterService`` is also watching the ``Storage`` for termination and receives the ``Terminated`` message when the ``Storage`` has been stopped ..."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:43
+# 3993873403af4cb2bba78fd9df921a74
+msgid "9, 10, 11"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:43
+# 52e1c1ce975849c096b24018107c368f
+msgid "and tells the ``Counter`` that there is no ``Storage``."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:44
+# 508ced17534040baa894e1a2b255f006
+msgid "12"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:44
+# ebece99ea12f415caea6ed3767c5d983
+msgid "The ``CounterService`` schedules a ``Reconnect`` message to itself."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:45
+# de18814c5c1941d9a42c74986ace1768
+msgid "13, 14"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:45
+# b5b1d79f307848f7b46bd3a5e41f6cb8
+msgid "When it receives the ``Reconnect`` message it creates a new ``Storage`` ..."
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:46
+# d7c1b58457e54cddb8e8ef1cb966ed74
+msgid "15, 16"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:46
+# 7a408b6c251f4cf897c56825a338c1b7
+msgid "and tells the the ``Counter`` to use the new ``Storage``"
+msgstr ""
+
+#: ../../java/fault-tolerance-sample.rst:50
+# 8f7a9ef57bd84b58bab0d718a43ee42e
+msgid "Full Source Code of the Fault Tolerance Sample (Java)"
+msgstr ""
+
+#: ../../java/fsm.rst:5
+# 0b925bd840ba4fdd99fc0e38994261d7
+msgid "Building Finite State Machine Actors (Java)"
+msgstr ""
+
+#: ../../java/fsm.rst:9
+# f5238fd68661402ab2c7fa2d8160385e
+msgid "Overview"
+msgstr ""
+
+#: ../../java/fsm.rst:11
+# e047e718ac8c44c1aced7f49d363ef5a
+msgid "The FSM (Finite State Machine) pattern is best described in the `Erlang design principles <http://www.erlang.org/documentation/doc-4.8.2/doc/design_principles/fsm.html>`_. In short, it can be seen as a set of relations of the form:"
+msgstr ""
+
+#: ../../java/fsm.rst:16
+# 0124d79855a9477fbbd9707310642a69
+msgid "**State(S) x Event(E) -> Actions (A), State(S')**"
+msgstr ""
+
+#: ../../java/fsm.rst:18
+# d07ecc22927d479db59e45012b6879d2
+msgid "These relations are interpreted as meaning:"
+msgstr ""
+
+#: ../../java/fsm.rst:20
+# fc3e0fcd441243e883f33fb3ad66d6ca
+msgid "*If we are in state S and the event E occurs, we should perform the actions A and make a transition to the state S'.*"
+msgstr ""
+
+#: ../../java/fsm.rst:23
+# 641e6fbd131b4fc291eacddbdf1a0345
+msgid "While the Scala programming language enables the formulation of a nice internal DSL (domain specific language) for formulating finite state machines (see :ref:`fsm-scala`), Java’s verbosity does not lend itself well to the same approach. This chapter describes ways to effectively achieve the same separation of concerns through self-discipline."
+msgstr ""
+
+#: ../../java/fsm.rst:30
+# c2cb2ca8135645d9a09e0cbef72fbe12
+msgid "How State should be Handled"
+msgstr ""
+
+#: ../../java/fsm.rst:32
+# f0f511b3c8b049f98ab12b3c1676725e
+msgid "All mutable fields (or transitively mutable data structures) referenced by the FSM actor’s implementation should be collected in one place and only mutated using a small well-defined set of methods. One way to achieve this is to assemble all mutable state in a superclass which keeps it private and offers protected methods for mutating it."
+msgstr ""
+
+#: ../../java/fsm.rst:42
+# 58e55fff66cc4df1a9a3f544a93b7cb5
+msgid "The benefit of this approach is that state changes can be acted upon in one central place, which makes it impossible to forget inserting code for reacting to state transitions when adding to the FSM’s machinery."
+msgstr ""
+
+#: ../../java/fsm.rst:47
+# 7ef61e7662ca451c827b0558f6fb6e65
+msgid "Message Buncher Example"
+msgstr ""
+
+#: ../../java/fsm.rst:49
+# 8f19fadfc61b4cba991fcf1d469931e1
+msgid "The base class shown above is designed to support a similar example as for the Scala FSM documentation: an actor which receives and queues messages, to be delivered in batches to a configurable target actor. The messages involved are:"
+msgstr ""
+
+#: ../../java/fsm.rst:55
+# 682034b6d82d4f8f9d2bcd4ef3ae6622
+msgid "This actor has only the two states ``IDLE`` and ``ACTIVE``, making their handling quite straight-forward in the concrete actor derived from the base class:"
+msgstr ""
+
+#: ../../java/fsm.rst:63
+# 0c2921f7d244446f9c3bd40f2464b2f9
+msgid "The trick here is to factor out common functionality like :meth:`whenUnhandled` and :meth:`transition` in order to obtain a few well-defined points for reacting to change or insert logging."
+msgstr ""
+
+#: ../../java/fsm.rst:68
+# a73685767e4b40d89570d88dbf81ecbc
+msgid "State-Centric vs. Event-Centric"
+msgstr ""
+
+#: ../../java/fsm.rst:70
+# c17e19a89164414a8c6950ec89c82587
+msgid "In the example above, the subjective complexity of state and events was roughly equal, making it a matter of taste whether to choose primary dispatch on either; in the example a state-based dispatch was chosen. Depending on how evenly the matrix of possible states and events is populated, it may be more practical to handle different events first and distinguish the states in the second tier. An example would be a state machine which has a multitude of internal states but handles only very few distinct events."
+msgstr ""
+
+#: ../../java/futures.rst:4
+# 54838b2ebbf9411db9e2307c20173a5b
+msgid "Futures (Java)"
+msgstr ""
+
+#: ../../java/futures.rst:7
+# 0a59097653a74e20927a0d29134ced84
+msgid "Introduction"
+msgstr ""
+
+#: ../../java/futures.rst:9
+# 8036bc20b02c47129cdf74db3f29dc31
+msgid "In Akka, a `Future <http://en.wikipedia.org/wiki/Futures_and_promises>`_ is a data structure used to retrieve the result of some concurrent operation. This operation is usually performed by an ``Actor`` or by the ``Dispatcher`` directly. This result can be accessed synchronously (blocking) or asynchronously (non-blocking)."
+msgstr ""
+
+#: ../../java/futures.rst:14
+# 5df41f31f5674a23be14d1ca13fee63f
+msgid "Execution Contexts"
+msgstr ""
+
+#: ../../java/futures.rst:16
+# e19cf4004fa1426f8e775e39fc543c8c
+msgid "In order to execute callbacks and operations, Futures need something called an ``ExecutionContext``, which is very similar to a ``java.util.concurrent.Executor``. if you have an ``ActorSystem`` in scope, it will use its default dispatcher as the ``ExecutionContext``, or you can use the factory methods provided by the ``ExecutionContexts`` class to wrap ``Executors`` and ``ExecutorServices``, or even create your own."
+msgstr ""
+
+#: ../../java/futures.rst:25
+# 0faaf239abd84cbe92e0ae202bbf5193
+msgid "Use with Actors"
+msgstr ""
+
+#: ../../java/futures.rst:27
+# 0da841fd991b42838793a7ef2635db51
+msgid "There are generally two ways of getting a reply from an ``UntypedActor``: the first is by a sent message (``actorRef.tell(msg)``), which only works if the original sender was an ``UntypedActor``) and the second is through a ``Future``."
+msgstr ""
+
+#: ../../java/futures.rst:30
+# eb85a462f08e4a119b4c68f32e7ffd02
+msgid "Using the ``ActorRef``\\'s ``ask`` method to send a message will return a Future. To wait for and retrieve the actual result the simplest method is:"
+msgstr ""
+
+#: ../../java/futures.rst:36
+# 946598e522064d0d9c421e7d11cb1e06
+msgid "This will cause the current thread to block and wait for the ``UntypedActor`` to 'complete' the ``Future`` with it's reply. Blocking is discouraged though as it can cause performance problem. The blocking operations are located in ``Await.result`` and ``Await.ready`` to make it easy to spot where blocking occurs. Alternatives to blocking are discussed further within this documentation. Also note that the ``Future`` returned by an ``UntypedActor`` is a ``Future<Object>`` since an ``UntypedActor`` is dynamic. That is why the cast to ``String`` is used in the above sample."
+msgstr ""
+
+#: ../../java/futures.rst:44
+# 7de43e29d2054fea9f2ae22147f71058
+msgid "Use Directly"
+msgstr ""
+
+#: ../../java/futures.rst:46
+# 218407223dff4f6f9dbeab5c1d2965fd
+msgid "A common use case within Akka is to have some computation performed concurrently without needing the extra utility of an ``UntypedActor``. If you find yourself creating a pool of ``UntypedActor``\\s for the sole reason of performing a calculation in parallel, there is an easier (and faster) way:"
+msgstr ""
+
+#: ../../java/futures.rst:53
+# ed060a28070e42febb01ddb4cf4fd9b1
+msgid "In the above code the block passed to ``future`` will be executed by the default ``Dispatcher``, with the return value of the block used to complete the ``Future`` (in this case, the result would be the string: \"HelloWorld\"). Unlike a ``Future`` that is returned from an ``UntypedActor``, this ``Future`` is properly typed, and we also avoid the overhead of managing an ``UntypedActor``."
+msgstr ""
+
+#: ../../java/futures.rst:58
+# 718e3f3aed2e4a6991f242443305e946
+msgid "You can also create already completed Futures using the ``Futures`` class, which can be either successes:"
+msgstr ""
+
+#: ../../java/futures.rst:63
+# caad50775d44420ea2b97325d8816af3
+msgid "Or failures:"
+msgstr ""
+
+#: ../../java/futures.rst:69
+# 2b1321ca79db4ae686e94307be79858a
+msgid "Functional Futures"
+msgstr ""
+
+#: ../../java/futures.rst:71
+# d8b03b573a174733b0a8f78e88ad943a
+msgid "Akka's ``Future`` has several monadic methods that are very similar to the ones used by ``Scala``'s collections. These allow you to create 'pipelines' or 'streams' that the result will travel through."
+msgstr ""
+
+#: ../../java/futures.rst:75
+# 6ccb69d09ea3498ea96820efadcba9b7
+msgid "Future is a Monad"
+msgstr ""
+
+#: ../../java/futures.rst:77
+# d9195e9c64e94c10ad3f9120ed11126d
+msgid "The first method for working with ``Future`` functionally is ``map``. This method takes a ``Mapper`` which performs some operation on the result of the ``Future``, and returning a new result. The return value of the ``map`` method is another ``Future`` that will contain the new result:"
+msgstr ""
+
+#: ../../java/futures.rst:84
+# 4031fb73a09444c8ad15d50d7c2dc6e8
+msgid "In this example we are joining two strings together within a Future. Instead of waiting for f1 to complete, we apply our function that calculates the length of the string using the ``map`` method. Now we have a second Future, f2, that will eventually contain an ``Integer``. When our original ``Future``, f1, completes, it will also apply our function and complete the second Future with its result. When we finally ``get`` the result, it will contain the number 10. Our original Future still contains the string \"HelloWorld\" and is unaffected by the ``map``."
+msgstr ""
+
+#: ../../java/futures.rst:91
+# 0f4d5aa2a9814c05bbe6a2dc59044342
+msgid "Something to note when using these methods: if the ``Future`` is still being processed when one of these methods are called, it will be the completing thread that actually does the work. If the ``Future`` is already complete though, it will be run in our current thread. For example:"
+msgstr ""
+
+#: ../../java/futures.rst:98
+# eb60bc5aaedc42ea8ca7ab48752a0693
+msgid "The original ``Future`` will take at least 0.1 second to execute now, which means it is still being processed at the time we call ``map``. The function we provide gets stored within the ``Future`` and later executed automatically by the dispatcher when the result is ready."
+msgstr ""
+
+#: ../../java/futures.rst:102
+# 42ef250c183d4e1e9de3e8b10b5da4fd
+msgid "If we do the opposite:"
+msgstr ""
+
+#: ../../java/futures.rst:107
+# 47d3618625704db7ae1f6b5e44b39b91
+msgid "Our little string has been processed long before our 0.1 second sleep has finished. Because of this, the dispatcher has moved onto other messages that need processing and can no longer calculate the length of the string for us, instead it gets calculated in the current thread just as if we weren't using a ``Future``."
+msgstr ""
+
+#: ../../java/futures.rst:111
+# add4e3d6990b48738e8c1e219067b3e1
+msgid "Normally this works quite well as it means there is very little overhead to running a quick function. If there is a possibility of the function taking a non-trivial amount of time to process it might be better to have this done concurrently, and for that we use ``flatMap``:"
+msgstr ""
+
+#: ../../java/futures.rst:118
+# da756a1f015b433b81df8ec7d013cc8a
+msgid "Now our second Future is executed concurrently as well. This technique can also be used to combine the results of several Futures into a single calculation, which will be better explained in the following sections."
+msgstr ""
+
+#: ../../java/futures.rst:121
+# da3cf1754c7e4d8b8ab0f7a744c4ad5c
+msgid "If you need to do conditional propagation, you can use ``filter``:"
+msgstr ""
+
+#: ../../java/futures.rst:127
+# d9b45af31ed2464c92cca6d5c87eb05a
+msgid "Composing Futures"
+msgstr ""
+
+#: ../../java/futures.rst:129
+# 2b8b066869c1471bbc38a04cb5eecd77
+msgid "It is very often desirable to be able to combine different Futures with each other, below are some examples on how that can be done in a non-blocking fashion."
+msgstr ""
+
+#: ../../java/futures.rst:135
+# 3624a04718fd4cacaf389db0bf4bc50a
+msgid "To better explain what happened in the example, ``Future.sequence`` is taking the ``Iterable<Future<Integer>>`` and turning it into a ``Future<Iterable<Integer>>``. We can then use ``map`` to work with the ``Iterable<Integer>`` directly, and we aggregate the sum of the ``Iterable``."
+msgstr ""
+
+#: ../../java/futures.rst:139
+# a204a0c065a4443ea081b3df9b2517fc
+msgid "The ``traverse`` method is similar to ``sequence``, but it takes a sequence of ``A``s and applies a function from ``A`` to ``Future<B>`` and returns a ``Future<Iterable<B>>``, enabling parallel ``map`` over the sequence, if you use ``Futures.future`` to create the ``Future``."
+msgstr ""
+
+#: ../../java/futures.rst:145
+# 88c5f5a64e914d239bd7ae8ecf81fa93
+msgid "It's as simple as that!"
+msgstr ""
+
+#: ../../java/futures.rst:147
+# e7c9f94d1a0f401e996f0f6a93a70275
+msgid "Then there's a method that's called ``fold`` that takes a start-value, a sequence of ``Future``:s and a function from the type of the start-value, a timeout, and the type of the futures and returns something with the same type as the start-value, and then applies the function to all elements in the sequence of futures, non-blockingly, the execution will be started when the last of the Futures is completed."
+msgstr ""
+
+#: ../../java/futures.rst:156
+# 06519ac7e28040da816aa7bd87a68623
+msgid "That's all it takes!"
+msgstr ""
+
+#: ../../java/futures.rst:159
+# 7d884fa052ab4d1ca457d39f34dd2fd4
+msgid "If the sequence passed to ``fold`` is empty, it will return the start-value, in the case above, that will be empty String. In some cases you don't have a start-value and you're able to use the value of the first completing Future in the sequence as the start-value, you can use ``reduce``, it works like this:"
+msgstr ""
+
+#: ../../java/futures.rst:166
+# ea113a4f21204c1591141eb87751711e
+msgid "Same as with ``fold``, the execution will be started when the last of the Futures is completed, you can also parallelize it by chunking your futures into sub-sequences and reduce them, and then reduce the reduced results again."
+msgstr ""
+
+#: ../../java/futures.rst:169
+# 6a6830b9d5e74b72a05e13ea6b3031b8
+msgid "This is just a sample of what can be done."
+msgstr ""
+
+#: ../../java/futures.rst:172
+# 2c27b2771be6462ca6c72a378071f401
+msgid "Callbacks"
+msgstr ""
+
+#: ../../java/futures.rst:174
+# 32efad7d3bb74b6eb3845237de77769f
+msgid "Sometimes you just want to listen to a ``Future`` being completed, and react to that not by creating a new Future, but by side-effecting. For this Akka supports ``onComplete``, ``onSuccess`` and ``onFailure``, of which the latter two are specializations of the first."
+msgstr ""
+
+#: ../../java/futures.rst:187
+# f9fa54f2255a432b856e7a8bd7cebe0f
+msgid "Ordering"
+msgstr ""
+
+#: ../../java/futures.rst:189
+# 9fa3f7a2c17e434f87cf61f3616a5e95
+msgid "Since callbacks are executed in any order and potentially in parallel, it can be tricky at the times when you need sequential ordering of operations. But there's a solution! And it's name is ``andThen``, and it creates a new Future with the specified callback, a Future that will have the same result as the Future it's called on, which allows for ordering like in the following sample:"
+msgstr ""
+
+#: ../../java/futures.rst:199
+# 1a1e0a99c02240bfab8e98c0c6dd0024
+msgid "Auxiliary methods"
+msgstr ""
+
+#: ../../java/futures.rst:201
+# c76632f7964040d5a54f2d8a59add1b1
+msgid "``Future`` ``fallbackTo`` combines 2 Futures into a new ``Future``, and will hold the successful value of the second ``Future`` if the first ``Future`` fails."
+msgstr ""
+
+#: ../../java/futures.rst:207
+# 8eb1c73ac5b3442a98294f1b0c252561
+msgid "You can also combine two Futures into a new ``Future`` that will hold a tuple of the two Futures successful results, using the ``zip`` operation."
+msgstr ""
+
+#: ../../java/futures.rst:214
+# e7e03958c3854c98afa6964589f538f3
+msgid "Exceptions"
+msgstr ""
+
+#: ../../java/futures.rst:216
+# 6c58c93a705a484ea9e54d57699dee1a
+msgid "Since the result of a ``Future`` is created concurrently to the rest of the program, exceptions must be handled differently. It doesn't matter if an ``UntypedActor`` or the dispatcher is completing the ``Future``, if an ``Exception`` is caught the ``Future`` will contain it instead of a valid result. If a ``Future`` does contain an ``Exception``, calling ``Await.result`` will cause it to be thrown again so it can be handled properly."
+msgstr ""
+
+#: ../../java/futures.rst:221
+# f07454dc1976492aa656395192d12cf8
+msgid "It is also possible to handle an ``Exception`` by returning a different result. This is done with the ``recover`` method. For example:"
+msgstr ""
+
+#: ../../java/futures.rst:227
+# 1bb26da6d307488faaf411b061f2dd72
+msgid "In this example, if the actor replied with a ``akka.actor.Status.Failure`` containing the ``ArithmeticException``, our ``Future`` would have a result of 0. The ``recover`` method works very similarly to the standard try/catch blocks, so multiple ``Exception``\\s can be handled in this manner, and if an ``Exception`` is not handled this way it will behave as if we hadn't used the ``recover`` method."
+msgstr ""
+
+#: ../../java/futures.rst:232
+# f6c5007f9aff4eb4a81f62a752e9672c
+msgid "You can also use the ``recoverWith`` method, which has the same relationship to ``recover`` as ``flatMap`` has to ``map``, and is use like this:"
+msgstr ""
+
+#: ../../java/index.rst:4
+# e75eb2b290f74a6b81caab9f1109f7a6
+msgid "Java API"
+msgstr ""
+
+#: ../../java/logging.rst:5
+# 0dcfffe5dda34ddb821e552d0af2c063
+msgid "Logging (Java)"
+msgstr ""
+
+#: ../../java/logging.rst:9
+# 3c256a41384d4b2da0ad5b0d99bc00d4
+msgid "How to Log"
+msgstr ""
+
+#: ../../java/logging.rst:11
+# 43d0115c066a4c739a98bf3ded8fca50
+msgid "Create a ``LoggingAdapter`` and use the ``error``, ``warning``, ``info``, or ``debug`` methods, as illustrated in this example:"
+msgstr ""
+
+#: ../../java/logging.rst:17
+# ffeb3b5ec0134627a35d98f5d60a000c
+msgid "The first parameter to ``Logging.getLogger`` could also be any :class:`LoggingBus`, specifically ``system.eventStream()``; in the demonstrated case, the actor system’s address is included in the ``akkaSource`` representation of the log source (see `Logging Thread and Akka Source in MDC`_) while in the second case this is not automatically done. The second parameter to ``Logging.getLogger`` is the source of this logging channel.  The source object is translated to a String according to the following rules:"
+msgstr ""
+
+#: ../../java/logging.rst:25
+# 2d73bcc51f034a2fa6a91a7e6e66da7a
+msgid "if it is an Actor or ActorRef, its path is used"
+msgstr ""
+
+#: ../../java/logging.rst:26
+# bfa19487b6aa429c8b28ba07d3c927db
+msgid "in case of a String it is used as is"
+msgstr ""
+
+#: ../../java/logging.rst:27
+# 8679cfebcb284f05bca293d88d7d3567
+msgid "in case of a class an approximation of its simpleName"
+msgstr ""
+
+#: ../../java/logging.rst:28
+# 935dc4ab04044142950890568326534f
+msgid "and in all other cases the simpleName of its class"
+msgstr ""
+
+#: ../../java/logging.rst:30
+# 5bd1f8020c8941b9bd03cce865164c9e
+msgid "The log message may contain argument placeholders ``{}``, which will be substituted if the log level is enabled. Giving more arguments as there are placeholders results in a warning being appended to the log statement (i.e. on the same line with the same severity). You may pass a Java array as the only substitution argument to have its elements be treated individually:"
+msgstr ""
+
+#: ../../java/logging.rst:38
+# 1fe83f46bfb14280b3e1b6847e874515
+msgid "The Java :class:`Class` of the log source is also included in the generated :class:`LogEvent`. In case of a simple string this is replaced with a “marker” class :class:`akka.event.DummyClassForStringSources` in order to allow special treatment of this case, e.g. in the SLF4J event listener which will then use the string instead of the class’ name for looking up the logger instance to use."
+msgstr ""
+
+#: ../../java/logging.rst:46
+# 2e35774969c04b749e1d5100d20078d8
+msgid "Auxiliary logging options"
+msgstr ""
+
+#: ../../java/logging.rst:48
+# a6326f12af004d85afdc162429ee8903
+msgid "Akka has a couple of configuration options for very low level debugging, that makes most sense in for developers and not for operations."
+msgstr ""
+
+#: ../../java/logging.rst:51
+# 9fd46b1892274a63b412b57b40d0accf
+msgid "You almost definitely need to have logging set to DEBUG to use any of the options below:"
+msgstr ""
+
+#: ../../java/logging.rst:59
+# 873de49b049b4b37b352c2d29d385c77
+msgid "This config option is very good if you want to know what config settings are loaded by Akka:"
+msgstr ""
+
+#: ../../java/logging.rst:69
+# 0103b0dd5faa4be8a65c5764c53df58a
+msgid "If you want very detailed logging of all automatically received messages that are processed by Actors:"
+msgstr ""
+
+#: ../../java/logging.rst:81
+# 75e3271b43824beabd0b0cdbbfdbc75f
+msgid "If you want very detailed logging of all lifecycle changes of Actors (restarts, deaths etc):"
+msgstr ""
+
+#: ../../java/logging.rst:92
+# 8880081d7de24e24a639cffb32c22f77
+msgid "If you want very detailed logging of all events, transitions and timers of FSM Actors that extend LoggingFSM:"
+msgstr ""
+
+#: ../../java/logging.rst:103
+# 5dc3c4b1e2794e7080633c70204bbc81
+msgid "If you want to monitor subscriptions (subscribe/unsubscribe) on the ActorSystem.eventStream:"
+msgstr ""
+
+#: ../../java/logging.rst:115
+# bdd8d316f41e4ef9ba2359927ab16986
+msgid "Auxiliary remote logging options"
+msgstr ""
+
+#: ../../java/logging.rst:117
+# 94240d6384a143c5a7ced6a9c2464866
+msgid "If you want to see all messages that are sent through remoting at DEBUG log level: (This is logged as they are sent by the transport layer, not by the Actor)"
+msgstr ""
+
+#: ../../java/logging.rst:129
+# 49cb44ab40b74edc9a3f0b5f2dccb9c3
+msgid "If you want to see all messages that are received through remoting at DEBUG log level: (This is logged as they are received by the transport layer, not by any Actor)"
+msgstr ""
+
+#: ../../java/logging.rst:141
+# e97bdf8665f945c1af18d98dd66f43f2
+msgid "Also see the logging options for TestKit: :ref:`actor.logging`."
+msgstr ""
+
+#: ../../java/logging.rst:145
+# b17699386858476583e0070a60283b2a
+msgid "Event Handler"
+msgstr ""
+
+#: ../../java/logging.rst:147
+# 812e6698d0e44e78a60313dc3fdbe6ad
+msgid "Logging is performed asynchronously through an event bus. You can configure which event handlers that should subscribe to the logging events. That is done using the 'event-handlers' element in the :ref:`configuration`. Here you can also define the log level."
+msgstr ""
+
+#: ../../java/logging.rst:160
+# bbe79fb3e6af43b8868ab8e33a7cd567
+msgid "The default one logs to STDOUT and is registered by default. It is not intended to be used for production. There is also an :ref:`slf4j-java` event handler available in the 'akka-slf4j' module."
+msgstr ""
+
+#: ../../java/logging.rst:163
+# 4a006337d5f7470cb4b211ca4ea38cc5
+msgid "Example of creating a listener:"
+msgstr ""
+
+#: ../../java/logging.rst:172
+# 7df55545fa804f0dae0c3a71a8d08d86
+msgid "SLF4J"
+msgstr ""
+
+#: ../../java/logging.rst:174
+# cbe82788a0b549a1ae707666ee96f1b0
+msgid "Akka provides an event handler for `SL4FJ <http://www.slf4j.org/>`_. This module is available in the 'akka-slf4j.jar'. It has one single dependency; the slf4j-api jar. In runtime you also need a SLF4J backend, we recommend `Logback <http://logback.qos.ch/>`_:"
+msgstr ""
+
+#: ../../java/logging.rst:186
+# acb74a1b379449f687377d85c4f51153
+msgid "You need to enable the Slf4jEventHandler in the 'event-handlers' element in the :ref:`configuration`. Here you can also define the log level of the event bus. More fine grained log levels can be defined in the configuration of the SLF4J backend (e.g. logback.xml)."
+msgstr ""
+
+#: ../../java/logging.rst:198
+# 7579af2e353c4f3ab6e87a3bcb2881cc
+msgid "The SLF4J logger selected for each log event is chosen based on the :class:`Class` of the log source specified when creating the :class:`LoggingAdapter`, unless that was given directly as a string in which case that string is used (i.e. ``LoggerFactory.getLogger(Class c)`` is used in the first case and ``LoggerFactory.getLogger(String s)`` in the second)."
+msgstr ""
+
+#: ../../java/logging.rst:206
+# c5aadcb1884c4e869a6e3a65b05a4d69
+msgid "Beware that the the actor system’s name is appended to a :class:`String` log source if the LoggingAdapter was created giving an :class:`ActorSystem` to the factory. If this is not intended, give a :class:`LoggingBus` instead as shown below:"
+msgstr ""
+
+#: ../../java/logging.rst:216
+# fc1c174b47144c4ba3ebfc33e9ed3b30
+msgid "Logging Thread and Akka Source in MDC"
+msgstr ""
+
+#: ../../java/logging.rst:218
+# 8dbb8fc7e8294f6a804cd5ffe8fd0e55
+msgid "Since the logging is done asynchronously the thread in which the logging was performed is captured in Mapped Diagnostic Context (MDC) with attribute name ``sourceThread``. With Logback the thread name is available with ``%X{sourceThread}`` specifier within the pattern layout configuration::"
+msgstr ""
+
+#: ../../java/logging.rst:230
+# f50a7e4e6da74123a93f192f43a923c8
+msgid "It will probably be a good idea to use the ``sourceThread`` MDC value also in non-Akka parts of the application in order to have this property consistently available in the logs."
+msgstr ""
+
+#: ../../java/logging.rst:234
+# 18fec0a926f24b39a3d54ba610b57fc5
+msgid "Another helpful facility is that Akka captures the actor’s address when instantiating a logger within it, meaning that the full instance identification is available for associating log messages e.g. with members of a router. This information is available in the MDC with attribute name ``akkaSource``::"
+msgstr ""
+
+#: ../../java/logging.rst:245
+# 2ec2657d3fee47e1b6a7092b94b05335
+msgid "For more details on what this attribute contains—also for non-actors—please see `How to Log`_."
+msgstr ""
+
+#: ../../java/remoting.rst:5
+# 6286a3d056844fc6a2ce685a853481d9
+msgid "Remoting (Java)"
+msgstr ""
+
+#: ../../java/remoting.rst:7
+# 498f0a6811bf4afea0cb59f51b42a5c4
+msgid "For an introduction of remoting capabilities of Akka please see :ref:`remoting`."
+msgstr ""
+
+#: ../../java/remoting.rst:10
+# 857a3f052f9244ef97a7137b11d37cc9
+msgid "Preparing your ActorSystem for Remoting"
+msgstr ""
+
+#: ../../java/remoting.rst:12
+# 0528cc008b914b9aa08f88637e55830c
+msgid "The Akka remoting is a separate jar file. Make sure that you have the following dependency in your project::"
+msgstr ""
+
+#: ../../java/remoting.rst:20
+# e5447989f24b4d87bfa125c95a2316ef
+msgid "To enable remote capabilities in your Akka project you should, at a minimum, add the following changes to your ``application.conf`` file::"
+msgstr ""
+
+#: ../../java/remoting.rst:36
+# 9bc82c4c24d24eef9475750a94bf8042
+msgid "As you can see in the example above there are four things you need to add to get started:"
+msgstr ""
+
+#: ../../java/remoting.rst:38
+# 9c26894cef8242debf7160ec0487c1a3
+msgid "Change provider from ``akka.actor.LocalActorRefProvider`` to ``akka.remote.RemoteActorRefProvider``"
+msgstr ""
+
+#: ../../java/remoting.rst:39
+# a1bfea9c7a804faea7c08889da5db83d
+msgid "Add host name - the machine you want to run the actor system on; this host name is exactly what is passed to remote systems in order to identify this system and consequently used for connecting back to this system if need be, hence set it to a reachable IP address or resolvable name in case you want to communicate across the network."
+msgstr ""
+
+#: ../../java/remoting.rst:44
+# f05d90bf926d41d49a5937bb930492d8
+msgid "Add port number - the port the actor system should listen on, set to 0 to have it chosen automatically"
+msgstr ""
+
+#: ../../java/remoting.rst:46
+# 9ba502ae3e9847579f7f83c3e308ec1b
+msgid "The example above only illustrates the bare minimum of properties you have to add to enable remoting. There are lots of more properties that are related to remoting in Akka. We refer to the following reference file for more information:"
+msgstr ""
+
+#: ../../java/remoting.rst:54
+# 74eda0d03c2e4c5c862a823cfed83fe7
+msgid "Looking up Remote Actors"
+msgstr ""
+
+#: ../../java/remoting.rst:56
+# f86a0e8357c64272a9dc5a7d6b03a042
+msgid "``actorFor(path)`` will obtain an ``ActorRef`` to an Actor on a remote node::"
+msgstr ""
+
+#: ../../java/remoting.rst:60
+#: ../../java/remoting.rst:91
+# 80ac366d3b2d459e89dc60dd700514f4
+# 55c1e61347a146ecbc69878b46f91246
+msgid "As you can see from the example above the following pattern is used to find an ``ActorRef`` on a remote node::"
+msgstr ""
+
+#: ../../java/remoting.rst:64
+# f569aa29605443ed9c0c93b7376824ea
+msgid "For more details on how actor addresses and paths are formed and used, please refer to :ref:`addressing`."
+msgstr ""
+
+#: ../../java/remoting.rst:67
+# 5776e7bf2b1f4190a1110775b525bf40
+msgid "Creating Actors Remotely"
+msgstr ""
+
+#: ../../java/remoting.rst:69
+# dfc0968a75af4f1a836382ae4fdd400d
+msgid "The configuration below instructs the system to deploy the actor \"retrieval” on the specific host \"app@10.0.0.1\". The \"app\" in this case refers to the name of the ``ActorSystem`` (only showing deployment section)::"
+msgstr ""
+
+#: ../../java/remoting.rst:82
+# 3f1b6840c6c44401899c68f8e23a0133
+msgid "Logical path lookup is supported on the node you are on, i.e. to use the actor created above you would do the following:"
+msgstr ""
+
+#: ../../java/remoting.rst:87
+# fa93950092b44e36a2625fe59e08dbb7
+msgid "This will obtain an ``ActorRef`` on a remote node:"
+msgstr ""
+
+#: ../../java/remoting.rst:96
+# 77bcbb8ab3dc42d3b3ec9a70a9f84571
+msgid "Programmatic Remote Deployment"
+msgstr ""
+
+#: ../../java/remoting.rst:98
+# e7f007312de340da9caf64796664a7d7
+msgid "To allow dynamically deployed systems, it is also possible to include deployment configuration in the :class:`Props` which are used to create an actor: this information is the equivalent of a deployment section from the configuration file, and if both are given, the external configuration takes precedence."
+msgstr ""
+
+#: ../../java/remoting.rst:104
+# bab463e4124c41a4ac810f7a05716587
+msgid "With these imports:"
+msgstr ""
+
+#: ../../java/remoting.rst:108
+# cc6465b60e2a49ee851e64ac60073cae
+msgid "and a remote address like this:"
+msgstr ""
+
+#: ../../java/remoting.rst:112
+# 7279b17d90524622aac0c7a429dae888
+msgid "you can advise the system to create a child on that remote node like so:"
+msgstr ""
+
+#: ../../java/remoting.rst:117
+# bb6560a06e7f46e587e6573e0215aefb
+msgid "Serialization"
+msgstr ""
+
+#: ../../java/remoting.rst:119
+# 0de6bf5f9f4e4ec3bb43f444833a662a
+msgid "When using remoting for actors you must ensure that the ``props`` and ``messages`` used for those actors are serializable. Failing to do so will cause the system to behave in an unintended way."
+msgstr ""
+
+#: ../../java/remoting.rst:122
+# ad66ec65c44e47b680cf94f45c635fd8
+msgid "For more information please see :ref:`serialization-java`"
+msgstr ""
+
+#: ../../java/remoting.rst:125
+# b000ebb3c3e94dea9c981ca6b009e021
+msgid "Routers with Remote Destinations"
+msgstr ""
+
+#: ../../java/remoting.rst:127
+# bba0818403724eb2b5aa555aef54c0d1
+msgid "It is absolutely feasible to combine remoting with :ref:`routing-java`. This is also done via configuration::"
+msgstr ""
+
+#: ../../java/remoting.rst:144
+# 5d351ee780c14ca9bb1f6abebe55fb7d
+msgid "This configuration setting will clone the actor “aggregation” 10 times and deploy it evenly distributed across the two given target nodes."
+msgstr ""
+
+#: ../../java/remoting.rst:148
+# 8b059689a9204a03b77d46bdd1899533
+msgid "Description of the Remoting Sample"
+msgstr ""
+
+#: ../../java/remoting.rst:150
+# efe1c071df724c479058a969dd9b4ed0
+msgid "There is a more extensive remote example that comes with the Akka distribution. Please have a look here for more information: `Remote Sample <https://github.com/akka/akka/tree/master/akka-samples/akka-sample-remote>`_ This sample demonstrates both, remote deployment and look-up of remote actors. First, let us have a look at the common setup for both scenarios (this is ``common.conf``):"
+msgstr ""
+
+#: ../../java/remoting.rst:159
+# 6454bf35a2c94b748939ac2900776703
+msgid "This enables the remoting by installing the :class:`RemoteActorRefProvider` and chooses the default remote transport. All other options will be set specifically for each show case."
+msgstr ""
+
+#: ../../java/remoting.rst:165
+# 17a8869d6c6645c4ade315250ecfbb2d
+msgid "Be sure to replace the default IP 127.0.0.1 with the real address the system is reachable by if you deploy onto multiple machines!"
+msgstr ""
+
+#: ../../java/remoting.rst:171
+# 6bb69e7c92db4b35b9a3bca558223eac
+msgid "Remote Lookup"
+msgstr ""
+
+#: ../../java/remoting.rst:173
+# 3ea273050459472b94f1f6096258b1e5
+msgid "In order to look up a remote actor, that one must be created first. For this purpose, we configure an actor system to listen on port 2552 (this is a snippet from ``application.conf``):"
+msgstr ""
+
+#: ../../java/remoting.rst:180
+# 5f9e894ba53043e8a221dd9387da52c8
+msgid "Then the actor must be created. For all code which follows, assume these imports:"
+msgstr ""
+
+#: ../../java/remoting.rst:185
+# eca1472605e244e8a0a2eb13cec32605
+msgid "The actor doing the work will be this one:"
+msgstr ""
+
+#: ../../java/remoting.rst:190
+# 2baa50c204a34df9a0062e932b0058c7
+msgid "and we start it within an actor system using the above configuration"
+msgstr ""
+
+#: ../../java/remoting.rst:195
+# 6c3b1124128546baa5e259a8469c9830
+msgid "With the service actor up and running, we may look it up from another actor system, which will be configured to use port 2553 (this is a snippet from ``application.conf``)."
+msgstr ""
+
+#: ../../java/remoting.rst:202
+# 48174a37e8c94754bb7ddd52f5764ebe
+msgid "The actor which will query the calculator is a quite simple one for demonstration purposes"
+msgstr ""
+
+#: ../../java/remoting.rst:207
+# 152a839f91184ba5b8a2d4b0fa43211c
+msgid "and it is created from an actor system using the aforementioned client’s config."
+msgstr ""
+
+#: ../../java/remoting.rst:212
+# 48628017823348309d5d7bfbf7852ed7
+msgid "Requests which come in via ``doSomething`` will be sent to the client actor along with the reference which was looked up earlier. Observe how the actor system name using in ``actorFor`` matches the remote system’s name, as do IP and port number. Top-level actors are always created below the ``\"/user\"`` guardian, which supervises them."
+msgstr ""
+
+#: ../../java/remoting.rst:219
+# 46a8d6d7409d4d2994792a459029162f
+msgid "Remote Deployment"
+msgstr ""
+
+#: ../../java/remoting.rst:221
+# 3985bf22e1fb405fbf91a8d353ff9c29
+msgid "Creating remote actors instead of looking them up is not visible in the source code, only in the configuration file. This section is used in this scenario (this is a snippet from ``application.conf``):"
+msgstr ""
+
+#: ../../java/remoting.rst:228
+# 8af9e296f3ac4223999803ecaa3c0d11
+msgid "For all code which follows, assume these imports:"
+msgstr ""
+
+#: ../../java/remoting.rst:233
+# d4dd03f0fac44624a251ec1cdaab0987
+msgid "The server actor can multiply or divide numbers:"
+msgstr ""
+
+#: ../../java/remoting.rst:238
+# 0cd5b087b38c42c4bc90ffe9fc71d2f6
+msgid "The client actor looks like in the previous example"
+msgstr ""
+
+#: ../../java/remoting.rst:243
+# e483e32e435c4eba85bc82adc31ff154
+msgid "but the setup uses only ``actorOf``:"
+msgstr ""
+
+#: ../../java/remoting.rst:248
+# 9714245ac5294108bf0c04c405bce3ce
+msgid "Observe how the name of the server actor matches the deployment given in the configuration file, which will transparently delegate the actor creation to the remote node."
+msgstr ""
+
+#: ../../java/remoting.rst:253
+# b3a12850f171413ba99244a610a472c6
+msgid "Remote Events"
+msgstr ""
+
+#: ../../java/remoting.rst:255
+# c631cc354726472ca05df080533b53a8
+msgid "It is possible to listen to events that occur in Akka Remote, and to subscribe/unsubscribe to there events, you simply register as listener to the below described types in on the ``ActorSystem.eventStream``."
+msgstr ""
+
+#: ../../java/remoting.rst:259
+# cdf6cc2fcb3144d98876e4f0224e4bf4
+msgid "To subscribe to any outbound-related events, subscribe to ``RemoteClientLifeCycleEvent`` To subscribe to any inbound-related events, subscribe to ``RemoteServerLifeCycleEvent`` To subscribe to any remote events, subscribe to ``RemoteLifeCycleEvent``"
+msgstr ""
+
+#: ../../java/remoting.rst:263
+# c71894ad1d424ac7bf29b76c0005b6a3
+msgid "To intercept when an outbound connection is disconnected, you listen to ``RemoteClientDisconnected`` which holds the transport used (RemoteTransport) and the outbound address that was disconnected (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:266
+# da04574df2fe42a4b2705acafe18a88c
+msgid "To intercept when an outbound connection is connected, you listen to ``RemoteClientConnected`` which holds the transport used (RemoteTransport) and the outbound address that was connected to (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:269
+# 3c8172d2df844165adb2074ffddc72a6
+msgid "To intercept when an outbound client is started you listen to ``RemoteClientStarted`` which holds the transport used (RemoteTransport) and the outbound address that it is connected to (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:272
+# 5f223ba00b664fdfafdec42dee1e0654
+msgid "To intercept when an outbound client is shut down you listen to ``RemoteClientShutdown`` which holds the transport used (RemoteTransport) and the outbound address that it was connected to (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:275
+# 0f281f482c80473a9485d24a0db2e0ec
+msgid "To intercept when an outbound message cannot be sent, you listen to ``RemoteClientWriteFailed`` which holds the payload that was not written (AnyRef), the cause of the failed send (Throwable), the transport used (RemoteTransport) and the outbound address that was the destination (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:279
+# bf6ee7b67dec4fed9e56b09356c3648f
+msgid "For general outbound-related errors, that do not classify as any of the others, you can listen to ``RemoteClientError``, which holds the cause (Throwable), the transport used (RemoteTransport) and the outbound address (Address)."
+msgstr ""
+
+#: ../../java/remoting.rst:282
+# e54b6a70087142459b02c78381b48242
+msgid "To intercept when an inbound server is started (typically only once) you listen to ``RemoteServerStarted`` which holds the transport that it will use (RemoteTransport)."
+msgstr ""
+
+#: ../../java/remoting.rst:285
+# 7666de53455c43ee9f2f89a35e6fece0
+msgid "To intercept when an inbound server is shut down (typically only once) you listen to ``RemoteServerShutdown`` which holds the transport that it used (RemoteTransport)."
+msgstr ""
+
+#: ../../java/remoting.rst:288
+# edd8883d20a046178c1429717d8315e5
+msgid "To intercept when an inbound connection has been established you listen to ``RemoteServerClientConnected`` which holds the transport used (RemoteTransport) and optionally the address that connected (Option<Address>)."
+msgstr ""
+
+#: ../../java/remoting.rst:291
+# ec3a96a96cc240668b9bc5a8b308f409
+msgid "To intercept when an inbound connection has been disconnected you listen to ``RemoteServerClientDisconnected`` which holds the transport used (RemoteTransport) and optionally the address that disconnected (Option<Address>)."
+msgstr ""
+
+#: ../../java/remoting.rst:294
+# 317fecb78e144906b611a47d17fa1b8a
+msgid "To intercept when an inbound remote client has been closed you listen to ``RemoteServerClientClosed`` which holds the transport used (RemoteTransport) and optionally the address of the remote client that was closed (Option<Address>)."
+msgstr ""
+
+#: ../../java/routing.rst:5
+# 2dd9239f4b6f442daafab018e6e858c0
+msgid "Routing (Java)"
+msgstr ""
+
+#: ../../java/routing.rst:7
+# c5d5dc755002438cb897289cd88556e7
+msgid "A Router is an actor that routes incoming messages to outbound actors. The router routes the messages sent to it to its underlying actors called 'routees'."
+msgstr ""
+
+#: ../../java/routing.rst:10
+# 745648c319ad41ed8691e4760fe436da
+msgid "Akka comes with some defined routers out of the box, but as you will see in this chapter it is really easy to create your own. The routers shipped with Akka are:"
+msgstr ""
+
+#: ../../java/routing.rst:13
+# 30d63a915b874e8c8f0c3d5869d88c71
+msgid "``akka.routing.RoundRobinRouter``"
+msgstr ""
+
+#: ../../java/routing.rst:14
+# 9bf74e31240749c0b30da7c2c8937fb7
+msgid "``akka.routing.RandomRouter``"
+msgstr ""
+
+#: ../../java/routing.rst:15
+# 314bc743d38a4b098fbfc9f255fcb620
+msgid "``akka.routing.SmallestMailboxRouter``"
+msgstr ""
+
+#: ../../java/routing.rst:16
+# dd22024b751a4b53a1d14da3901e8ff2
+msgid "``akka.routing.BroadcastRouter``"
+msgstr ""
+
+#: ../../java/routing.rst:17
+# e30f8d14ee9a4cbf89c8d7734efb88e4
+msgid "``akka.routing.ScatterGatherFirstCompletedRouter``"
+msgstr ""
+
+#: ../../java/routing.rst:20
+# 257d08206b9748bf8071afe4c6ea576a
+msgid "Routers In Action"
+msgstr ""
+
+#: ../../java/routing.rst:22
+# 7bbfffa5bb104cd493cc72ee74de61a6
+msgid "This is an example of how to create a router that is defined in configuration:"
+msgstr ""
+
+#: ../../java/routing.rst:28
+# bafd8439949e4dee8bf59afa508e98b5
+msgid "This is an example of how to programmatically create a router and set the number of routees it should create:"
+msgstr ""
+
+#: ../../java/routing.rst:32
+# 42e609c5c13b45a99a44defa69ddc56f
+msgid "You can also give the router already created routees as in:"
+msgstr ""
+
+#: ../../java/routing.rst:36
+# ce495459735f464cb945a4760a791a6a
+msgid "When you create a router programmatically you define the number of routees *or* you pass already created routees to it. If you send both parameters to the router *only* the latter will be used, i.e. ``nrOfInstances`` is disregarded."
+msgstr ""
+
+#: ../../java/routing.rst:39
+# b238f238e8f0428daa099bf55f8f9294
+msgid "*It is also worth pointing out that if you define the ``router`` in the configuration file then this value will be used instead of any programmatically sent parameters. The decision whether to create a router at all, on the other hand, must be taken within the code, i.e. you cannot make something a router by external configuration alone (see below for details).*"
+msgstr ""
+
+#: ../../java/routing.rst:45
+# 14a23bcc95944313b95acd8afb3eb0c9
+msgid "Once you have the router actor it is just to send messages to it as you would to any actor:"
+msgstr ""
+
+#: ../../java/routing.rst:51
+# 661f32b3f1314535a165c15a5f127a4e
+msgid "The router will apply its behavior to the message it receives and forward it to the routees."
+msgstr ""
+
+#: ../../java/routing.rst:54
+# c6770cd63db64e07b7be6dcfa56582a8
+msgid "Remotely Deploying Routees"
+msgstr ""
+
+#: ../../java/routing.rst:56
+# f4ddbf8973dc4ac893754d26fa7d370f
+msgid "In addition to being able to supply looked-up remote actors as routees, you can make the router deploy its created children on a set of remote hosts; this will be done in round-robin fashion. In order to do that, wrap the router configuration in a :class:`RemoteRouterConfig`, attaching the remote addresses of the nodes to deploy to. Naturally, this requires your to include the ``akka-remote`` module on your classpath:"
+msgstr ""
+
+#: ../../java/routing.rst:66
+# a510bd2497ed440c953327ca80df9107
+msgid "How Routing is Designed within Akka"
+msgstr ""
+
+#: ../../java/routing.rst:68
+# f64a3771f6784d6493a9ef5655e33ac3
+msgid "Routers behave like single actors, but they should also not hinder scalability. This apparent contradiction is solved by making routers be represented by a special :class:`RoutedActorRef`, which dispatches incoming messages destined for the routees without actually invoking the router actor’s behavior (and thus avoiding its mailbox; the single router actor’s task is to manage all aspects related to the lifecycle of the routees). This means that the code which decides which route to take is invoked concurrently from all possible senders and hence must be thread-safe, it cannot live the simple and happy life of code within an actor."
+msgstr ""
+
+#: ../../java/routing.rst:78
+# f6e627e780084f2a917ca3bd81008c72
+msgid "There is one part in the above paragraph which warrants some more background explanation: Why does a router need a “head” which is actual parent to all the routees? The initial design tried to side-step this issue, but location transparency as well as mandatory parental supervision required a redesign. Each of the actors which the router spawns must have its unique identity, which translates into a unique actor path. Since the router has only one given name in its parent’s context, another level in the name space is needed, which according to the addressing semantics implies the existence of an actor with the router’s name. This is not only necessary for the internal messaging involved in creating, restarting and terminating actors, it is also needed when the pooled actors need to converse with other actors and receive replies in a deterministic fashion. Since each actor knows its own external representation as well as that of its parent, the routees decide where replies should be sent when reacting to a message:"
+msgstr ""
+
+#: ../../java/routing.rst:97
+# d7d04bfbd6194043b2597e716091f3bb
+msgid "It is apparent now why routing needs to be enabled in code rather than being possible to “bolt on” later: whether or not an actor is routed means a change to the actor hierarchy, changing the actor paths of all children of the router. The routees especially do need to know that they are routed to in order to choose the sender reference for any messages they dispatch as shown above."
+msgstr ""
+
+#: ../../java/routing.rst:104
+# 8c80f74c2aa144e4926f1874aabb54f3
+msgid "Routers vs. Supervision"
+msgstr ""
+
+#: ../../java/routing.rst:106
+# 9f3f488f186c440ebdf87c0117372d68
+msgid "As explained in the previous section, routers create new actor instances as children of the “head” router, who therefor also is their supervisor. The supervisor strategy of this actor can be configured by means of the :meth:`RouterConfig.supervisorStrategy` property, which is supported for all built-in router types. It defaults to “always escalate”, which leads to the application of the router’s parent’s supervision directive to all children of the router uniformly (i.e. not only the one which failed). It should be mentioned that the router overrides the default behavior of terminating all children upon restart, which means that a restart—while re-creating them—does not have an effect on the number of actors in the pool."
+msgstr ""
+
+#: ../../java/routing.rst:117
+# ff57b5935d4d4a828a3681241e70e8b7
+msgid "Setting the strategy is easily done:"
+msgstr ""
+
+#: ../../java/routing.rst:122
+# b77fcdec6a8d479dbe7a1696a9e1ef3a
+msgid "Another potentially useful approach is to give the router the same strategy as its parent, which effectively treats all actors in the pool as if they were direct children of their grand-parent instead."
+msgstr ""
+
+#: ../../java/routing.rst:127
+# d2038f3df17d44bda46df4b99590692d
+msgid "Router usage"
+msgstr ""
+
+#: ../../java/routing.rst:129
+# 4dbc9933835e4ccfb1432329cfece7a2
+msgid "In this section we will describe how to use the different router types. First we need to create some actors that will be used in the examples:"
+msgstr ""
+
+#: ../../java/routing.rst:134
+# 85782ddc0dab4591a69a3619138e31ca
+msgid "and"
+msgstr ""
+
+#: ../../java/routing.rst:139
+# d91be52c70364f2f855feea58989f187
+msgid "RoundRobinRouter"
+msgstr ""
+
+#: ../../java/routing.rst:140
+# 20b94e582cc441f09477b51e78c17e33
+msgid "Routes in a `round-robin <http://en.wikipedia.org/wiki/Round-robin>`_ fashion to its routees. Code example:"
+msgstr ""
+
+#: ../../java/routing.rst:145
+#: ../../java/routing.rst:174
+#: ../../java/routing.rst:214
+# 7a5ba0fbba77462c9c68cb58fc5c12d9
+# e7a6beb15f554c8daeab23cbc6b78ba5
+# 6d2eb963f17942d3a184217a3fede344
+msgid "When run you should see a similar output to this:"
+msgstr ""
+
+#: ../../java/routing.rst:160
+# 5edd01f3a9b64a22b03943a30f5126f4
+msgid "If you look closely to the output you can see that each of the routees received two messages which is exactly what you would expect from a round-robin router to happen. (The name of an actor is automatically created in the format ``$letter`` unless you specify it - hence the names printed above.)"
+msgstr ""
+
+#: ../../java/routing.rst:166
+# 76ac1624adbe4a9385a2b05fb404385e
+msgid "RandomRouter"
+msgstr ""
+
+#: ../../java/routing.rst:167
+# 1ef5289097074703bece151bda4c7ef0
+msgid "As the name implies this router type selects one of its routees randomly and forwards the message it receives to this routee. This procedure will happen each time it receives a message. Code example:"
+msgstr ""
+
+#: ../../java/routing.rst:189
+# 256a57bf5b104308a6df63297b73ba59
+msgid "The result from running the random router should be different, or at least random, every time you run it. Try to run it a couple of times to verify its behavior if you don't trust us."
+msgstr ""
+
+#: ../../java/routing.rst:193
+# 60a365cfa8584e6492d174df0ef36213
+msgid "SmallestMailboxRouter"
+msgstr ""
+
+#: ../../java/routing.rst:194
+# 85166538005146a4bc88529398b0e3fa
+msgid "A Router that tries to send to the non-suspended routee with fewest messages in mailbox. The selection is done in this order:"
+msgstr ""
+
+#: ../../java/routing.rst:197
+# ce200b48d917472dacb0f878033f142c
+msgid "pick any idle routee (not processing message) with empty mailbox"
+msgstr ""
+
+#: ../../java/routing.rst:198
+# aa65def30e5d4f5b98a4bf92fec2ecee
+msgid "pick any routee with empty mailbox"
+msgstr ""
+
+#: ../../java/routing.rst:199
+# ec2db95a6af84d52af06212cf367445d
+msgid "pick routee with fewest pending messages in mailbox"
+msgstr ""
+
+#: ../../java/routing.rst:200
+# e0dd1f57f67544ef92125dbef9290510
+msgid "pick any remote routee, remote actors are consider lowest priority, since their mailbox size is unknown"
+msgstr ""
+
+#: ../../java/routing.rst:203
+# ab1bb44d75b8454c8b971c3ed8cd4682
+msgid "Code example:"
+msgstr ""
+
+#: ../../java/routing.rst:208
+# 51ac5bf2f9154ea1b2d846f9b61b97fb
+msgid "BroadcastRouter"
+msgstr ""
+
+#: ../../java/routing.rst:209
+# dd5608d7b41d4c4f8a549f536be84ae6
+msgid "A broadcast router forwards the message it receives to *all* its routees. Code example:"
+msgstr ""
+
+#: ../../java/routing.rst:224
+# 9c79a5bdb6b14fa18de739f010635b33
+msgid "As you can see here above each of the routees, five in total, received the broadcast message."
+msgstr ""
+
+#: ../../java/routing.rst:227
+# 3bed8133d5e1419e833b585b2cbdaa74
+msgid "ScatterGatherFirstCompletedRouter"
+msgstr ""
+
+#: ../../java/routing.rst:228
+# f344f454f62f4a9b93e647b1f7b9d6f1
+msgid "The ScatterGatherFirstCompletedRouter will send the message on to all its routees as a future. It then waits for first result it gets back. This result will be sent back to original sender. Code example:"
+msgstr ""
+
+#: ../../java/routing.rst:234
+# 66947ce4a0bf4c60957206b5973268f6
+msgid "When run you should see this:"
+msgstr ""
+
+#: ../../java/routing.rst:240
+# 967acd48d5f44201b217c9585a376f2a
+msgid "From the output above you can't really see that all the routees performed the calculation, but they did! The result you see is from the first routee that returned its calculation to the router."
+msgstr ""
+
+#: ../../java/routing.rst:244
+# ae51bec769cd4792b4947737cc4e9537
+msgid "Broadcast Messages"
+msgstr ""
+
+#: ../../java/routing.rst:246
+# cf0deec15b0443d1837b5626e9c22884
+msgid "There is a special type of message that will be sent to all routees regardless of the router. This message is called ``Broadcast`` and is used in the following manner:"
+msgstr ""
+
+#: ../../java/routing.rst:253
+# 532ced1f509f4745bcfdc338371fc982
+msgid "Only the actual message is forwarded to the routees, i.e. \"Watch out for Davy Jones' locker\" in the example above. It is up to the routee implementation whether to handle the broadcast message or not."
+msgstr ""
+
+#: ../../java/routing.rst:257
+# 54c2dcaedb394920a3da38ecc8213033
+msgid "Dynamically Resizable Routers"
+msgstr ""
+
+#: ../../java/routing.rst:259
+# 0c9ce3858a5c4f22b9dfa14530a06e6d
+msgid "All routers can be used with a fixed number of routees or with a resize strategy to adjust the number of routees dynamically."
+msgstr ""
+
+#: ../../java/routing.rst:262
+# 8d2cd81456d64754966dfa560af7aafc
+msgid "This is an example of how to create a resizable router that is defined in configuration:"
+msgstr ""
+
+#: ../../java/routing.rst:268
+# 87afffb45bbd40ec8b828fb666c4d8f2
+msgid "Several more configuration options are available and described in ``akka.actor.deployment.default.resizer`` section of the reference :ref:`configuration`."
+msgstr ""
+
+#: ../../java/routing.rst:271
+# 08ba87a31f44411ca4fb9316c262991e
+msgid "This is an example of how to programmatically create a resizable router:"
+msgstr ""
+
+#: ../../java/routing.rst:275
+# 2bfd6c59462c483cb08f5a14824c6d56
+msgid "*It is also worth pointing out that if you define the ``router`` in the configuration file then this value will be used instead of any programmatically sent parameters.*"
+msgstr ""
+
+#: ../../java/routing.rst:280
+# 8c7b2ae8df674e538cc92f2b8b3e29a2
+msgid "Resizing is triggered by sending messages to the actor pool, but it is not completed synchronously; instead a message is sent to the “head” :class:`Router` to perform the size change. Thus you cannot rely on resizing to instantaneously create new workers when all others are busy, because the message just sent will be queued to the mailbox of a busy actor. To remedy this, configure the pool to use a balancing dispatcher, see `Configuring Dispatchers`_ for more information."
+msgstr ""
+
+#: ../../java/routing.rst:289
+# 603cbcde95fa45b3bd9bca5dda73a526
+msgid "Custom Router"
+msgstr ""
+
+#: ../../java/routing.rst:291
+# afe3cdccb3804843a8a12ad8f95818a0
+msgid "You can also create your own router should you not find any of the ones provided by Akka sufficient for your needs. In order to roll your own router you have to fulfill certain criteria which are explained in this section."
+msgstr ""
+
+#: ../../java/routing.rst:294
+# d431dce1543d422286d0d5ce9e348072
+msgid "The router created in this example is a simple vote counter. It will route the votes to specific vote counter actors. In this case we only have two parties the Republicans and the Democrats. We would like a router that forwards all democrat related messages to the Democrat actor and all republican related messages to the Republican actor."
+msgstr ""
+
+#: ../../java/routing.rst:298
+# 0fd0110bef334fc8b85ad82d9ce1ed0c
+msgid "We begin with defining the class:"
+msgstr ""
+
+#: ../../java/routing.rst:303
+# 2892036d14bc4db3aaa10f476b26b124
+msgid "The next step is to implement the ``createCustomRoute`` method in the class just defined:"
+msgstr ""
+
+#: ../../java/routing.rst:307
+# 43c8537282974d2cab01c04c0652218c
+msgid "As you can see above we start off by creating the routees and put them in a collection."
+msgstr ""
+
+#: ../../java/routing.rst:309
+# f4e9303f8ec040b1a1aac1f938133a2d
+msgid "Make sure that you don't miss to implement the line below as it is *really* important. It registers the routees internally and failing to call this method will cause a ``ActorInitializationException`` to be thrown when the router is used. Therefore always make sure to do the following in your custom router:"
+msgstr ""
+
+#: ../../java/routing.rst:316
+# 92d6fabadae448c9a0e14def49e39350
+msgid "The routing logic is where your magic sauce is applied. In our example it inspects the message types and forwards to the correct routee based on this:"
+msgstr ""
+
+#: ../../java/routing.rst:321
+# 216b1b2d386c4cf1a080e77639b36e74
+msgid "As you can see above what's returned in the ``CustomRoute`` function, which defines the mapping from incoming sender/message to a ``List`` of ``Destination(sender, routee)``. The sender is what \"parent\" the routee should see - changing this could be useful if you for example want another actor than the original sender to intermediate the result of the routee (if there is a result). For more information about how to alter the original sender we refer to the source code of `ScatterGatherFirstCompletedRouter <https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/routing/Routing.scala#L375>`_"
+msgstr ""
+
+#: ../../java/routing.rst:328
+# bef40aec47484e7f93291eff0fa56f0b
+msgid "All in all the custom router looks like this:"
+msgstr ""
+
+#: ../../java/routing.rst:332
+# 338dbd62155a4b7db88d9d7cb17eaf51
+msgid "If you are interested in how to use the VoteCountRouter it looks like this:"
+msgstr ""
+
+#: ../../java/routing.rst:337
+# f8b3cc904adc47b49b0439f2c8d2dc7d
+msgid "Configured Custom Router"
+msgstr ""
+
+#: ../../java/routing.rst:339
+# 813c7c25439447dba9780eeab8798875
+msgid "It is possible to define configuration properties for custom routers. In the ``router`` property of the deployment configuration you define the fully qualified class name of the router class. The router class must extend ``akka.routing.CustomRouterConfig`` and and have constructor with ``com.typesafe.config.Config`` parameter. The deployment section of the configuration is passed to the constructor."
+msgstr ""
+
+#: ../../java/routing.rst:345
+# 344599a585254aafb7200281637f5ca4
+msgid "Custom Resizer"
+msgstr ""
+
+#: ../../java/routing.rst:347
+# 4791fbe977cb4b43aa47e6681cd72218
+msgid "A router with dynamically resizable number of routees is implemented by providing a ``akka.routing.Resizer`` in ``resizer`` method of the ``RouterConfig``. See ``akka.routing.DefaultResizer`` for inspiration of how to write your own resize strategy."
+msgstr ""
+
+#: ../../java/routing.rst:352
+# 6ff9b7f967ee4150a008a5ef2aed4728
+msgid "Configuring Dispatchers"
+msgstr ""
+
+#: ../../java/routing.rst:354
+# 42a0a68e97e64d1d95dcd47751d1875f
+msgid "The dispatcher for created children of the router will be taken from :class:`Props` as described in :ref:`dispatchers-java`. For a dynamic pool it makes sense to configure the :class:`BalancingDispatcher` if the precise routing is not so important (i.e. no consistent hashing or round-robin is required); this enables newly created routees to pick up work immediately by stealing it from their siblings."
+msgstr ""
+
+#: ../../java/routing.rst:361
+# 2cba251976284e88b4ed91ac195004ec
+msgid "The “head” router, of course, cannot run on the same balancing dispatcher, because it does not process the same messages, hence this special actor does not use the dispatcher configured in :class:`Props`, but takes the ``routerDispatcher`` from the :class:`RouterConfig` instead, which defaults to the actor system’s default dispatcher. All standard routers allow setting this property in their constructor or factory method, custom routers have to implement the method in a suitable way."
+msgstr ""
+
+#: ../../java/scheduler.rst:6
+# fefdea3f3d4c4990a833ec6af436d7d9
+msgid "Scheduler (Java)"
+msgstr ""
+
+#: ../../java/scheduler.rst:8
+# fe9e98f7e0174552b2c8227c40ce7900
+msgid "Sometimes the need for making things happen in the future arises, and where do you go look then? Look no further than ``ActorSystem``! There you find the :meth:`scheduler` method that returns an instance of akka.actor.Scheduler, this instance is unique per ActorSystem and is used internally for scheduling things to happen at specific points in time. Please note that the scheduled tasks are executed by the default ``MessageDispatcher`` of the ``ActorSystem``."
+msgstr ""
+
+#: ../../java/scheduler.rst:14
+# c6e0e7750466466f876b67fbadbdb5a9
+msgid "You can schedule sending of messages to actors and execution of tasks (functions or Runnable). You will get a ``Cancellable`` back that you can call :meth:`cancel` on to cancel the execution of the scheduled operation."
+msgstr ""
+
+#: ../../java/scheduler.rst:19
+# 378439d1e4e74517bb8242ea5205b4b0
+msgid "Some examples"
+msgstr ""
+
+#: ../../java/scheduler.rst:31
+# 6fd728b498e8420ea1fa1bc3cd86032c
+msgid "From ``akka.actor.ActorSystem``"
+msgstr ""
+
+#: ../../java/scheduler.rst:38
+# 272bad0837124549a0a41c14564415b1
+msgid "The Scheduler interface"
+msgstr ""
+
+#: ../../java/scheduler.rst:44
+# 57af7d061f864fa3bb2852f593d53781
+msgid "The Cancellable interface"
+msgstr ""
+
+#: ../../java/scheduler.rst:46
+# 00f0f723961d4d5890275a287e8c772f
+msgid "This allows you to ``cancel`` something that has been scheduled for execution."
+msgstr ""
+
+#: ../../java/scheduler.rst:49
+# 0394ab21e49448e7ae2d158e27ac27f4
+msgid "This does not abort the execution of the task, if it had already been started."
+msgstr ""
+
+#: ../../java/serialization.rst:6
+# dd8f309178314aed896a679bb80d6c5f
+msgid "Serialization (Java)"
+msgstr ""
+
+#: ../../java/serialization.rst:8
+# 2eeaaecbb936445597afe6364f376576
+msgid "Akka has a built-in Extension for serialization, and it is both possible to use the built-in serializers and to write your own."
+msgstr ""
+
+#: ../../java/serialization.rst:11
+# 50c44b717a534f0ab1e8044f36d082fe
+msgid "The serialization mechanism is both used by Akka internally to serialize messages, and available for ad-hoc serialization of whatever you might need it for."
+msgstr ""
+
+#: ../../java/serialization.rst:15
+# fe20ff392ba64431974e60d00df35127
+msgid "Usage"
+msgstr ""
+
+#: ../../java/serialization.rst:18
+# 92a70a6a3ad74f2bb218e32e6f3d85e9
+msgid "Configuration"
+msgstr ""
+
+#: ../../java/serialization.rst:20
+# b0ccdf7961fc40e3bfed0ab3e33204a6
+msgid "For Akka to know which ``Serializer`` to use for what, you need edit your :ref:`configuration`, in the \"akka.actor.serializers\"-section you bind names to implementations of the ``akka.serialization.Serializer`` you wish to use, like this:"
+msgstr ""
+
+#: ../../java/serialization.rst:26
+# 1d50889d680e4e9498e22d6a295379f7
+msgid "After you've bound names to different implementations of ``Serializer`` you need to wire which classes should be serialized using which ``Serializer``, this is done in the \"akka.actor.serialization-bindings\"-section:"
+msgstr ""
+
+#: ../../java/serialization.rst:31
+# 7a89209c63a44624bb14c3010521e2ca
+msgid "You only need to specify the name of an interface or abstract base class of the messages. In case of ambiguity, i.e. the message implements several of the configured classes, the most specific configured class will be used, i.e. the one of which all other candidates are superclasses. If this condition cannot be met, because e.g. ``java.io.Serializable`` and ``MyOwnSerializable`` both apply and neither is a subtype of the other, a warning will be issued."
+msgstr ""
+
+#: ../../java/serialization.rst:38
+# d708d0a2a8ef47d78ca95531183d9197
+msgid "Akka provides serializers for :class:`java.io.Serializable` and `protobuf <http://code.google.com/p/protobuf/>`_ :class:`com.google.protobuf.GeneratedMessage` by default (the latter only if depending on the akka-remote module), so normally you don't need to add configuration for that; since :class:`com.google.protobuf.GeneratedMessage` implements :class:`java.io.Serializable`, protobuf messages will always by serialized using the protobuf protocol unless specifically overridden. In order to disable a default serializer, map its marker type to “none”::"
+msgstr ""
+
+#: ../../java/serialization.rst:52
+# 3bbc7154e6d24cfeb97572d295f233e7
+msgid "Verification"
+msgstr ""
+
+#: ../../java/serialization.rst:54
+# 5c88ccc8e93843ad8cfdcd57fd3ed07c
+msgid "If you want to verify that your messages are serializable you can enable the following config option:"
+msgstr ""
+
+#: ../../java/serialization.rst:60
+#: ../../java/serialization.rst:69
+# 632bcb044f8846f8bed93bc592ded9f6
+# b3f578aa44934cf380378a65ccab6f00
+msgid "We only recommend using the config option turned on when you're running tests. It is completely pointless to have it turned on in other scenarios."
+msgstr ""
+
+#: ../../java/serialization.rst:63
+# 9fd6009e9f054bb7b51952d920f0d29a
+msgid "If you want to verify that your ``Props`` are serializable you can enable the following config option:"
+msgstr ""
+
+#: ../../java/serialization.rst:73
+# 4f72626d1fc840819e2886c6a0e18605
+msgid "Programmatic"
+msgstr ""
+
+#: ../../java/serialization.rst:75
+# 6d25688a3baf49768ec6cb39755cbfb6
+msgid "If you want to programmatically serialize/deserialize using Akka Serialization, here's some examples:"
+msgstr ""
+
+#: ../../java/serialization.rst:81
+# fa4429de1df642b4bfc91f17de8d428a
+msgid "For more information, have a look at the ``ScalaDoc`` for ``akka.serialization._``"
+msgstr ""
+
+#: ../../java/serialization.rst:85
+# a5520a11c1264f2297064670f6dc1c3e
+msgid "Customization"
+msgstr ""
+
+#: ../../java/serialization.rst:87
+# 5c3a1eb4a4174c9c915c68a57e872dae
+msgid "So, lets say that you want to create your own ``Serializer``, you saw the ``akka.docs.serialization.MyOwnSerializer`` in the config example above?"
+msgstr ""
+
+#: ../../java/serialization.rst:91
+# 332c39b1f7ef4094b74f21dbbb20b9c0
+msgid "Creating new Serializers"
+msgstr ""
+
+#: ../../java/serialization.rst:93
+# 2277be8cb82943c1886a8bef38008981
+msgid "First you need to create a class definition of your ``Serializer``, which is done by extending ``akka.serialization.JSerializer``, like this:"
+msgstr ""
+
+#: ../../java/serialization.rst:100
+# 3f0ca683a557402aa289946ff2f4c52c
+msgid "Then you only need to fill in the blanks, bind it to a name in your :ref:`configuration` and then list which classes that should be serialized using it."
+msgstr ""
+
+#: ../../java/serialization.rst:104
+# 95b3007eac624af48790a346abeef5b8
+msgid "Serializing ActorRefs"
+msgstr ""
+
+#: ../../java/serialization.rst:106
+# dcf392dfc57d4abbaced3af2d356d963
+msgid "All ActorRefs are serializable using JavaSerializer, but in case you are writing your own serializer, you might want to know how to serialize and deserialize them properly, here's the magic incantation:"
+msgstr ""
+
+#: ../../java/serialization.rst:113
+# ac327d17a17d45e5aee8899ba01eb96b
+msgid "A Word About Java Serialization"
+msgstr ""
+
+#: ../../java/serialization.rst:115
+# d2972338e2b34483874d537b9390ddb5
+msgid "When using Java serialization without employing the :class:`JavaSerializer` for the task, you must make sure to supply a valid :class:`ExtendedActorSystem` in the dynamic variable ``JavaSerializer.currentSystem``. This is used when reading in the representation of an :class:`ActorRef` for turning the string representation into a real reference. :class:`DynamicVariable` is a thread-local variable, so be sure to have it set while deserializing anything which might contain actor references."
+msgstr ""
+
+#: ../../java/stm.rst:6
+# 530dc45b8c4246578dc2b37fe5557865
+msgid "Software Transactional Memory (Java)"
+msgstr ""
+
+#: ../../java/stm.rst:10
+# e144200db7ab4b77b5d73c9ef77a4470
+msgid "Overview of STM"
+msgstr ""
+
+#: ../../java/stm.rst:12
+# c43612f8846f486d880348d6db4cabe1
+msgid "An `STM <http://en.wikipedia.org/wiki/Software_transactional_memory>`_ turns the Java heap into a transactional data set with begin/commit/rollback semantics. Very much like a regular database. It implements the first three letters in `ACID`_; ACI:"
+msgstr ""
+
+#: ../../java/stm.rst:17
+# ae3fd7aabcdf4fce88ed1406d9885668
+msgid "Atomic"
+msgstr ""
+
+#: ../../java/stm.rst:18
+# d0cc8f92c5d841e596cb0e4b00bf2206
+msgid "Consistent"
+msgstr ""
+
+#: ../../java/stm.rst:19
+# b2c2d045c5a441b9a8c6ac9675e38e75
+msgid "Isolated"
+msgstr ""
+
+#: ../../java/stm.rst:23
+#: ../../java/transactors.rst:31
+# b22b3e27339641d0b9d8b5451b1c25e5
+# 1e2cb2ba8ee442c09858d4658f0713ae
+msgid "Generally, the STM is not needed very often when working with Akka. Some use-cases (that we can think of) are:"
+msgstr ""
+
+#: ../../java/stm.rst:26
+# 42f6e4ab45f14d2db52a61d49b155a19
+msgid "When you really need composable message flows across many actors updating their **internal local** state but need them to do that atomically in one big transaction. Might not be often, but when you do need this then you are screwed without it."
+msgstr ""
+
+#: ../../java/stm.rst:30
+#: ../../java/transactors.rst:39
+# fb0490bd842b4f6e955abf2354567de2
+# 5d0d278e209f4e429bcf0a829b848fcd
+msgid "When you want to share a datastructure across actors."
+msgstr ""
+
+#: ../../java/stm.rst:32
+# 258938b730cc47b096b49b1ca31b7cc1
+msgid "The use of STM in Akka is inspired by the concepts and views in `Clojure`_\\'s STM. Please take the time to read `this excellent document`_ about state in clojure and view `this presentation`_ by Rich Hickey (the genius behind Clojure)."
+msgstr ""
+
+#: ../../java/stm.rst:43
+# 40db0e581c3f4d5489e017bf8e3b2222
+msgid "Scala STM"
+msgstr ""
+
+#: ../../java/stm.rst:45
+# fd1f36eaf445418c83f4afe1b9130541
+msgid "The STM supported in Akka is `ScalaSTM`_ which will be soon included in the Scala standard library."
+msgstr ""
+
+#: ../../java/stm.rst:50
+# da68fb5931f64e94be2e4d7fa2cc956a
+msgid "The STM is based on Transactional References (referred to as Refs). Refs are memory cells, holding an (arbitrary) immutable value, that implement CAS (Compare-And-Swap) semantics and are managed and enforced by the STM for coordinated changes across many Refs."
+msgstr ""
+
+#: ../../java/stm.rst:57
+# 94ab3626baf74e75894f1f64b29662c8
+msgid "Integration with Actors"
+msgstr ""
+
+#: ../../java/stm.rst:59
+# 46ce3be1a16f4c41a977ba94540bbd5a
+msgid "In Akka we've also integrated Actors and STM in :ref:`agents-java` and :ref:`transactors-java`."
+msgstr ""
+
+#: ../../java/transactors.rst:5
+# 7c4d3298530345c78e72579895f88b9f
+msgid "Transactors (Java)"
+msgstr ""
+
+#: ../../java/transactors.rst:9
+# 66167c474e3e4e0f8841b7e5d7a4489a
+msgid "Why Transactors?"
+msgstr ""
+
+#: ../../java/transactors.rst:11
+# 79e984cee6484d9282bc5290149c23e8
+msgid "Actors are excellent for solving problems where you have many independent processes that can work in isolation and only interact with other Actors through message passing. This model fits many problems. But the actor model is unfortunately a terrible model for implementing truly shared state. E.g. when you need to have consensus and a stable view of state across many components. The classic example is the bank account where clients can deposit and withdraw, in which each operation needs to be atomic. For detailed discussion on the topic see `this JavaOne presentation <http://www.slideshare.net/jboner/state-youre-doing-it-wrong-javaone-2009>`_."
+msgstr ""
+
+#: ../../java/transactors.rst:21
+# 287a6be215b04fcdba9b171d11394076
+msgid "STM on the other hand is excellent for problems where you need consensus and a stable view of the state by providing compositional transactional shared state. Some of the really nice traits of STM are that transactions compose, and it raises the abstraction level from lock-based concurrency."
+msgstr ""
+
+#: ../../java/transactors.rst:26
+# 1a40738e62114e2db35822027a0b1fb9
+msgid "Akka's Transactors combine Actors and STM to provide the best of the Actor model (concurrency and asynchronous event-based programming) and STM (compositional transactional shared state) by providing transactional, compositional, asynchronous, event-based message flows."
+msgstr ""
+
+#: ../../java/transactors.rst:34
+# 037bb4a4efb0411aa0ca69c9cdfef89d
+msgid "When you really need composable message flows across many actors updating their **internal local** state but need them to do that atomically in one big transaction. Might not be often but when you do need this then you are screwed without it."
+msgstr ""
+
+#: ../../java/transactors.rst:43
+# ba686cb1b2a041a585cd32576dbad1c0
+msgid "Actors and STM"
+msgstr ""
+
+#: ../../java/transactors.rst:45
+# 047838c2f29d4f2fba8ca520ca470c4c
+msgid "You can combine Actors and STM in several ways. An Actor may use STM internally so that particular changes are guaranteed to be atomic. Actors may also share transactional datastructures as the STM provides safe shared state across threads."
+msgstr ""
+
+#: ../../java/transactors.rst:50
+# 6d589389510e4d7e9d81fa457690e24a
+msgid "It's also possible to coordinate transactions across Actors or threads so that either the transactions in a set all commit successfully or they all fail. This is the focus of Transactors and the explicit support for coordinated transactions in this section."
+msgstr ""
+
+#: ../../java/transactors.rst:57
+# 310f543ea4b64c23ac79f2c4534fb0ec
+msgid "Coordinated transactions"
+msgstr ""
+
+#: ../../java/transactors.rst:59
+# ae0b12fdd56049c0b479c54a7eab57d6
+msgid "Akka provides an explicit mechanism for coordinating transactions across actors. Under the hood it uses a ``CommitBarrier``, similar to a CountDownLatch."
+msgstr ""
+
+#: ../../java/transactors.rst:62
+# a93a21ee48544a718689f842a15a4399
+msgid "Here is an example of coordinating two simple counter UntypedActors so that they both increment together in coordinated transactions. If one of them was to fail to increment, the other would also fail."
+msgstr ""
+
+#: ../../java/transactors.rst:78
+# fc3083730bcd4de6856785011613806d
+msgid "To start a new coordinated transaction that you will also participate in, create a ``Coordinated`` object, passing in a ``Timeout``:"
+msgstr ""
+
+#: ../../java/transactors.rst:84
+# aae9efd0dc02445cabb1783b11e36412
+msgid "To start a coordinated transaction that you won't participate in yourself you can create a ``Coordinated`` object with a message and send it directly to an actor. The recipient of the message will be the first member of the coordination set:"
+msgstr ""
+
+#: ../../java/transactors.rst:92
+# 94e66796835b4259bffefce908ab4244
+msgid "To include another actor in the same coordinated transaction that you've created or received, use the ``coordinate`` method on that object. This will increment the number of parties involved by one and create a new ``Coordinated`` object to be sent."
+msgstr ""
+
+#: ../../java/transactors.rst:100
+# 3b195d38d1824415ab1b0c75c2642f96
+msgid "To enter the coordinated transaction use the atomic method of the coordinated object, passing in a ``java.lang.Runnable``."
+msgstr ""
+
+#: ../../java/transactors.rst:106
+# d572345cda984714a7c81862cca286f3
+msgid "The coordinated transaction will wait for the other transactions before committing. If any of the coordinated transactions fail then they all fail."
+msgstr ""
+
+#: ../../java/transactors.rst:111
+# 332d283cfd614fc1a9b5cb292346f8de
+msgid "The same actor should not be added to a coordinated transaction more than once. The transaction will not be able to complete as an actor only processes a single message at a time. When processing the first message the coordinated transaction will wait for the commit barrier, which in turn needs the second message to be received to proceed."
+msgstr ""
+
+#: ../../java/transactors.rst:119
+# d569c7f0b91b4c8fb4952c8d372b5d09
+msgid "UntypedTransactor"
+msgstr ""
+
+#: ../../java/transactors.rst:121
+# fcfc4197992a466e905e3549df14350f
+msgid "UntypedTransactors are untyped actors that provide a general pattern for coordinating transactions, using the explicit coordination described above."
+msgstr ""
+
+#: ../../java/transactors.rst:124
+# dad67919c9b146228086e91d41269ddd
+msgid "Here's an example of a simple untyped transactor that will join a coordinated transaction:"
+msgstr ""
+
+#: ../../java/transactors.rst:130
+# 5542ea4307424ad5b29eb6d2f24a82be
+msgid "You could send this Counter transactor a ``Coordinated(Increment)`` message. If you were to send it just an ``Increment`` message it will create its own ``Coordinated`` (but in this particular case wouldn't be coordinating transactions with any other transactors)."
+msgstr ""
+
+#: ../../java/transactors.rst:135
+# 60bbf0faf7214d7aad9d60be4f7127e9
+msgid "To coordinate with other transactors override the ``coordinate`` method. The ``coordinate`` method maps a message to a set of ``SendTo`` objects, pairs of ``ActorRef`` and a message. You can use the ``include`` and ``sendTo`` methods to easily coordinate with other transactors."
+msgstr ""
+
+#: ../../java/transactors.rst:140
+# db094ffbf1a34007b64e34b90a0eb07f
+msgid "Here's an example of coordinating an increment, using an untyped transactor, similar to the explicitly coordinated example above."
+msgstr ""
+
+#: ../../java/transactors.rst:146
+# a122b9b1563044b7b807d9e4eac53ddd
+msgid "To execute directly before or after the coordinated transaction, override the ``before`` and ``after`` methods. They do not execute within the transaction."
+msgstr ""
+
+#: ../../java/transactors.rst:149
+# f14a584de01b482ab3fbc7028916bcc2
+msgid "To completely bypass coordinated transactions override the ``normally`` method. Any message matched by ``normally`` will not be matched by the other methods, and will not be involved in coordinated transactions. In this method you can implement normal actor behavior, or use the normal STM atomic for local transactions."
+msgstr ""
+
+#: ../../java/typed-actors.rst:2
+# c226b3867705409db1fbf9c48514575b
+msgid "Typed Actors (Java)"
+msgstr ""
+
+#: ../../java/typed-actors.rst:4
+# 6add5c8891764b519ae1d24144283a8c
+msgid "Akka Typed Actors is an implementation of the `Active Objects <http://en.wikipedia.org/wiki/Active_object>`_ pattern. Essentially turning method invocations into asynchronous dispatch instead of synchronous that has been the default way since Smalltalk came out."
+msgstr ""
+
+#: ../../java/typed-actors.rst:7
+# d47ece5a92844cc08371092042836abd
+msgid "Typed Actors consist of 2 \"parts\", a public interface and an implementation, and if you've done any work in \"enterprise\" Java, this will be very familiar to you. As with normal Actors you have an external API (the public interface instance) that will delegate methodcalls asynchronously to a private instance of the implementation."
+msgstr ""
+
+#: ../../java/typed-actors.rst:10
+# 79619710314848d5ab900ded9d11f260
+msgid "The advantage of Typed Actors vs. Actors is that with TypedActors you have a static contract, and don't need to define your own messages, the downside is that it places some limitations on what you can do and what you can't, i.e. you can't use become/unbecome."
+msgstr ""
+
+#: ../../java/typed-actors.rst:12
+# 44482530a41b45a89e8c6cfcc2b34748
+msgid "Typed Actors are implemented using `JDK Proxies <http://docs.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html>`_ which provide a pretty easy-worked API to intercept method calls."
+msgstr ""
+
+#: ../../java/typed-actors.rst:16
+# fd10715917c34342a2e5dc1bab88415b
+msgid "Just as with regular Akka Untyped Actors, Typed Actors process one call at a time."
+msgstr ""
+
+#: ../../java/typed-actors.rst:19
+# 3229d419c09342d29bd0b4c05ec07a05
+msgid "When to use Typed Actors"
+msgstr ""
+
+#: ../../java/typed-actors.rst:21
+# 6e800de8985144c68a3b60f7c13df3e4
+msgid "Typed actors are nice for bridging between actor systems (the “inside”) and non-actor code (the “outside”), because they allow you to write normal OO-looking code on the outside. Think of them like doors: their practicality lies in interfacing between private sphere and the public, but you don’t want that many doors inside your house, do you? For a longer discussion see `this blog post <http://letitcrash.com/post/19074284309/when-to-use-typedactors>`_."
+msgstr ""
+
+#: ../../java/typed-actors.rst:28
+# 24d3d76b843b4d459ef9a43882f3d94b
+msgid "A bit more background: TypedActors can very easily be abused as RPC, and that is an abstraction which is `well-known <http://labs.oracle.com/techrep/1994/abstract-29.html>`_ to be leaky. Hence TypedActors are not what we think of first when we talk about making highly scalable concurrent software easier to write correctly. They have their niche, use them sparingly."
+msgstr ""
+
+#: ../../java/typed-actors.rst:36
+# 6e3dda828abd4797a4c22f314d9164bf
+msgid "The tools of the trade"
+msgstr ""
+
+#: ../../java/typed-actors.rst:38
+# 599c4cd40bea4b6e9ab0848f4e67adce
+msgid "Before we create our first Typed Actor we should first go through the tools that we have at our disposal, it's located in ``akka.actor.TypedActor``."
+msgstr ""
+
+#: ../../java/typed-actors.rst:46
+# 78b4bde7c9a444bfb6593b6af4d1e93d
+msgid "Same as not exposing ``this`` of an Akka Actor, it's important not to expose ``this`` of a Typed Actor, instead you should pass the external proxy reference, which is obtained from within your Typed Actor as ``TypedActor.self()``, this is your external identity, as the ``ActorRef`` is the external identity of an Akka Actor."
+msgstr ""
+
+#: ../../java/typed-actors.rst:52
+# 7dd419f2216d44628af926de1f212124
+msgid "Creating Typed Actors"
+msgstr ""
+
+#: ../../java/typed-actors.rst:54
+# 99702416eaf64b2b8485e9bfeecf8673
+msgid "To create a Typed Actor you need to have one or more interfaces, and one implementation."
+msgstr ""
+
+#: ../../java/typed-actors.rst:56
+# 4a60d8b319ce438888df60dcf7cd5827
+msgid "Our example interface:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:62
+# 62850ac9139942b2af77219b914611b5
+msgid "Our example implementation of that interface:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:68
+# abe46349534b4f31a56aefe51cd34961
+msgid "The most trivial way of creating a Typed Actor instance of our ``Squarer``:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:74
+# 1afb56b26ace4baf964de8217c2ea5dd
+msgid "First type is the type of the proxy, the second type is the type of the implementation. If you need to call a specific constructor you do it like this:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:80
+# ad2ef3b7f5ef409ebf87aec7a6a2bab5
+msgid "Since you supply a ``Props``, you can specify which dispatcher to use, what the default timeout should be used and more. Now, our ``Squarer`` doesn't have any methods, so we'd better add those."
+msgstr ""
+
+#: ../../java/typed-actors.rst:86
+# 2c8dc952ce274ee6a390fc1b49365eda
+msgid "Alright, now we've got some methods we can call, but we need to implement those in ``SquarerImpl``."
+msgstr ""
+
+#: ../../java/typed-actors.rst:91
+# 5ac80753f1f445b0a8ecb0dd89795e3d
+msgid "Excellent, now we have an interface and an implementation of that interface, and we know how to create a Typed Actor from that, so let's look at calling these methods."
+msgstr ""
+
+#: ../../java/typed-actors.rst:95
+# 2ccf3a3b895041cab28a3c09aeba491e
+msgid "Method dispatch semantics"
+msgstr ""
+
+#: ../../java/typed-actors.rst:97
+# 538b4433b5ce4b2cadce15a8086d2d28
+msgid "Methods returning:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:99
+# ee1ce06533b5408fa035d03502eb7027
+msgid "``void`` will be dispatched with ``fire-and-forget`` semantics, exactly like ``ActorRef.tell``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:100
+# 75017a3f480040d391126c09ae2f77bd
+msgid "``akka.dispatch.Future<?>`` will use ``send-request-reply`` semantics, exactly like ``ActorRef.ask``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:101
+# 1ee3c8c9a057417a92d87682f2820c15
+msgid "``scala.Option<?>`` or ``akka.japi.Option<?>`` will use ``send-request-reply`` semantics, but *will* block to wait for an answer, and return None if no answer was produced within the timout, or scala.Some/akka.japi.Some containing the result otherwise. Any exception that was thrown during this call will be rethrown."
+msgstr ""
+
+#: ../../java/typed-actors.rst:104
+# a84565007045424b9013764863696fca
+msgid "Any other type of value will use ``send-request-reply`` semantics, but *will* block to wait for an answer, throwing ``java.util.concurrent.TimeoutException`` if there was a timeout or rethrow any exception that was thrown during this call."
+msgstr ""
+
+#: ../../java/typed-actors.rst:108
+#: ../../java/untyped-actors.rst:267
+# aad413c4114f4b409d753e9458ce65e6
+# c5385a9fec774ce695e4867194531a69
+msgid "Messages and immutability"
+msgstr ""
+
+#: ../../java/typed-actors.rst:110
+# 44190df1557e408f9ec1e5e2095e47a3
+msgid "While Akka cannot enforce that the parameters to the methods of your Typed Actors are immutable, we *strongly* recommend that parameters passed are immutable."
+msgstr ""
+
+#: ../../java/typed-actors.rst:114
+# c287190afc4e4e8696b55642612ae0a0
+msgid "One-way message send"
+msgstr ""
+
+#: ../../java/typed-actors.rst:119
+# e30bf6961d0f4c7b873b8c3ee439c66d
+msgid "As simple as that! The method will be executed on another thread; asynchronously."
+msgstr ""
+
+#: ../../java/typed-actors.rst:122
+# 8015ea2730064ebe94f46b7f9c544d5b
+msgid "Request-reply message send"
+msgstr ""
+
+#: ../../java/typed-actors.rst:127
+# 635211003503474694e94c4a8e630c10
+msgid "This will block for as long as the timeout that was set in the ``Props`` of the Typed Actor, if needed. It will return ``None`` if a timeout occurs."
+msgstr ""
+
+#: ../../java/typed-actors.rst:133
+# a7bd62ed90744603bc4a7b3807796771
+msgid "This will block for as long as the timeout that was set in the ``Props` of the Typed Actor, if needed. It will throw a ``java.util.concurrent.TimeoutException`` if a timeout occurs."
+msgstr ""
+
+#: ../../java/typed-actors.rst:137
+# 9ec0bcc8512a46889771575936dddf83
+msgid "Request-reply-with-future message send"
+msgstr ""
+
+#: ../../java/typed-actors.rst:142
+# 0e5900a080e24c73b68cf88f00492508
+msgid "This call is asynchronous, and the Future returned can be used for asynchronous composition."
+msgstr ""
+
+#: ../../java/typed-actors.rst:145
+# ae3740548d6d4caab8d6c5c9017cbda3
+msgid "Stopping Typed Actors"
+msgstr ""
+
+#: ../../java/typed-actors.rst:147
+# bd6400cee50e4e68b867c4d0991d6706
+msgid "Since Akka's Typed Actors are backed by Akka Actors they must be stopped when they aren't needed anymore."
+msgstr ""
+
+#: ../../java/typed-actors.rst:152
+# 13b98b6590cf4968be13ddadffc456bf
+msgid "This asynchronously stops the Typed Actor associated with the specified proxy ASAP."
+msgstr ""
+
+#: ../../java/typed-actors.rst:157
+# c8f2eaa66504436691d6bc1bd2f7ffe4
+msgid "This asynchronously stops the Typed Actor associated with the specified proxy after it's done with all calls that were made prior to this call."
+msgstr ""
+
+#: ../../java/typed-actors.rst:161
+# fbcbeaa127e44e40a0e6944c5d08a494
+msgid "Typed Actor Hierarchies"
+msgstr ""
+
+#: ../../java/typed-actors.rst:163
+# 42afe8564ce348879fb134ca42bf7733
+msgid "Since you can obtain a contextual Typed Actor Extension by passing in an ``ActorContext`` you can create child Typed Actors by invoking ``typedActorOf(..)`` on that."
+msgstr ""
+
+#: ../../java/typed-actors.rst:166
+# 487e294aed7e41ff8a2e046a866d8081
+msgid "This also works for creating child Typed Actors in regular Akka Actors."
+msgstr ""
+
+#: ../../java/typed-actors.rst:169
+# 4de6b1468d2c41e6986e08c293df7e38
+msgid "Supervisor Strategy"
+msgstr ""
+
+#: ../../java/typed-actors.rst:171
+# 7e5c01da0012404d926b10efc8f0ca1a
+msgid "By having your Typed Actor implementation class implement ``TypedActor.Supervisor`` you can define the strategy to use for supervising child actors, as described in :ref:`supervision` and :ref:`fault-tolerance-java`."
+msgstr ""
+
+#: ../../java/typed-actors.rst:176
+# 3d8eaa5b53ec472d8f1d57e9eb5eb60c
+msgid "Receive arbitrary messages"
+msgstr ""
+
+#: ../../java/typed-actors.rst:178
+# 46b6d1bcddd94f24b3747553a4ed9a93
+msgid "If your implementation class of your TypedActor extends ``akka.actor.TypedActor.Receiver``, all messages that are not ``MethodCall``s will be passed into the ``onReceive``-method."
+msgstr ""
+
+#: ../../java/typed-actors.rst:181
+# 8ce3517e26124f329e00639a28d6b503
+msgid "This allows you to react to DeathWatch ``Terminated``-messages and other types of messages, e.g. when interfacing with untyped actors."
+msgstr ""
+
+#: ../../java/typed-actors.rst:185
+# 0a9fc89dcf1643de9adc5878421f8943
+msgid "Lifecycle callbacks"
+msgstr ""
+
+#: ../../java/typed-actors.rst:187
+# 90d14c57022043ca8cbd31c23d689bcd
+msgid "By having your Typed Actor implementation class implement any and all of the following:"
+msgstr ""
+
+#: ../../java/typed-actors.rst:189
+# 90bf41bf807242b0ae450712b601f6bb
+msgid "``TypedActor.PreStart``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:190
+# 727fbc8806f2497a8103b45a02d69359
+msgid "``TypedActor.PostStop``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:191
+# 701ea37f14664662b8a13a74d762a4de
+msgid "``TypedActor.PreRestart``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:192
+# 8d64851bb33b43b6b584c68bee2f5c48
+msgid "``TypedActor.PostRestart``"
+msgstr ""
+
+#: ../../java/typed-actors.rst:194
+# 2872ae089ddc4874be31d571859baee2
+msgid "You can hook into the lifecycle of your Typed Actor."
+msgstr ""
+
+#: ../../java/typed-actors.rst:197
+# 32f1d7b62e124e628dbdad14517a0dc7
+msgid "Proxying"
+msgstr ""
+
+#: ../../java/typed-actors.rst:199
+# 96cd215b10b2409a9dd55bd544c4f57e
+msgid "You can use the ``typedActorOf`` that takes a TypedProps and an ActorRef to proxy the given ActorRef as a TypedActor. This is usable if you want to communicate remotely with TypedActors on other machines, just look them up with ``actorFor`` and pass the ``ActorRef`` to ``typedActorOf``."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:6
+# eb8f41584e6a46a4964a09def73ad74f
+msgid "Actors (Java)"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:9
+# 50406b9031d84dadad37ca6dba0dd05c
+msgid "The `Actor Model`_ provides a higher level of abstraction for writing concurrent and distributed systems. It alleviates the developer from having to deal with explicit locking and thread management, making it easier to write correct concurrent and parallel systems. Actors were defined in the 1973 paper by Carl Hewitt but have been popularized by the Erlang language, and used for example at Ericsson with great success to build highly concurrent and reliable telecom systems."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:17
+# cb9b76703f0f414f8b9bc3c9840424fe
+msgid "The API of Akka’s Actors is similar to Scala Actors which has borrowed some of its syntax from Erlang."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:24
+# e328bd967f444051b764dd8504a13eb1
+msgid "Creating Actors"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:26
+# 77bb818497db460f9926a81648df22d8
+msgid "Since Akka enforces parental supervision every actor is supervised and (potentially) the supervisor of its children; it is advisable that you familiarize yourself with :ref:`actor-systems` and :ref:`supervision` and it may also help to read :ref:`actorOf-vs-actorFor`."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:32
+# 76957c19ff8f452fbccdf08b4b9105cc
+msgid "Defining an Actor class"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:34
+# c44633043d664c099b6954973476d4d0
+msgid "Actor in Java are implemented by extending the ``UntypedActor`` class and implementing the :meth:`onReceive` method. This method takes the message as a parameter."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:37
+#: ../../java/untyped-actors.rst:104
+#: ../../java/untyped-actors.rst:386
+# d46e778553474e999707f1a669db8ab6
+# 3ca0da9c05284c0b981f7b7ae015f1c3
+# 0092dc5d102c4d2ba55f2e34d226701f
+msgid "Here is an example:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:42
+# 7fbaff5aec674f5a992c24a3182fa8a4
+msgid "Props"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:44
+# de5ef91961914db9ab5e7ed441552991
+msgid "``Props`` is a configuration class to specify options for the creation of actors. Here are some examples on how to create a ``Props`` instance."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:51
+# 74ead0f8545049e7b699602e38bdf6e0
+msgid "Creating Actors with Props"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:53
+# aa5cfb944ace44828c45377750cce437
+msgid "Actors are created by passing in a ``Props`` instance into the ``actorOf`` factory method."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:59
+# ad56b329ccab4e25bec7b2b1e4987e6e
+msgid "Creating Actors with default constructor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:64
+# d6950792b4d148a3af63269687c8a998
+msgid "The call to :meth:`actorOf` returns an instance of ``ActorRef``. This is a handle to the ``UntypedActor`` instance which you can use to interact with the ``UntypedActor``. The ``ActorRef`` is immutable and has a one to one relationship with the Actor it represents. The ``ActorRef`` is also serializable and network-aware. This means that you can serialize it, send it over the wire and use it on a remote host and it will still be representing the same Actor on the original node, across the network."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:72
+# 432c05584c2c4f2bab37ceaa7a6fd508
+msgid "In the above example the actor was created from the system. It is also possible to create actors from other actors with the actor ``context``. The difference is how the supervisor hierarchy is arranged. When using the context the current actor will be supervisor of the created child actor. When using the system it will be a top level actor, that is supervised by the system (internal guardian actor)."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:80
+# 3c3d09dcf27f494cb61df5f89abc27a7
+msgid "The name parameter is optional, but you should preferably name your actors, since that is used in log messages and for identifying actors. The name must not be empty or start with ``$``. If the given name is already in use by another child to the same parent actor an `InvalidActorNameException` is thrown."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:85
+# ecadcc1be0cd4d39b444e14226b808a8
+msgid "Actors are automatically started asynchronously when created. When you create the ``UntypedActor`` then it will automatically call the ``preStart`` callback method on the ``UntypedActor`` class. This is an excellent place to add initialization code for the actor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:98
+# fc89b9ba71f142d892625806dade1ab3
+msgid "Creating Actors with non-default constructor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:100
+# b7373c12f8bb4c6ea93df40f4c477731
+msgid "If your UntypedActor has a constructor that takes parameters then you can't create it using 'actorOf(new Props(clazz))'. Then you can instead pass in 'new Props(new UntypedActorFactory() {..})' in which you can create the Actor in any way you like."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:108
+# 19abf047800c4e7ea28ff494865eafd1
+msgid "This way of creating the Actor is also great for integrating with Dependency Injection (DI) frameworks like Guice or Spring."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:113
+# 04b2186fe74b4cfaa2adfd2ef41d65fa
+msgid "UntypedActor API"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:115
+# 55551a33c8be48bdb5b1dd4054945b84
+msgid "The :class:`UntypedActor` class defines only one abstract method, the above mentioned :meth:`onReceive(Object message)`, which implements the behavior of the actor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:118
+# 0e3a2f9c272e408ead7eda3dd7eac03a
+msgid "If the current actor behavior does not match a received message, :meth:`unhandled` is called, which by default publishes a ``new akka.actor.UnhandledMessage(message, sender, recipient)`` on the actor system’s event stream."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:123
+# 4770454ec0694a9fa3c6d506b10ee862
+msgid "In addition, it offers:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:125
+# 5c82c2343f754bfdba2d1c2f97657403
+msgid ":obj:`getSelf()` reference to the :class:`ActorRef` of the actor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:126
+# aa5bc2ef31d84065a2ddc7d3e7930aae
+msgid ":obj:`getSender()` reference sender Actor of the last received message, typically used as described in :ref:`UntypedActor.Reply`"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:127
+# 9b7e1c7d34d142b6bf1e5f3ed236ed01
+msgid ":obj:`supervisorStrategy()` user overridable definition the strategy to use for supervising child actors"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:128
+# f55ed684020b4740ade495d6b7d2f031
+msgid ":obj:`getContext()` exposes contextual information for the actor and the current message, such as:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:130
+# f4f1257102a9415a8dddd700d6a3040d
+msgid "factory methods to create child actors (:meth:`actorOf`)"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:131
+# 1c17b004c2ef4e5ba7e65ed783fc2413
+msgid "system that the actor belongs to"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:132
+# 4075c4a6a59847d0b322632e259a76cb
+msgid "parent supervisor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:133
+# 827e4597ce154b709448801e82a6307d
+msgid "supervised children"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:134
+# 6a44eb8a79374a87b79e617cd9db52b0
+msgid "lifecycle monitoring"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:135
+# befe5f71c1474e4fa36cd6a0fe9d9d2c
+msgid "hotswap behavior stack as described in :ref:`UntypedActor.HotSwap`"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:137
+# 7cec9d45cd1545099e4719f2fd2b3697
+msgid "The remaining visible methods are user-overridable life-cycle hooks which are described in the following:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:142
+# 0917f0a29b894c6eb4b56f8c453d2fb8
+msgid "The implementations shown above are the defaults provided by the :class:`UntypedActor` class."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:148
+# cae74c318710406b98fc07fdfc803b4c
+msgid "Lifecycle Monitoring aka DeathWatch"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:150
+# 67c16232c46c4436a22debcd7f42bd25
+msgid "In order to be notified when another actor terminates (i.e. stops permanently, not temporary failure and restart), an actor may register itself for reception of the :class:`Terminated` message dispatched by the other actor upon termination (see `Stopping Actors`_). This service is provided by the :class:`DeathWatch` component of the actor system."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:156
+# d65081446f1a41718cee6a2ab63fead0
+msgid "Registering a monitor is easy (see fourth line, the rest is for demonstrating the whole functionality):"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:161
+# 20bb29b17ce941db86c02f8d78d554b0
+msgid "It should be noted that the :class:`Terminated` message is generated independent of the order in which registration and termination occur. Registering multiple times does not necessarily lead to multiple messages being generated, but there is no guarantee that only exactly one such message is received: if termination of the watched actor has generated and queued the message, and another registration is done before this message has been processed, then a second message will be queued, because registering for monitoring of an already terminated actor leads to the immediate generation of the :class:`Terminated` message."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:171
+# 0594f149106343809365d9ba124260f0
+msgid "It is also possible to deregister from watching another actor’s liveliness using ``context.unwatch(target)``, but obviously this cannot guarantee non-reception of the :class:`Terminated` message because that may already have been queued."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:177
+# 42b29fdac3ba4d939f2bd4bcdc80eff1
+msgid "Start Hook"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:179
+# 2cc1a4ea9b974f77958f9bce4840208f
+msgid "Right after starting the actor, its :meth:`preStart` method is invoked."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:191
+# 01fdc52a1cd94fa2912793ce8a5a4a54
+msgid "Restart Hooks"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:193
+# 3b719bb19c98466ea542b8df2f3dd0e5
+msgid "All actors are supervised, i.e. linked to another actor with a fault handling strategy. Actors will be restarted in case an exception is thrown while processing a message. This restart involves the hooks mentioned above:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:197
+# 5fe21d36fbdb4d13910d454f4a3fcc78
+msgid "The old actor is informed by calling :meth:`preRestart` with the exception which caused the restart and the message which triggered that exception; the latter may be ``None`` if the restart was not caused by processing a message, e.g. when a supervisor does not trap the exception and is restarted in turn by its supervisor. This method is the best place for cleaning up, preparing hand-over to the fresh actor instance, etc. By default it stops all children and calls :meth:`postStop`."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:204
+# 6c3c81bea0ce47df978fac6146c1b0b0
+msgid "The initial factory from the ``actorOf`` call is used to produce the fresh instance."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:206
+# cc78990d59cf4ccc8330a98cb56db3ac
+msgid "The new actor’s :meth:`postRestart` method is invoked with the exception which caused the restart. By default the :meth:`preStart` is called, just as in the normal start-up case."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:211
+# 825ecade334141aaba3a9f46a51692cd
+msgid "An actor restart replaces only the actual actor object; the contents of the mailbox is unaffected by the restart, so processing of messages will resume after the :meth:`postRestart` hook returns. The message that triggered the exception will not be received again. Any message sent to an actor while it is being restarted will be queued to its mailbox as usual."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:219
+# a6974582f22f496fbb5ed2e591e70974
+msgid "Stop Hook"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:221
+# a8f8f402620047f5bfe4d55391e15c5a
+msgid "After stopping an actor, its :meth:`postStop` hook is called, which may be used e.g. for deregistering this actor from other services. This hook is guaranteed to run after message queuing has been disabled for this actor, i.e. messages sent to a stopped actor will be redirected to the :obj:`deadLetters` of the :obj:`ActorSystem`."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:229
+# a11c80a1ab0a486187c64f7e5cfeb5c3
+msgid "Identifying Actors"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:231
+# af217ba057ff461aacc9312a098e156a
+msgid "As described in :ref:`addressing`, each actor has a unique logical path, which is obtained by following the chain of actors from child to parent until reaching the root of the actor system, and it has a physical path, which may differ if the supervision chain includes any remote supervisors. These paths are used by the system to look up actors, e.g. when a remote message is received and the recipient is searched, but they are also useful more directly: actors may look up other actors by specifying absolute or relative paths—logical or physical—and receive back an :class:`ActorRef` with the result::"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:244
+# c43b0aac27bc400c919ac3ef450ffa98
+msgid "The supplied path is parsed as a :class:`java.net.URI`, which basically means that it is split on ``/`` into path elements. If the path starts with ``/``, it is absolute and the look-up starts at the root guardian (which is the parent of ``\"/user\"``); otherwise it starts at the current actor. If a path element equals ``..``, the look-up will take a step “up” towards the supervisor of the currently traversed actor, otherwise it will step “down” to the named child. It should be noted that the ``..`` in actor paths here always means the logical structure, i.e. the supervisor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:253
+# 01e957fd746e44feaaf31e39356e922c
+msgid "If the path being looked up does not exist, a special actor reference is returned which behaves like the actor system’s dead letter queue but retains its identity (i.e. the path which was looked up)."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:257
+# c752baca838b4ae9afd3a483b0998457
+msgid "Remote actor addresses may also be looked up, if remoting is enabled::"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:261
+# 044c669432b5402f9dee5a8ed7c00482
+msgid "These look-ups return a (possibly remote) actor reference immediately, so you will have to send to it and await a reply in order to verify that ``serviceB`` is actually reachable and running. An example demonstrating actor look-up is given in :ref:`remote-lookup-sample-java`."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:269
+# 8e285811001942fe9e18ca81b65c62f0
+msgid "**IMPORTANT**: Messages can be any kind of object but have to be immutable. Akka can’t enforce immutability (yet) so this has to be by convention."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:273
+# 3378251874e84c4cb23c39d8a9c31136
+msgid "Here is an example of an immutable message:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:279
+# f60c1ba2e7254897a74964ef45fcde36
+msgid "Send messages"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:281
+# 3b0c76a426f94960bab0ca1e20baca40
+msgid "Messages are sent to an Actor through one of the following methods."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:283
+# 24e49ee9a52547a8911ba30131279a91
+msgid "``tell`` means “fire-and-forget”, e.g. send a message asynchronously and return immediately."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:285
+# a0970720df8c4625ba966bb2e1309ab1
+msgid "``ask`` sends a message asynchronously and returns a :class:`Future` representing a possible reply."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:288
+# 4a65714cf291426dae9f42d97f6de654
+msgid "Message ordering is guaranteed on a per-sender basis."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:290
+# 2cc03053681c4c37b20b154efcc65ffe
+msgid "In all these methods you have the option of passing along your own ``ActorRef``. Make it a practice of doing so because it will allow the receiver actors to be able to respond to your message, since the sender reference is sent along with the message."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:295
+# 51e3238beb694efa816e6bf991990ca7
+msgid "Tell: Fire-forget"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:297
+# 57fb416ffac644ff9d3f325f205bda0f
+msgid "This is the preferred way of sending messages. No blocking waiting for a message. This gives the best concurrency and scalability characteristics."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:304
+# 7faa020dbd78439790cb3ae26de28767
+msgid "Or with the sender reference passed along with the message and available to the receiving Actor in its ``getSender: ActorRef`` member field. The target actor can use this to reply to the original sender, by using ``getSender().tell(replyMsg)``."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:312
+# a56174eece044b93b3ed7b071bef49a2
+msgid "If invoked without the sender parameter the sender will be :obj:`deadLetters` actor reference in the target actor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:316
+# 431499930bed423e86d48e5594d5818c
+msgid "Ask: Send-And-Receive-Future"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:318
+# b1d7efac92e54cfcb670625316d85e86
+msgid "The ``ask`` pattern involves actors as well as futures, hence it is offered as a use pattern rather than a method on :class:`ActorRef`:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:325
+# f0d93f17987642f3a5241c8693a0c272
+msgid "This example demonstrates ``ask`` together with the ``pipe`` pattern on futures, because this is likely to be a common combination. Please note that all of the above is completely non-blocking and asynchronous: ``ask`` produces a :class:`Future`, two of which are composed into a new future using the :meth:`Futures.sequence` and :meth:`map` methods and then ``pipe`` installs an ``onComplete``-handler on the future to effect the submission of the aggregated :class:`Result` to another actor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:333
+# 1efd59505ab44ee69c929eeea86f6ca9
+msgid "Using ``ask`` will send a message to the receiving Actor as with ``tell``, and the receiving actor must reply with ``getSender().tell(reply)`` in order to complete the returned :class:`Future` with a value. The ``ask`` operation involves creating an internal actor for handling this reply, which needs to have a timeout after which it is destroyed in order not to leak resources; see more below."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:340
+# 3420f7d1bbd040cfb103c1507696aa6f
+msgid "To complete the future with an exception you need send a Failure message to the sender. This is *not done automatically* when an actor throws an exception while processing a message."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:346
+# cdb99221cf2a43f5855b0fb0664c3104
+msgid "If the actor does not complete the future, it will expire after the timeout period, specified as parameter to the ``ask`` method; this will complete the :class:`Future` with an :class:`AskTimeoutException`."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:350
+# 22917f13a5c146f6bbca6e048157e72f
+msgid "See :ref:`futures-java` for more information on how to await or query a future."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:353
+# a758bac99c184d768439b4502a94834a
+msgid "The ``onComplete``, ``onResult``, or ``onTimeout`` methods of the ``Future`` can be used to register a callback to get a notification when the Future completes. Gives you a way to avoid blocking."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:359
+# c25c4eef9c7442c4bd6cbe2912e22853
+msgid "When using future callbacks, inside actors you need to carefully avoid closing over the containing actor’s reference, i.e. do not call methods or access mutable state on the enclosing actor from within the callback. This would break the actor encapsulation and may introduce synchronization bugs and race conditions because the callback will be scheduled concurrently to the enclosing actor. Unfortunately there is not yet a way to detect these illegal accesses at compile time. See also: :ref:`jmm-shared-state`"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:368
+# ea3be5cc3ca340d683346f19ccc91bab
+msgid "Forward message"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:370
+# 0e16ccfb34544e3e94c82344b5e45b75
+msgid "You can forward a message from one actor to another. This means that the original sender address/reference is maintained even though the message is going through a 'mediator'. This can be useful when writing actors that work as routers, load-balancers, replicators etc. You need to pass along your context variable as well."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:381
+# ae0cdc2c0dfb4ca4b0c9d6d80a3ce5ee
+msgid "Receive messages"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:383
+# 517786039caf47cca1064241bb8a7a8a
+msgid "When an actor receives a message it is passed into the ``onReceive`` method, this is an abstract method on the ``UntypedActor`` base class that needs to be defined."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:390
+# e72ce20f2d6a484b9322bed086f99cf5
+msgid "An alternative to using if-instanceof checks is to use `Apache Commons MethodUtils <http://commons.apache.org/beanutils/api/org/apache/commons/beanutils/MethodUtils.html#invokeMethod(java.lang.Object,%20java.lang.String,%20java.lang.Object)>`_ to invoke a named method whose parameter type matches the message type."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:397
+# 7c72497de71240dcacc1e7b8b34e1cb3
+msgid "Reply to messages"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:399
+# f6c809a379a04a699aa7f6fc0d70660e
+msgid "If you want to have a handle for replying to a message, you can use ``getSender()``, which gives you an ActorRef. You can reply by sending to that ActorRef with ``getSender().tell(replyMsg)``. You can also store the ActorRef for replying later, or passing on to other actors. If there is no sender (a message was sent without an actor or future context) then the sender defaults to a 'dead-letter' actor ref."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:414
+# bf43ab35533d47c698c08a510c13e244
+msgid "Initial receive timeout"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:416
+# 09d860a2794d4f50a93d8b0eb76278cb
+msgid "A timeout mechanism can be used to receive a message when no initial message is received within a certain time. To receive this timeout you have to set the ``receiveTimeout`` property and declare handing for the ReceiveTimeout message."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:426
+# e8d5fd9550e647c99919a57a17900ee5
+msgid "Stopping actors"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:428
+# 164f91e3456b48faaf2b1990cbba7def
+msgid "Actors are stopped by invoking the :meth:`stop` method of a ``ActorRefFactory``, i.e. ``ActorContext`` or ``ActorSystem``. Typically the context is used for stopping child actors and the system for stopping top level actors. The actual termination of the actor is performed asynchronously, i.e. :meth:`stop` may return before the actor is stopped."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:434
+# 0ca7ff57175b486b91adfc8fe68a1e0a
+msgid "Processing of the current message, if any, will continue before the actor is stopped, but additional messages in the mailbox will not be processed. By default these messages are sent to the :obj:`deadLetters` of the :obj:`ActorSystem`, but that depends on the mailbox implementation."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:439
+# 94a47e6cdb5643799690acb9604911a8
+msgid "Termination of an actor proceeds in two steps: first the actor suspends its mailbox processing and sends a stop command to all its children, then it keeps processing the termination messages from its children until the last one is gone, finally terminating itself (invoking :meth:`postStop`, dumping mailbox, publishing :class:`Terminated` on the :ref:`DeathWatch <deathwatch-java>`, telling its supervisor). This procedure ensures that actor system sub-trees terminate in an orderly fashion, propagating the stop command to the leaves and collecting their confirmation back to the stopped supervisor. If one of the actors does not respond (i.e. processing a message for extended periods of time and therefore not receiving the stop command), this whole process will be stuck."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:451
+# 7ba1747b7598492bbf32b75a4ab151db
+msgid "Upon :meth:`ActorSystem.shutdown()`, the system guardian actors will be stopped, and the aforementioned process will ensure proper termination of the whole system."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:455
+# 1ee426026d8640e094e6f4779b9134e5
+msgid "The :meth:`postStop()` hook is invoked after an actor is fully stopped. This enables cleaning up of resources:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:467
+# 5a1fe4f9d40c416c9765f3664ab85812
+msgid "Since stopping an actor is asynchronous, you cannot immediately reuse the name of the child you just stopped; this will result in an :class:`InvalidActorNameException`. Instead, :meth:`watch()` the terminating actor and create its replacement in response to the :class:`Terminated` message which will eventually arrive."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:474
+# 901936569b0c4224ae33da7bf52fd281
+msgid "PoisonPill"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:476
+# 4b6bb78aa77245b79691e76191c82b0c
+msgid "You can also send an actor the ``akka.actor.PoisonPill`` message, which will stop the actor when the message is processed. ``PoisonPill`` is enqueued as ordinary messages and will be handled after messages that were already queued in the mailbox."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:481
+#: ../../java/untyped-actors.rst:542
+# c95db3bd7adb4a67b1a2faf7152d378a
+# 51bcd13156c543159be52593262ca7e9
+msgid "Use it like this:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:487
+# 68198216eac44b9e94639dcf7a03e4cb
+msgid "Graceful Stop"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:489
+# 8d852067f32d4c14a5305ecd5ebc429c
+msgid ":meth:`gracefulStop` is useful if you need to wait for termination or compose ordered termination of several actors:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:499
+# 54652ddcdb5b415d80d3d3fdece54600
+msgid "HotSwap"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:502
+# 1e40050e48354ffe91d9421a390b95a4
+msgid "Upgrade"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:504
+# 1bb63897ec6d46799e453c17379cd7e4
+msgid "Akka supports hotswapping the Actor’s message loop (e.g. its implementation) at runtime. Use the ``getContext().become`` method from within the Actor. The hotswapped code is kept in a Stack which can be pushed and popped."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:510
+# 5c8f7797d8b4413ebcf6c283fe75dcac
+msgid "Please note that the actor will revert to its original behavior when restarted by its Supervisor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:512
+# 2bdbc2dc569c44b7b02b07603062c2e9
+msgid "To hotswap the Actor using ``getContext().become``:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:517
+# d6166cf534d64caca2157ed33462a3af
+msgid "The ``become`` method is useful for many different things, such as to implement a Finite State Machine (FSM)."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:520
+# 26c98c8372bd4e2db8e545a33f5a01d1
+msgid "Here is another little cute example of ``become`` and ``unbecome`` in action:"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:525
+# 198b11baf92448b0951e18064d5e7892
+msgid "Downgrade"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:527
+# 0a08784eeadf4b0d93e0487585b2f9bc
+msgid "Since the hotswapped code is pushed to a Stack you can downgrade the code as well. Use the ``getContext().unbecome`` method from within the Actor."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:537
+# 4c5bcb2a7d1c4954ab15df6f25bfd43c
+msgid "Killing an Actor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:539
+# 351f0ae154c54e18a9a6854dfd8bbe9b
+msgid "You can kill an actor by sending a ``Kill`` message. This will restart the actor through regular supervisor semantics."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:548
+# b7ab4b7b06f34d87a6009a661b0f5036
+msgid "Actors and exceptions"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:550
+# 80136fcd71474c4e9aca0d4e1b24a0f6
+msgid "It can happen that while a message is being processed by an actor, that some kind of exception is thrown, e.g. a database exception."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:554
+# 92c2e473316443e7ae4e9e7320d2dd0a
+msgid "What happens to the Message"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:556
+# 42b959dd872849e1820e9afac52722e8
+msgid "If an exception is thrown while a message is being processed (so taken of his mailbox and handed over the the receive), then this message will be lost. It is important to understand that it is not put back on the mailbox. So if you want to retry processing of a message, you need to deal with it yourself by catching the exception and retry your flow. Make sure that you put a bound on the number of retries since you don't want a system to livelock (so consuming a lot of cpu cycles without making progress)."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:565
+# 9747a249df5d4103b0aec452be9ef7f6
+msgid "What happens to the mailbox"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:567
+# edde2702008e4ce18964128a1a620299
+msgid "If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox, will be there as well."
+msgstr ""
+
+#: ../../java/untyped-actors.rst:572
+# 696ff4c0034c4f1eb3de18a5a5bc4651
+msgid "What happens to the actor"
+msgstr ""
+
+#: ../../java/untyped-actors.rst:574
+# c05f6b6d344d492a97c64db18dc62383
+msgid "If an exception is thrown, the actor instance is discarded and a new instance is created. This new instance will now be used in the actor references to this actor (so this is done invisible to the developer). Note that this means that current state of the failing actor instance is lost if you don't store and restore it in ``preRestart`` and ``postRestart`` callbacks."
+msgstr ""
+
+#: ../../java/zeromq.rst:6
+# 0a2a15f35c704df5a52c4ccf15f8f262
+msgid "ZeroMQ (Java)"
+msgstr ""
+
+#: ../../java/zeromq.rst:9
+# 9e8a4f813dd8490cba45b55be12f6ff0
+msgid "Akka provides a ZeroMQ module which abstracts a ZeroMQ connection and therefore allows interaction between Akka actors to take place over ZeroMQ connections. The messages can be of a proprietary format or they can be defined using Protobuf. The socket actor is fault-tolerant by default and when you use the newSocket method to create new sockets it will properly reinitialize the socket."
+msgstr ""
+
+#: ../../java/zeromq.rst:11
+# fade823e155247a89b37cd1a0fc3c550
+msgid "ZeroMQ is very opinionated when it comes to multi-threading so configuration option `akka.zeromq.socket-dispatcher` always needs to be configured to a PinnedDispatcher, because the actual ZeroMQ socket can only be accessed by the thread that created it."
+msgstr ""
+
+#: ../../java/zeromq.rst:13
+# 5b58957c0e56470b80f2967be8e73af3
+msgid "The ZeroMQ module for Akka is written against an API introduced in JZMQ, which uses JNI to interact with the native ZeroMQ library. Instead of using JZMQ, the module uses ZeroMQ binding for Scala that uses the native ZeroMQ library through JNA. In other words, the only native library that this module requires is the native ZeroMQ library. The benefit of the scala library is that you don't need to compile and manage native dependencies at the cost of some runtime performance. The scala-bindings are compatible with the JNI bindings so they are a drop-in replacement, in case you really need to get that extra bit of performance out."
+msgstr ""
+
+#: ../../java/zeromq.rst:17
+# 11597fc77e18474781aeb531a505a0ec
+msgid "Connection"
+msgstr ""
+
+#: ../../java/zeromq.rst:19
+# f397617a2e034e1ca1b8615cda832b78
+msgid "ZeroMQ supports multiple connectivity patterns, each aimed to meet a different set of requirements. Currently, this module supports publisher-subscriber connections and connections based on dealers and routers. For connecting or accepting connections, a socket must be created. Sockets are always created using the ``akka.zeromq.ZeroMQExtension``, for example:"
+msgstr ""
+
+#: ../../java/zeromq.rst:24
+# f25da49d328b47efb00feef7474a907d
+msgid "Above examples will create a ZeroMQ Publisher socket that is Bound to the port 1233 on localhost."
+msgstr ""
+
+#: ../../java/zeromq.rst:26
+# a38cc9d49b1a4f1196a0ad4eaaa42556
+msgid "Similarly you can create a subscription socket, with a listener, that subscribes to all messages from the publisher using:"
+msgstr ""
+
+#: ../../java/zeromq.rst:32
+# 79e86faa1e824a56b5fc1d9323dd57cd
+msgid "The following sub-sections describe the supported connection patterns and how they can be used in an Akka environment. However, for a comprehensive discussion of connection patterns, please refer to `ZeroMQ -- The Guide <http://zguide.zeromq.org/page:all>`_."
+msgstr ""
+
+#: ../../java/zeromq.rst:35
+# 39d7e179ff0548bfa70a603de68559ae
+msgid "Publisher-Subscriber Connection"
+msgstr ""
+
+#: ../../java/zeromq.rst:37
+# c87a154f770e4b6fad2cf832e3fc704b
+msgid "In a publisher-subscriber (pub-sub) connection, the publisher accepts one or more subscribers. Each subscriber shall subscribe to one or more topics, whereas the publisher publishes messages to a set of topics. Also, a subscriber can subscribe to all available topics. In an Akka environment, pub-sub connections shall be used when an actor sends messages to one or more actors that do not interact with the actor that sent the message."
+msgstr ""
+
+#: ../../java/zeromq.rst:42
+# 417751a4c2af4dc6a9be4e581ced100e
+msgid "When you're using zeromq pub/sub you should be aware that it needs multicast - check your cloud - to work properly and that the filtering of events for topics happens client side, so all events are always broadcasted to every subscriber."
+msgstr ""
+
+#: ../../java/zeromq.rst:44
+# d40d04047a0b4629b5a235512e09a287
+msgid "An actor is subscribed to a topic as follows:"
+msgstr ""
+
+#: ../../java/zeromq.rst:48
+# dbf43436070349b0884f12b5f6e92cd7
+msgid "It is a prefix match so it is subscribed to all topics starting with ``foo.bar``. Note that if the given string is empty or ``Subscribe.all()`` is used, the actor is subscribed to all topics."
+msgstr ""
+
+#: ../../java/zeromq.rst:51
+# 58465b1d0aaf403eafb10e4bc0033afd
+msgid "To unsubscribe from a topic you do the following:"
+msgstr ""
+
+#: ../../java/zeromq.rst:55
+# 5b09fb0863f94067954e9877b78e15b6
+msgid "To publish messages to a topic you must use two Frames with the topic in the first frame."
+msgstr ""
+
+#: ../../java/zeromq.rst:60
+# d52d2904e40f4a34b793b72b64249345
+msgid "Pub-Sub in Action"
+msgstr ""
+
+#: ../../java/zeromq.rst:62
+# 18ac1fb04f1447a1841a9f3d3b0cadf7
+msgid "The following example illustrates one publisher with two subscribers."
+msgstr ""
+
+#: ../../java/zeromq.rst:64
+# c4578f85fe9c438088fbec2baa827cbb
+msgid "The publisher monitors current heap usage and system load and periodically publishes ``Heap`` events on the ``\"health.heap\"`` topic and ``Load`` events on the ``\"health.load\"`` topic."
+msgstr ""
+
+#: ../../java/zeromq.rst:71
+# cc8b484479e8435d8b6aaf88b3aa0217
+msgid "Let's add one subscriber that logs the information. It subscribes to all topics starting with ``\"health\"``, i.e. both ``Heap`` and ``Load`` events."
+msgstr ""
+
+#: ../../java/zeromq.rst:78
+# 74aa8a87ee3b4174bf6c1105e0d4cdae
+msgid "Another subscriber keep track of used heap and warns if too much heap is used. It only subscribes to ``Heap`` events."
+msgstr ""
+
+#: ../../java/zeromq.rst:85
+# 4ce4d9c241d243cfbe75b75ad5f53889
+msgid "Router-Dealer Connection"
+msgstr ""
+
+#: ../../java/zeromq.rst:87
+# 4e2d38b8f3994c91b52b8f5b0edbc37c
+msgid "While Pub/Sub is nice the real advantage of zeromq is that it is a \"lego-box\" for reliable messaging. And because there are so many integrations the multi-language support is fantastic. When you're using ZeroMQ to integrate many systems you'll probably need to build your own ZeroMQ devices. This is where the router and dealer socket types come in handy. With those socket types you can build your own reliable pub sub broker that uses TCP/IP and does publisher side filtering of events."
+msgstr ""
+
+#: ../../java/zeromq.rst:91
+# 126e1e22597849be8a71465be426b8e3
+msgid "To create a Router socket that has a high watermark configured, you would do:"
+msgstr ""
+
+#: ../../java/zeromq.rst:95
+# 2b7b5557899c4794a1bd039c2581ef61
+msgid "The akka-zeromq module accepts most if not all the available configuration options for a zeromq socket."
+msgstr ""
+
+#: ../../java/zeromq.rst:98
+# 456fba05366a409d96c0ff3d2e3e2445
+msgid "Push-Pull Connection"
+msgstr ""
+
+#: ../../java/zeromq.rst:100
+# d8be3112f82a4b2ca7e5745351b7183d
+msgid "Akka ZeroMQ module supports ``Push-Pull`` connections."
+msgstr ""
+
+#: ../../java/zeromq.rst:102
+# 86fb828041d94336a05a83da41773dd6
+msgid "You can create a ``Push`` connection through the::"
+msgstr ""
+
+#: ../../java/zeromq.rst:106
+# be8fee574631433f9a01e3c13879aa86
+msgid "You can create a ``Pull`` connection through the::"
+msgstr ""
+
+#: ../../java/zeromq.rst:110
+#: ../../java/zeromq.rst:125
+# 49036c60eca349f18dc6ba997fc0453c
+# d7f89da9f45946cba2a61d7f40d6b84d
+msgid "More documentation and examples will follow soon."
+msgstr ""
+
+#: ../../java/zeromq.rst:113
+# 822fcbaa9eba484c9f8fdb26d33d906e
+msgid "Rep-Req Connection"
+msgstr ""
+
+#: ../../java/zeromq.rst:115
+# 467ebf16e70c471993f5ada1a6353357
+msgid "Akka ZeroMQ module supports ``Rep-Req`` connections."
+msgstr ""
+
+#: ../../java/zeromq.rst:117
+# aebb075cf46243aca9e9127cbccadebe
+msgid "You can create a ``Rep`` connection through the::"
+msgstr ""
+
+#: ../../java/zeromq.rst:121
+# cf2ebaf4fd7e40969957a20b1964c3ad
+msgid "You can create a ``Req`` connection through the::"
+msgstr ""
+
