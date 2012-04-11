@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Akka 2.0-SNAPSHOT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 21:41\n"
-"PO-Revision-Date: 2012-04-11 17:34+0900\n"
-"Last-Translator: 大村伸吾 <everpeace@gmail.com>\n"
+"PO-Revision-Date: 2012-04-12 00:41+0900\n"
+"Last-Translator: 大村 伸吾 <>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,13 +19,22 @@ msgstr ""
 
 # b0668090bd1644ccba8ffa48e3e462ef
 #: ../../general/actor-systems.rst:4
-#, fuzzy
 msgid "Actor Systems"
 msgstr "アクターシステム"
 
 # bfc30cf481654bbea2f66fbdc332b98d
 #: ../../general/actor-systems.rst:6
-msgid "Actors are objects which encapsulate state and behavior, they communicate exclusively by exchanging messages which are placed into the recipient’s mailbox. In a sense, actors are the most stringent form of object-oriented programming, but it serves better to view them as persons: while modeling a solution with actors, envision a group of people and assign sub-tasks to them, arrange their functions into an organizational structure and think about how to escalate failure (all with the benefit of not actually dealing with people, which means that we need not concern ourselves with their emotional state or moral issues). The result can then serve as a mental scaffolding for building the software implementation."
+msgid ""
+"Actors are objects which encapsulate state and behavior, they communicate "
+"exclusively by exchanging messages which are placed into the recipient’s "
+"mailbox. In a sense, actors are the most stringent form of object-oriented "
+"programming, but it serves better to view them as persons: while modeling a "
+"solution with actors, envision a group of people and assign sub-tasks to "
+"them, arrange their functions into an organizational structure and think "
+"about how to escalate failure (all with the benefit of not actually dealing "
+"with people, which means that we need not concern ourselves with their "
+"emotional state or moral issues). The result can then serve as a mental "
+"scaffolding for building the software implementation."
 msgstr "アクターとは、状態と振る舞いを内包したオブジェクトであり、アクター同士は各自が持つメールボックスにメッセージを届けることでのみ通信します。この意味で、アクターは最も厳格なオブジェクト指向プログラミングだといえますが、それよりもアクターを人間のようにみなす方が良いでしょう。アクターによるモデリングでは、人々のグループを想像し、彼らにサブタスクを与え、彼らの機能を組織的な構造に組み上げ、タスクの失敗をどのようにエスカレートするかを考えます（これらの全ては、実際の人間を対象としない場合に上手く行くでしょう。つまり感情的な状態やモラルについて考える必要がない場合ということです）。この考え方はソフトウェアを実装する上での考え方の足場となり得るものです。"
 
 # 3278925f6c0249c6bf5d706bf52e3260
@@ -35,42 +44,82 @@ msgstr "階層構造"
 
 # c8c32af0f0404a0e8f790fc9fe447d69
 #: ../../general/actor-systems.rst:20
-msgid "Like in an economic organization, actors naturally form hierarchies. One actor, which is to oversee a certain function in the program might want to split up its task into smaller, more manageable pieces. For this purpose it starts child actors which it supervises. While the details of supervision are explained :ref:`here <supervision>`, we shall concentrate on the underlying concepts in this section. The only prerequisite is to know that each actor has exactly one supervisor, which is the actor that created it."
+msgid ""
+"Like in an economic organization, actors naturally form hierarchies. One "
+"actor, which is to oversee a certain function in the program might want to "
+"split up its task into smaller, more manageable pieces. For this purpose it "
+"starts child actors which it supervises. While the details of supervision "
+"are explained :ref:`here <supervision>`, we shall concentrate on the "
+"underlying concepts in this section. The only prerequisite is to know that "
+"each actor has exactly one supervisor, which is the actor that created it."
 msgstr "経済的な組織と同じように、アクターは階層構造を成します。アクターはプログラム中のある機能を担当してますが、あるアクターにおいては、与えられたタスクを、さらに小さく、扱いやすい単位に分割したい場合があります。そういう場合に、そのアクターは子アクターをスタートさせ、彼らをスーパーバイズするのです。スーパーバイズについての詳細は :ref:`ここ <supervision>` で述べられているので、この節では、その基礎となるコンセプトにフォーカスします。この機能を実現するために必要となるのは、各アクターが唯一のスーパーバイザとして自分を生成したアクターを知っていることです。"
 
 # 0e2b8faaba924b8f9d834665248f9bc3
 #: ../../general/actor-systems.rst:28
-msgid "The quintessential feature of actor systems is that tasks are split up and delegated until they become small enough to be handled in one piece. In doing so, not only is the task itself clearly structured, but the resulting actors can be reasoned about in terms of which messages they should process, how they should react nominally and how failure should be handled. If one actor does not have the means for dealing with a certain situation, it sends a corresponding failure message to its supervisor, asking for help. The recursive structure then allows to handle failure at the right level."
+msgid ""
+"The quintessential feature of actor systems is that tasks are split up and "
+"delegated until they become small enough to be handled in one piece. In "
+"doing so, not only is the task itself clearly structured, but the resulting "
+"actors can be reasoned about in terms of which messages they should process, "
+"how they should react nominally and how failure should be handled. If one "
+"actor does not have the means for dealing with a certain situation, it sends "
+"a corresponding failure message to its supervisor, asking for help. The "
+"recursive structure then allows to handle failure at the right level."
 msgstr "アクターシステムの典型的な機能は、タスクが扱いやすい小ささになるまで分割し委譲する、というものです。そうするために、そのタスク自体がしっかり構造化されているだけでなく、それを処理するアクターシステムが、どのメッセージを処理すべきか、名目上どのように反応すべきか、タスクの失敗をどうハンドルするかを知っている必要があります。もしあるアクターが、ある状況において、メッセージを処理できない場合、そのアクターはスーパーバイザに助けを求めるために、タスク失敗のメッセージをもって反応するのです。この再帰的な構造ではタスクの失敗を正しいレベルで処理することができます。"
 
 # 392c1b145b60450dbfc3edb5047911a4
 #: ../../general/actor-systems.rst:37
-msgid "Compare this to layered software design which easily devolves into defensive programming with the aim of not leaking any failure out: if the problem is communicated to the right person, a better solution can be found than if trying to keep everything “under the carpet”."
+msgid ""
+"Compare this to layered software design which easily devolves into defensive "
+"programming with the aim of not leaking any failure out: if the problem is "
+"communicated to the right person, a better solution can be found than if "
+"trying to keep everything “under the carpet”."
 msgstr "このモデルと、レイヤー化されたソフトウェアモデル(タスクの失敗を漏らさないようにするため、防御的なプログラミングに容易に変化していくモデル)とを比較してみてください。問題を正しい人間に処理させたければ、「カーペットの下」で全てを処理しようとする方法より、もっと良い方法があるはずです。"
 
 # cff7d5a6fbe44ca8b23de21352890d01
 #: ../../general/actor-systems.rst:42
-msgid "Now, the difficulty in designing such a system is how to decide who should supervise what. There is of course no single best solution, but there are a few guide lines which might be helpful:"
-msgstr "そのようなシステムを設計する際の難しいところは、誰に何をスーパーバイズさせるべきかを、どのように決定すべきかと言う点です。もちろん唯一最善の策というのはありませんが、いくつか有用なガイドラインがあります。："
+msgid ""
+"Now, the difficulty in designing such a system is how to decide who should "
+"supervise what. There is of course no single best solution, but there are a "
+"few guide lines which might be helpful:"
+msgstr "そのようなシステムを設計する際の難しいところは、誰に何をスーパーバイズさせるべきかを、どのように決定すべきかと言う点です。もちろん唯一最善の策というのはありませんが、いくつか有用なガイドラインがあります。"
 
 # b5acac89906440649eafc116670b1e73
 #: ../../general/actor-systems.rst:46
-msgid "If one actor manages the work another actor is doing, e.g. by passing on sub-tasks, then the manager should supervise the child. The reason is that the manager knows which kind of failures are expected and how to handle them."
+msgid ""
+"If one actor manages the work another actor is doing, e.g. by passing on sub-"
+"tasks, then the manager should supervise the child. The reason is that the "
+"manager knows which kind of failures are expected and how to handle them."
 msgstr "あるアクターが、サブタスクを他のアクターに渡すなどして、他のアクターの処理を管理している場合、管理者はその子供をスーパーバイズすべきです。なぜなら、管理者はどんな種類の失敗が返され、それらをどう処理するかを知っているからです。"
 
 # 8412200c7bda4925aef1c8a3cf9be320
 #: ../../general/actor-systems.rst:51
-msgid "If one actor carries very important data (i.e. its state shall not be lost if avoidable), this actor should source out any possibly dangerous sub-tasks to children it supervises and handle failures of these children as appropriate. Depending on the nature of the requests, it may be best to create a new child for each request, which simplifies state management for collecting the replies. This is known as the “Error Kernel Pattern” from Erlang."
+msgid ""
+"If one actor carries very important data (i.e. its state shall not be lost "
+"if avoidable), this actor should source out any possibly dangerous sub-tasks "
+"to children it supervises and handle failures of these children as "
+"appropriate. Depending on the nature of the requests, it may be best to "
+"create a new child for each request, which simplifies state management for "
+"collecting the replies. This is known as the “Error Kernel Pattern” from "
+"Erlang."
 msgstr "あるアクターが非常に大切なデータを保持している場合、すなわち、可能な限りその状態をロストしたくない場合、そのアクターは、危険そうなサブタスクは全て子アクターに任せ、子アクターを監視し、子アクターの失敗を適切に処理するようにすべきです。このとき、リクエストの性質によっては、リクエストごとに子アクターを生成することがベストな場合があります。こうすることで、子アクターからの返信されたステートの管理がシンプルになるからです。この手法はErlangの「エラーカーネルパターン」として知られています。"
 
 # 99dca0c5240541ae936ba6778db3fbe6
 #: ../../general/actor-systems.rst:59
-msgid "If one actor depends on another actor for carrying out its duty, it should watch that other actor’s liveness and act upon receiving a termination notice. This is different from supervision, as the watching party has no influence on the supervisor strategy, and it should be noted that a functional dependency alone is not a criterion for deciding where to place a certain child actor in the hierarchy."
+msgid ""
+"If one actor depends on another actor for carrying out its duty, it should "
+"watch that other actor’s liveness and act upon receiving a termination "
+"notice. This is different from supervision, as the watching party has no "
+"influence on the supervisor strategy, and it should be noted that a "
+"functional dependency alone is not a criterion for deciding where to place a "
+"certain child actor in the hierarchy."
 msgstr "あるアクターが、その役割を実行するために、他のアクターに依存している場合、そのアクターは、その他のアクターの死活および終了通知に伴う振る舞いを監視すべきです。これは、監視されているアクター集団がスーパーバイズ戦略に影響を受けないという点から、スーパーバイズとは異なります。また、階層における子アクターの位置を決める基準が機能的な依存性だけではないという点に注目してください。"
 
 # f110d00ec82b4940947ab23469b63cb1
 #: ../../general/actor-systems.rst:66
-msgid "There are of course always exceptions to these rules, but no matter whether you follow the rules or break them, you should always have a reason."
+msgid ""
+"There are of course always exceptions to these rules, but no matter whether "
+"you follow the rules or break them, you should always have a reason."
 msgstr "もちろんいつでも例外というのはありますが、このルールに従うか破るかにかかわらず、常にその決定に対する理由をもつべきです。"
 
 # 3255ef21868246388aba70d5acad899c
@@ -80,7 +129,15 @@ msgstr "コンフィグレーションコンテナ"
 
 # 096b06bba2834e99abb3dbfd5bf4a4ca
 #: ../../general/actor-systems.rst:72
-msgid "The actor system as a collaborating ensemble of actors is the natural unit for managing shared facilities like scheduling services, configuration, logging, etc. Several actor systems with different configuration may co-exist within the same JVM without problems, there is no global shared state within Akka itself. Couple this with the transparent communication between actor systems-within one node or across a network connection-to see that actor systems themselves can be used as building blocks in a functional hierarchy."
+msgid ""
+"The actor system as a collaborating ensemble of actors is the natural unit "
+"for managing shared facilities like scheduling services, configuration, "
+"logging, etc. Several actor systems with different configuration may co-"
+"exist within the same JVM without problems, there is no global shared state "
+"within Akka itself. Couple this with the transparent communication between "
+"actor systems—within one node or across a network connection—to see that "
+"actor systems themselves can be used as building blocks in a functional "
+"hierarchy."
 msgstr "協調動作するアクターの集合としてのアクターシステムは、スケジューリングサービス、コンフィグレーション、ロギングといった共通機能を管理するための単位となります。それぞれ異なるコンフィグレーションを持つ複数のアクターシステムは一つのJVM内に問題なく共存することができます。Akka自身の内部には複数のアクターシステムによって共有されるグローバルステートは存在しません。これとアクターシステム間(単一ノード内またはネットワークを通じた)での透過的な通信を組み合わせると、アクターシステムが機能階層におけるビルディングブロックとなり得ることが理解できます。"
 
 # 681050e1cfc54d9d8599c29d753e55e0
@@ -90,17 +147,35 @@ msgstr "アクターのベストプラクティス"
 
 # 1bed152935d64c58a01fda5e01d8f6df
 #: ../../general/actor-systems.rst:83
-msgid "Actors should be like nice co-workers: do their job efficiently without bothering everyone else needlessly and avoid hogging resources. Translated to programming this means to process events and generate responses (or more requests) in an event-driven manner. Actors should not block (i.e. passively wait while occupying a Thread) on some external entity, which might be a lock, a network socket, etc. The blocking operations should be done in some special-cased thread which sends messages to the actors which shall act on them."
+msgid ""
+"Actors should be like nice co-workers: do their job efficiently without "
+"bothering everyone else needlessly and avoid hogging resources. Translated "
+"to programming this means to process events and generate responses (or more "
+"requests) in an event-driven manner. Actors should not block (i.e. passively "
+"wait while occupying a Thread) on some external entity, which might be a "
+"lock, a network socket, etc. The blocking operations should be done in some "
+"special-cased thread which sends messages to the actors which shall act on "
+"them."
 msgstr "アクターはとても優秀な共同作業者であるべきです。自分自身の仕事を効率的にこなし、かつ不必要に他人を妨げず、資源を無駄遣いすることもないような作業者であるべきです。プログラミングの言葉に翻訳すると、イベントドリンブンなスタイルで、イベントを処理し、レスポンス(もしくはさらなるリクエスト)を生成するということです。アクターは、ロックやネットワークソケットといった外部のエンティティ上でブロックする(スレッドを占有し、待ち状態になること)べきではありません。ブロックする操作は、アクターにそのメッセージを配送する特殊なスレッド中で行われるべきです。"
 
 # d966f6490eae4d4aa30cf276f842b3c4
 #: ../../general/actor-systems.rst:92
-msgid "Do not pass mutable objects between actors. In order to ensure that, prefer immutable messages. If the encapsulation of actors is broken by exposing their mutable state to the outside, you are back in normal Java concurrency land with all the drawbacks."
-mssgstr "可変なオジェクトをアクター間でやり取りしないでください。それを保証するためには、不変なメッセージが好まれます。もしアクターのカプセル化が可変なステートを外部に露出することで破られてしまった場合、多くの欠点と共に通常のJava並行性に前戻りすることになります。"
+msgid ""
+"Do not pass mutable objects between actors. In order to ensure that, prefer "
+"immutable messages. If the encapsulation of actors is broken by exposing "
+"their mutable state to the outside, you are back in normal Java concurrency "
+"land with all the drawbacks."
+msgstr "可変なオジェクトをアクター間でやり取りしないでください。それを保証するためには、不変なメッセージが好まれます。もしアクターのカプセル化が可変なステートを外部に露出することで破られてしまった場合、多くの欠点と共に通常のJava並行性に前戻りすることになります。"
 
 # 35ac131ab54b4fdabecc4aa4241460d3
 #: ../../general/actor-systems.rst:97
-msgid "Actors are made to be containers for behavior and state, embracing this means to not routinely send behavior within messages (which may be tempting using Scala closures). One of the risks is to accidentally share mutable state between actors, and this violation of the actor model unfortunately breaks all the properties which make programming in actors such a nice experience."
+msgid ""
+"Actors are made to be containers for behavior and state, embracing this "
+"means to not routinely send behavior within messages (which may be tempting "
+"using Scala closures). One of the risks is to accidentally share mutable "
+"state between actors, and this violation of the actor model unfortunately "
+"breaks all the properties which make programming in actors such a nice "
+"experience."
 msgstr "アクターは状態と振る舞いのコンテナとして作られるべきです。これは、日常的には振る舞いをメッセージとして送らない(送る場合にはScalaのクロージャーを使おうとするかもしれません)ことを意味します。それを送ることのリスクの一つは、思いがけず可変なステートがアクター間で共有されてしまい、このアクターモデルの破壊が、アクタープログラミングをとても良い体験せしめているすべての特性を、不幸にも台無しにしてしまうことです。"
 
 # 6d456c70732e42e5a25076f16bc259b2
@@ -110,7 +185,14 @@ msgstr "心配すべきでない事柄"
 
 # 286b7a7857054ac5b67dd64632300a23
 #: ../../general/actor-systems.rst:107
-msgid "An actor system manages the resources it is configured to use in order to run the actors which it contains. There may be millions of actors within one such system, after all the mantra is to view them as abundant and they weigh in at an overhead of only roughly 300 bytes per instance. Naturally, the exact order in which messages are processed in large systems is not controllable by the application author, but this is also not intended. Take a step back and relax while Akka does the heavy lifting under the hood."
+msgid ""
+"An actor system manages the resources it is configured to use in order to "
+"run the actors which it contains. There may be millions of actors within one "
+"such system, after all the mantra is to view them as abundant and they weigh "
+"in at an overhead of only roughly 300 bytes per instance. Naturally, the "
+"exact order in which messages are processed in large systems is not "
+"controllable by the application author, but this is also not intended. Take "
+"a step back and relax while Akka does the heavy lifting under the hood."
 msgstr "アクターシステムは、そのシステム内のアクターを実行するために使うよう設定された資源を管理します。アクターシステム内には何百万というアクターが存在するかもしれません。が、実のところ、それは豊かなシステムととらえるべきで、アクター１インスタンスにつき約300倍とのオーバーヘッドしかかかりません。本来、大規模なシステムでは処理されるメッセージの厳密な順序のアプリケーションの作成者による制御は不可能であり、また意図されもしないものです。そういった大変な処理はAkkaが水面下で行っているため、一歩下がってリラックスしてください。"
 
 # ab88e07d068b422695f1989b3bd6cb5e
@@ -120,13 +202,21 @@ msgstr "アクターとは？"
 
 # e9e558285daf4381819d5d934c74a9c6
 #: ../../general/actors.rst:6
-msgid "The previous section about :ref:`actor-systems` explained how actors form hierarchies and are the smallest unit when building an application. This section looks at one such actor in isolation, explaining the concepts you encounter while implementing it. For more an in depth reference with all the details please refer to :ref:`actors-scala` and :ref:`untyped-actors-java`."
+msgid ""
+"The previous section about :ref:`actor-systems` explained how actors form "
+"hierarchies and are the smallest unit when building an application. This "
+"section looks at one such actor in isolation, explaining the concepts you "
+"encounter while implementing it. For more an in depth reference with all the "
+"details please refer to :ref:`actors-scala` and :ref:`untyped-actors-java`."
 msgstr ":ref:`actor-systems` についての前節では、アクターがどのように階層構造を構成するか、どのようにしてアプリケーションを組み立てる際の最小単位となるかを説明しました。この節では、単独のアクターに注目し、実装する際に直面するコンセプトについて説明します。より詳細なリファレンスについては :ref:`actors-scala` および :ref:`untyped-actors-java` を参照してください。"
 
 # ed0a53aab9e7480ab575b2b450e9d7ad
 #: ../../general/actors.rst:12
-msgid "An actor is a container for `State`_, `Behavior`_, a `Mailbox`_, `Children`_ and a `Supervisor Strategy`_. All of this is encapsulated behind an `Actor Reference`_. Finally, this happens `When an Actor Terminates`_."
-msgstr "アクターは `状態`_、 `振る舞い`_、 `メールボックス`_、 `子アクター`_、 `スーパーバイザ戦略`_のコンテナです。このすべては `アクター参照`_によってカプセル化されます。 アクターの最後は `アクターが終了するとき` に書かれています。"
+msgid ""
+"An actor is a container for `State`_, `Behavior`_, a `Mailbox`_, `Children`_ "
+"and a `Supervisor Strategy`_. All of this is encapsulated behind an `Actor "
+"Reference`_. Finally, this happens `When an Actor Terminates`_."
+msgstr "アクターは「状態」、 「振る舞い」、「メールボックス」、「子アクター」、「スーパーバイザ戦略」のコンテナです。このすべては 「アクター参照」によってカプセル化されます。 アクターの最後は「アクターが終了するとき」に書かれています。"
 
 # 97bbb01ad19848fba8db1bb0c4cd231a
 #: ../../general/actors.rst:17
@@ -135,9 +225,18 @@ msgstr "アクター参照"
 
 # 161b767989254feba505c74974c03b22
 #: ../../general/actors.rst:19
-msgid "As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction. This split into inner and outer object enables transparency for all the desired operations: restarting an actor without needing to update references elsewhere, placing the actual actor object on remote hosts, sending messages to actors in completely different applications. But the most important aspect is that it is not possible to look inside an actor and get hold of its state from the outside, unless the actor unwisely publishes this information itself."
+msgid ""
+"As detailed below, an actor object needs to be shielded from the outside in "
+"order to benefit from the actor model. Therefore, actors are represented to "
+"the outside using actor references, which are objects that can be passed "
+"around freely and without restriction. This split into inner and outer "
+"object enables transparency for all the desired operations: restarting an "
+"actor without needing to update references elsewhere, placing the actual "
+"actor object on remote hosts, sending messages to actors in completely "
+"different applications. But the most important aspect is that it is not "
+"possible to look inside an actor and get hold of its state from the outside, "
+"unless the actor unwisely publishes this information itself."
 msgstr "下記の詳細の通り、アクターオブジェクトはアクターモデルによる恩恵を享受するために外部から守られている必要があります。そのため、アクターは外向きにはアクター参照を使って表されます。このオブジェクトは自由に何の制限もなくやりとりできるオブジェクトです。この内部と外部の分離がすべてのあるべき操作を透過的にしているのです。例えば、どの参照もアップデートすることなくリスタートすること、実際のアクターオブジェクトをリモートホストに配置すること、完全に異なるアプリケーションのアクター間でのメッセージのやり取りなどです。しかし最も大切な側面は、アクターが自分自身の情報を外部に公開するような愚かなことをしない限り、アクターの内部を外部から不可視にして、自身の状態を内部に保持していることです。"
-
 
 # 38fb3bbfeb8943539f39f0ed61ca0b50
 #: ../../general/actors.rst:31
@@ -146,92 +245,179 @@ msgstr "状態"
 
 # 9594f131c872482a968c60158f26e681
 #: ../../general/actors.rst:33
-msgid "Actor objects will typically contain some variables which reflect possible states the actor may be in. This can be an explicit state machine (e.g. using the :ref:`fsm-scala` module), or it could be a counter, set of listeners, pending requests, etc. These data are what make an actor valuable, and they must be protected from corruption by other actors. The good news is that Akka actors conceptually each have their own light-weight thread, which is completely shielded from the rest of the system. This means that instead of having to synchronize access using locks you can just write your actor code without worrying about concurrency at all."
+msgid ""
+"Actor objects will typically contain some variables which reflect possible "
+"states the actor may be in. This can be an explicit state machine (e.g. "
+"using the :ref:`fsm-scala` module), or it could be a counter, set of "
+"listeners, pending requests, etc. These data are what make an actor "
+"valuable, and they must be protected from corruption by other actors. The "
+"good news is that Akka actors conceptually each have their own light-weight "
+"thread, which is completely shielded from the rest of the system. This means "
+"that instead of having to synchronize access using locks you can just write "
+"your actor code without worrying about concurrency at all."
 msgstr "アクターオブジェクトは典型的にアクターが取り得る状態を反映した変数を保持します。それらには明示的な状態遷移機械(例えば、 :ref:`fsm-scala`モジュールを使って)、カウンター、リスナーの集合、ペンディングされているリクエストなどがあります。これらのデータはアクターを価値あるものにしているデータで、他のアクターによる破壊から守られなければならないものです。良いことに、Akkaのアクターは、概念的には、各自が他のアクターから完全に守られている軽量のスレッドを保持しています。これはロックを使った同期アクセスを使わず、並行処理を意識せずにアクターのコードを書くことが出来ることを意味します。"
 
 # a2e3f1829f6a43229d9c46b7468b2fa4
 #: ../../general/actors.rst:43
-msgid "Behind the scenes Akka will run sets of actors on sets of real threads, where typically many actors share one thread, and subsequent invocations of one actor may end up being processed on different threads. Akka ensures that this implementation detail does not affect the single-threadedness of handling the actor’s state."
+msgid ""
+"Behind the scenes Akka will run sets of actors on sets of real threads, "
+"where typically many actors share one thread, and subsequent invocations of "
+"one actor may end up being processed on different threads. Akka ensures that "
+"this implementation detail does not affect the single-threadedness of "
+"handling the actor’s state."
 msgstr ""
 
 # 4fa41871addc4103851d8b68930aa282
 #: ../../general/actors.rst:49
-msgid "Because the internal state is vital to an actor’s operations, having inconsistent state is fatal. Thus, when the actor fails and is restarted by its supervisor, the state will be created from scratch, like upon first creating the actor. This is to enable the ability of self-healing of the system."
+msgid ""
+"Because the internal state is vital to an actor’s operations, having "
+"inconsistent state is fatal. Thus, when the actor fails and is restarted by "
+"its supervisor, the state will be created from scratch, like upon first "
+"creating the actor. This is to enable the ability of self-healing of the "
+"system."
 msgstr ""
 
 # 9d3833218f0440e78eaf5c5f6b327c98
 #: ../../general/actors.rst:55
 msgid "Behavior"
-msgstr ""
+msgstr "振る舞い"
 
 # 04f30ed0bd604ecbbdbba4a6a073e482
 #: ../../general/actors.rst:57
-msgid "Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise. This behavior may change over time, e.g. because different clients obtain authorization over time, or because the actor may go into an “out-of-service” mode and later come back. These changes are achieved by either encoding them in state variables which are read from the behavior logic, or the function itself may be swapped out at runtime, see the ``become`` and ``unbecome`` operations. However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one."
+msgid ""
+"Every time a message is processed, it is matched against the current "
+"behavior of the actor. Behavior means a function which defines the actions "
+"to be taken in reaction to the message at that point in time, say forward a "
+"request if the client is authorized, deny it otherwise. This behavior may "
+"change over time, e.g. because different clients obtain authorization over "
+"time, or because the actor may go into an “out-of-service” mode and later "
+"come back. These changes are achieved by either encoding them in state "
+"variables which are read from the behavior logic, or the function itself may "
+"be swapped out at runtime, see the ``become`` and ``unbecome`` operations. "
+"However, the initial behavior defined during construction of the actor "
+"object is special in the sense that a restart of the actor will reset its "
+"behavior to this initial one."
 msgstr ""
 
 # 9a192fea96b74e29b9758d067b98b3e9
 #: ../../general/actors.rst:70
-msgid "The initial behavior of an Actor is extracted prior to constructor is run, so if you want to base your initial behavior on member state, you should use ``become`` in the constructor."
+msgid ""
+"The initial behavior of an Actor is extracted prior to constructor is run, "
+"so if you want to base your initial behavior on member state, you should use "
+"``become`` in the constructor."
 msgstr ""
 
 # 071b1860d12a44a98ed73746988e8051
 #: ../../general/actors.rst:75
 msgid "Mailbox"
-msgstr ""
+msgstr "メールボックス"
 
 # d8a3c633df6545dc9293f312bc2568db
 #: ../../general/actors.rst:77
-msgid "An actor’s purpose is the processing of messages, and these messages were sent to the actor from other actors (or from outside the actor system). The piece which connects sender and receiver is the actor’s mailbox: each actor has exactly one mailbox to which all senders enqueue their messages. Enqueuing happens in the time-order of send operations, which means that messages sent from different actors may not have a defined order at runtime due to the apparent randomness of distributing actors across threads. Sending multiple messages to the same target from the same actor, on the other hand, will enqueue them in the same order."
+msgid ""
+"An actor’s purpose is the processing of messages, and these messages were "
+"sent to the actor from other actors (or from outside the actor system). The "
+"piece which connects sender and receiver is the actor’s mailbox: each actor "
+"has exactly one mailbox to which all senders enqueue their messages. "
+"Enqueuing happens in the time-order of send operations, which means that "
+"messages sent from different actors may not have a defined order at runtime "
+"due to the apparent randomness of distributing actors across threads. "
+"Sending multiple messages to the same target from the same actor, on the "
+"other hand, will enqueue them in the same order."
 msgstr ""
 
 # 38049273c8954c11979b4481c1766ac0
 #: ../../general/actors.rst:87
-msgid "There are different mailbox implementations to choose from, the default being a FIFO: the order of the messages processed by the actor matches the order in which they were enqueued. This is usually a good default, but applications may need to prioritize some messages over others. In this case, a priority mailbox will enqueue not always at the end but at a position as given by the message priority, which might even be at the front. While using such a queue, the order of messages processed will naturally be defined by the queue’s algorithm and in general not be FIFO."
+msgid ""
+"There are different mailbox implementations to choose from, the default "
+"being a FIFO: the order of the messages processed by the actor matches the "
+"order in which they were enqueued. This is usually a good default, but "
+"applications may need to prioritize some messages over others. In this case, "
+"a priority mailbox will enqueue not always at the end but at a position as "
+"given by the message priority, which might even be at the front. While using "
+"such a queue, the order of messages processed will naturally be defined by "
+"the queue’s algorithm and in general not be FIFO."
 msgstr ""
 
 # dd8d441b7d85429aa0a082d21eb2717c
 #: ../../general/actors.rst:96
-msgid "An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden."
+msgid ""
+"An important feature in which Akka differs from some other actor model "
+"implementations is that the current behavior must always handle the next "
+"dequeued message, there is no scanning the mailbox for the next matching "
+"one. Failure to handle a message will typically be treated as a failure, "
+"unless this behavior is overridden."
 msgstr ""
 
 # e6bbf87e153b4316b28a0aa420c44c54
 #: ../../general/actors.rst:103
 msgid "Children"
-msgstr ""
+msgstr "子アクター"
 
 # eea10532bec3431ba640d53eb9c8fcd6
 #: ../../general/actors.rst:105
-msgid "Each actor is potentially a supervisor: if it creates children for delegating sub-tasks, it will automatically supervise them. The list of children is maintained within the actor’s context and the actor has access to it. Modifications to the list are done by creating (``context.actorOf(...)``) or stopping (``context.stop(child)``) children and these actions are reflected immediately. The actual creation and termination actions happen behind the scenes in an asynchronous way, so they do not “block” their supervisor."
+msgid ""
+"Each actor is potentially a supervisor: if it creates children for "
+"delegating sub-tasks, it will automatically supervise them. The list of "
+"children is maintained within the actor’s context and the actor has access "
+"to it. Modifications to the list are done by creating (``context.actorOf(...)"
+"``) or stopping (``context.stop(child)``) children and these actions are "
+"reflected immediately. The actual creation and termination actions happen "
+"behind the scenes in an asynchronous way, so they do not “block” their "
+"supervisor."
 msgstr ""
 
 # 8e3f57ed49f64220bd8f0ef031016dc3
 #: ../../general/actors.rst:114
 msgid "Supervisor Strategy"
-msgstr ""
+msgstr "スーパーバイザ戦略"
 
 # 869e70b6c8a24e5ea1a39595cd550b93
 #: ../../general/actors.rst:116
-msgid "The final piece of an actor is its strategy for handling faults of its children. Fault handling is then done transparently by Akka, applying one of the strategies described in :ref:`supervision` for each incoming failure. As this strategy is fundamental to how an actor system is structured, it cannot be changed once an actor has been created."
+msgid ""
+"The final piece of an actor is its strategy for handling faults of its "
+"children. Fault handling is then done transparently by Akka, applying one of "
+"the strategies described in :ref:`supervision` for each incoming failure. As "
+"this strategy is fundamental to how an actor system is structured, it cannot "
+"be changed once an actor has been created."
 msgstr ""
 
 # 155536380cdc41d69723b3b055bec4a0
 #: ../../general/actors.rst:122
-msgid "Considering that there is only one such strategy for each actor, this means that if different strategies apply to the various children of an actor, the children should be grouped beneath intermediate supervisors with matching strategies, preferring once more the structuring of actor systems according to the splitting of tasks into sub-tasks."
+msgid ""
+"Considering that there is only one such strategy for each actor, this means "
+"that if different strategies apply to the various children of an actor, the "
+"children should be grouped beneath intermediate supervisors with matching "
+"strategies, preferring once more the structuring of actor systems according "
+"to the splitting of tasks into sub-tasks."
 msgstr ""
 
 # 4d22235956f74794aabb18a8603c6df1
 #: ../../general/actors.rst:129
 msgid "When an Actor Terminates"
-msgstr ""
+msgstr "アクターが終了するとき"
 
 # 7f7559aaba80456e8cd110ee48b8c2e5
 #: ../../general/actors.rst:131
-msgid "Once an actor terminates, i.e. fails in a way which is not handled by a restart, stops itself or is stopped by its supervisor, it will free up its resources, draining all remaining messages from its mailbox into the system’s “dead letter mailbox”. The mailbox is then replaced within the actor reference with a system mailbox, redirecting all new messages “into the drain”. This is done on a best effort basis, though, so do not rely on it in order to construct “guaranteed delivery”."
+msgid ""
+"Once an actor terminates, i.e. fails in a way which is not handled by a "
+"restart, stops itself or is stopped by its supervisor, it will free up its "
+"resources, draining all remaining messages from its mailbox into the "
+"system’s “dead letter mailbox”. The mailbox is then replaced within the "
+"actor reference with a system mailbox, redirecting all new messages “into "
+"the drain”. This is done on a best effort basis, though, so do not rely on "
+"it in order to construct “guaranteed delivery”."
 msgstr ""
 
 # de41a2314ea648a094a91718362fa589
 #: ../../general/actors.rst:139
-msgid "The reason for not just silently dumping the messages was inspired by our tests: we register the TestEventListener on the event bus to which the dead letters are forwarded, and that will log a warning for every dead letter received窶杯his has been very helpful for deciphering test failures more quickly. It is conceivable that this feature may also be of use for other purposes."
+msgid ""
+"The reason for not just silently dumping the messages was inspired by our "
+"tests: we register the TestEventListener on the event bus to which the dead "
+"letters are forwarded, and that will log a warning for every dead letter "
+"received—this has been very helpful for deciphering test failures more "
+"quickly. It is conceivable that this feature may also be of use for other "
+"purposes."
 msgstr ""
 
 # f029417ce1244d06b7bf1482c1182ea8
@@ -241,12 +427,19 @@ msgstr ""
 
 # 47c154258b444433a72bad9f7abfbc85
 #: ../../general/addressing.rst:6
-msgid "This chapter describes how actors are identified and located within a possibly distributed actor system. It ties into the central idea that :ref:`actor-systems` form intrinsic supervision hierarchies as well as that communication between actors is transparent with respect to their placement across multiple network nodes."
+msgid ""
+"This chapter describes how actors are identified and located within a "
+"possibly distributed actor system. It ties into the central idea that :ref:"
+"`actor-systems` form intrinsic supervision hierarchies as well as that "
+"communication between actors is transparent with respect to their placement "
+"across multiple network nodes."
 msgstr ""
 
 # 836cdf1320354071a0e502fa49cabdb7
 #: ../../general/addressing.rst:14
-msgid "The above image displays the relationship between the most important entities within an actor system, please read on for the details."
+msgid ""
+"The above image displays the relationship between the most important "
+"entities within an actor system, please read on for the details."
 msgstr ""
 
 # f96f27d9ab734c29bcc7cb518eb33794
@@ -256,72 +449,121 @@ msgstr ""
 
 # 963e40e9bef84ac186184d56f86749c4
 #: ../../general/addressing.rst:20
-msgid "An actor reference is a subtype of :class:`ActorRef`, whose foremost purpose is to support sending messages to the actor it represents. Each actor has access to its canonical (local) reference through the :meth:`self` field; this reference is also included as sender reference by default for all messages sent to other actors. Conversely, during message processing the actor has access to a reference representing the sender of the current message through the :meth:`sender` field."
+msgid ""
+"An actor reference is a subtype of :class:`ActorRef`, whose foremost purpose "
+"is to support sending messages to the actor it represents. Each actor has "
+"access to its canonical (local) reference through the :meth:`self` field; "
+"this reference is also included as sender reference by default for all "
+"messages sent to other actors. Conversely, during message processing the "
+"actor has access to a reference representing the sender of the current "
+"message through the :meth:`sender` field."
 msgstr ""
 
 # 9c7dd51674244786aed057f6207b4d5f
 #: ../../general/addressing.rst:28
-msgid "There are several different types of actor references that are supported depending on the configuration of the actor system:"
+msgid ""
+"There are several different types of actor references that are supported "
+"depending on the configuration of the actor system:"
 msgstr ""
 
 # 34783cac129c4632886e49ebdeea521a
 #: ../../general/addressing.rst:31
-msgid "Purely local actor references are used by actor systems which are not configured to support networking functions. These actor references cannot ever be sent across a network connection while retaining their functionality."
+msgid ""
+"Purely local actor references are used by actor systems which are not "
+"configured to support networking functions. These actor references cannot "
+"ever be sent across a network connection while retaining their functionality."
 msgstr ""
 
 # 7beceef210de43068a48aaeccd540de1
 #: ../../general/addressing.rst:34
-msgid "Local actor references when remoting is enabled are used by actor systems which support networking functions for those references which represent actors within the same JVM. In order to be recognizable also when sent to other network nodes, these references include protocol and remote addressing information."
+msgid ""
+"Local actor references when remoting is enabled are used by actor systems "
+"which support networking functions for those references which represent "
+"actors within the same JVM. In order to be recognizable also when sent to "
+"other network nodes, these references include protocol and remote addressing "
+"information."
 msgstr ""
 
 # 0c1b45388e994c68bd9035185c4cfe0b
 #: ../../general/addressing.rst:39
-msgid "There is a subtype of local actor references which is used for routers (i.e. actors mixing in the :class:`Router` trait). Its logical structure is the same as for the aforementioned local references, but sending a message to them dispatches to one of their children directly instead."
+msgid ""
+"There is a subtype of local actor references which is used for routers (i.e. "
+"actors mixing in the :class:`Router` trait). Its logical structure is the "
+"same as for the aforementioned local references, but sending a message to "
+"them dispatches to one of their children directly instead."
 msgstr ""
 
 # 786af2c9eeba4535a0cede7eae73b1c2
 #: ../../general/addressing.rst:43
-msgid "Remote actor references represent actors which are reachable using remote communication, i.e. sending messages to them will serialize the messages transparently and send them to the other JVM."
+msgid ""
+"Remote actor references represent actors which are reachable using remote "
+"communication, i.e. sending messages to them will serialize the messages "
+"transparently and send them to the other JVM."
 msgstr ""
 
 # 50d50861ab9a4aae8edba32e80981c54
 #: ../../general/addressing.rst:46
-msgid "There are several special types of actor references which behave like local actor references for all practical purposes:"
+msgid ""
+"There are several special types of actor references which behave like local "
+"actor references for all practical purposes:"
 msgstr ""
 
 # f27a4b5f64f740f182f7fa2bbc46f9ce
 #: ../../general/addressing.rst:49
-msgid ":class:`PromiseActorRef` is the special representation of a :meth:`Promise` for the purpose of being completed by the response from an actor; it is created by the :meth:`ActorRef.ask` invocation."
+msgid ""
+":class:`PromiseActorRef` is the special representation of a :meth:`Promise` "
+"for the purpose of being completed by the response from an actor; it is "
+"created by the :meth:`ActorRef.ask` invocation."
 msgstr ""
 
 # 11bf0b9990c64a8999b1807755555d6c
 #: ../../general/addressing.rst:52
-msgid ":class:`DeadLetterActorRef` is the default implementation of the dead letters service, where all messages are re-routed whose routees are shut down or non-existent."
+msgid ""
+":class:`DeadLetterActorRef` is the default implementation of the dead "
+"letters service, where all messages are re-routed whose routees are shut "
+"down or non-existent."
 msgstr ""
 
 # b7a76bdd0ca04a66b347643da106fe8d
 #: ../../general/addressing.rst:55
-msgid ":class:`EmptyLocalActorRef` is what is returned when looking up a non-existing local actor path: it is equivalent to a :class:`DeadLetterActorRef`, but it retains its path so that it can be sent over the network and compared to other existing actor refs for that path, some of which might have been obtained before the actor stopped existing."
+msgid ""
+":class:`EmptyLocalActorRef` is what is returned when looking up a non-"
+"existing local actor path: it is equivalent to a :class:"
+"`DeadLetterActorRef`, but it retains its path so that it can be sent over "
+"the network and compared to other existing actor refs for that path, some of "
+"which might have been obtained before the actor stopped existing."
 msgstr ""
 
 # c5aabd37f4ad4d5fa5ba9d56c5aa944d
 #: ../../general/addressing.rst:61
-msgid "And then there are some one-off internal implementations which you should never really see:"
+msgid ""
+"And then there are some one-off internal implementations which you should "
+"never really see:"
 msgstr ""
 
 # a507e5cf56e244748e4bf0dff9670221
 #: ../../general/addressing.rst:64
-msgid "There is an actor reference which does not represent an actor but acts only as a pseudo-supervisor for the root guardian, we call it “the one who walks the bubbles of space-time”."
+msgid ""
+"There is an actor reference which does not represent an actor but acts only "
+"as a pseudo-supervisor for the root guardian, we call it “the one who walks "
+"the bubbles of space-time”."
 msgstr ""
 
 # 384df697794c4b80bc3b375fd40b17a9
 #: ../../general/addressing.rst:67
-msgid "The first logging service started before actually firing up actor creation facilities is a fake actor reference which accepts log events and prints them directly to standard output; it is :class:`Logging.StandardOutLogger`."
+msgid ""
+"The first logging service started before actually firing up actor creation "
+"facilities is a fake actor reference which accepts log events and prints "
+"them directly to standard output; it is :class:`Logging.StandardOutLogger`."
 msgstr ""
 
 # 8ec6b484bfa7455cacbb4f1ac015c7b7
 #: ../../general/addressing.rst:71
-msgid "**(Future Extension)** Cluster actor references represent clustered actor services which may be replicated, migrated or load-balanced across multiple cluster nodes. As such they are virtual names which the cluster service translates into local or remote actor references as appropriate."
+msgid ""
+"**(Future Extension)** Cluster actor references represent clustered actor "
+"services which may be replicated, migrated or load-balanced across multiple "
+"cluster nodes. As such they are virtual names which the cluster service "
+"translates into local or remote actor references as appropriate."
 msgstr ""
 
 # f3cd6e20df8f4df19ca1b8a2d2a860c8
@@ -331,12 +573,26 @@ msgstr ""
 
 # 381200ee3d924fa6bec02beeb9444a63
 #: ../../general/addressing.rst:79
-msgid "Since actors are created in a strictly hierarchical fashion, there exists a unique sequence of actor names given by recursively following the supervision links between child and parent down towards the root of the actor system. This sequence can be seen as enclosing folders in a file system, hence we adopted the name “path” to refer to it. As in some real file-systems there also are “symbolic links”, i.e. one actor may be reachable using more than one path, where all but one involve some translation which decouples part of the path from the actor’s actual supervision ancestor line; these specialities are described in the sub-sections to follow."
+msgid ""
+"Since actors are created in a strictly hierarchical fashion, there exists a "
+"unique sequence of actor names given by recursively following the "
+"supervision links between child and parent down towards the root of the "
+"actor system. This sequence can be seen as enclosing folders in a file "
+"system, hence we adopted the name “path” to refer to it. As in some real "
+"file-systems there also are “symbolic links”, i.e. one actor may be "
+"reachable using more than one path, where all but one involve some "
+"translation which decouples part of the path from the actor’s actual "
+"supervision ancestor line; these specialities are described in the sub-"
+"sections to follow."
 msgstr ""
 
 # 309308d000d34113bd0f86580398d02a
 #: ../../general/addressing.rst:89
-msgid "An actor path consists of an anchor, which identifies the actor system, followed by the concatenation of the path elements, from root guardian to the designated actor; the path elements are the names of the traversed actors and are separated by slashes."
+msgid ""
+"An actor path consists of an anchor, which identifies the actor system, "
+"followed by the concatenation of the path elements, from root guardian to "
+"the designated actor; the path elements are the names of the traversed "
+"actors and are separated by slashes."
 msgstr ""
 
 # 1ac7fcb9cba646c0bc982b9579dab093
@@ -346,12 +602,19 @@ msgstr ""
 
 # 9a4577ccf2a24119a8f6201f20e45e61
 #: ../../general/addressing.rst:97
-msgid "Each actor path has an address component, describing the protocol and location by which the corresponding actor is reachable, followed by the names of the actors in the hierarchy from the root up. Examples are::"
+msgid ""
+"Each actor path has an address component, describing the protocol and "
+"location by which the corresponding actor is reachable, followed by the "
+"names of the actors in the hierarchy from the root up. Examples are::"
 msgstr ""
 
 # b7a5cf2aa1ff433ba34aaba46b1251f7
 #: ../../general/addressing.rst:105
-msgid "Here, ``akka`` is the default remote protocol for the 2.0 release, and others are pluggable. The interpretation of the host & port part (i.e. ``serv.example.com:5678`` in the example) depends on the transport mechanism used, but it must abide by the URI structural rules."
+msgid ""
+"Here, ``akka`` is the default remote protocol for the 2.0 release, and "
+"others are pluggable. The interpretation of the host & port part (i.e. "
+"``serv.example.com:5678`` in the example) depends on the transport mechanism "
+"used, but it must abide by the URI structural rules."
 msgstr ""
 
 # 442cd3b4655a4f92ad349a1ad9e3ae67
@@ -361,7 +624,12 @@ msgstr ""
 
 # e77346c52f974d6282ce068882829ef8
 #: ../../general/addressing.rst:113
-msgid "The unique path obtained by following the parental supervision links towards the root guardian is called the logical actor path. This path matches exactly the creation ancestry of an actor, so it is completely deterministic as soon as the actor system’s remoting configuration (and with it the address component of the path) is set."
+msgid ""
+"The unique path obtained by following the parental supervision links towards "
+"the root guardian is called the logical actor path. This path matches "
+"exactly the creation ancestry of an actor, so it is completely deterministic "
+"as soon as the actor system’s remoting configuration (and with it the "
+"address component of the path) is set."
 msgstr ""
 
 # 4fe6659ff9a448a9b0a1b58c90caceb2
@@ -371,12 +639,25 @@ msgstr ""
 
 # 86dcfb94b48b4f65bc33b34cc15aff58
 #: ../../general/addressing.rst:122
-msgid "While the logical actor path describes the functional location within one actor system, configuration-based remote deployment means that an actor may be created on a different network host as its parent, i.e. within a different actor system. In this case, following the actor path from the root guardian up entails traversing the network, which is a costly operation. Therefore, each actor also has a physical path, starting at the root guardian of the actor system where the actual actor object resides. Using this path as sender reference when querying other actors will let them reply directly to this actor, minimizing delays incurred by routing."
+msgid ""
+"While the logical actor path describes the functional location within one "
+"actor system, configuration-based remote deployment means that an actor may "
+"be created on a different network host as its parent, i.e. within a "
+"different actor system. In this case, following the actor path from the root "
+"guardian up entails traversing the network, which is a costly operation. "
+"Therefore, each actor also has a physical path, starting at the root "
+"guardian of the actor system where the actual actor object resides. Using "
+"this path as sender reference when querying other actors will let them reply "
+"directly to this actor, minimizing delays incurred by routing."
 msgstr ""
 
 # 054cbe542098488c87e4e0ea90e15c09
 #: ../../general/addressing.rst:132
-msgid "One important aspect is that a physical actor path never spans multiple actor systems or JVMs. This means that the logical path (supervision hierarchy) and the physical path (actor deployment) of an actor may diverge if one of its ancestors is remotely supervised."
+msgid ""
+"One important aspect is that a physical actor path never spans multiple "
+"actor systems or JVMs. This means that the logical path (supervision "
+"hierarchy) and the physical path (actor deployment) of an actor may diverge "
+"if one of its ancestors is remotely supervised."
 msgstr ""
 
 # c778a31f0bf948b1ba67febd7c513d48
@@ -386,12 +667,19 @@ msgstr ""
 
 # 550eb62a831240f9990c7430ba16f260
 #: ../../general/addressing.rst:140
-msgid "In order to be able to replicate and migrate actors across a cluster of Akka nodes, another level of indirection has to be introduced. The cluster component therefore provides a translation from virtual paths to physical paths which may change in reaction to node failures, cluster rebalancing, etc."
+msgid ""
+"In order to be able to replicate and migrate actors across a cluster of Akka "
+"nodes, another level of indirection has to be introduced. The cluster "
+"component therefore provides a translation from virtual paths to physical "
+"paths which may change in reaction to node failures, cluster rebalancing, "
+"etc."
 msgstr ""
 
 # 1058109699a74198aac81ab97db5b9c4
 #: ../../general/addressing.rst:145
-msgid "*This area is still under active development, expect updates in this section for the 2.1 release.*"
+msgid ""
+"*This area is still under active development, expect updates in this section "
+"for the 2.1 release.*"
 msgstr ""
 
 # 4ebf49c6cdfc413a83d91a0d772c6119
@@ -401,12 +689,21 @@ msgstr ""
 
 # 38facbd4566e4de4be5ed5495fb77094
 #: ../../general/addressing.rst:151
-msgid "There are two general categories to how actor references may be obtained: by creating actors or by looking them up, where the latter functionality comes in the two flavours of creating actor references from concrete actor paths and querying the logical actor hierarchy."
+msgid ""
+"There are two general categories to how actor references may be obtained: by "
+"creating actors or by looking them up, where the latter functionality comes "
+"in the two flavours of creating actor references from concrete actor paths "
+"and querying the logical actor hierarchy."
 msgstr ""
 
 # 2322b01622ab46e4ac033b7d4aac5939
 #: ../../general/addressing.rst:156
-msgid "*While local and remote actor references and their paths work in the same way concerning the facilities mentioned below, the exact semantics of clustered actor references and their paths窶背hile certainly as similar as possible窶芭ay differ in certain aspects, owing to the virtual nature of those paths. Expect updates for the 2.1 release.*"
+msgid ""
+"*While local and remote actor references and their paths work in the same "
+"way concerning the facilities mentioned below, the exact semantics of "
+"clustered actor references and their paths—while certainly as similar as "
+"possible—may differ in certain aspects, owing to the virtual nature of those "
+"paths. Expect updates for the 2.1 release.*"
 msgstr ""
 
 # 4786e95394a944b3918a07cb49187029
@@ -416,7 +713,14 @@ msgstr ""
 
 # ea212b27ede340de8d148a8955239158
 #: ../../general/addressing.rst:165
-msgid "An actor system is typically started by creating actors above the guardian actor using the :meth:`ActorSystem.actorOf` method and then using :meth:`ActorContext.actorOf` from within the created actors to spawn the actor tree. These methods return a reference to the newly created actor. Each actor has direct access to references for its parent, itself and its children. These references may be sent within messages to other actors, enabling those to reply directly."
+msgid ""
+"An actor system is typically started by creating actors above the guardian "
+"actor using the :meth:`ActorSystem.actorOf` method and then using :meth:"
+"`ActorContext.actorOf` from within the created actors to spawn the actor "
+"tree. These methods return a reference to the newly created actor. Each "
+"actor has direct access to references for its parent, itself and its "
+"children. These references may be sent within messages to other actors, "
+"enabling those to reply directly."
 msgstr ""
 
 # 1d976c585e6f4b97b804bc88237419cd
@@ -426,7 +730,18 @@ msgstr ""
 
 # 90b5b8a62c0742e3ae1f4d3a2ebe6daf
 #: ../../general/addressing.rst:176
-msgid "In addition, actor references may be looked up using the :meth:`ActorSystem.actorFor` method, which returns an (unverified) local, remote or clustered actor reference. Sending messages to such a reference or attempting to observe its liveness will traverse the actor hierarchy of the actor system from top to bottom by passing messages from parent to child until either the target is reached or failure is certain, i.e. a name in the path does not exist (in practice this process will be optimized using caches, but it still has added cost compared to using the physical actor path, which can for example to obtained from the sender reference included in replies from that actor). The messages passed are handled automatically by Akka, so this process is not visible to client code."
+msgid ""
+"In addition, actor references may be looked up using the :meth:`ActorSystem."
+"actorFor` method, which returns an (unverified) local, remote or clustered "
+"actor reference. Sending messages to such a reference or attempting to "
+"observe its liveness will traverse the actor hierarchy of the actor system "
+"from top to bottom by passing messages from parent to child until either the "
+"target is reached or failure is certain, i.e. a name in the path does not "
+"exist (in practice this process will be optimized using caches, but it still "
+"has added cost compared to using the physical actor path, which can for "
+"example to obtained from the sender reference included in replies from that "
+"actor). The messages passed are handled automatically by Akka, so this "
+"process is not visible to client code."
 msgstr ""
 
 # 67c283c2f9b94eacaa87ce2c066c26b9
@@ -436,12 +751,21 @@ msgstr ""
 
 # b671d2a0174a46c0b15376b1c04e3a46
 #: ../../general/addressing.rst:191
-msgid "In addition to :meth:`ActorSystem.actorFor` there is also :meth:`ActorContext.actorFor`, which is available inside any actor as ``context.actorFor``. This yields an actor reference much like its twin on :class:`ActorSystem`, but instead of looking up the path starting from the root of the actor tree it starts out on the current actor. Path elements consisting of two dots (``\"..\"``) may be used to access the parent actor. You can for example send a message to a specific sibling::"
+msgid ""
+"In addition to :meth:`ActorSystem.actorFor` there is also :meth:"
+"`ActorContext.actorFor`, which is available inside any actor as ``context."
+"actorFor``. This yields an actor reference much like its twin on :class:"
+"`ActorSystem`, but instead of looking up the path starting from the root of "
+"the actor tree it starts out on the current actor. Path elements consisting "
+"of two dots (``\"..\"``) may be used to access the parent actor. You can for "
+"example send a message to a specific sibling::"
 msgstr ""
 
 # f0f6b8b869d54c5bb2a93acae1d45e97
 #: ../../general/addressing.rst:201
-msgid "Absolute paths may of course also be looked up on `context` in the usual way, i.e."
+msgid ""
+"Absolute paths may of course also be looked up on `context` in the usual "
+"way, i.e."
 msgstr ""
 
 # f9b60af2426e40a2855be9ad818462c6
@@ -456,12 +780,30 @@ msgstr ""
 
 # 219ee227718d49719b59bae9e957fe7c
 #: ../../general/addressing.rst:212
-msgid "Since the actor system forms a file-system like hierarchy, matching on paths is possible in the same was as supported by Unix shells: you may replace (parts of) path element names with wildcards (`≪*≫` and `≪?≫`) to formulate a selection which may match zero or more actual actors. Because the result is not a single actor reference, it has a different type :class:`ActorSelection` and does not support the full set of operations an :class:`ActorRef` does. Selections may be formulated using the :meth:`ActorSystem.actorSelection` and :meth:`ActorContext.actorSelection` methods and do support sending messages::"
+msgid ""
+"Since the actor system forms a file-system like hierarchy, matching on paths "
+"is possible in the same was as supported by Unix shells: you may replace "
+"(parts of) path element names with wildcards (`«*»` and `«?»`) to formulate "
+"a selection which may match zero or more actual actors. Because the result "
+"is not a single actor reference, it has a different type :class:"
+"`ActorSelection` and does not support the full set of operations an :class:"
+"`ActorRef` does. Selections may be formulated using the :meth:`ActorSystem."
+"actorSelection` and :meth:`ActorContext.actorSelection` methods and do "
+"support sending messages::"
 msgstr ""
 
 # fb2964281afa4eba93a311c7f048d18c
 #: ../../general/addressing.rst:223
-msgid "will send `msg` to all siblings including the current actor. As for references obtained using `actorFor`, a traversal of the supervision hierarchy is done in order to perform the message send. As the exact set of actors which match a selection may change even while a message is making its way to the recipients, it is not possible to watch a selection for liveliness changes. In order to do that, resolve the uncertainty by sending a request and gathering all answers, extracting the sender references, and then watch all discovered concrete actors. This scheme of resolving a selection may be improved upon in a future release."
+msgid ""
+"will send `msg` to all siblings including the current actor. As for "
+"references obtained using `actorFor`, a traversal of the supervision "
+"hierarchy is done in order to perform the message send. As the exact set of "
+"actors which match a selection may change even while a message is making its "
+"way to the recipients, it is not possible to watch a selection for "
+"liveliness changes. In order to do that, resolve the uncertainty by sending "
+"a request and gathering all answers, extracting the sender references, and "
+"then watch all discovered concrete actors. This scheme of resolving a "
+"selection may be improved upon in a future release."
 msgstr ""
 
 # 14f7abb283b4496682c518d1909b5556
@@ -471,17 +813,23 @@ msgstr ""
 
 # 71d8b2e1231c4e2cbe44bdab9cea2a67
 #: ../../general/addressing.rst:240
-msgid "What the above sections described in some detail can be summarized and memorized easily as follows:"
+msgid ""
+"What the above sections described in some detail can be summarized and "
+"memorized easily as follows:"
 msgstr ""
 
 # 45fc8c8a2e3645d8af1689cc40bbfcdf
 #: ../../general/addressing.rst:243
-msgid "``actorOf`` only ever creates a new actor, and it creates it as a direct child of the context on which this method is invoked (which may be any actor or actor system)."
+msgid ""
+"``actorOf`` only ever creates a new actor, and it creates it as a direct "
+"child of the context on which this method is invoked (which may be any actor "
+"or actor system)."
 msgstr ""
 
 # 53d8114414384379b0de7c53181a56eb
 #: ../../general/addressing.rst:247
-msgid "``actorFor`` only ever looks up an existing actor, i.e. does not create one."
+msgid ""
+"``actorFor`` only ever looks up an existing actor, i.e. does not create one."
 msgstr ""
 
 # 5ae71d3d398b454fb23a4324696e18f8
@@ -491,7 +839,19 @@ msgstr ""
 
 # ed56b3d8d9334c6bbce55d6b4b77165b
 #: ../../general/addressing.rst:253
-msgid "When an actor creates a child, the actor system’s deployer will decide whether the new actor resides in the same JVM or on another node. In the second case, creation of the actor will be triggered via a network connection to happen in a different JVM and consequently within a different actor system. The remote system will place the new actor below a special path reserved for this purpose and the supervisor of the new actor will be a remote actor reference (representing that actor which triggered its creation). In this case, :meth:`context.parent` (the supervisor reference) and :meth:`context.path.parent` (the parent node in the actor’s path) do not represent the same actor. However, looking up the child’s name within the supervisor will find it on the remote node, preserving logical structure e.g. when sending to an unresolved actor reference."
+msgid ""
+"When an actor creates a child, the actor system’s deployer will decide "
+"whether the new actor resides in the same JVM or on another node. In the "
+"second case, creation of the actor will be triggered via a network "
+"connection to happen in a different JVM and consequently within a different "
+"actor system. The remote system will place the new actor below a special "
+"path reserved for this purpose and the supervisor of the new actor will be a "
+"remote actor reference (representing that actor which triggered its "
+"creation). In this case, :meth:`context.parent` (the supervisor reference) "
+"and :meth:`context.path.parent` (the parent node in the actor’s path) do not "
+"represent the same actor. However, looking up the child’s name within the "
+"supervisor will find it on the remote node, preserving logical structure e."
+"g. when sending to an unresolved actor reference."
 msgstr ""
 
 # 52c0a2efc2084ae3a5685cfcaa4a784f
@@ -506,7 +866,17 @@ msgstr ""
 
 # 9fb8cef7b3084a4b94998377b106a93a
 #: ../../general/addressing.rst:273
-msgid "When creating a scaled-out actor subtree, a cluster name is created for a routed actor reference, where sending to this reference will send to one (or more) of the actual actors created in the cluster. In order for those actors to be able to query other actors while processing their messages, their sender reference must be unique for each of the replicas, which means that physical paths will be used as ``self`` references for these instances. In the case of replication for achieving fault-tolerance the opposite is required: the ``self`` reference will be a virtual (cluster) path so that in case of migration or fail-over communication is resumed with the fresh instance."
+msgid ""
+"When creating a scaled-out actor subtree, a cluster name is created for a "
+"routed actor reference, where sending to this reference will send to one (or "
+"more) of the actual actors created in the cluster. In order for those actors "
+"to be able to query other actors while processing their messages, their "
+"sender reference must be unique for each of the replicas, which means that "
+"physical paths will be used as ``self`` references for these instances. In "
+"the case of replication for achieving fault-tolerance the opposite is "
+"required: the ``self`` reference will be a virtual (cluster) path so that in "
+"case of migration or fail-over communication is resumed with the fresh "
+"instance."
 msgstr ""
 
 # 209345d09dd84fa8aadbacfd75804a11
@@ -516,7 +886,15 @@ msgstr ""
 
 # 1c559d8aeb3047f88aea82f31dd6e48c
 #: ../../general/addressing.rst:286
-msgid "When sending an actor reference across the network, it is represented by its path. Hence, the path must fully encode all information necessary to send messages to the underlying actor. This is achieved by encoding protocol, host and port in the address part of the path string. When an actor system receives an actor path from a remote node, it checks whether that path’s address matches the address of this actor system, in which case it will be resolved to the actor’s local reference. Otherwise, it will be represented by a remote actor reference."
+msgid ""
+"When sending an actor reference across the network, it is represented by its "
+"path. Hence, the path must fully encode all information necessary to send "
+"messages to the underlying actor. This is achieved by encoding protocol, "
+"host and port in the address part of the path string. When an actor system "
+"receives an actor path from a remote node, it checks whether that path’s "
+"address matches the address of this actor system, in which case it will be "
+"resolved to the actor’s local reference. Otherwise, it will be represented "
+"by a remote actor reference."
 msgstr ""
 
 # 19fa03ebf4b6436b950d8455ce4b2984
@@ -526,32 +904,45 @@ msgstr ""
 
 # 6512f9a95e0a48558bde2fc291ba9cc5
 #: ../../general/addressing.rst:298
-msgid "At the root of the path hierarchy resides the root guardian above which all other actors are found. The next level consists of the following:"
+msgid ""
+"At the root of the path hierarchy resides the root guardian above which all "
+"other actors are found. The next level consists of the following:"
 msgstr ""
 
 # c4c8532fdea54fbbb8a013286413fd50
 #: ../../general/addressing.rst:301
-msgid "``\"/user\"`` is the guardian actor for all user-created top-level actors; actors created using :meth:`ActorSystem.actorOf` are found at the next level."
+msgid ""
+"``\"/user\"`` is the guardian actor for all user-created top-level actors; "
+"actors created using :meth:`ActorSystem.actorOf` are found at the next level."
 msgstr ""
 
 # a9b78cac541f46c6a39b67b30b324726
 #: ../../general/addressing.rst:303
-msgid "``\"/system\"`` is the guardian actor for all system-created top-level actors, e.g. logging listeners or actors automatically deployed by configuration at the start of the actor system."
+msgid ""
+"``\"/system\"`` is the guardian actor for all system-created top-level "
+"actors, e.g. logging listeners or actors automatically deployed by "
+"configuration at the start of the actor system."
 msgstr ""
 
 # 0c0ed310ed3244058cef4715f3a3513e
 #: ../../general/addressing.rst:306
-msgid "``\"/deadLetters\"`` is the dead letter actor, which is where all messages sent to stopped or non-existing actors are re-routed."
+msgid ""
+"``\"/deadLetters\"`` is the dead letter actor, which is where all messages "
+"sent to stopped or non-existing actors are re-routed."
 msgstr ""
 
 # 10f79fed60da4b22b2ae9ab5a48683e3
 #: ../../general/addressing.rst:308
-msgid "``\"/temp\"`` is the guardian for all short-lived system-created actors, e.g. those which are used in the implementation of :meth:`ActorRef.ask`."
+msgid ""
+"``\"/temp\"`` is the guardian for all short-lived system-created actors, e."
+"g. those which are used in the implementation of :meth:`ActorRef.ask`."
 msgstr ""
 
 # 10912672e39540629c61fe0d2ff34a4e
 #: ../../general/addressing.rst:310
-msgid "``\"/remote\"`` is an artificial path below which all actors reside whose supervisors are remote actor references"
+msgid ""
+"``\"/remote\"`` is an artificial path below which all actors reside whose "
+"supervisors are remote actor references"
 msgstr ""
 
 # f5ed2fb7fc2a414a8bd0bc898b058d67
@@ -561,7 +952,14 @@ msgstr ""
 
 # 752df44924084d1191c8f8762c707a86
 #: ../../general/configuration.rst:6
-msgid "Akka uses the `Typesafe Config Library <https://github.com/typesafehub/config>`_, which might also be a good choice for the configuration of your own application or library built with or without Akka. This library is implemented in Java with no external dependencies; you should have a look at its documentation (in particular about `ConfigFactory <http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html>`_), which is only summarized in the following."
+msgid ""
+"Akka uses the `Typesafe Config Library <https://github.com/typesafehub/"
+"config>`_, which might also be a good choice for the configuration of your "
+"own application or library built with or without Akka. This library is "
+"implemented in Java with no external dependencies; you should have a look at "
+"its documentation (in particular about `ConfigFactory <http://typesafehub."
+"github.com/config/latest/api/com/typesafe/config/ConfigFactory.html>`_), "
+"which is only summarized in the following."
 msgstr ""
 
 # 82353d609db04a45996183a6d7e607af
@@ -571,22 +969,46 @@ msgstr ""
 
 # 3eff40da5cd94f7f84b8b3c457713f2b
 #: ../../general/configuration.rst:17
-msgid "All configuration for Akka is held within instances of :class:`ActorSystem`, or put differently, as viewed from the outside, :class:`ActorSystem` is the only consumer of configuration information. While constructing an actor system, you can either pass in a :class:`Config` object or not, where the second case is equivalent to passing ``ConfigFactory.load()`` (with the right class loader). This means roughly that the default is to parse all ``application.conf``, ``application.json`` and ``application.properties`` found at the root of the class path窶廃lease refer to the aforementioned documentation for details. The actor system then merges in all ``reference.conf`` resources found at the root of the class path to form the fallback configuration, i.e. it internally uses"
+msgid ""
+"All configuration for Akka is held within instances of :class:`ActorSystem`, "
+"or put differently, as viewed from the outside, :class:`ActorSystem` is the "
+"only consumer of configuration information. While constructing an actor "
+"system, you can either pass in a :class:`Config` object or not, where the "
+"second case is equivalent to passing ``ConfigFactory.load()`` (with the "
+"right class loader). This means roughly that the default is to parse all "
+"``application.conf``, ``application.json`` and ``application.properties`` "
+"found at the root of the class path—please refer to the aforementioned "
+"documentation for details. The actor system then merges in all ``reference."
+"conf`` resources found at the root of the class path to form the fallback "
+"configuration, i.e. it internally uses"
 msgstr ""
 
 # 469d1dbdc447426db004e5cfc71ad7e7
 #: ../../general/configuration.rst:32
-msgid "The philosophy is that code never contains default values, but instead relies upon their presence in the ``reference.conf`` supplied with the library in question."
+msgid ""
+"The philosophy is that code never contains default values, but instead "
+"relies upon their presence in the ``reference.conf`` supplied with the "
+"library in question."
 msgstr ""
 
 # c5db689b391c4c6d898ddb10adf81054
 #: ../../general/configuration.rst:36
-msgid "Highest precedence is given to overrides given as system properties, see `the HOCON specification <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ (near the bottom). Also noteworthy is that the application configuration窶背hich defaults to ``application``窶芭ay be overridden using the ``config.resource`` property (there are more, please refer to the `Config docs <https://github.com/typesafehub/config/blob/master/README.md>`_)."
+msgid ""
+"Highest precedence is given to overrides given as system properties, see "
+"`the HOCON specification <https://github.com/typesafehub/config/blob/master/"
+"HOCON.md>`_ (near the bottom). Also noteworthy is that the application "
+"configuration—which defaults to ``application``—may be overridden using the "
+"``config.resource`` property (there are more, please refer to the `Config "
+"docs <https://github.com/typesafehub/config/blob/master/README.md>`_)."
 msgstr ""
 
 # 38d633c4749948a99c152492a7aba0b8
 #: ../../general/configuration.rst:46
-msgid "If you are writing an Akka application, keep you configuration in ``application.conf`` at the root of the class path. If you are writing an Akka-based library, keep its configuration in ``reference.conf`` at the root of the JAR file."
+msgid ""
+"If you are writing an Akka application, keep you configuration in "
+"``application.conf`` at the root of the class path. If you are writing an "
+"Akka-based library, keep its configuration in ``reference.conf`` at the root "
+"of the JAR file."
 msgstr ""
 
 # 7385616a9d1e4b7fb63b3d03a4893161
@@ -596,27 +1018,42 @@ msgstr ""
 
 # 68a319c658b5433b94ab9ea847e70c88
 #: ../../general/configuration.rst:54
-msgid "Given that ``ConfigFactory.load()`` merges all resources with matching name from the whole class path, it is easiest to utilize that functionality and differenciate actor systems within the hierarchy of the configuration::"
+msgid ""
+"Given that ``ConfigFactory.load()`` merges all resources with matching name "
+"from the whole class path, it is easiest to utilize that functionality and "
+"differenciate actor systems within the hierarchy of the configuration::"
 msgstr ""
 
 # 312693c43672487db50b185db21e70b0
 #: ../../general/configuration.rst:75
-msgid "These two samples demonstrate different variations of the “lift-a-subtree” trick: in the first case, the configuration accessible from within the actor system is this"
+msgid ""
+"These two samples demonstrate different variations of the “lift-a-subtree” "
+"trick: in the first case, the configuration accessible from within the actor "
+"system is this"
 msgstr ""
 
 # fcbe1d9efa4b42bc9c22c4bd5fbedff4
 #: ../../general/configuration.rst:86
-msgid "while in the second one, only the “akka” subtree is lifted, with the following result::"
+msgid ""
+"while in the second one, only the “akka” subtree is lifted, with the "
+"following result::"
 msgstr ""
 
 # b7921e06539a4e88ae0915d93393b65d
 #: ../../general/configuration.rst:96
-msgid "The configuration library is really powerful, explaining all features exceeds the scope affordable here. In particular not covered are how to include other configuration files within other files (see a small example at `Including files`_) and copying parts of the configuration tree by way of path substitutions."
+msgid ""
+"The configuration library is really powerful, explaining all features "
+"exceeds the scope affordable here. In particular not covered are how to "
+"include other configuration files within other files (see a small example at "
+"`Including files`_) and copying parts of the configuration tree by way of "
+"path substitutions."
 msgstr ""
 
 # c0654fab2f1548c6b0bf10d00af6a567
 #: ../../general/configuration.rst:102
-msgid "You may also specify and parse the configuration programmatically in other ways when instantiating the ``ActorSystem``."
+msgid ""
+"You may also specify and parse the configuration programmatically in other "
+"ways when instantiating the ``ActorSystem``."
 msgstr ""
 
 # af558e95f0504d00b6c16f0386c1a610
@@ -626,7 +1063,8 @@ msgstr ""
 
 # 00b96c30a8354de890c1927e95717067
 #: ../../general/configuration.rst:111
-msgid "Each Akka module has a reference configuration file with the default values."
+msgid ""
+"Each Akka module has a reference configuration file with the default values."
 msgstr ""
 
 # 4bcc89b05b094a40a12fa986408ef480
@@ -701,12 +1139,18 @@ msgstr ""
 
 # e15963a7361a4c9baa18b8360bf09069
 #: ../../general/configuration.rst:220
-msgid "Sometimes it can be useful to include another configuration file, for example if you have one ``application.conf`` with all environment independent settings and then override some settings for specific environments."
+msgid ""
+"Sometimes it can be useful to include another configuration file, for "
+"example if you have one ``application.conf`` with all environment "
+"independent settings and then override some settings for specific "
+"environments."
 msgstr ""
 
 # fc797bf36572443796d27cd027a8df42
 #: ../../general/configuration.rst:223
-msgid "Specifying system property with ``-Dconfig.resource=/dev.conf`` will load the ``dev.conf`` file, which includes the ``application.conf``"
+msgid ""
+"Specifying system property with ``-Dconfig.resource=/dev.conf`` will load "
+"the ``dev.conf`` file, which includes the ``application.conf``"
 msgstr ""
 
 # 70568f322d7d4662b8369c435ea8e474
@@ -716,7 +1160,10 @@ msgstr ""
 
 # 73cacea08bc94720bc8f5aa39f061cac
 #: ../../general/configuration.rst:235
-msgid "More advanced include and substitution mechanisms are explained in the `HOCON <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ specification."
+msgid ""
+"More advanced include and substitution mechanisms are explained in the "
+"`HOCON <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ "
+"specification."
 msgstr ""
 
 # c0f5e88726aa4827843721e970233ac9
@@ -726,17 +1173,27 @@ msgstr ""
 
 # 228039c6a21a4294a0a41917d26054c0
 #: ../../general/configuration.rst:244
-msgid "If the system or config property ``akka.log-config-on-start`` is set to ``on``, then the complete configuration at INFO level when the actor system is started. This is useful when you are uncertain of what configuration is used."
+msgid ""
+"If the system or config property ``akka.log-config-on-start`` is set to "
+"``on``, then the complete configuration at INFO level when the actor system "
+"is started. This is useful when you are uncertain of what configuration is "
+"used."
 msgstr ""
 
 # 542d68e18ac94f27ab98c94d05dd881e
 #: ../../general/configuration.rst:248
-msgid "If in doubt, you can also easily and nicely inspect configuration objects before or after using them to construct an actor system:"
+msgid ""
+"If in doubt, you can also easily and nicely inspect configuration objects "
+"before or after using them to construct an actor system:"
 msgstr ""
 
 # 4103c211161344659ad670f119fb31be
 #: ../../general/configuration.rst:273
-msgid "The comments preceding every item give detailed information about the origin of the setting (file & line number) plus possible comments which were present, e.g. in the reference configuration. The settings as merged with the reference and parsed by the actor system can be displayed like this:"
+msgid ""
+"The comments preceding every item give detailed information about the origin "
+"of the setting (file & line number) plus possible comments which were "
+"present, e.g. in the reference configuration. The settings as merged with "
+"the reference and parsed by the actor system can be displayed like this:"
 msgstr ""
 
 # 6aefdd64044e4745bad8980f829bea13
@@ -746,7 +1203,18 @@ msgstr ""
 
 # fab6fb763e9f4e2abeb3de7d38747abb
 #: ../../general/configuration.rst:287
-msgid "In several places of the configuration file it is possible to specify the fully-qualified class name of something to be instantiated by Akka. This is done using Java reflection, which in turn uses a :class:`ClassLoader`. Getting the right one in challenging environments like application containers or OSGi bundles is not always trivial, the current approach of Akka is that each :class:`ActorSystem` implementation stores the current thread’s context class loader (if available, otherwise just its own loader as in ``this.getClass.getClassLoader``) and uses that for all reflective accesses. This implies that putting Akka on the boot class path will yield :class:`NullPointerException` from strange places: this is simply not supported."
+msgid ""
+"In several places of the configuration file it is possible to specify the "
+"fully-qualified class name of something to be instantiated by Akka. This is "
+"done using Java reflection, which in turn uses a :class:`ClassLoader`. "
+"Getting the right one in challenging environments like application "
+"containers or OSGi bundles is not always trivial, the current approach of "
+"Akka is that each :class:`ActorSystem` implementation stores the current "
+"thread’s context class loader (if available, otherwise just its own loader "
+"as in ``this.getClass.getClassLoader``) and uses that for all reflective "
+"accesses. This implies that putting Akka on the boot class path will yield :"
+"class:`NullPointerException` from strange places: this is simply not "
+"supported."
 msgstr ""
 
 # d8c11dbbe40d4adea6607eda02aae434
@@ -756,7 +1224,9 @@ msgstr ""
 
 # 4e3f62c3b5714ecfb749bbfeadfaeb5a
 #: ../../general/configuration.rst:302
-msgid "The configuration can also be used for application specific settings. A good practice is to place those settings in an Extension, as described in:"
+msgid ""
+"The configuration can also be used for application specific settings. A good "
+"practice is to place those settings in an Extension, as described in:"
 msgstr ""
 
 # 133ae7ebd0564f8eb333950c8000e6b1
@@ -781,7 +1251,11 @@ msgstr ""
 
 # 2e1f9b48348d4d35993c62e061f54be6
 #: ../../general/jmm.rst:6
-msgid "A major benefit of using the Typesafe Stack, including Scala and Akka, is that it simplifies the process of writing concurrent software.  This article discusses how the Typesafe Stack, and Akka in particular, approaches shared memory in concurrent applications."
+msgid ""
+"A major benefit of using the Typesafe Stack, including Scala and Akka, is "
+"that it simplifies the process of writing concurrent software.  This article "
+"discusses how the Typesafe Stack, and Akka in particular, approaches shared "
+"memory in concurrent applications."
 msgstr ""
 
 # 51596f20893e4e9794f452441d319c76
@@ -791,17 +1265,23 @@ msgstr ""
 
 # 853961e80da5424695f382bea82f41c1
 #: ../../general/jmm.rst:12
-msgid "Prior to Java 5, the Java Memory Model (JMM) was ill defined. It was possible to get all kinds of strange results when shared memory was accessed by multiple threads, such as:"
+msgid ""
+"Prior to Java 5, the Java Memory Model (JMM) was ill defined. It was "
+"possible to get all kinds of strange results when shared memory was accessed "
+"by multiple threads, such as:"
 msgstr ""
 
 # 1ef4497f49a74a8c8162f9205b427f66
 #: ../../general/jmm.rst:15
-msgid "a thread not seeing values written by other threads: a visibility problem"
+msgid ""
+"a thread not seeing values written by other threads: a visibility problem"
 msgstr ""
 
 # 2de206d3b45e4a34b73b916638321421
 #: ../../general/jmm.rst:16
-msgid "a thread observing 'impossible' behavior of other threads, caused by instructions not being executed in the order"
+msgid ""
+"a thread observing 'impossible' behavior of other threads, caused by "
+"instructions not being executed in the order"
 msgstr ""
 
 # 8cdb6315209d472f97eaedf2c0c1c15a
@@ -811,22 +1291,34 @@ msgstr ""
 
 # 57ce35f48b524812a84a2089725729af
 #: ../../general/jmm.rst:20
-msgid "With the implementation of JSR 133 in Java 5, a lot of these issues have been resolved. The JMM is a set of rules based on the \"happens-before\" relation, which constrain when one memory access must happen before another, and conversely, when they are allowed to happen out of order. Two examples of these rules are:"
+msgid ""
+"With the implementation of JSR 133 in Java 5, a lot of these issues have "
+"been resolved. The JMM is a set of rules based on the \"happens-before\" "
+"relation, which constrain when one memory access must happen before another, "
+"and conversely, when they are allowed to happen out of order. Two examples "
+"of these rules are:"
 msgstr ""
 
 # 6a881fc9451a464c9b5480ad1a237884
 #: ../../general/jmm.rst:24
-msgid "**The monitor lock rule:** a release of a lock happens before every subsequent acquire of the same lock."
+msgid ""
+"**The monitor lock rule:** a release of a lock happens before every "
+"subsequent acquire of the same lock."
 msgstr ""
 
 # 864e001e1fbc4574b912347d2e91e8c5
 #: ../../general/jmm.rst:25
-msgid "**The volatile variable rule:** a write of a volatile variable happens before every subsequent read of the same volatile variable"
+msgid ""
+"**The volatile variable rule:** a write of a volatile variable happens "
+"before every subsequent read of the same volatile variable"
 msgstr ""
 
 # c767434d1f9d477fbfd04661dfcd4b5a
 #: ../../general/jmm.rst:27
-msgid "Although the JMM can seem complicated, the specification tries to find a balance between ease of use and the ability to write performant and scalable concurrent data structures."
+msgid ""
+"Although the JMM can seem complicated, the specification tries to find a "
+"balance between ease of use and the ability to write performant and scalable "
+"concurrent data structures."
 msgstr ""
 
 # 1a05c9d238c945c6a8e23d357a5c60a9
@@ -836,37 +1328,57 @@ msgstr ""
 
 # f10603318490406f99607769e4e323d6
 #: ../../general/jmm.rst:32
-msgid "With the Actors implementation in Akka, there are two ways multiple threads can execute actions on shared memory:"
+msgid ""
+"With the Actors implementation in Akka, there are two ways multiple threads "
+"can execute actions on shared memory:"
 msgstr ""
 
 # d5eabe2e046c47759be2922c4fb21ca4
 #: ../../general/jmm.rst:34
-msgid "if a message is sent to an actor (e.g. by another actor). In most cases messages are immutable, but if that message is not a properly constructed immutable object, without a \"happens before\" rule, it would be possible for the receiver to see partially initialized data structures and possibly even values out of thin air (longs/doubles)."
+msgid ""
+"if a message is sent to an actor (e.g. by another actor). In most cases "
+"messages are immutable, but if that message is not a properly constructed "
+"immutable object, without a \"happens before\" rule, it would be possible "
+"for the receiver to see partially initialized data structures and possibly "
+"even values out of thin air (longs/doubles)."
 msgstr ""
 
 # 047af3aa049546f7a5e3ca32c64ffba5
 #: ../../general/jmm.rst:37
-msgid "if an actor makes changes to its internal state while processing a message, and accesses that state while processing another message moments later. It is important to realize that with the actor model you don't get any guarantee that the same thread will be executing the same actor for different messages."
+msgid ""
+"if an actor makes changes to its internal state while processing a message, "
+"and accesses that state while processing another message moments later. It "
+"is important to realize that with the actor model you don't get any "
+"guarantee that the same thread will be executing the same actor for "
+"different messages."
 msgstr ""
 
 # 69aae6bec2544bf69640af907bab7a58
 #: ../../general/jmm.rst:41
-msgid "To prevent visibility and reordering problems on actors, Akka guarantees the following two \"happens before\" rules:"
+msgid ""
+"To prevent visibility and reordering problems on actors, Akka guarantees the "
+"following two \"happens before\" rules:"
 msgstr ""
 
 # a46164737ef644388077c5b6a34f481b
 #: ../../general/jmm.rst:43
-msgid "**The actor send rule:** the send of the message to an actor happens before the receive of that message by the same actor."
+msgid ""
+"**The actor send rule:** the send of the message to an actor happens before "
+"the receive of that message by the same actor."
 msgstr ""
 
 # 52918d8b6f5f4956a9fee5a16562708d
 #: ../../general/jmm.rst:44
-msgid "**The actor subsequent processing rule:** processing of one message happens before processing of the next message by the same actor."
+msgid ""
+"**The actor subsequent processing rule:** processing of one message happens "
+"before processing of the next message by the same actor."
 msgstr ""
 
 # ba76f99d19ac4b438187967c2f3636ab
 #: ../../general/jmm.rst:46
-msgid "Both rules only apply for the same actor instance and are not valid if different actors are used."
+msgid ""
+"Both rules only apply for the same actor instance and are not valid if "
+"different actors are used."
 msgstr ""
 
 # 50f9c7f491e44d57bb9ce43f0e738790
@@ -876,17 +1388,27 @@ msgstr ""
 
 # c1adfb9dcc274ee7b926901c6130ceea
 #: ../../general/jmm.rst:51
-msgid "The completion of a Future \"happens before\" the invocation of any callbacks registered to it are executed."
+msgid ""
+"The completion of a Future \"happens before\" the invocation of any "
+"callbacks registered to it are executed."
 msgstr ""
 
 # 67f396665b94485db4d0451f3f15a753
 #: ../../general/jmm.rst:53
-msgid "We recommend not to close over non-final fields (final in Java and val in Scala), and if you *do* choose to close over non-final fields, they must be marked *volatile* in order for the current value of the field to be visible to the callback."
+msgid ""
+"We recommend not to close over non-final fields (final in Java and val in "
+"Scala), and if you *do* choose to close over non-final fields, they must be "
+"marked *volatile* in order for the current value of the field to be visible "
+"to the callback."
 msgstr ""
 
 # 8d2544cf50eb4d9fae61e58983b17345
 #: ../../general/jmm.rst:56
-msgid "If you close over a reference, you must also ensure that the instance that is referred to is thread safe. We highly recommend staying away from objects that use locking, since it can introduce performance problems and in the worst case, deadlocks. Such are the perils of synchronized."
+msgid ""
+"If you close over a reference, you must also ensure that the instance that "
+"is referred to is thread safe. We highly recommend staying away from objects "
+"that use locking, since it can introduce performance problems and in the "
+"worst case, deadlocks. Such are the perils of synchronized."
 msgstr ""
 
 # 2bdd4305aadb4f179a1bc3de04bd6c1d
@@ -896,22 +1418,41 @@ msgstr ""
 
 # 29a7d96f2de646c5afdc777d23ae38a4
 #: ../../general/jmm.rst:62
-msgid "Akka's Software Transactional Memory (STM) also provides a \"happens before\" rule:"
+msgid ""
+"Akka's Software Transactional Memory (STM) also provides a \"happens before"
+"\" rule:"
 msgstr ""
 
 # e14ba9d62c1c47efa7bea3d49bdbbdb8
 #: ../../general/jmm.rst:64
-msgid "**The transactional reference rule:** a successful write during commit, on an transactional reference, happens before every subsequent read of the same transactional reference."
+msgid ""
+"**The transactional reference rule:** a successful write during commit, on "
+"an transactional reference, happens before every subsequent read of the same "
+"transactional reference."
 msgstr ""
 
 # 5de4469286264044ae3822645be892e7
 #: ../../general/jmm.rst:67
-msgid "This rule looks a lot like the 'volatile variable' rule from the JMM. Currently the Akka STM only supports deferred writes, so the actual writing to shared memory is deferred until the transaction commits. Writes during the transaction are placed in a local buffer (the writeset of the transaction) and are not visible to other transactions. That is why dirty reads are not possible."
+msgid ""
+"This rule looks a lot like the 'volatile variable' rule from the JMM. "
+"Currently the Akka STM only supports deferred writes, so the actual writing "
+"to shared memory is deferred until the transaction commits. Writes during "
+"the transaction are placed in a local buffer (the writeset of the "
+"transaction) and are not visible to other transactions. That is why dirty "
+"reads are not possible."
 msgstr ""
 
 # c998052ecce64b32936f647f72643702
 #: ../../general/jmm.rst:72
-msgid "How these rules are realized in Akka is an implementation detail and can change over time, and the exact details could even depend on the used configuration. But they will build on the other JMM rules like the monitor lock rule or the volatile variable rule. This means that you, the Akka user, do not need to worry about adding synchronization to provide such a \"happens before\" relation, because it is the responsibility of Akka. So you have your hands free to deal with your business logic, and the Akka framework makes sure that those rules are guaranteed on your behalf."
+msgid ""
+"How these rules are realized in Akka is an implementation detail and can "
+"change over time, and the exact details could even depend on the used "
+"configuration. But they will build on the other JMM rules like the monitor "
+"lock rule or the volatile variable rule. This means that you, the Akka user, "
+"do not need to worry about adding synchronization to provide such a "
+"\"happens before\" relation, because it is the responsibility of Akka. So "
+"you have your hands free to deal with your business logic, and the Akka "
+"framework makes sure that those rules are guaranteed on your behalf."
 msgstr ""
 
 # 9fce3f37800f4e77909c8844c1e0ba20
@@ -931,7 +1472,9 @@ msgstr ""
 
 # 1671a1ec596844799e5f0746ac9bc8a4
 #: ../../general/jmm.rst:117
-msgid "Messages **should** be immutable, this is to avoid the shared mutable state trap."
+msgid ""
+"Messages **should** be immutable, this is to avoid the shared mutable state "
+"trap."
 msgstr ""
 
 # 1d4355b90c2b405e8d2ecb371155e51f
@@ -951,7 +1494,11 @@ msgstr ""
 
 # 09f6b6fd9a5c421f980e494a612a071c
 #: ../../general/message-send-semantics.rst:15
-msgid "First it is close to impossible to actually give guarantees like that, second it is extremely costly trying to do so. The network is inherently unreliable and there is no such thing as 100% guarantee delivery, so it can never be guaranteed."
+msgid ""
+"First it is close to impossible to actually give guarantees like that, "
+"second it is extremely costly trying to do so. The network is inherently "
+"unreliable and there is no such thing as 100% guarantee delivery, so it can "
+"never be guaranteed."
 msgstr ""
 
 # 25ac3d46fa3d421abaeb029c0b1c23de
@@ -996,12 +1543,22 @@ msgstr ""
 
 # 6467f154dcde42458899a706c713edd8
 #: ../../general/message-send-semantics.rst:31
-msgid "Akka embraces distributed computing and the network and makes it explicit through message passing, therefore it does not try to lie and emulate a leaky abstraction. This is a model that have been used with great success in Erlang and requires the user to model his application around. You can read more about this approach in the `Erlang documentation`_ (section 10.9 and 10.10), Akka follows it closely."
+msgid ""
+"Akka embraces distributed computing and the network and makes it explicit "
+"through message passing, therefore it does not try to lie and emulate a "
+"leaky abstraction. This is a model that have been used with great success in "
+"Erlang and requires the user to model his application around. You can read "
+"more about this approach in the `Erlang documentation`_ (section 10.9 and "
+"10.10), Akka follows it closely."
 msgstr ""
 
 # 90a987873c654a3e967b6d714c2122f0
 #: ../../general/message-send-semantics.rst:38
-msgid "Bottom line: you as a developer know what guarantees you need in your application and can solve it fastest and most reliable by explicit ``ACK`` and ``RETRY`` (if you really need it, most often you don't). Using Akka's Durable Mailboxes could help with this."
+msgid ""
+"Bottom line: you as a developer know what guarantees you need in your "
+"application and can solve it fastest and most reliable by explicit ``ACK`` "
+"and ``RETRY`` (if you really need it, most often you don't). Using Akka's "
+"Durable Mailboxes could help with this."
 msgstr ""
 
 # 3a5f86bec8c34410941724f50dca80c6
@@ -1016,7 +1573,11 @@ msgstr ""
 
 # 717edc4e944743eeaf0a719409a8e836
 #: ../../general/message-send-semantics.rst:49
-msgid "Actual transports may provide stronger semantics, but at-most-once is the semantics you should expect. The alternatives would be once-and-only-once, which is extremely costly, or at-least-once which essentially requires idempotency of message processing, which is a user-level concern."
+msgid ""
+"Actual transports may provide stronger semantics, but at-most-once is the "
+"semantics you should expect. The alternatives would be once-and-only-once, "
+"which is extremely costly, or at-least-once which essentially requires "
+"idempotency of message processing, which is a user-level concern."
 msgstr ""
 
 # d5e35db7d9cf4ddd89c5b2bfb43ca657
@@ -1026,7 +1587,9 @@ msgstr ""
 
 # c2bbeafdb3584efd90a9b2e37bc071b3
 #: ../../general/message-send-semantics.rst:58
-msgid "Actor ``A1` sends messages ``M1``, ``M2``, ``M3`` to ``A2`` Actor ``A3`` sends messages ``M4``, ``M5``, ``M6`` to ``A2``"
+msgid ""
+"Actor ``A1` sends messages ``M1``, ``M2``, ``M3`` to ``A2`` Actor ``A3`` "
+"sends messages ``M4``, ``M5``, ``M6`` to ``A2``"
 msgstr ""
 
 # 91fafd3d82fa4846bf40c5f435038769
@@ -1051,12 +1614,15 @@ msgstr ""
 
 # 88d06158ea194ffe894feb4f2a0eff3e
 #: ../../general/message-send-semantics.rst:66
-msgid "``A2`` can see messages from ``A1`` interleaved with messages from ``A3``"
+msgid ""
+"``A2`` can see messages from ``A1`` interleaved with messages from ``A3``"
 msgstr ""
 
 # 0e2a552be1294a1d87dd88187939e801
 #: ../../general/message-send-semantics.rst:67
-msgid "Since there is no guaranteed delivery, none, some or all of the messages may arrive to ``A2``"
+msgid ""
+"Since there is no guaranteed delivery, none, some or all of the messages may "
+"arrive to ``A2``"
 msgstr ""
 
 # 3f5cf2e1845b404487c39b67ac742a36
@@ -1066,7 +1632,11 @@ msgstr ""
 
 # ec960b497dc249dfa0cc6bf4ef7374b9
 #: ../../general/remoting.rst:6
-msgid "The previous section describes how actor paths are used to enable location transparency. This special feature deserves some extra explanation, because the related term “transparent remoting” was used quite differently in the context of programming languages, platforms and technologies."
+msgid ""
+"The previous section describes how actor paths are used to enable location "
+"transparency. This special feature deserves some extra explanation, because "
+"the related term “transparent remoting” was used quite differently in the "
+"context of programming languages, platforms and technologies."
 msgstr ""
 
 # 47097a72fdd7445b9903e1846d4f8331
@@ -1076,7 +1646,16 @@ msgstr ""
 
 # bff95287879747e28bbd52b336ac8545
 #: ../../general/remoting.rst:14
-msgid "Everything in Akka is designed to work in a distributed setting: all interactions of actors use purely message passing and everything is asynchronous. This effort has been undertaken to ensure that all functions are available equally when running within a single JVM or on a cluster of hundreds of machines. The key for enabling this is to go from remote to local by way of optimization instead of trying to go from local to remote by way of generalization. See `this classic paper <http://labs.oracle.com/techrep/1994/abstract-29.html>`_ for a detailed discussion on why the second approach is bound to fail."
+msgid ""
+"Everything in Akka is designed to work in a distributed setting: all "
+"interactions of actors use purely message passing and everything is "
+"asynchronous. This effort has been undertaken to ensure that all functions "
+"are available equally when running within a single JVM or on a cluster of "
+"hundreds of machines. The key for enabling this is to go from remote to "
+"local by way of optimization instead of trying to go from local to remote by "
+"way of generalization. See `this classic paper <http://labs.oracle.com/"
+"techrep/1994/abstract-29.html>`_ for a detailed discussion on why the second "
+"approach is bound to fail."
 msgstr ""
 
 # 69ef3d172d034ee7a961043db152c0df
@@ -1086,12 +1665,24 @@ msgstr ""
 
 # 94867cab86e5446dab7df9d6a40673f5
 #: ../../general/remoting.rst:27
-msgid "What is true of Akka need not be true of the application which uses it, since designing for distributed execution poses some restrictions on what is possible. The most obvious one is that all messages sent over the wire must be serializable. While being a little less obvious this includes closures which are used as actor factories (i.e. within :class:`Props`) if the actor is to be created on a remote node."
+msgid ""
+"What is true of Akka need not be true of the application which uses it, "
+"since designing for distributed execution poses some restrictions on what is "
+"possible. The most obvious one is that all messages sent over the wire must "
+"be serializable. While being a little less obvious this includes closures "
+"which are used as actor factories (i.e. within :class:`Props`) if the actor "
+"is to be created on a remote node."
 msgstr ""
 
 # 287b74f7029645eb86941e093bf8a55a
 #: ../../general/remoting.rst:34
-msgid "Another consequence is that everything needs to be aware of all interactions being fully asynchronous, which in a computer network might mean that it may take several minutes for a message to reach its recipient (depending on configuration). It also means that the probability for a message to be lost is much higher than within one JVM, where it is close to zero (still: no hard guarantee!)."
+msgid ""
+"Another consequence is that everything needs to be aware of all interactions "
+"being fully asynchronous, which in a computer network might mean that it may "
+"take several minutes for a message to reach its recipient (depending on "
+"configuration). It also means that the probability for a message to be lost "
+"is much higher than within one JVM, where it is close to zero (still: no "
+"hard guarantee!)."
 msgstr ""
 
 # da9f4ada36354f8da171fd3fc33112bd
@@ -1101,7 +1692,17 @@ msgstr ""
 
 # 13992e9516234bb5825eeec466e6a963
 #: ../../general/remoting.rst:44
-msgid "We took the idea of transparency to the limit in that there is nearly no API for the remoting layer of Akka: it is purely driven by configuration. Just write your application according to the principles outlined in the previous sections, then specify remote deployment of actor sub-trees in the configuration file. This way, your application can be scaled out without having to touch the code. The only piece of the API which allows programmatic influence on remote deployment is that :class:`Props` contain a field which may be set to a specific :class:`Deploy` instance; this has the same effect as putting an equivalent deployment into the configuration file (if both are given, configuration file wins)."
+msgid ""
+"We took the idea of transparency to the limit in that there is nearly no API "
+"for the remoting layer of Akka: it is purely driven by configuration. Just "
+"write your application according to the principles outlined in the previous "
+"sections, then specify remote deployment of actor sub-trees in the "
+"configuration file. This way, your application can be scaled out without "
+"having to touch the code. The only piece of the API which allows "
+"programmatic influence on remote deployment is that :class:`Props` contain a "
+"field which may be set to a specific :class:`Deploy` instance; this has the "
+"same effect as putting an equivalent deployment into the configuration file "
+"(if both are given, configuration file wins)."
 msgstr ""
 
 # f14bea8a591b49718dfe8a24f2f36738
@@ -1111,7 +1712,20 @@ msgstr ""
 
 # a32bc42d5d60403fa3234d2109dc1c91
 #: ../../general/remoting.rst:58
-msgid "In addition to being able to run different parts of an actor system on different nodes of a cluster, it is also possible to scale up onto more cores by multiplying actor sub-trees which support parallelization (think for example a search engine processing different queries in parallel). The clones can then be routed to in different fashions, e.g. round-robin. The only thing necessary to achieve this is that the developer needs to declare a certain actor as “withRouter”, the in its stead a router actor will be created which will spawn up a configurable number of children of the desired type and route to them in the configured fashion. Once such a router has been declared, its configuration can be freely overridden from the configuration file, including mixing it with the remote deployment of (some of) the children. Read more about this in :ref:`routing-scala` and :ref:`routing-java`."
+msgid ""
+"In addition to being able to run different parts of an actor system on "
+"different nodes of a cluster, it is also possible to scale up onto more "
+"cores by multiplying actor sub-trees which support parallelization (think "
+"for example a search engine processing different queries in parallel). The "
+"clones can then be routed to in different fashions, e.g. round-robin. The "
+"only thing necessary to achieve this is that the developer needs to declare "
+"a certain actor as “withRouter”, the in its stead a router actor will be "
+"created which will spawn up a configurable number of children of the desired "
+"type and route to them in the configured fashion. Once such a router has "
+"been declared, its configuration can be freely overridden from the "
+"configuration file, including mixing it with the remote deployment of (some "
+"of) the children. Read more about this in :ref:`routing-scala` and :ref:"
+"`routing-java`."
 msgstr ""
 
 # 379c1e3d1bcc41c9835e30ff2c4bc72f
@@ -1121,7 +1735,10 @@ msgstr ""
 
 # cf69d7160e82482d8108c31af2b945cc
 #: ../../general/supervision.rst:6
-msgid "This chapter outlines the concept behind supervision, the primitives offered and their semantics. For details on how that translates into real code, please refer to the corresponding chapters for Scala and Java APIs."
+msgid ""
+"This chapter outlines the concept behind supervision, the primitives offered "
+"and their semantics. For details on how that translates into real code, "
+"please refer to the corresponding chapters for Scala and Java APIs."
 msgstr ""
 
 # 282ffddd2986459aa3469f9fc5cb4ab3
@@ -1131,7 +1748,14 @@ msgstr ""
 
 # 64e8e82e1c8d4d7c866385e0578e8add
 #: ../../general/supervision.rst:15
-msgid "As described in :ref:`actor-systems` supervision describes a dependency relationship between actors: the supervisor delegates tasks to subordinates and therefore must respond to their failures.  When a subordinate detects a failure (i.e. throws an exception), it suspends itself and all its subordinates and sends a message to its supervisor, signaling failure.  Depending on the nature of the work to be supervised and the nature of the failure, the supervisor has a choice of the following four options:"
+msgid ""
+"As described in :ref:`actor-systems` supervision describes a dependency "
+"relationship between actors: the supervisor delegates tasks to subordinates "
+"and therefore must respond to their failures.  When a subordinate detects a "
+"failure (i.e. throws an exception), it suspends itself and all its "
+"subordinates and sends a message to its supervisor, signaling failure.  "
+"Depending on the nature of the work to be supervised and the nature of the "
+"failure, the supervisor has a choice of the following four options:"
 msgstr ""
 
 # 096e8315f072481c9667f73d7d2d4a27
@@ -1156,17 +1780,44 @@ msgstr ""
 
 # 3c0f2032770e4d1d9cb8d67ec6c8af57
 #: ../../general/supervision.rst:28
-msgid "It is important to always view an actor as part of a supervision hierarchy, which explains the existence of the fourth choice (as a supervisor also is subordinate to another supervisor higher up) and has implications on the first three: resuming an actor resumes all its subordinates, restarting an actor entails restarting all its subordinates (but see below for more details), similarly terminating an actor will also terminating all its subordinates. It should be noted that the default behavior of the :meth:`preRestart` hook of the :class:`Actor` class is to terminate all its children before restarting, but this hook can be overridden; the recursive restart applies to all children left after this hook has been executed."
+msgid ""
+"It is important to always view an actor as part of a supervision hierarchy, "
+"which explains the existence of the fourth choice (as a supervisor also is "
+"subordinate to another supervisor higher up) and has implications on the "
+"first three: resuming an actor resumes all its subordinates, restarting an "
+"actor entails restarting all its subordinates (but see below for more "
+"details), similarly terminating an actor will also terminating all its "
+"subordinates. It should be noted that the default behavior of the :meth:"
+"`preRestart` hook of the :class:`Actor` class is to terminate all its "
+"children before restarting, but this hook can be overridden; the recursive "
+"restart applies to all children left after this hook has been executed."
 msgstr ""
 
 # f3a5eed0f3aa4369b2e985e1a7552a68
 #: ../../general/supervision.rst:39
-msgid "Each supervisor is configured with a function translating all possible failure causes (i.e. exceptions) into one of the four choices given above; notably, this function does not take the failed actor’s identity as an input. It is quite easy to come up with examples of structures where this might not seem flexible enough, e.g. wishing for different strategies to be applied to different subordinates. At this point it is vital to understand that supervision is about forming a recursive fault handling structure. If you try to do too much at one level, it will become hard to reason about, hence the recommended way in this case is to add a level of supervision."
+msgid ""
+"Each supervisor is configured with a function translating all possible "
+"failure causes (i.e. exceptions) into one of the four choices given above; "
+"notably, this function does not take the failed actor’s identity as an "
+"input. It is quite easy to come up with examples of structures where this "
+"might not seem flexible enough, e.g. wishing for different strategies to be "
+"applied to different subordinates. At this point it is vital to understand "
+"that supervision is about forming a recursive fault handling structure. If "
+"you try to do too much at one level, it will become hard to reason about, "
+"hence the recommended way in this case is to add a level of supervision."
 msgstr ""
 
 # a379a7af5efc4565b864b9549bb8f432
 #: ../../general/supervision.rst:49
-msgid "Akka implements a specific form called “parental supervision”. Actors can only be created by other actors窶背here the top-level actor is provided by the library窶蚤nd each created actor is supervised by its parent. This restriction makes the formation of actor supervision hierarchies explicit and encourages sound design decisions. It should be noted that this also guarantees that actors cannot be orphaned or attached to supervisors from the outside, which might otherwise catch them unawares. In addition, this yields a natural and clean shutdown procedure for (sub-trees of) actor applications."
+msgid ""
+"Akka implements a specific form called “parental supervision”. Actors can "
+"only be created by other actors—where the top-level actor is provided by the "
+"library—and each created actor is supervised by its parent. This restriction "
+"makes the formation of actor supervision hierarchies explicit and encourages "
+"sound design decisions. It should be noted that this also guarantees that "
+"actors cannot be orphaned or attached to supervisors from the outside, which "
+"might otherwise catch them unawares. In addition, this yields a natural and "
+"clean shutdown procedure for (sub-trees of) actor applications."
 msgstr ""
 
 # d856dd5893194fcb91361d5d02d47c48
@@ -1176,7 +1827,9 @@ msgstr ""
 
 # e28bd8e90ccf47cda4ee134a45c00063
 #: ../../general/supervision.rst:61
-msgid "When presented with an actor which failed while processing a certain message, causes for the failure fall into three categories:"
+msgid ""
+"When presented with an actor which failed while processing a certain "
+"message, causes for the failure fall into three categories:"
 msgstr ""
 
 # 191e26ef66d24c47a0e75a2ff8a7c305
@@ -1186,7 +1839,9 @@ msgstr ""
 
 # 42fe854da1c345e5872ed7e9957e3e66
 #: ../../general/supervision.rst:65
-msgid "(Transient) failure of some external resource used during processing the message"
+msgid ""
+"(Transient) failure of some external resource used during processing the "
+"message"
 msgstr ""
 
 # 53c62037a8f246808a7f1942c51cd93a
@@ -1196,7 +1851,19 @@ msgstr ""
 
 # 1584dc01bc6247239bbb2a7bf9476338
 #: ../../general/supervision.rst:68
-msgid "Unless the failure is specifically recognizable, the third cause cannot be ruled out, which leads to the conclusion that the internal state needs to be cleared out. If the supervisor decides that its other children or itself is not affected by the corruption窶覇.g. because of conscious application of the error kernel pattern窶琶t is therefore best to restart the child. This is carried out by creating a new instance of the underlying :class:`Actor` class and replacing the failed instance with the fresh one inside the child’s :class:`ActorRef`; the ability to do this is one of the reasons for encapsulating actors within special references. The new actor then resumes processing its mailbox, meaning that the restart is not visible outside of the actor itself with the notable exception that the message during which the failure occurred is not re-processed."
+msgid ""
+"Unless the failure is specifically recognizable, the third cause cannot be "
+"ruled out, which leads to the conclusion that the internal state needs to be "
+"cleared out. If the supervisor decides that its other children or itself is "
+"not affected by the corruption—e.g. because of conscious application of the "
+"error kernel pattern—it is therefore best to restart the child. This is "
+"carried out by creating a new instance of the underlying :class:`Actor` "
+"class and replacing the failed instance with the fresh one inside the "
+"child’s :class:`ActorRef`; the ability to do this is one of the reasons for "
+"encapsulating actors within special references. The new actor then resumes "
+"processing its mailbox, meaning that the restart is not visible outside of "
+"the actor itself with the notable exception that the message during which "
+"the failure occurred is not re-processed."
 msgstr ""
 
 # 0d0b9f3e910b449791c84d5f48025eed
@@ -1211,27 +1878,36 @@ msgstr ""
 
 # 42309c528d5e4b40b1a03bb3bfe2e806
 #: ../../general/supervision.rst:84
-msgid "call the old instance’s :meth:`supervisionStrategy.handleSupervisorFailing` method (defaults to suspending all children)"
+msgid ""
+"call the old instance’s :meth:`supervisionStrategy.handleSupervisorFailing` "
+"method (defaults to suspending all children)"
 msgstr ""
 
 # 571bf995dbc84e1391843edadece31bc
 #: ../../general/supervision.rst:86
-msgid "call the old instance’s :meth:`preRestart` hook (defaults to sending termination requests to all children and calling :meth:`postStop`)"
+msgid ""
+"call the old instance’s :meth:`preRestart` hook (defaults to sending "
+"termination requests to all children and calling :meth:`postStop`)"
 msgstr ""
 
 # 94a75451efed45eab6aa34b42acaeaee
 #: ../../general/supervision.rst:88
-msgid "wait for all children stopped during :meth:`preRestart` to actually terminate"
+msgid ""
+"wait for all children stopped during :meth:`preRestart` to actually terminate"
 msgstr ""
 
 # a70413cbaf6e4b648615208789e20fc0
 #: ../../general/supervision.rst:89
-msgid "call the old instance’s :meth:`supervisionStrategy.handleSupervisorRestarted` method (defaults to sending restart request to all remaining children)"
+msgid ""
+"call the old instance’s :meth:`supervisionStrategy."
+"handleSupervisorRestarted` method (defaults to sending restart request to "
+"all remaining children)"
 msgstr ""
 
 # 73a64bd29242412c8bc48b69ea2ba6e4
 #: ../../general/supervision.rst:91
-msgid "create new actor instance by invoking the originally provided factory again"
+msgid ""
+"create new actor instance by invoking the originally provided factory again"
 msgstr ""
 
 # 458f30cdc830405f998a9de0058d5942
@@ -1251,22 +1927,44 @@ msgstr ""
 
 # f0f426bc7f37410594c9694a3a039bbf
 #: ../../general/supervision.rst:98
-msgid "In contrast to the special relationship between parent and child described above, each actor may monitor any other actor. Since actors emerge from creation fully alive and restarts are not visible outside of the affected supervisors, the only state change available for monitoring is the transition from alive to dead. Monitoring is thus used to tie one actor to another so that it may react to the other actor’s termination, in contrast to supervision which reacts to failure."
+msgid ""
+"In contrast to the special relationship between parent and child described "
+"above, each actor may monitor any other actor. Since actors emerge from "
+"creation fully alive and restarts are not visible outside of the affected "
+"supervisors, the only state change available for monitoring is the "
+"transition from alive to dead. Monitoring is thus used to tie one actor to "
+"another so that it may react to the other actor’s termination, in contrast "
+"to supervision which reacts to failure."
 msgstr ""
 
 # 8dd20b382d3646c7a70ed16b8060bcae
 #: ../../general/supervision.rst:106
-msgid "Lifecycle monitoring is implemented using a :class:`Terminated` message to be received by the monitoring actor, where the default behavior is to throw a special :class:`DeathPactException` if not otherwise handled. One important property is that the message will be delivered irrespective of the order in which the monitoring request and target’s termination occur, i.e. you still get the message even if at the time of registration the target is already dead."
+msgid ""
+"Lifecycle monitoring is implemented using a :class:`Terminated` message to "
+"be received by the monitoring actor, where the default behavior is to throw "
+"a special :class:`DeathPactException` if not otherwise handled. One "
+"important property is that the message will be delivered irrespective of the "
+"order in which the monitoring request and target’s termination occur, i.e. "
+"you still get the message even if at the time of registration the target is "
+"already dead."
 msgstr ""
 
 # c2de0b83087d4388b6ce7e0c20fb9bc6
 #: ../../general/supervision.rst:113
-msgid "Monitoring is particularly useful if a supervisor cannot simply restart its children and has to terminate them, e.g. in case of errors during actor initialization. In that case it should monitor those children and re-create them or schedule itself to retry this at a later time."
+msgid ""
+"Monitoring is particularly useful if a supervisor cannot simply restart its "
+"children and has to terminate them, e.g. in case of errors during actor "
+"initialization. In that case it should monitor those children and re-create "
+"them or schedule itself to retry this at a later time."
 msgstr ""
 
 # ca0e4b01f3d64b2081fe87441d0bb4e2
 #: ../../general/supervision.rst:118
-msgid "Another common use case is that an actor needs to fail in the absence of an external resource, which may also be one of its own children. If a third party terminates a child by way of the ``system.stop(child)`` method or sending a :class:`PoisonPill`, the supervisor might well be affected."
+msgid ""
+"Another common use case is that an actor needs to fail in the absence of an "
+"external resource, which may also be one of its own children. If a third "
+"party terminates a child by way of the ``system.stop(child)`` method or "
+"sending a :class:`PoisonPill`, the supervisor might well be affected."
 msgstr ""
 
 # 9ec7ce35d431423cb753dc7c9bd587a2
@@ -1276,21 +1974,49 @@ msgstr ""
 
 # c5eb80633b064a67b16ba97573b7a68b
 #: ../../general/supervision.rst:126
-msgid "There are two classes of supervision strategies which come with Akka: :class:`OneForOneStrategy` and :class:`AllForOneStrategy`. Both are configured with a mapping from exception type to supervision directive (see :ref:`above <supervision-directives>`) and limits on how often a child is allowed to fail before terminating it. The difference between them is that the former applies the obtained directive only to the failed child, whereas the latter applies it to all siblings as well. Normally, you should use the :class:`OneForOneStrategy`, which also is the default if none is specified explicitly."
+msgid ""
+"There are two classes of supervision strategies which come with Akka: :class:"
+"`OneForOneStrategy` and :class:`AllForOneStrategy`. Both are configured with "
+"a mapping from exception type to supervision directive (see :ref:`above "
+"<supervision-directives>`) and limits on how often a child is allowed to "
+"fail before terminating it. The difference between them is that the former "
+"applies the obtained directive only to the failed child, whereas the latter "
+"applies it to all siblings as well. Normally, you should use the :class:"
+"`OneForOneStrategy`, which also is the default if none is specified "
+"explicitly."
 msgstr ""
 
 # 549fa52bb53942cb846723e2d2ff6364
 #: ../../general/supervision.rst:136
-msgid "The :class:`AllForOneStrategy` is applicable in cases where the ensemble of children has so tight dependencies among them, that a failure of one child affects the function of the others, i.e. they are intricably linked. Since a restart does not clear out the mailbox, it often is best to terminate the children upon failure and re-create them explicitly from the supervisor (by watching the children’s lifecycle); otherwise you have to make sure that it is no problem for any of the actors to receive a message which was queued before the restart but processed afterwards."
+msgid ""
+"The :class:`AllForOneStrategy` is applicable in cases where the ensemble of "
+"children has so tight dependencies among them, that a failure of one child "
+"affects the function of the others, i.e. they are intricably linked. Since a "
+"restart does not clear out the mailbox, it often is best to terminate the "
+"children upon failure and re-create them explicitly from the supervisor (by "
+"watching the children’s lifecycle); otherwise you have to make sure that it "
+"is no problem for any of the actors to receive a message which was queued "
+"before the restart but processed afterwards."
 msgstr ""
 
 # b0bd21680d0b4907947a8c8ca9c4f8b7
 #: ../../general/supervision.rst:145
-msgid "Normally stopping a child (i.e. not in response to a failure) will not automatically terminate the other children in an all-for-one strategy, that can easily be done by watching their lifecycle: if the :class:`Terminated` message is not handled by the supervisor, it will throw a :class:`DeathPathException` which (depending on its supervisor) will restart it, and the default :meth:`preRestart` action will terminate all children. Of course this can be handled explicitly as well."
+msgid ""
+"Normally stopping a child (i.e. not in response to a failure) will not "
+"automatically terminate the other children in an all-for-one strategy, that "
+"can easily be done by watching their lifecycle: if the :class:`Terminated` "
+"message is not handled by the supervisor, it will throw a :class:"
+"`DeathPathException` which (depending on its supervisor) will restart it, "
+"and the default :meth:`preRestart` action will terminate all children. Of "
+"course this can be handled explicitly as well."
 msgstr ""
 
 # 6fc8327176ef4da3abc2691c3f87e211
 #: ../../general/supervision.rst:153
-msgid "Please note that creating one-off actors from an all-for-one supervisor entails that failures escalated by the temporary actor will affect all the permanent ones. If this is not desired, install an intermediate supervisor; this can very easily be done by declaring a router of size 1 for the worker, see :ref:`routing-scala` or :ref:`routing-java`."
+msgid ""
+"Please note that creating one-off actors from an all-for-one supervisor "
+"entails that failures escalated by the temporary actor will affect all the "
+"permanent ones. If this is not desired, install an intermediate supervisor; "
+"this can very easily be done by declaring a router of size 1 for the worker, "
+"see :ref:`routing-scala` or :ref:`routing-java`."
 msgstr ""
-
