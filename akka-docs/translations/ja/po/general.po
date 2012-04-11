@@ -66,7 +66,7 @@ msgstr "あるアクターが非常に大切なデータを保持している場
 # 99dca0c5240541ae936ba6778db3fbe6
 #: ../../general/actor-systems.rst:59
 msgid "If one actor depends on another actor for carrying out its duty, it should watch that other actor’s liveness and act upon receiving a termination notice. This is different from supervision, as the watching party has no influence on the supervisor strategy, and it should be noted that a functional dependency alone is not a criterion for deciding where to place a certain child actor in the hierarchy."
-msgstr "TODO あるアクターが、その役割を実行するために、他のアクターに依存している場合、そのアクターは、その他のアクターの死活及び終了通知に伴う振る舞いを監視すべきです。これは、監視されているアクター集団がスーパーバイズ戦略に影響を受けないという点から、スーパーバイズとは異なります。また、階層における子アクターの位置を決める基準が機能的な依存性だけではないという点に注目してください。"
+msgstr "あるアクターが、その役割を実行するために、他のアクターに依存している場合、そのアクターは、その他のアクターの死活および終了通知に伴う振る舞いを監視すべきです。これは、監視されているアクター集団がスーパーバイズ戦略に影響を受けないという点から、スーパーバイズとは異なります。また、階層における子アクターの位置を決める基準が機能的な依存性だけではないという点に注目してください。"
 
 # f110d00ec82b4940947ab23469b63cb1
 #: ../../general/actor-systems.rst:66
@@ -81,7 +81,7 @@ msgstr "コンフィグレーションコンテナ"
 # 096b06bba2834e99abb3dbfd5bf4a4ca
 #: ../../general/actor-systems.rst:72
 msgid "The actor system as a collaborating ensemble of actors is the natural unit for managing shared facilities like scheduling services, configuration, logging, etc. Several actor systems with different configuration may co-exist within the same JVM without problems, there is no global shared state within Akka itself. Couple this with the transparent communication between actor systems-within one node or across a network connection-to see that actor systems themselves can be used as building blocks in a functional hierarchy."
-msgstr "強調動作するアクターの集合としてのアクターシステムは、スケジューリングサービス、コンフィグレーション、ロギングといった共通機能を管理するための単位となります。それぞれ異なるコンフィグレーションを持つ複数のアクターシステムは一つのJVM内に問題なく共存することができます。Akka自身の内部には複数のアクターシステムによって共有されるグローバルステートは存在しません。これとアクターシステム間(単一ノード内またはネットワークを通じた)での透過的な通信を組み合わせると、アクターシステムが機能階層におけるビルディングブロックとなり得ることが理解できます。"
+msgstr "協調動作するアクターの集合としてのアクターシステムは、スケジューリングサービス、コンフィグレーション、ロギングといった共通機能を管理するための単位となります。それぞれ異なるコンフィグレーションを持つ複数のアクターシステムは一つのJVM内に問題なく共存することができます。Akka自身の内部には複数のアクターシステムによって共有されるグローバルステートは存在しません。これとアクターシステム間(単一ノード内またはネットワークを通じた)での透過的な通信を組み合わせると、アクターシステムが機能階層におけるビルディングブロックとなり得ることが理解できます。"
 
 # 681050e1cfc54d9d8599c29d753e55e0
 #: ../../general/actor-systems.rst:81
@@ -111,42 +111,43 @@ msgstr "心配すべきでない事柄"
 # 286b7a7857054ac5b67dd64632300a23
 #: ../../general/actor-systems.rst:107
 msgid "An actor system manages the resources it is configured to use in order to run the actors which it contains. There may be millions of actors within one such system, after all the mantra is to view them as abundant and they weigh in at an overhead of only roughly 300 bytes per instance. Naturally, the exact order in which messages are processed in large systems is not controllable by the application author, but this is also not intended. Take a step back and relax while Akka does the heavy lifting under the hood."
-msgstr "アクターシステムは、そのシステム内のアクターを実行するために使うよう設定された資源を管理します。アクターシステム内には何百万というアクターが存在するかもしれません。が、実のところ、それは豊かなシステムととらえるべきで、アクター１インスタンスにつき約300倍とのオーバーヘッドしかかかりません。本来、大規模なシステムでは処理されるメッセージの厳密な順序のアプリケーションの作成者による制御は不可能であり、また意図されもしない者です。そういった大変な処理はAkkaが水面下で行っているため、一歩下がってリラックスしてください。"
+msgstr "アクターシステムは、そのシステム内のアクターを実行するために使うよう設定された資源を管理します。アクターシステム内には何百万というアクターが存在するかもしれません。が、実のところ、それは豊かなシステムととらえるべきで、アクター１インスタンスにつき約300倍とのオーバーヘッドしかかかりません。本来、大規模なシステムでは処理されるメッセージの厳密な順序のアプリケーションの作成者による制御は不可能であり、また意図されもしないものです。そういった大変な処理はAkkaが水面下で行っているため、一歩下がってリラックスしてください。"
 
 # ab88e07d068b422695f1989b3bd6cb5e
 #: ../../general/actors.rst:4
 msgid "What is an Actor?"
-msgstr ""
+msgstr "アクターとは？"
 
 # e9e558285daf4381819d5d934c74a9c6
 #: ../../general/actors.rst:6
 msgid "The previous section about :ref:`actor-systems` explained how actors form hierarchies and are the smallest unit when building an application. This section looks at one such actor in isolation, explaining the concepts you encounter while implementing it. For more an in depth reference with all the details please refer to :ref:`actors-scala` and :ref:`untyped-actors-java`."
-msgstr ""
+msgstr ":ref:`actor-systems` についての前節では、アクターがどのように階層構造を構成するか、どのようにしてアプリケーションを組み立てる際の最小単位となるかを説明しました。この節では、単独のアクターに注目し、実装する際に直面するコンセプトについて説明します。より詳細なリファレンスについては :ref:`actors-scala` および :ref:`untyped-actors-java` を参照してください。"
 
 # ed0a53aab9e7480ab575b2b450e9d7ad
 #: ../../general/actors.rst:12
 msgid "An actor is a container for `State`_, `Behavior`_, a `Mailbox`_, `Children`_ and a `Supervisor Strategy`_. All of this is encapsulated behind an `Actor Reference`_. Finally, this happens `When an Actor Terminates`_."
-msgstr ""
+msgstr "アクターは `状態`_、 `振る舞い`_、 `メールボックス`_、 `子アクター`_、 `スーパーバイザ戦略`_のコンテナです。このすべては `アクター参照`_によってカプセル化されます。 アクターの最後は `アクターが終了するとき` に書かれています。"
 
 # 97bbb01ad19848fba8db1bb0c4cd231a
 #: ../../general/actors.rst:17
 msgid "Actor Reference"
-msgstr ""
+msgstr "アクター参照"
 
 # 161b767989254feba505c74974c03b22
 #: ../../general/actors.rst:19
 msgid "As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction. This split into inner and outer object enables transparency for all the desired operations: restarting an actor without needing to update references elsewhere, placing the actual actor object on remote hosts, sending messages to actors in completely different applications. But the most important aspect is that it is not possible to look inside an actor and get hold of its state from the outside, unless the actor unwisely publishes this information itself."
-msgstr ""
+msgstr "下記の詳細の通り、アクターオブジェクトはアクターモデルによる恩恵を享受するために外部から守られている必要があります。そのため、アクターは外向きにはアクター参照を使って表されます。このオブジェクトは自由に何の制限もなくやりとりできるオブジェクトです。この内部と外部の分離がすべてのあるべき操作を透過的にしているのです。例えば、どの参照もアップデートすることなくリスタートすること、実際のアクターオブジェクトをリモートホストに配置すること、完全に異なるアプリケーションのアクター間でのメッセージのやり取りなどです。しかし最も大切な側面は、アクターが自分自身の情報を外部に公開するような愚かなことをしない限り、アクターの内部を外部から不可視にして、自身の状態を内部に保持していることです。"
+
 
 # 38fb3bbfeb8943539f39f0ed61ca0b50
 #: ../../general/actors.rst:31
 msgid "State"
-msgstr ""
+msgstr "状態"
 
 # 9594f131c872482a968c60158f26e681
 #: ../../general/actors.rst:33
 msgid "Actor objects will typically contain some variables which reflect possible states the actor may be in. This can be an explicit state machine (e.g. using the :ref:`fsm-scala` module), or it could be a counter, set of listeners, pending requests, etc. These data are what make an actor valuable, and they must be protected from corruption by other actors. The good news is that Akka actors conceptually each have their own light-weight thread, which is completely shielded from the rest of the system. This means that instead of having to synchronize access using locks you can just write your actor code without worrying about concurrency at all."
-msgstr ""
+msgstr "アクターオブジェクトは典型的にアクターが取り得る状態を反映した変数を保持します。それらには明示的な状態遷移機械(例えば、 :ref:`fsm-scala`モジュールを使って)、カウンター、リスナーの集合、ペンディングされているリクエストなどがあります。これらのデータはアクターを価値あるものにしているデータで、他のアクターによる破壊から守られなければならないものです。良いことに、Akkaのアクターは、概念的には、各自が他のアクターから完全に守られている軽量のスレッドを保持しています。これはロックを使った同期アクセスを使わず、並行処理を意識せずにアクターのコードを書くことが出来ることを意味します。"
 
 # a2e3f1829f6a43229d9c46b7468b2fa4
 #: ../../general/actors.rst:43
