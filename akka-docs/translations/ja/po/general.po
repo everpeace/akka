@@ -76,42 +76,42 @@ msgstr "もちろんいつでも例外というのはありますが、このル
 # 3255ef21868246388aba70d5acad899c
 #: ../../general/actor-systems.rst:70
 msgid "Configuration Container"
-msgstr "設定コンテナ"
+msgstr "コンフィグレーションコンテナ"
 
 # 096b06bba2834e99abb3dbfd5bf4a4ca
 #: ../../general/actor-systems.rst:72
 msgid "The actor system as a collaborating ensemble of actors is the natural unit for managing shared facilities like scheduling services, configuration, logging, etc. Several actor systems with different configuration may co-exist within the same JVM without problems, there is no global shared state within Akka itself. Couple this with the transparent communication between actor systems-within one node or across a network connection-to see that actor systems themselves can be used as building blocks in a functional hierarchy."
-msgstr ""
+msgstr "強調動作するアクターの集合としてのアクターシステムは、スケジューリングサービス、コンフィグレーション、ロギングといった共通機能を管理するための単位となります。それぞれ異なるコンフィグレーションを持つ複数のアクターシステムは一つのJVM内に問題なく共存することができます。Akka自身の内部には複数のアクターシステムによって共有されるグローバルステートは存在しません。これとアクターシステム間(単一ノード内またはネットワークを通じた)での透過的な通信を組み合わせると、アクターシステムが機能階層におけるビルディングブロックとなり得ることが理解できます。"
 
 # 681050e1cfc54d9d8599c29d753e55e0
 #: ../../general/actor-systems.rst:81
 msgid "Actor Best Practices"
-msgstr ""
+msgstr "アクターのベストプラクティス"
 
 # 1bed152935d64c58a01fda5e01d8f6df
 #: ../../general/actor-systems.rst:83
 msgid "Actors should be like nice co-workers: do their job efficiently without bothering everyone else needlessly and avoid hogging resources. Translated to programming this means to process events and generate responses (or more requests) in an event-driven manner. Actors should not block (i.e. passively wait while occupying a Thread) on some external entity, which might be a lock, a network socket, etc. The blocking operations should be done in some special-cased thread which sends messages to the actors which shall act on them."
-msgstr ""
+msgstr "アクターはとても優秀な共同作業者であるべきです。自分自身の仕事を効率的にこなし、かつ不必要に他人を妨げず、資源を無駄遣いすることもないような作業者であるべきです。プログラミングの言葉に翻訳すると、イベントドリンブンなスタイルで、イベントを処理し、レスポンス(もしくはさらなるリクエスト)を生成するということです。アクターは、ロックやネットワークソケットといった外部のエンティティ上でブロックする(スレッドを占有し、待ち状態になること)べきではありません。ブロックする操作は、アクターにそのメッセージを配送する特殊なスレッド中で行われるべきです。"
 
 # d966f6490eae4d4aa30cf276f842b3c4
 #: ../../general/actor-systems.rst:92
 msgid "Do not pass mutable objects between actors. In order to ensure that, prefer immutable messages. If the encapsulation of actors is broken by exposing their mutable state to the outside, you are back in normal Java concurrency land with all the drawbacks."
-msgstr ""
+mssgstr "可変なオジェクトをアクター間でやり取りしないでください。それを保証するためには、不変なメッセージが好まれます。もしアクターのカプセル化が可変なステートを外部に露出することで破られてしまった場合、多くの欠点と共に通常のJava並行性に前戻りすることになります。"
 
 # 35ac131ab54b4fdabecc4aa4241460d3
 #: ../../general/actor-systems.rst:97
 msgid "Actors are made to be containers for behavior and state, embracing this means to not routinely send behavior within messages (which may be tempting using Scala closures). One of the risks is to accidentally share mutable state between actors, and this violation of the actor model unfortunately breaks all the properties which make programming in actors such a nice experience."
-msgstr ""
+msgstr "アクターは状態と振る舞いのコンテナとして作られるべきです。これは、日常的には振る舞いをメッセージとして送らない(送る場合にはScalaのクロージャーを使おうとするかもしれません)ことを意味します。それを送ることのリスクの一つは、思いがけず可変なステートがアクター間で共有されてしまい、このアクターモデルの破壊が、アクタープログラミングをとても良い体験せしめているすべての特性を、不幸にも台無しにしてしまうことです。"
 
 # 6d456c70732e42e5a25076f16bc259b2
 #: ../../general/actor-systems.rst:105
 msgid "What you should not concern yourself with"
-msgstr ""
+msgstr "心配すべきでない事柄"
 
 # 286b7a7857054ac5b67dd64632300a23
 #: ../../general/actor-systems.rst:107
 msgid "An actor system manages the resources it is configured to use in order to run the actors which it contains. There may be millions of actors within one such system, after all the mantra is to view them as abundant and they weigh in at an overhead of only roughly 300 bytes per instance. Naturally, the exact order in which messages are processed in large systems is not controllable by the application author, but this is also not intended. Take a step back and relax while Akka does the heavy lifting under the hood."
-msgstr ""
+msgstr "アクターシステムは、そのシステム内のアクターを実行するために使うよう設定された資源を管理します。アクターシステム内には何百万というアクターが存在するかもしれません。が、実のところ、それは豊かなシステムととらえるべきで、アクター１インスタンスにつき約300倍とのオーバーヘッドしかかかりません。本来、大規模なシステムでは処理されるメッセージの厳密な順序のアプリケーションの作成者による制御は不可能であり、また意図されもしない者です。そういった大変な処理はAkkaが水面下で行っているため、一歩下がってリラックスしてください。"
 
 # ab88e07d068b422695f1989b3bd6cb5e
 #: ../../general/actors.rst:4
