@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Akka 2.0-SNAPSHOT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 21:41\n"
-"PO-Revision-Date: 2012-04-12 00:41+0900\n"
+"PO-Revision-Date: 2012-04-13 15:01+0900\n"
 "Last-Translator: 大村 伸吾 <>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -265,7 +265,7 @@ msgid ""
 "one actor may end up being processed on different threads. Akka ensures that "
 "this implementation detail does not affect the single-threadedness of "
 "handling the actor’s state."
-msgstr ""
+msgstr "Akkaがアクターの集団や実際にスレッドを実行している裏では、多くのアクターが実は一つのスレッドを共有しており、あるアクターの呼び出しが結果的には異なるスレッドで処理されることもあります。Akkaは、この実装がアクターの状態を扱う際の単一スレッド性に影響を与えない、ことを保証しています。"
 
 # 4fa41871addc4103851d8b68930aa282
 #: ../../general/actors.rst:49
@@ -275,7 +275,7 @@ msgid ""
 "its supervisor, the state will be created from scratch, like upon first "
 "creating the actor. This is to enable the ability of self-healing of the "
 "system."
-msgstr ""
+msgstr "内部状態はアクターの操作にとって生命線のため、矛盾した状態を持ってしまうことは致命的です。なので、アクターが故障し、スーパーバイザによってリスタートされた場合、アクターが最初に生成されたときのように、状態は最初から作り直されます。"
 
 # 9d3833218f0440e78eaf5c5f6b327c98
 #: ../../general/actors.rst:55
@@ -297,7 +297,8 @@ msgid ""
 "However, the initial behavior defined during construction of the actor "
 "object is special in the sense that a restart of the actor will reset its "
 "behavior to this initial one."
-msgstr ""
+msgstr "メッセージが処理されるときはいつでも、そのメッセージがアクターの現在の振る舞いに対して適合している場合です。振る舞いとは、その時点のメッセージに対する反応として定義されている関数のことです。例えば、クライアントが認可されていたら、リクエストをフォワードし、さもなくば拒否する、などです。この振る舞いは時とともに変えることが出来ます。例えば、h他のクライアントが認可を得たから、とか、アクターが一旦サービスを停止して、後に再開するから、などの理由で変わり得ます。これは、状態変数にその反応をエンコーディングしておいて、振る舞いのロジックからそれを読んだり、また、その関数自身を実行時に入れ替えることも出来ます。それについては ``become`` と ``unbecome`` という操作を参照してください。しかし、アクターオブジェクトが生成されるときに定義される初期の振る舞いは、アクターのリセットに伴って、初期化される振る舞いであるという点で特別なものです。"
+
 
 # 9a192fea96b74e29b9758d067b98b3e9
 #: ../../general/actors.rst:70
@@ -305,7 +306,7 @@ msgid ""
 "The initial behavior of an Actor is extracted prior to constructor is run, "
 "so if you want to base your initial behavior on member state, you should use "
 "``become`` in the constructor."
-msgstr ""
+msgstr "アクターの初期の振る舞いは、コンストラクタが実行される前に抽出されるので、もし初期状態をメンバーステートにしたい場合、コンストラクタの中で ``become`` を使う必要があります。"
 
 # 071b1860d12a44a98ed73746988e8051
 #: ../../general/actors.rst:75
@@ -324,7 +325,7 @@ msgid ""
 "due to the apparent randomness of distributing actors across threads. "
 "Sending multiple messages to the same target from the same actor, on the "
 "other hand, will enqueue them in the same order."
-msgstr ""
+msgstr "アクターの目的は、他のアクター(アクターシステムかもしれない)から送られてきたメッセージを処理することです。送信者と受信者をつなぐ部品がアクターのメールボックスです。各アクターはただ一つのメールボックスを持ち、すべての送信者はそのキューにメッセージを挿入します。メッセージの挿入は、send操作が起きた時系列の順に起きます。これは、他のアクターから送られるメッセージが実行時にならないと決まらないことを意味しています。アクターの集合が複数のスレッドに分散して割り当てられていることから生じるランダム性が原因です。ですが、同じアクターから同じターゲットに向かって送信される複数のメッセージについては、送信と同じ順序で、ターゲットのメールボックスに挿入されます。"
 
 # 38049273c8954c11979b4481c1766ac0
 #: ../../general/actors.rst:87
@@ -337,7 +338,7 @@ msgid ""
 "given by the message priority, which might even be at the front. While using "
 "such a queue, the order of messages processed will naturally be defined by "
 "the queue’s algorithm and in general not be FIFO."
-msgstr ""
+msgstr "メールボックスには複数の実装があり、次から選択することが出来ます。デフォルトはFIFOです。この実装では、アクターに処理されるメッセージの順序が、キューにメッセージが挿入された順序と同じになります。このデフォルトの設定は通常の場合ではればうまく動作します。が、いくつかのメッセージを優先的に処理する必要があるアプリケーションもあるでしょう。その場合は、優先度付きメールボックスがあります。このメールボックスは、メッセージを常に最後に挿入するのではなく、優先度に応じた位置(先頭かもしれません)に挿入します。このようなキューを使っている場合、処理されるメッセージの順はキューのアルゴリズムによって定義されるので、一般にはFIFOにはなりません。"
 
 # dd8d441b7d85429aa0a082d21eb2717c
 #: ../../general/actors.rst:96
