@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Akka 2.0-SNAPSHOT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 21:41\n"
-"PO-Revision-Date: 2012-04-13 15:01+0900\n"
+"PO-Revision-Date: 2012-04-18 18:23+0900\n"
 "Last-Translator: 大村 伸吾 <>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -348,7 +348,7 @@ msgid ""
 "dequeued message, there is no scanning the mailbox for the next matching "
 "one. Failure to handle a message will typically be treated as a failure, "
 "unless this behavior is overridden."
-msgstr ""
+msgstr "他のアクターモデルの実装とAkkaの大きく違う重要な点は、現在の振る舞いは必ず次にデキューされたメッセージを処理し、次のメッセージを取得するためにメールボックスをスキャンすることはない、という点です。メッセージ処理についての失敗は、通常失敗として扱われます。ただし、この振る舞いがオーバーライドされていない限りにおいてです。"
 
 # e6bbf87e153b4316b28a0aa420c44c54
 #: ../../general/actors.rst:103
@@ -366,7 +366,7 @@ msgid ""
 "reflected immediately. The actual creation and termination actions happen "
 "behind the scenes in an asynchronous way, so they do not “block” their "
 "supervisor."
-msgstr ""
+msgstr "各アクターは、潜在的にスーパーバイザです。もし、そのアクターがサブタスクを委譲するために子アクターを作った場合、そのアクターは自動的にその子アクターのスーパーバイザになります。子アクターのリストはそのアクターのコンテキスト内で管理され、アクターはそのリストにアクセスできます。そのリストの変更には(``context.actorOf(...)``)でアクターを作るか、もしくは(``context.stop(child)```)で子アクターを停止させることで行われ、それは直ちに反映されます。アクターの実際の生成と停止は非同期に行われます。なのでスーパーバーザを「ブロック」させることはありません。"
 
 # 8e3f57ed49f64220bd8f0ef031016dc3
 #: ../../general/actors.rst:114
@@ -381,7 +381,7 @@ msgid ""
 "the strategies described in :ref:`supervision` for each incoming failure. As "
 "this strategy is fundamental to how an actor system is structured, it cannot "
 "be changed once an actor has been created."
-msgstr ""
+msgstr "アクターの最後の部品は、子アクターの失敗を処理するための戦略です。失敗の処理は、 :ref:`supervision` に記述されている戦略のどれかを適用することで、Akkaに暗黙的に処理させることが出来るようになっています。この戦略はアクターシステムがどのような構造をしているかに対して非常に強く関わるため、アクターを一度生成したら変更することは出来ません。"
 
 # 155536380cdc41d69723b3b055bec4a0
 #: ../../general/actors.rst:122
